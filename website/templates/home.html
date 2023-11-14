@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+         <div class="section">
+            <!-- carousel code -->
+            <div id="banner1" class="carousel slide slider_main">
+               <ol class="carousel-indicators ">
+                  <li data-target="#banner1" data-slide-to="0" class="indicator-li-1">01</li>
+                  <li data-target="#banner1" data-slide-to="1" class="">02</li>
+                  <li data-target="#banner1" data-slide-to="2" class="active">03</li>
+               </ol>
+               <div class="carousel-inner">
+                  <!-- first slide -->
+                  <div class="carousel-item active">
+                     <div class="carousel-caption cuplle">
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-md-8">
+                                 <div class="photog">
+                                    <h1>Welcome to DetSpace</h1>
+                                    <a class="read_more" href="javascript:void(0)" >Read More</a>
+                                    <a class="read_more" href="about.html" >About Us</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <br><br><br><br><br><br><br><br>
+               <!-- controls -->
+               <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+               <i class="fa fa-angle-left" aria-hidden="true"></i>
+               <span class="sr-only">Previous</span>
+               </a>
+               <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
+               <i class="fa fa-angle-right" aria-hidden="true"></i>
+               <span class="sr-only">Next</span>
+               </a>
+            </div>
+         </div>
+      </div>
+      <!-- end banner -->
+      <!-- about -->
+      <div class="about">
+         <div class="container_width">
+            <div class="row d_flex">
+                   <div class="col-md-7">
+                  <div class="titlepage text_align_left">
+                     <h2>About Plasmid design </h2>
+                     <p>Learn how to design and build your own plasmids
+                     </p>
+                     <a class="read_more" href="about.html">About More</a>
+                  </div>
+               </div>
+               <div class="col-md-5">
+                  <div class="about_img text_align_center">
+                     <figure><img src="{% static 'website/images/plasmid.png' %}" alt="#"/></figure>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <br><br><br><br><br><br><br><br>
+      <!-- end about -->
+     <!-- coronata -->
+      <div class="coronata">
+         <div class="container">
+            <div class="row d_flex grid">
+               <div class="col-md-7">
+                  <div class="coronata_img text_align_center">
+                     <figure><img src="{% static 'website/images/Metabolic space.png' %}" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-5 oder1">
+                  <div class="titlepage text_align_left">
+                     <h2>Metabolic space what is it?</h2>
+                     <p>The metabolic space of an organism is...
+                     </p>
+                     <a class="read_more" href="coronata.html">About More</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end coronata -->
+      <br><br><br><br><br><br><br><br>   
+        <!-- protect -->
+      <div class="protect">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage text_align_center">
+                     <h2>What can you do here? </h2>
+                     <p>This web service provides diferent options and services  
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+           <div class="protect_bg">
+         <div class="container">
+             <div class="row">
+               <div class="col-md-12">
+                  <!--  Demos -->
+                  <div class="owl-carousel owl-theme">
+                     <div class="item">
+                        <div class="protect_box text_align_center">
+                          <div class="desktop">
+                             <i><img src="{% static 'website/images/graph.png'%}" alt="#"/></i>
+                           <h3> Specific metabolic maps</h3>
+                           <span> This tool allows you to get the metabolic reactions and intermediates that generate your molecule/s of interest as a final product. Not only will you explore the production pathways, but also the detectable molecules linked to them.</span>
+                          </div>
+                           <a class="read_more" href="protect.html">Read More</a>
+                        </div>
+                     </div>
+                     <div class="item">
+                          <div class="protect_box text_align_center">
+                          <div class="desktop">
+                             <i><img src="{% static 'website/images/icon_plasmid.png'%}" alt="#"/></i>
+                           <h3> Personalized plasmids</h3>
+                           <span> Prepare and design your own plasmids in silico. Our model predicts the most suitable genetic sequence to insert in your plasmid for the host microorganism to begin the biomanufacturing process of your target molecule/s. Save time and increase efficiency. </span>
+                          </div>
+                           <a class="read_more" href="protect.html">Read More</a>
+                        </div>
+                     </div>
+                     <div class="item">
+                         <div class="protect_box text_align_center">
+                          <div class="desktop">
+                             <i><img src="{% static 'website/images/properties.png'%}" alt="#"/></i>
+                           <h3> Prediction of valuable properties</h3>
+                           <span> The power of machine learning models allows you to predict many relevant parameters for the whole process: the features of the required biosensor, the potential industrial benefits opened up by the intrinsic properties of your target molecule/s, environmental benefits...</span>
+                          </div>
+                           <a class="read_more" href="protect.html">Read More</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+          </div>
+      </div>
+         </div>
+      </div>
+      <!-- end protect -->
+    <!-- cases -->
+      <!--div class="cases">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage text_align_center ">
+                     <h2>Coronavirus Cases</h2>
+                     <p>making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful</p>
+                  </div>
+               </div>
+            </div>
+            <div class="row d_flex">
+               <div class=" col-md-4">
+                  <div class="latest text_align_center">
+                     <figure><img src="{% static 'website/images/cases1.png'%}" alt="#"/></figure>
+                      <a class="read_more" href="cases.html">Read More</a>
+                     <div class="nostrud">
+                        <h3>Cases 01</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
+                     </div>
+                  </div>
+               </div>
+               <div class=" col-md-4">
+                  <div class="latest text_align_center">
+                     <figure><img src="{% static 'website/images/cases2.png'%}" alt="#"/></figure>
+                      <a class="read_more" href="cases.html">Read More</a>
+                     <div class="nostrud">
+                        <h3>Cases 02</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
+                     </div>
+                  </div>
+               </div>
+               <div class=" col-md-4">
+                  <div class="latest text_align_center">
+                     <figure><img src="{% static 'website/images/cases3.png'%}" alt="#"/></figure>
+                      <a class="read_more" href="cases.html">Read More</a>
+                     <div class="nostrud">
+                        <h3>Cases 03</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end cases -->
+         <!-- doctors -->
+      <!--<div class="doctors">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage text_align_center ">
+                     <h2>What doctors say..</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row d_flex">
+               <div class=" col-md-6">
+                     <div id="ho_efcet" class="reader text_align_center">
+                        <i><img src="{% static 'website/images/doctor1.png'%}" alt="#"/></i>
+                        <h3>Dr.Golap den</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
+                        <span><img src="{% static 'website/images/do.png'%}" alt="#"/></span>
+                     </div>
+                  </div>
+                          <div class=" col-md-6">
+                     <div id="ho_efcet" class="reader text_align_center">
+                        <i><img src="{% static 'website/images/doctor2.png'%}" alt="#"/></i>
+                        <h3>Dr.Golap den</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
+                        <span><img src="{% static 'website/images/do.png'%}" alt="#"/></span>
+                     </div>
+                  </div>
+               </div>
+         </div>
+      </div>
+      <!-- end cases -->
+<!-- update -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="update">
+   <div class="cevery_white">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="titlepage">
+                  <h2>Get Every Update.... </h2>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="cevery_bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <form id="colof" class="form_subscri">
+                  <input class="newsl" placeholder="Your Email" type="text" name="Email">
+                  <button class="subsci_btn">Subscribe Now</button>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- update -->
+
+{% endblock %}
+<br><br><br><br><br><br><br><br>

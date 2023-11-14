@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<br><br><br><br><br><br><br><br><br><br><br>
+      <!-- about -->
+      <div class="about">
+         <div class="container_width">
+            <div class="row d_flex">
+                   <div class="col-md-7">
+                  <div class="titlepage text_align_left">
+                     <h2>About plasmid design </h2>
+                     <p>A plasmid is a small circular DNA molecule found in bacteria and some other microscopic organisms. 
+                        Plasmids are physically separate from chromosomal DNA and replicate independently. 
+                        They typically have a small number of genes — notably, some associated with antibiotic resistance — and can be passed from one cell to another. Scientists use recombinant DNA methods to splice genes that they want to study into a plasmid. When the plasmid copies itself, it also makes copies of the inserted gene. 
+                     </p>
+                     <a class="read_more" href="about.html">About More</a>
+                  </div>
+               </div>
+               <div class="col-md-5">
+                  <div class="about_img text_align_center">
+                     <figure><img src="{% static 'website/images/plasmid_2.png'%}" alt="#"/></figure>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <br><br><br><br><br><br><br><br><br><br>
+      
+      <div class="about">
+         <div class="container_width">
+            <div class="row d_flex">
+                   <div class="col-md-7">
+                  <div class="titlepage text_align_left">
+                     <h2>About the metabolic space </h2>
+                     <p>The metabolic space is the 
+                     </p>
+                     <a class="read_more" href="about.html">About More</a>
+                  </div>
+               </div>
+               <div class="col-md-5">
+                  <div class="about_img text_align_center">
+                     <figure><img src="images/about.png" alt="#"/></figure>
+                  </div>
+               </div>
+              
+            </div>
+         </div>
+      </div>
+      <!-- end about -->
+      <br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
