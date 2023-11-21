@@ -492,11 +492,11 @@ button {
 /** banner section **/
 
 .full_bg {
-     background: url(../images/banner.png);
+    background:url(../images/back.png);
      background-size: cover;
      background-position: center;
      background-repeat: no-repeat;
-     height: 100vh;
+     height: 200vh;
     padding-bottom: 150px;
      position: relative;
 }
@@ -719,12 +719,12 @@ button {
 
 
 .protect_bg  {
-       background:url(../images/project.png);
+       background:url(../images/bac.jpg);
      background-repeat: no-repeat;
      background-position: center;
-     background-size: 100% 100%;
-       padding-top: 80px;
-      padding-bottom: 48px;
+     background-size: 120% 120%;
+       padding-top: 120px;
+      padding-bottom: 200px;
 }
 
 .protect .titlepage p {
@@ -940,7 +940,7 @@ button {
     position: absolute;
     content: "";
     right: 4%;
-    background: url(../images/case.png);
+    background: url(../images/case2.jpeg);
     top: 34%;
     width: 120px;
     height: 121px;
@@ -1031,7 +1031,7 @@ button {
     background-repeat: no-repeat;
 }
 .cevery_white {background: #fff;}
-.cevery_bg {background: url(../images/ever_bg.jpg);
+.cevery_bg {background: url(../images/bacteria3.png);
 background-size: cover;
 background-repeat: no-repeat; background-position: center;
 padding: 80px 0;
@@ -1356,4 +1356,20 @@ padding-bottom: 40px;}
     .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
     background-color: #1906c0;
+}
+
+.transition-fade {
+    opacity: 1;
+    transition: 500ms;
+    transform: translateX(0);
+    transform-origin: left;
+}
+
+.html.is-animating .transition-fade{
+    opacity: 1;
+    transform: translateX(100%);
+}
+
+.html.is-leaving .transition-fade{
+    opacity: 0;
 }
