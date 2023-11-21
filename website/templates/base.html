@@ -38,9 +38,7 @@
    <!-- body -->
    <body class="main-layout">
       <!-- loader  -->
-      <div class="loader_bg">
-         <div class="loader"><img src="{% static 'website/images/loading.gif' %}" alt="#"/></div>
-      </div>
+      <main id="swup" class="transition-fade"></main>
       <!-- end loader -->
       <!-- top -->
                     <!-- header -->
@@ -64,7 +62,7 @@
                            <ul>
                               <li><a href="{% url 'home' %}">Home</a></li>
                               <li><a href="{% url 'about' %}">About</a></li>
-                              <li><a href="{% url 'chassis' %}">Chasis</a></li>
+                              <li><a href="{% url 'chassis' %}">Chassis</a></li>
                               <li><a href="{% url 'target' %}">Target</a></li>
                               <li><a href="effector.html">Effector</a></li>
                               <li><a href="plasmid.html">Circuit</a></li>
@@ -80,6 +78,7 @@
             </div>
          </header>
       <!-- end header -->
+            
             <div class="full_bg">
       <!-- header inner -->
 
@@ -168,11 +167,14 @@
      <script src="{% static 'website/js/chroma.min.js'%}"></script>
      <script src="{% static 'website/js/dagre.js'%}"></script>
      <script src="{% static 'website/js/cytoscape-dagre.js'%}"></script>
+     <script defer src="{% static 'website/node_modules/swup/dist/swup.umd.js'%}"></script>
+     <script defer src="{% static 'website/js/script.js'%}"></script>
+     <script src="https://unpkg.com/@swup/js-plugin@3"></script>
      <!-- Table sorter -->
      <script src="{% static 'website/js/jquery.tablesorter.min.js'%}"></script>
 
      <!-- Data -->
-      <script src="{% static "website/templates/network.json"%}"></script>
+      <!--<script src="{% static "website/templates/network.json"%}"></script>-->
 
   </body>
 </html>
