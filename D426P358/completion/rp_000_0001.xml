@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" xmlns:groups="http://www.sbml.org/sbml/level3/version1/groups/version1" xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version2" level="3" version="1" groups:required="false" fbc:required="false">
+  <model metaid="_2d0c538fd3c83a6b42421c896751afb953ea0517cc9e4b2ba6f361b193e6541e" id="rp_000_0001" name="rp_000_0001" substanceUnits="mole" timeUnits="second" extentUnits="mole" fbc:strict="true">
+    <listOfCompartments>
+      <compartment metaid="_2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6" sboTerm="SBO:0000290" id="c" name="cytosol" size="1" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#_2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bigg.compartment/c"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bigg.compartment/c_c"/>
+                  <rdf:li rdf:resource="http://identifiers.org/metanetx.compartment/MNXC3"/>
+                  <rdf:li rdf:resource="http://identifiers.org/seed/c"/>
+                  <rdf:li rdf:resource="http://identifiers.org/seed/c0"/>
+                  <rdf:li rdf:resource="http://identifiers.org/seed/cytosol"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="bbe0fe1f783793ad97e46a11d16e8c6c2d3b8b6c7b3aaf709af882404cf4d10a" id="MNXM2" name="H2O" compartment="c" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#bbe0fe1f783793ad97e46a11d16e8c6c2d3b8b6c7b3aaf709af882404cf4d10a">
+              <bqbiol:is>
+                <rdf:Bag/>
+              </bqbiol:is>
+            </rdf:Description>
+            <rdf:BRSynth rdf:about="#bbe0fe1f783793ad97e46a11d16e8c6c2d3b8b6c7b3aaf709af882404cf4d10a">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu">
+                <brsynth:smiles value="O"/>
+                <brsynth:inchi value="InChI=1S/H2O/h1H2"/>
+                <brsynth:inchikey value="XLYOFNOQVPJJNP-UHFFFAOYSA-N"/>
+              </brsynth:brsynth>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="_2c27bb432be6149f648dcec0e702fd9bdf6449fb9f730bd86eeb0b63b93d8858" id="CMPD_0000000003" name="CMPD_0000000003" compartment="c" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#_2c27bb432be6149f648dcec0e702fd9bdf6449fb9f730bd86eeb0b63b93d8858">
+              <bqbiol:is>
+                <rdf:Bag/>
+              </bqbiol:is>
+            </rdf:Description>
+            <rdf:BRSynth rdf:about="#_2c27bb432be6149f648dcec0e702fd9bdf6449fb9f730bd86eeb0b63b93d8858">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu">
+                <brsynth:smiles value="O=C(O)CC(O)C(=O)O"/>
+                <brsynth:inchi value="InChI=1S/C4H6O5/c5-2(4(8)9)1-3(6)7/h2,5H,1H2,(H,6,7)(H,8,9)"/>
+                <brsynth:inchikey value="BJEPYKJPYRNKOW-UHFFFAOYSA-N"/>
+              </brsynth:brsynth>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="c0af97951181681e2538ea315f054e15f38f7172fc1487ec924ac2c9f687faa0" id="CMPD_0000000005" name="CMPD_0000000005" compartment="c" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#c0af97951181681e2538ea315f054e15f38f7172fc1487ec924ac2c9f687faa0">
+              <bqbiol:is>
+                <rdf:Bag/>
+              </bqbiol:is>
+            </rdf:Description>
+            <rdf:BRSynth rdf:about="#c0af97951181681e2538ea315f054e15f38f7172fc1487ec924ac2c9f687faa0">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu">
+                <brsynth:smiles value="COc1cc(C=CC(=O)O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)cc(OC)c1O"/>
+                <brsynth:inchi value="InChI=1S/C17H22O10/c1-24-9-5-8(6-10(25-2)13(9)20)3-4-12(19)27-17-16(23)15(22)14(21)11(7-18)26-17/h3-6,11,14-18,20-23H,7H2,1-2H3/t11-,14-,15+,16-,17+/m1/s1"/>
+                <brsynth:inchikey value="XRKBRPFTFKKHEF-UFRBAHOGSA-N"/>
+              </brsynth:brsynth>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="_00130edfb31d1ab493c3bb4a4a6a526f402def13074ec5eca8f2975ec9cc63e8" id="MNXM93935" name="Sinapoyl malate" compartment="c" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#_00130edfb31d1ab493c3bb4a4a6a526f402def13074ec5eca8f2975ec9cc63e8">
+              <bqbiol:is>
+                <rdf:Bag/>
+              </bqbiol:is>
+            </rdf:Description>
+            <rdf:BRSynth rdf:about="#_00130edfb31d1ab493c3bb4a4a6a526f402def13074ec5eca8f2975ec9cc63e8">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu">
+                <brsynth:smiles value="COc1cc(C=CC(=O)OC(CC(=O)O)C(=O)O)cc(OC)c1O"/>
+                <brsynth:inchi value="InChI=1S/C15H16O9/c1-22-9-5-8(6-10(23-2)14(9)19)3-4-13(18)24-11(15(20)21)7-12(16)17/h3-6,11,19H,7H2,1-2H3,(H,16,17)(H,20,21)"/>
+                <brsynth:inchikey value="DUDGAPSRYCQPBG-UHFFFAOYSA-N"/>
+              </brsynth:brsynth>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="_5048d67a4507da50d2b6f7a950c531ac5a424ec6d7f1e84da7d56cbbfa7f782e" id="CMPD_0000000004" name="CMPD_0000000004" compartment="c" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#_5048d67a4507da50d2b6f7a950c531ac5a424ec6d7f1e84da7d56cbbfa7f782e">
+              <bqbiol:is>
+                <rdf:Bag/>
+              </bqbiol:is>
+            </rdf:Description>
+            <rdf:BRSynth rdf:about="#_5048d67a4507da50d2b6f7a950c531ac5a424ec6d7f1e84da7d56cbbfa7f782e">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu">
+                <brsynth:smiles value="OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@@H]1O"/>
+                <brsynth:inchi value="InChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6?/m1/s1"/>
+                <brsynth:inchikey value="WQZGKKKJIJFFOK-GASJEMHNSA-N"/>
+              </brsynth:brsynth>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="_7d22781170c09f66099e3d92f82fe456ce2c3f02d9162656e7ca49a0cc9c7b16" id="CMPD_0000000002" name="CMPD_0000000002" compartment="c" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#_7d22781170c09f66099e3d92f82fe456ce2c3f02d9162656e7ca49a0cc9c7b16">
+              <bqbiol:is>
+                <rdf:Bag/>
+              </bqbiol:is>
+            </rdf:Description>
+            <rdf:BRSynth rdf:about="#_7d22781170c09f66099e3d92f82fe456ce2c3f02d9162656e7ca49a0cc9c7b16">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu">
+                <brsynth:smiles value="OC[C@H]1O[C@@H](O)[C@H](O)[C@@H](O)[C@@H]1O"/>
+                <brsynth:inchi value="InChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6-/m1/s1"/>
+                <brsynth:inchikey value="WQZGKKKJIJFFOK-VFUOTHLCSA-N"/>
+              </brsynth:brsynth>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="_6817bb5f7133f50744b232330f1f3009343f785b8f77602ce5f44cdd9458f002" id="TARGET_0000000001" name="TARGET_0000000001" compartment="c" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#_6817bb5f7133f50744b232330f1f3009343f785b8f77602ce5f44cdd9458f002">
+              <bqbiol:is>
+                <rdf:Bag/>
+              </bqbiol:is>
+            </rdf:Description>
+            <rdf:BRSynth rdf:about="#_6817bb5f7133f50744b232330f1f3009343f785b8f77602ce5f44cdd9458f002">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu">
+                <brsynth:smiles value="OC[C@H]1O[C@@H](O[C@H]2[C@H](O)[C@@H](CO)OC(O)[C@@H]2O)[C@H](O)[C@@H](O)[C@@H]1O"/>
+                <brsynth:inchi value="InChI=1S/C12H22O11/c13-1-3-5(15)7(17)8(18)12(22-3)23-10-6(16)4(2-14)21-11(20)9(10)19/h3-20H,1-2H2/t3-,4-,5-,6-,7+,8-,9-,10+,11?,12+/m1/s1"/>
+                <brsynth:inchikey value="QIGJYVCQYDKYDW-LCOYTZNXSA-N"/>
+              </brsynth:brsynth>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="dc937b59892604f5a86ac96936cd7ff09e25f18ae6b758e8014a24c7fa039e91" sboTerm="SBO:0000625" id="BRS_FBC_10000" value="10000" units="mmol_per_gDW_per_hr" constant="true"/>
+      <parameter metaid="dc937b59892604f5a86ac96936cd7ff09e25f18ae6b758e8014a24c7fa039e91" sboTerm="SBO:0000625" id="BRS_FBC__10000" value="-10000" units="mmol_per_gDW_per_hr" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="c9c2d56fd0ad9d5b8cd80acad4b5df22945ab4de50db7b24db52a91a7560c3ff" sboTerm="SBO:0000176" id="rxn_2" reversible="false" fast="false" fbc:lowerFluxBound="BRS_FBC__10000" fbc:upperFluxBound="BRS_FBC_10000">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#c9c2d56fd0ad9d5b8cd80acad4b5df22945ab4de50db7b24db52a91a7560c3ff">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/2.3.1.92"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+            <rdf:BRSynth rdf:about="#c9c2d56fd0ad9d5b8cd80acad4b5df22945ab4de50db7b24db52a91a7560c3ff">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu">
+                <brsynth:smiles value="O=C(O)CC(O)C(=O)O.COc1cc(C=CC(=O)O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)cc(OC)c1O&gt;&gt;OC[C@H]1O[C@@H](O)[C@H](O)[C@@H](O)[C@@H]1O.COc1cc(C=CC(=O)OC(CC(=O)O)C(=O)O)cc(OC)c1O"/>
+                <brsynth:rp2_transfo_id value="TRS_0_1_56"/>
+                <brsynth:rule_ids>
+                  <brsynth:RR-02-1b020fda480eb84d-16-F/>
+                </brsynth:rule_ids>
+                <brsynth:tmpl_rxn_ids>
+                  <brsynth:MNXR108093/>
+                </brsynth:tmpl_rxn_ids>
+                <brsynth:rule_score value="1.0"/>
+                <brsynth:idx_in_path value="2"/>
+              </brsynth:brsynth>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="CMPD_0000000003" stoichiometry="1" constant="true"/>
+          <speciesReference species="CMPD_0000000005" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CMPD_0000000002" stoichiometry="1" constant="true"/>
+          <speciesReference species="MNXM93935" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="_7af1776cbbaecbf874d7f576d21891f6ad79e3b7c2e726cfd2ee9f5bd6f483c4" sboTerm="SBO:0000176" id="rxn_1" reversible="false" fast="false" fbc:lowerFluxBound="BRS_FBC__10000" fbc:upperFluxBound="BRS_FBC_10000">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#_7af1776cbbaecbf874d7f576d21891f6ad79e3b7c2e726cfd2ee9f5bd6f483c4">
+              <bqbiol:is>
+                <rdf:Bag/>
+              </bqbiol:is>
+            </rdf:Description>
+            <rdf:BRSynth rdf:about="#_7af1776cbbaecbf874d7f576d21891f6ad79e3b7c2e726cfd2ee9f5bd6f483c4">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu">
+                <brsynth:smiles value="OC[C@H]1O[C@@H](O)[C@H](O)[C@@H](O)[C@@H]1O.OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@@H]1O&gt;&gt;O.OC[C@H]1O[C@@H](O[C@H]2[C@H](O)[C@@H](CO)OC(O)[C@@H]2O)[C@H](O)[C@@H](O)[C@@H]1O"/>
+                <brsynth:rp2_transfo_id value="TRS_0_0_1"/>
+                <brsynth:rule_ids>
+                  <brsynth:RR-02-630a469ff8eea5fb-16-F/>
+                </brsynth:rule_ids>
+                <brsynth:tmpl_rxn_ids>
+                  <brsynth:MNXR101098/>
+                  <brsynth:MNXR123260/>
+                  <brsynth:MNXR130798/>
+                </brsynth:tmpl_rxn_ids>
+                <brsynth:rule_score value="0.2697670805325502"/>
+                <brsynth:idx_in_path value="1"/>
+              </brsynth:brsynth>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="CMPD_0000000002" stoichiometry="1" constant="true"/>
+          <speciesReference species="CMPD_0000000004" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="MNXM2" stoichiometry="1" constant="true"/>
+          <speciesReference species="TARGET_0000000001" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+    </listOfReactions>
+    <groups:listOfGroups>
+      <groups:group metaid="_93eef40c447d295fa61df9270c5fd909ec2ba7ee9883090552c0466873cd4299" groups:id="rp_pathway" groups:kind="collection">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:BRSynth rdf:about="#_93eef40c447d295fa61df9270c5fd909ec2ba7ee9883090552c0466873cd4299">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu">
+                <brsynth:global_score value="-1"/>
+              </brsynth:brsynth>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+        <groups:listOfMembers>
+          <groups:member groups:idRef="rxn_1"/>
+          <groups:member groups:idRef="rxn_2"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group metaid="_613b064337553014ede418c67180137a4561ff11b13f3bfa1a2765ef37ac375a" groups:id="rp_intermediate_species" groups:kind="collection">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:BRSynth rdf:about="#_613b064337553014ede418c67180137a4561ff11b13f3bfa1a2765ef37ac375a">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu"/>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+        <groups:listOfMembers>
+          <groups:member groups:idRef="CMPD_0000000005"/>
+          <groups:member groups:idRef="CMPD_0000000004"/>
+          <groups:member groups:idRef="CMPD_0000000002"/>
+          <groups:member groups:idRef="CMPD_0000000003"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group metaid="_564fce39b23c6cf87d12dc2c612448384fd2cd980fe3fc07829e2ef802645579" groups:id="rp_trunk_species" groups:kind="collection">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:BRSynth rdf:about="#_564fce39b23c6cf87d12dc2c612448384fd2cd980fe3fc07829e2ef802645579">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu"/>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+        <groups:listOfMembers>
+          <groups:member groups:idRef="CMPD_0000000003"/>
+          <groups:member groups:idRef="CMPD_0000000005"/>
+          <groups:member groups:idRef="CMPD_0000000004"/>
+          <groups:member groups:idRef="CMPD_0000000002"/>
+          <groups:member groups:idRef="TARGET_0000000001"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group metaid="_9e3154173c97366b3980dd1642e1e35d0bdfc3274abc744e89ecb518bcd48378" groups:id="rp_completed_species" groups:kind="collection">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:BRSynth rdf:about="#_9e3154173c97366b3980dd1642e1e35d0bdfc3274abc744e89ecb518bcd48378">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu"/>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+        <groups:listOfMembers>
+          <groups:member groups:idRef="MNXM93935"/>
+          <groups:member groups:idRef="MNXM2"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group metaid="_58b3b59284e0d918d6d3f3bcadc2d757726da7594cd899cad4e745836ac967a3" groups:id="rp_sink_species" groups:kind="collection">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:BRSynth rdf:about="#_58b3b59284e0d918d6d3f3bcadc2d757726da7594cd899cad4e745836ac967a3">
+              <brsynth:brsynth xmlns:brsynth="http://brsynth.eu"/>
+            </rdf:BRSynth>
+          </rdf:RDF>
+        </annotation>
+      </groups:group>
+    </groups:listOfGroups>
+  </model>
+</sbml>
