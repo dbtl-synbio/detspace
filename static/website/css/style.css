@@ -501,6 +501,15 @@ button {
      position: relative;
 }
 
+.full_bg_white {
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     height: 200vh;
+    padding-bottom: 150px;
+     position: relative;
+}
+
 .full_bg_cha {
     background: #fff;
     background-size: cover;
@@ -1355,7 +1364,7 @@ padding-bottom: 40px;}
 
     .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
-    background-color: #1906c0;
+    background-color: blue;
 }
 
 .transition-fade {
