@@ -43,10 +43,6 @@
    </head>
    <!-- body -->
    <body class="main-layout">
-      <!-- loader  -->
-      <div class="loader_bg">
-         <div class="loader"><img src="{% static 'website/images/loading.gif' %}" alt="#"/></div>
-      </div>
       <!-- end loader -->
       <!-- top -->
                     <!-- header -->
@@ -70,9 +66,9 @@
                            <ul>
                               <li><a href="{% url 'home' %}">Home</a></li>
                               <li><a href="{% url 'about' %}">About</a></li>
-                              <li><a href="{% url 'chassis' %}" class="logo_midle">Chasis</a></li>
+                              <li><a href="{% url 'chassis' %}" class="logo_midle">Chassis</a></li>
                               <li><a href="{% url 'target' %}" >Target</a></li>
-                              <li><a href="effector.html">Effector</a></li>
+                              <li><a href="index.html">Effector</a></li>
                               <li><a href="plasmid.html">Circuit</a></li>
                               <li><a href="specifications.html">Specifications </a></li>
                            </ul>
@@ -80,6 +76,7 @@
                            <span></span>
                            </button>
                         </nav>
+                        <main id="swup" class="transition-fade"></main>
                      </div>
                   </div>
                </div>
@@ -354,6 +351,8 @@
 <script src="{% static 'website/js/jquery.sticky.js' %}"></script>
 <script src="{% static 'website/js/progressbar.js' %}"></script>
 <script src="{% static 'website/js/jquery.appear.js' %}"></script>
+<script defer src="{% static 'website/node_modules/swup/dist/swup.umd.js'%}"></script>
+<script defer src="{% static 'website/js/script.js'%}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 </body>
 </html>
