@@ -21,7 +21,7 @@ import Files
 ---------------------------------------------------------------------*/
 
 @import url(normalize.css);
-@import url(icomoon.css);
+/*@import url(icomoon.css);*/
 @import url(font-awesome.min.css);
 @import url(owl.carousel.min.css);
 @import url(nice-select.css);
@@ -43,6 +43,8 @@ basic
 
 .container {
      max-width: 1170px;
+     justify-content: center;
+     align-items: center;
 }
 
 html {
@@ -136,9 +138,6 @@ button:focus {
 ul {
     list-style: none; /* Remove default bullets */
   }
-ul li::before {content: "•"; color: rgb(241, 238, 238);
-    display: inline-block; width: 1em;
-    margin-left: -1em}
   
 ol {
      margin: 0px;
@@ -357,6 +356,7 @@ button {
     padding: 0;
     list-style: none;
     display: flex;
+    align-items: center;
 }
 
 .site-navbar ul li a {
@@ -1381,4 +1381,50 @@ padding-bottom: 40px;}
 
 .html.is-leaving .transition-fade{
     opacity: 0;
+}
+
+.left__buttons_panel{
+
+    float: left;
+    width:20%;
+
+}
+
+.basic_class{
+
+    float: center;
+    width:80%;
+
+}
+.hidden { display: none }
+
+ul li {
+    list-style: none;
+    font-size: 13px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor:pointer;
+}
+
+.input_box_chassis{
+    margin-left: 20px;
+    top: 0px;
+}
+
+.button_chassis{
+    margin-left: 0px;
+    background-color:chartreuse;
+    font-weight: 600;
+}
+
+.button_producibles{
+    margin-left: 0px;
+    background-color:chocolate;
+    font-weight: 600;
+}
+
+.button_detectables{
+    margin-left: 0px;
+    background-color:dodgerblue;
+    font-weight: 600;
 }
