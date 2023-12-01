@@ -801,7 +801,7 @@ function hide_all_panel(){
 // Live ///////////////////////////
 
 
-$(function(){
+function run_viz(){
 
     // Cytoscape object to play with all along
     var cy = window.cy = cytoscape({
@@ -1280,4 +1280,4 @@ $(function(){
         }
     }
 
-});
+};
