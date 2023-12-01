@@ -9,11 +9,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7=1a$-v&p7k+b1fjg#b7v@6tsyc9271l4ilyck1qdv8!1#y$ty'
+#SECRET_KEY = 'django-insecure-7=1a$-v&p7k+b1fjg#b7v@6tsyc9271l4ilyck1qdv8!1#y$ty'
+try:
+    SECRET_KEY = os.environ["SECRET_KEY"]
+except KeyError as e:
+    raise RuntimeError("Could not find a SECRET_KEY in environment") from e
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+#DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 
@@ -26,7 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'website.apps.WebsiteConfig',
+    #'website.apps.WebsiteConfig',
+     'website'
 ]
 
 MIDDLEWARE = [
@@ -109,10 +114,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
 
+#STATICFILES_DIRS = [
+ #   os.path.join(BASE_DIR, 'static'),
+#]
+
+STATIC_ROOT = "/var/www/detspace.i2sysbio.uv.es/static"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
