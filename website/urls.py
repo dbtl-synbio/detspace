@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
@@ -12,4 +12,6 @@ urlpatterns = [
     path('plasmid.html', views.plasmid, name="plasmid"),
     path('specifications.html', views.specifications, name="specifications"),
     path('<int:target_id>', views.info, name="info"),
+    re_path(r'^get_log/$', views.hola, name='get_log'),
+    path('vis_template.html', views.vis_template, name="vis_template"),
 ]

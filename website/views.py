@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
+from django.http import HttpResponse
 from .models import Target
 import os
 # import pandas
@@ -55,4 +56,12 @@ def info(request, target_id):
     return render(request, 'info.html', {'target': target})
 
 
+def hola(request):
+    #results = request.GET.get('chassis',None)+' y ya estaría'
+    r = open('website/templates/index.html').read()
+    results = {'url_data':r}
+    return HttpResponse(results)
+
+def vis_template(request):
+    return render(request, 'vis_template.html', {})
 
