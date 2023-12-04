@@ -14,4 +14,5 @@ urlpatterns = [
     path('<int:target_id>', views.info, name="info"),
     re_path(r'^get_log/$', views.hola, name='get_log'),
     path('vis_template.html', views.vis_template, name="vis_template"),
+    path('body_viz.html', views.vis_template, name="body_viz"),
 ]
