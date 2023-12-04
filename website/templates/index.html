@@ -283,7 +283,20 @@ __license__ = 'MIT'
             </script>   
              </div>       
          <br>
-        <input id="Detectable" type="button"  class="button_detectables" onclick="hideShow()" value="Detectable"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue"/>
+         <input id="Detectable" type="button"  class="button_detectables" onclick="hideShow()" value="Detectable"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue"/>
+	 <select name="pathviz" id="pathviz">
+	   <option value="D266P132">Volvo</option>
+	   <option value="D314P434">Saab</option>
+	   <option value="D426P358">Mercedes</option>
+	 </select>
+         <script type="text/javascript">
+	   $("#pathviz").on('change', function(){
+	       item = $(this).val();
+	       namefile = item+'.json';
+	       $.getScript("{% static "website/files/" %}"+namefile );
+	   });
+            </script>   
+	 
         <br><br>
     </div>
  
