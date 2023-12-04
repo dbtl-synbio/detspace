@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="{% block meta_description %}Welcome to our webserver{% endblock %}">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>{% block title %}Web server{% endblock %}</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css'%}">
+      <!-- style css -->
+      <link rel="stylesheet" href="{% static 'website/css/style.css'%}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{% static 'website/css/responsive.css'%}">
+      <!-- fevicon -->
+      <link rel="icon" href="{% static 'website/images/fevicon.ico' %}"/>
+      <link rel="shortcut icon" href="/profile/favicon.ico" type="image/x-icon">
+       <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.png"/>
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+       <link rel="stylesheet" href="{% static 'website/css/owl.carousel.min.css' %}"> 
+       <link rel="stylesheet" href="{% static 'website/css/owl.theme.default.min.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+      		<!--flat icon css-->
+		<link rel="stylesheet" href="{% static 'website/css/flaticon.css' %}">
+      <!--animate.css-->
+      <link rel="stylesheet" href="{% static 'website/css/animate.min.css' %}">
+      	<!-- bootsnav -->
+		<link rel="stylesheet" href="{% static 'websitecss/bootsnav.css' %}" >	
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+
+   
+    <body class="main-layout">
+        <!-- end loader -->
+        <!-- top -->
+                      <!-- header -->
+           <header class="header-area">
+              <div class="left">
+                 <a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a>
+              </div>
+              <div class="right">
+                 <a href="Javascript:void(0)"><i class="fa fa-user" aria-hidden="true"></i></a>
+              </div>
+              <div class="container">
+                 <div class="row d_flex">
+                    <div class="col-sm-3 logo_sm">
+                       <div class="logo">
+                          <a href="index.html"></a>
+                       </div>
+                    </div>
+                    <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-9">
+                       <div class="navbar-area">
+                          <nav class="site-navbar">
+                             <ul>
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li><a href="{% url 'about' %}">About</a></li>
+                                <li><a href="{% url 'chassis' %}">Chassis</a></li>
+                                <li><a href="{% url 'target' %}" >Target</a></li>
+                                <li><a href="index.html">Effector</a></li>
+                                <li><a href="plasmid.html">Circuit</a></li>
+                                <li><a href="specifications.html">Specifications </a></li>
+                             </ul>
+                             <button class="nav-toggler">
+                             <span></span>
+                             </button>
+                          </nav>
+                          <main id="swup" class="transition-fade"></main>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </header>
+        <!-- end header -->
+              <div class="full_bg_cha">
+        <!-- header inner -->
+  
+            <div class="left__buttons_panel">
+                <p>Aquí van botones</p>
+                <input id="load_pathway" type="button" onclick="handleClick()" value="show_pathways"/>
+                <input id="hide_pathway" type="button" value="hide_pathways"/>
+            </div>
+
+            <div id="viz_panel" class="visualizer_panel">
+                <p>Aquí va el visualizer</p>
+
+            </div>
+            <script>
+               
+                function Home2(){$("#load_pathway").click(function(){
+                    $.ajax({url: "get_log/", data: {"url_data":""}, success: function(result){
+                        alert('ok');
+                        $("#viz_panel").html(result);
+                    },
+                    error: function(result){
+                        alert("Error");
+                    }
+                });
+                    }); }
+            </script>
+   </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <footer>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1"/>
+
+
+    <!-- Local libraries -->
+    <script src="{% static 'website/js/jquery-3.6.0.min.js'%}"></script>   
+    <script src="{% static 'website/js/cytoscape-3.19.0.min.js'%}"></script>     
+    <script src="{% static 'website/js/jquery-ui-1.12.1.min.js'%}"></script>
+    <script src="{% static 'website/js/jquery-ui.js'%}"></script>
+    <script src="{% static 'website/js/jquery-ui.min.js'%}"></script>
+    <script src="{% static 'website/js/script.js'%}"></script>        
+
+    <!-- Dagre layout -->
+    <script src="{% static 'website/js/dagre-0.8.5.min.js'%}"></script>  
+    <script src="{% static 'website/js/cytoscape-dagre-2.3.2.js'%}"></script>   
+
+    <!-- Data -->
+    <script src="{% static 'website/files/network.json'%}"></script>  
+
+    <!-- Viewer -->
+    <script src="{% static 'website/js/viewer_visualizer.js'%}"></script>
+    <script src="{% static 'website/js/Home.js'%}"></script>
+
+    <!-- CSS stuff -->
+    <link href="{% static 'website/css/viewer_visualizer.css'%}" rel="stylesheet" type="text/css"/> 
+
+    <!-- Testing bootstrap-colorpicker -->
+    <!-- <script src="js/bootstrap-colorpicker-3.2.0.min.js"></script> -->
+    <!-- <script src="js/bootstrap.bundle-4.4.1.min.js"></script> -->
+    <!-- <link href="css/bootstrap-colorpicker-3.2.0.min.css" rel="stylesheet" type="text/css"/> -->
+
+    <!-- Testing chroma.js -->
+    <script src="{% static 'website/js/chroma-2.1.0.min.js'%}"></script>  
+
+    <!-- Table sorter -->
+    <script src="{% static 'website/js/jquery.tablesorter-2.31.3.min.js'%}"></script>   
+    <link href="{% static 'website/css/jquery.tablesorte.theme.default-2.31.2.min.css'%}" rel="stylesheet" type="text/css"/> 
+   </footer>
