@@ -1,13 +1,8 @@
 /*jshint esversion: 6 */
-/*
-__author__ = 'Thomas Duigou'
-__license__ = 'MIT'
-*/
 
 class PathwayHandler {
 
-    /**
-     * 
+     /** 
      * @param {cytoscape.js object} cy
      * @param {json structure} pathways_info 
      */
@@ -270,8 +265,8 @@ function build_pathway_table(){
     let table_base = $('<table></table>');
     
     // Build the header
-    let field_names = ['Pathway', 'Show', 'Info', 'Colour', 'Score'];
-    let field_classes = ['path_id_head', 'path_checkbox_head', 'path_info_head', 'path_colour_head', 'path_value_head'];  // This is needed for tablesort
+    let field_names = ['Pathway', 'Show', 'Colour', 'Steps', 'Score'];
+    let field_classes = ['path_id_head', 'path_checkbox_head', 'path_colour_head', 'path_steps_head', 'path_value_head'];  // This is needed for tablesort
     let table_row = $('<tr></tr>');
     for (let i = 0; i < field_names.length; i++){
         let value = field_names[i];
@@ -287,13 +282,12 @@ function build_pathway_table(){
         let table_row = $('<tr></tr>');
         table_row.append($('<td class="path_id" data-path_id="' + path_id + '"></td>').html(path_id));
         table_row.append($('<td class="path_checkbox"></td>').append($('<input type="checkbox" name="path_checkbox" value=' + path_id + '>')));
-        table_row.append($('<td class="path_info" data-path_id="' + path_id + '"></td>'));
         table_row.append($('<td class="path_colour" data-path_id="' + path_id + '"><input type="color" name="head" value="#A9A9A9"></td>'));
+        table_row.append($('<td class="path_steps" data-path_id="' + path_id + '">'+String(info.nb_steps)+'</td>'));
         table_row.append($('<td class="path_value" data-path_id="' + path_id + '"></td>'));
         table_body.append(table_row);
     }
     table_base.append(table_body);
-
     // Append the content to the HTML
     $("#table_choice").append(table_base);
 }
@@ -381,14 +375,14 @@ function panel_chemical_info(node, show=false){
             $("span.chem_info_inchikey_search").html("");
         } else {
             $("span.chem_info_inchikey").html(inchikey);
-            $("span.chem_info_inchikey_search").html('<a target="_blank" href="http://www.google.com/search?q=' + encodeURI(inchikey) + '">Look for identical structure using Google</a>');
+            //$("span.chem_info_inchikey_search").html('<a target="_blank" href="http://www.google.com/search?q=' + encodeURI(inchikey) + '">Look for identical structure using Google</a>');
         }
         if (inchi == ""|| inchi == null){
             $("span.chem_info_inchi").html("NA");
             $("span.chem_info_inchi_search").html("");
         } else {
             $("span.chem_info_inchi").html(inchi);
-            $("span.chem_info_inchi_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(inchi) + '">Look for identical structure using PubChem</a>');
+            //$("span.chem_info_inchi_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(inchi) + '">Look for identical structure using PubChem</a>');
         }
         if (smiles == ""|| smiles == null){
             $("span.chem_info_smiles").html("NA");
@@ -452,14 +446,14 @@ function panel_chemical_producible_info(node, show=true){
             $("span.chem_info_inchikey_search").html("");
         } else {
             $("span.chem_info_inchikey").html(inchikey);
-            $("span.chem_info_inchikey_search").html('<a target="_blank" href="http://www.google.com/search?q=' + encodeURI(inchikey) + '">Look for identical structure using Google</a>');
+            //$("span.chem_info_inchikey_search").html('<a target="_blank" href="http://www.google.com/search?q=' + encodeURI(inchikey) + '">Look for identical structure using Google</a>');
         }
         if (inchi == ""|| inchi == null){
             $("span.chem_info_inchi").html("NA");
             $("span.chem_info_inchi_search").html("");
         } else {
             $("span.chem_info_inchi").html(inchi);
-            $("span.chem_info_inchi_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(inchi) + '">Look for identical structure using PubChem</a>');
+            //$("span.chem_info_inchi_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(inchi) + '">Look for identical structure using PubChem</a>');
         }
         if (smiles == ""|| smiles == null){
             $("span.chem_info_smiles").html("NA");
@@ -511,14 +505,14 @@ function panel_chemical_detectable_info(node, show=true){
             $("span.chem_info_inchikey_search").html("");
         } else {
             $("span.chem_info_inchikey").html(inchikey);
-            $("span.chem_info_inchikey_search").html('<a target="_blank" href="http://www.google.com/search?q=' + encodeURI(inchikey) + '">Look for identical structure using Google</a>');
+            //$("span.chem_info_inchikey_search").html('<a target="_blank" href="http://www.google.com/search?q=' + encodeURI(inchikey) + '">Look for identical structure using Google</a>');
         }
         if (inchi == ""|| inchi == null){
             $("span.chem_info_inchi").html("NA");
             $("span.chem_info_inchi_search").html("");
         } else {
             $("span.chem_info_inchi").html(inchi);
-            $("span.chem_info_inchi_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(inchi) + '">Look for identical structure using PubChem</a>');
+            //$("span.chem_info_inchi_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(inchi) + '">Look for identical structure using PubChem</a>');
         }
         if (smiles == ""|| smiles == null){
             $("span.chem_info_smiles").html("NA");
@@ -574,12 +568,12 @@ function panel_reaction_info(node, show=true){
         // Rule IDs
         $("div.reaction_info_ruleids").html('');  // Reset div content
         for (let i = 0; i < rule_ids.length; i++){
-            $("div.reaction_info_ruleids").append(rule_ids[i] + '<br/>');
+            $("div.reaction_info_ruleids").append(rule_ids[i]);
         }
         // Reaction template IDs
         $("div.reaction_info_reaction_template_ids").html('');  // Reset div content
         for (let i = 0; i < rxn_template_ids.length; i++){
-            $("div.reaction_info_reaction_template_ids").append(rxn_template_ids[i] + '<br/>');
+            $("div.reaction_info_reaction_template_ids").append(rxn_template_ids[i]);
         }
         // EC numbers
         $("div.reaction_info_ecnumbers").html('');  // Reset div content
@@ -587,7 +581,7 @@ function panel_reaction_info(node, show=true){
             $("div.reaction_info_ecnumbers").append('None<br/>');
         } else {
             for (let i = 0; i < ec_numbers.length; i++){
-                $("div.reaction_info_ecnumbers").append(ec_numbers[i] + '<br/>');
+                $("div.reaction_info_ecnumbers").append(ec_numbers[i]);
             }
         }
         // Inject crosslinks
@@ -671,57 +665,6 @@ function panel_startup_info(show=true){  // node
 }
 
 /**
- * Put pathway info into the information panel
- *
- * @param path_id (str): pathway ID
- */
-function panel_pathway_info(path_id, show=true){
-    if (show){
-        // Collect
-        let global_score = pathways_info[path_id]['scores']['global_score'];
-        let rule_score = pathways_info[path_id]['scores']['rule_score'];
-        let fba_value = pathways_info[path_id]['scores']['fba_target_flux'];
-        let thermo_value = pathways_info[path_id]['scores']['thermo_dg_m_gibbs'];
-        let nb_steps = pathways_info[path_id]['nb_steps'];
-        // Refine the global score value
-        if (isNaN(global_score)){
-            global_score = "NaN";
-        } else {
-            global_score = parseFloat(global_score).toFixed(3);
-        }
-        // Refines thermodynamic value
-        if (isNaN(thermo_value)){
-            thermo_value = "NaN";
-        } else {
-            thermo_value = parseFloat(thermo_value).toFixed(3);
-        }
-        // Refines rule score
-        if (isNaN(rule_score)){
-            rule_score = "NaN";
-        } else {
-            rule_score = parseFloat(rule_score).toFixed(3);
-        }
-        // Refines target's flux production
-        if (isNaN(fba_value)){
-            fba_value = "NaN";
-        } else {
-            fba_value = parseFloat(fba_value).toFixed(3);
-        }
-        // Inject
-        $("span.pathway_info_path_id").html(path_id);
-        $("span.pathway_info_global_score").html(global_score);
-        $("span.pathway_info_thermo").html(thermo_value);
-        $("span.pathway_info_rule_score").html(rule_score);
-        $("span.pathway_info_target_flux").html(fba_value);
-        $("span.pathway_info_nb_steps").html(nb_steps);
-        // Show
-        $("#panel_pathway_info").show();
-    } else {
-        $("#panel_pathway_info").hide();
-    }
-}
-
-/**
  * Return true if the array have at least one common items
  *
  * @param array1 (array): items
@@ -789,18 +732,16 @@ function show_all_panels(){
     $("#panel_chemical_info").show();
     $("#panel_chemical_producible").show();
     $("#panel_reaction_info").show();
-    $("#panel_pathway_info").show();
 }
 
 function hide_all_panel(){
     $("#panel_chemical_info").hide();
     $("#panel_chemical_producible").hide();
     $("#panel_reaction_info").hide();
-    $("#panel_pathway_info").hide();
 }
+
+
 // Live ///////////////////////////
-
-
 function run_viz(){
 
     // Cytoscape object to play with all along
@@ -816,11 +757,11 @@ function run_viz(){
     panel_chemical_detectable_info(null, false);
     panel_chemical_producible_info(null, false);
     panel_reaction_info(null, false);
-    panel_pathway_info(null, false);
     init_network(true);
     annotate_hiddable_cofactors();  // Need to be done after init_network so the network is already loaded
     refresh_layout();
     hide_all_intermedia_pathways();
+    hide_all_prod_pathways();
     show_cofactors(false);
     put_pathway_values('global_score');
     make_pathway_table_sortable();  // Should be called only after the table has been populated with values
@@ -874,7 +815,7 @@ function run_viz(){
                         'text-valign': 'center',
                         'text-halign': 'center',
                         'text-opacity': 1,
-                        'color': '#575757',
+                        'color': '#333333',
                         'font-size': '20px',
                     })
                 .selector("node[type='chemical']")
@@ -897,28 +838,28 @@ function run_viz(){
                     })
                 .selector("node[type='chemical'][?target_chemical]")
                     .css({
-                        'background-color': '#B22222',
-                        'border-color': '#B22222',
+                        'background-color': '#CC3333',
+                        'border-color': '#CC3333',
                     })
                 .selector("node[type='chemical'][?sink_chemical]")
                     .css({
-                        'background-color': '#68956D',
-                        'border-color': '#68956D'
+                        'background-color': '#336600',
+                        'border-color': '#336600'
                     })
                 .selector("node[type='chemical'][?source_chemical]")
                     .css({
-                        'background-color': '#235789',
-                        'border-color': '#235789',
+                        'background-color': '#003399',
+                        'border-color': '#003399',
                     })
                 .selector("node[type='chemical'][!target_chemical][!sink_chemical]")  // ie: intermediates
                     .css({
-                        'background-color': '#000000',
-                        'border-color': '#000000',
+                        'background-color': '#333333',
+                        'border-color': '#333333',
                     })
                 .selector("node[type='chemical'][?inter_chemical]")
                     .css({
-                        'background-color': '#f9ff87',
-                        'border-color': '#f9ff87',
+                        'background-color': '#FFCC33',
+                        'border-color': '#FFCC33',
                     })
                 .selector("node[type='chemical'][?svg]")  // The beauty of it: "?" will match only non null values
                     .css({
@@ -929,10 +870,10 @@ function run_viz(){
                 .selector('edge')
                     .css({
                         'curve-style': 'bezier',
-                        'line-color': 'darkgray',
+                        'line-color': '#999999',
                         'width': '5px',
-                        'target-arrow-shape': 'triangle',
-                        'target-arrow-color': 'darkgray',
+                        'target-arrow-shape': 'chevron',
+                        'target-arrow-color': '#999999',
                         'arrow-scale' : 2
                     })                    
                 .selector('.faded')
@@ -959,15 +900,24 @@ function run_viz(){
             if (node.is('[type = "chemical"]')){
                 panel_startup_info(false);
                 panel_reaction_info(null, false);
-                panel_pathway_info(null, false);
-                if (node.data().target_chemical){
+                if (node.data().source_chemical) {
+                    if (node.data().target_chemical){
+                        node.data().target_chemical = false
+                    } else {
+                        node.data().target_chemical = true
+                    }
+                    panel_chemical_info(null, false);
+                    panel_chemical_producible_info(node, true);    
+                    panel_chemical_detectable_info(null, false);
+                    show_prod_pathway()
+                } else if (node.data().target_chemical){
                     panel_chemical_detectable_info(node, true);
                     panel_chemical_info(null, false);
-                    panel_chemical_producible_info(null, false);
+                    panel_chemical_producible_info(null, false);   
                 } else {
                     panel_chemical_info(node, true);
-                    panel_chemical_producible_info(node, true);    
-                    panel_chemical_detectable_info(null, false);           
+                    panel_chemical_producible_info(null, false);
+                    panel_chemical_detectable_info(null, false);
                 }
                 if (node.data().label == 'CMPD_0000000004'){
                     show_intermedia_pathways(node.data().inter_ids) 
@@ -977,7 +927,6 @@ function run_viz(){
                 panel_chemical_info(null, false);
                 panel_chemical_producible_info(null, false);
                 panel_chemical_detectable_info(null, false)
-                panel_pathway_info(null, false);
                 panel_reaction_info(node, true);
             }
         });
@@ -1017,8 +966,27 @@ function run_viz(){
     function show_pathways(selected_paths='__ALL__'){
       
         if (selected_paths == '__ALL__'){
-            cy.nodes().css({visibility: 'visible'});
-            cy.edges().css({visibility: 'visible'});
+            cy.nodes().forEach(function(node, index){
+                let length_paths = node.data('inter_ids').length;
+                if (length_paths != 0 && node.data('inter_chemical') != true && node.style().visibility == 'visible'){
+                    node.css({visibility:'visible'});
+                } else if (length_paths != 0 && node.data('inter_chemical') != true && node.style().visibility == 'hidden'){
+                    node.css({visibility:'hidden'});
+                } else if ((length_paths == 0 || node.data('inter_chemical') == true) && node.data('prod_path') == false){
+                node.css({visibility:'visible'});
+                }
+            });
+            cy.edges().forEach(function(edge,index){
+                let length_paths = edge.data('inter_ids').length;
+                if (length_paths != 0 && edge.style().visibility == 'visible'){
+                    edge.css({visibility:'visible'});
+                } else if (length_paths != 0 && edge.style().visibility == 'hidden'){
+                    edge.css({visibility:'hidden'});
+                } else if (length_paths == 0 && edge.data('prod_path') == false){
+                    edge.css({visibility:'visible'});
+                }
+            });
+            refresh_layout()          
         } else if (selected_paths == '__NONE__'){
             cy.nodes().css({visibility: 'hidden'});
             cy.edges().css({visibility: 'hidden'});
@@ -1061,7 +1029,41 @@ function run_viz(){
             }
         });
     }
+
+    function hide_all_prod_pathways(){
+        cy.nodes().forEach(function(node, index){
+            if (node.data('prod_path') && node.data('source_chemical') != true){
+                node.css({visibility:'hidden'});
+            }
+        });
+        cy.edges().forEach(function(edge,index){
+            if (edge.data('prod_path')){
+                edge.css({visibility:'hidden'});
+            }
+        });
+    }
     
+    function show_prod_pathway(){
+        cy.nodes().forEach(function(node, index){
+            let length_paths = node.data('inter_ids').length;
+            if (node.data('source_chemical') != true && length_paths == 0 || node.data('inter_chemical')){
+                reverse_visibility(node);
+            }
+            if (length_paths != 0 && node.data('inter_chemical') != true){
+                node.css({visibility:'hidden'});
+            }
+        });
+        cy.edges().forEach(function(edge, index){
+            let length_paths = edge.data('inter_ids').length;
+            if (length_paths == 0){
+                reverse_visibility(edge)
+            } else {
+                edge.css({visibility:'hidden'});
+            }
+        });
+        refresh_layout();
+    }
+
     /**
      * Add intermediate pathways to the network
      */
@@ -1147,7 +1149,7 @@ function run_viz(){
             theme : 'default',
             sortList: [[4,1],[0,0]],  // Sort on the fourth column (descending) and then on the first column (ascending order)
             headers : {  // Disable sorting for these columns
-                '.path_checkbox_head, .path_info_head, .path_colour_head': {
+                '.path_checkbox_head, .path_colour_head': {
                     sorter: false
                 }
             }
@@ -1200,18 +1202,7 @@ function run_viz(){
             $(this).addClass('pinned');
         }
     });
-    
-    // When a pathway "info" is clicked
-    $("td.path_info").click(function(){
-        path_id = $(this).data('path_id');
-        panel_startup_info(false);
-        panel_chemical_info(null, false);
-        panel_chemical_producible_info(null, false);
-        panel_chemical_detectable_info(null, false);
-        panel_reaction_info(null, false);
-        panel_pathway_info(path_id, true);
-    });
-        
+            
     // Pathways selection
     $('#hide_all_pathways_button').on('click', function(event){
         show_pathways(selected_paths='__NONE__');  // Hide all
@@ -1279,5 +1270,4 @@ function run_viz(){
             
         }
     }
-
 };
