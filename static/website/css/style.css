@@ -263,6 +263,8 @@ button {
 .visualizer {
      text-align: center;
      padding-bottom: 60px;
+     width: 75%;
+     
 }
 
 .titlepage h2 {
@@ -1385,7 +1387,6 @@ padding-bottom: 40px;}
 
 .left__buttons_panel{
 
-    float: left;
     width:20%;
 
 }
@@ -1427,4 +1428,8 @@ ul li {
     margin-left: 0px;
     background-color:dodgerblue;
     font-weight: 600;
+}
+
+#base {
+        width: 70%;
 }

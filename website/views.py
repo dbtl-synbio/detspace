@@ -65,3 +65,6 @@ def hola(request):
 def vis_template(request):
     return render(request, 'vis_template.html', {})
 
+def body_viz(request):
+    return render(request, 'body_viz.html', {})
+

@@ -95,9 +95,11 @@ __license__ = 'MIT'
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 
-    <script type="text/javascript">
-        $( "#base" ).load( "body_viz.html" );
-    </script>  
+<script>
+  $( function() {
+      $( "#base" ).load( "{% static 'website/files/body_viz.html' %}" );
+  });
+</script>  
 
 
 </head>
@@ -150,8 +152,8 @@ __license__ = 'MIT'
         <input id="load_pathway" type="button" onclick="show_pathways()" value="show_pathways"/>
         <script>
             function show_pathways() {
-            $.getScript("static/website/files/network.json")
-            run_viz()
+		$.getScript("static/website/files/network.json");
+		run_viz();
         }
         </script>
         <input id="hide_pathway" type="button" value="hide_pathways"/>
@@ -281,11 +283,24 @@ __license__ = 'MIT'
             </script>   
              </div>       
          <br>
-        <input id="Detectable" type="button"  class="button_detectables" onclick="hideShow()" value="Detectable"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue"/>
+         <input id="Detectable" type="button"  class="button_detectables" onclick="hideShow()" value="Detectable"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue"/>
+	 <select name="pathviz" id="pathviz">
+	   <option value="D266P132">Volvo</option>
+	   <option value="D314P434">Saab</option>
+	   <option value="D426P358">Mercedes</option>
+	 </select>
+         <script type="text/javascript">
+	   $("#pathviz").on('change', function(){
+	       item = $(this).val();
+	       namefile = item+'.json';
+	       $.getScript("{% static "website/files/" %}"+namefile );
+	   });
+            </script>   
+	 
         <br><br>
     </div>
  
-    <div class="visualizer text_align_center" id="base">
+    <div class="visualizer" id="base">
         
     </div>
 
@@ -362,5 +377,7 @@ __license__ = 'MIT'
        </div>
     </div>
  </footer>
+
+
 </body>
 </html>
