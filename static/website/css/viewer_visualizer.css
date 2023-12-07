@@ -30,7 +30,8 @@ body {
     border-bottom-left-radius: 0px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 10px;
-    width: 20%;
+    width: 80%;
+    max-width: 250px;
     height: 1000px;
 }
 
@@ -64,7 +65,7 @@ body {
 #cy {
     float: left;
     width: 60%;
-    height: 1000px;
+    height: 800px;  
     margin-left: 22%;  /* +2 to compensate left pannel padding */
 }
 

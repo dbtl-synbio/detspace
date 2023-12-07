@@ -319,12 +319,12 @@ button {
 /*-- header --*/
 
 .header-area  {
-     padding: 30px 16px;
+     padding: 0px 0px;
      color: #f1f1f1;
      width: 100%;
      z-index: 9999999;
-     height: 87px;
-     background:#ed242e;
+     /*height: 17px;*/
+     background:#5d24edf1;
 }
 
 
