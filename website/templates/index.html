@@ -17,6 +17,7 @@ __license__ = 'MIT'
     <script src="{% static 'website/js/jquery-3.6.0.min.js'%}"></script>   
     <script src="{% static 'website/js/cytoscape-3.19.0.min.js'%}"></script>     
     <script src="{% static 'website/js/jquery-ui-1.12.1.min.js'%}"></script>  
+    <script src="{% static 'website/js/jquery.dataTables.js'%}"></script>   
 
     <!-- Dagre layout -->
     <script src="{% static 'website/js/dagre-0.8.5.min.js'%}"></script>
@@ -50,6 +51,9 @@ __license__ = 'MIT'
     <link rel="stylesheet" href="{% static 'website/css/jquery-ui.structure.min.css'%}">
     <link rel="stylesheet" href="{% static 'website/css/jquery-ui.theme.css'%}">
     <link rel="stylesheet" href="{% static 'website/css/jquery-ui.theme.min.css'%}">
+    <link rel="stylesheet" href="{% static 'website/css/dataTables.jqueryui.min.css'%}">
+    <link rel="stylesheet" href="{% static 'website/css/buttons.jqueryui.min.css'%}">
+    <link rel="stylesheet" href="{% static 'website/css/stateRestore.jqueryui.min.css'%}">
 
     <!-- Test pickr -->
     <!-- One of the following themes -->
@@ -89,7 +93,6 @@ __license__ = 'MIT'
 <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
 <!-- CSS stuff -->
 <link href="{% static 'website/css/viewer.css'%}" rel="stylesheet" type="text/css"/>
-<link href="{% static 'website/css/jquery.tablesorte.theme.default.min.css'%}" rel="stylesheet" type="text/css"/>
 <script src="https://ajax.googleapis.com/ajax/libs//jquery/3.1.0/jquery.min.js"></script>
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -111,9 +114,6 @@ __license__ = 'MIT'
            <header class="header-area">
               <div class="left">
                  <a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a>
-              </div>
-              <div class="right">
-                 <a href="Javascript:void(0)"><i class="fa fa-user" aria-hidden="true"></i></a>
               </div>
               <div class="container">
                  <div class="row d_flex">
@@ -194,94 +194,2260 @@ __license__ = 'MIT'
          <script>
             $(document).ready(function(){
                $("#dialogo").dialog({
-                modal: false,
+                modal: true,
                 title: "Chassis",
                 width: 250,
                 minWidth: 200,
                 maxWidth: 400, 
-                show: "fold", 
+                //show: "fold", 
                 hide: "scale",
                 autoOpen: false
             });
         });
          </script>
         <br><br>
-        <input id="Producibles" type="button" name="Producible"   class="button_producibles" value="Producibles"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue"/>
-            <div id="producibles_table">
-                <script>
-                    $(document).ready(function(){
-                       $('#Producible').click(function(){
-                          $.ajax({
-                             url:"static/website/files/producibles_names.csv",
-                             dataType:"text",
-                             success:function(data)
-                             {
-                                var producible_data = data.split(/\r?\n|\r/);
-                                var table_data = '<table class="table table-bordered table-condensed table-hover">';
-                                for(var count=0; count < producible_data.length; count++)
-                                {
-                                   var cell_data = producible_data[count].split(";");
-                                   table_data += '<tr>';
-                                   for(var cell_count=0; cell_count < cell_data.length; cell_count++)
-                                   {
-                                      if(count == 0)
-                                      {
-                                            table_data += '<th>'+cell_data[cell_count]+'</th>';
-                                      }
-                                      else
-                                      {
-                                            table_data += '<td>'+cell_data[cell_count]+'</td>';
-                                      }
-                                   }
-                                   table_data += '</tr>';
-                                }
-                                table_data += '</table>';
-                                $('#producibles_table').html(table_data);
-                             }
-                          });
-                       });
-                    
-                    });
-                    </script>
-                    <script type="text/javascript">
-                       $('#producibles_table tbody tr').click(function() {
-                           $(this).addClass('bg-success').siblings().removeClass('bg-success');
-                       });
-                       $('#producibles_table tbody tr').hover(function() {
-                          $(this).addClass('highlight').siblings().removeClass('highlight');
-                      });
-                    </script>
+        <input id="Producibles" type="button" name="Producible" onclick="hideShow_prod()"  class="button_producibles" value="Producibles"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue"/>
+        <div id="dialogo_prod" class ="hidden" style="display: none;">  
+        <table id="producibles_table" class="display" style="width:90%">
+         <table class="table table-bordered table-hover table-condensed">
+            <thead><tr><th title="Field #1">Order</th>
+            <th title="Field #2">Name</th>
+            <th title="Field #3">SMILES</th>
+            </tr></thead>
+            <tbody><tr>
+            <td align="right">1</td>
+            <td>2-Butanone</td>
+            <td>CCC(C)=O</td>
+            </tr>
+            <tr >
+            <td align="right">2</td>
+            <td>2-Butanol</td>
+            <td>CCC(C)O</td>
+            </tr>
+            <tr>
+            <td align="right">3</td>
+            <td> </td>
+            <td> CC(O[*])C(O)=O</td>
+            </tr>
+            <tr >
+            <td align="right">4</td>
+            <td>glycerone phosphate(2-)</td>
+            <td>O=C(CO)COP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">5</td>
+            <td>1,3-dihydroxyacetone</td>
+            <td>O=C(CO)CO</td>
+            </tr>
+            <tr>
+            <td align="right">6</td>
+            <td>Sn-glycerol 3-phosphate(2-)</td>
+            <td>O=P([O-])([O-])OC[C@H](O)CO</td>
+            </tr>
+            <tr>
+            <td align="right">7</td>
+            <td>Glycerol</td>
+            <td>OCC(O)CO</td>
+            </tr>
+            <tr>
+            <td align="right">8</td>
+            <td>Methylglyoxal</td>
+            <td>CC(=O)C=O</td>
+            </tr>
+            <tr>
+            <td align="right">9</td>
+            <td>2-hydroxypropanal</td>
+            <td>CC(O)C=O</td>
+            </tr>
+            <tr>
+            <td align="right">10</td>
+            <td>Hydroxyacetone</td>
+            <td>CC(=O)CO</td>
+            </tr>
+            <tr>
+            <td align="right">11</td>
+            <td>Propylene glycol</td>
+            <td>CC(O)CO</td>
+            </tr>
+            <tr>
+            <td align="right">12</td>
+            <td>propanal</td>
+            <td>CCC=O</td>
+            </tr>
+            <tr>
+            <td align="right">13</td>
+            <td>propanol</td>
+            <td>CCCO</td>
+            </tr>
+            <tr>
+            <td align="right">14</td>
+            <td>4-hydroxyhexan-3-one</td>
+            <td>CCC(=O)C(O)CC</td>
+            </tr>
+            <tr>
+            <td align="right">15</td>
+            <td>(4S)-4-hydroxy-2-oxohexanoate</td>
+            <td>CC[C@H](O)CC(=O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">16</td>
+            <td>3-hydroxypropanal</td>
+            <td>O=CCCO</td>
+            </tr>
+            <tr>
+            <td align="right">17</td>
+            <td>1,3-PROPANEDIOL</td>
+            <td>OCCCO</td>
+            </tr>
+            <tr>
+            <td align="right">18</td>
+            <td>3-Hydroxypropionate</td>
+            <td>O=C([O-])CCO</td>
+            </tr>
+            <tr>
+            <td align="right">19</td>
+            <td>D-glyceraldehyde 3-phosphate(2-)</td>
+            <td>O=C[C@H](O)COP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">20</td>
+            <td>N-Acetyl-alpha-D-glucosamine</td>
+            <td>CC(O)=N[C@@H]1[C@@H](O)[C@H](O)[C@@H](CO)O[C@@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">21</td>
+            <td>Citrate</td>
+            <td>O=C([O-])CC(O)(CC(=O)[O-])C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">22</td>
+            <td>Aconitate Ion</td>
+            <td>O=C([O-])/C=C(/CC(=O)[O-])C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">23</td>
+            <td>Isocitrate(3-)</td>
+            <td>O=C([O-])CC(C(=O)[O-])C(O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">24</td>
+            <td>Alpha-ketoglutarate</td>
+            <td>O=C([O-])CCC(=O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">25</td>
+            <td>Succinyl-CoA(5-)</td>
+            <td>CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-])[C@@H](O)C([O-])=NCCC([O-])=NCCSC(=O)CCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">26</td>
+            <td>Succinate</td>
+            <td>O=C([O-])CCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">27</td>
+            <td>Fumarate</td>
+            <td>O=C([O-])/C=C/C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">28</td>
+            <td>L-malate</td>
+            <td>O=C([O-])C[C@H](O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">29</td>
+            <td>Glyoxylate</td>
+            <td>O=CC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">30</td>
+            <td>(2S)-2-hydroxy-2-methyl-3-oxobutanoate</td>
+            <td>CC(=O)[C@](C)(O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">31</td>
+            <td>2,3-butanedione</td>
+            <td>CC(=O)C(C)=O</td>
+            </tr>
+            <tr>
+            <td align="right">32</td>
+            <td>(R)-acetoin</td>
+            <td>CC(=O)[C@@H](C)O</td>
+            </tr>
+            <tr>
+            <td align="right">33</td>
+            <td>(S)-Acetoin</td>
+            <td>CC(=O)[C@H](C)O</td>
+            </tr>
+            <tr>
+            <td align="right">34</td>
+            <td>(2S,3S)-butane-2,3-diol</td>
+            <td>C[C@H](O)[C@H](C)O</td>
+            </tr>
+            <tr>
+            <td align="right">35</td>
+            <td>(2R,3R)-butane-2,3-diol</td>
+            <td>C[C@@H](O)[C@@H](C)O</td>
+            </tr>
+            <tr>
+            <td align="right">36</td>
+            <td>Meso-2,3-Butanediol</td>
+            <td>C[C@H](O)[C@@H](C)O</td>
+            </tr>
+            <tr>
+            <td align="right">37</td>
+            <td>3-methyl-2-oxobutanoate</td>
+            <td>CC(C)C(=O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">38</td>
+            <td>Alpha-ketoisocaproate</td>
+            <td>CC(C)CC(=O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">39</td>
+            <td>Isoamyl alcohol</td>
+            <td>CC(C)CCO</td>
+            </tr>
+            <tr>
+            <td align="right">40</td>
+            <td>4-METHYL-1-PENTANOL</td>
+            <td>CC(C)CCCO</td>
+            </tr>
+            <tr>
+            <td align="right">41</td>
+            <td>3-methylbutanoate</td>
+            <td>CC(C)CC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">42</td>
+            <td>Isobutanol</td>
+            <td>CC(C)CO</td>
+            </tr>
+            <tr>
+            <td align="right">43</td>
+            <td>L-valine</td>
+            <td>CC(C)[C@H](N)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">44</td>
+            <td>beta-Hydroxyisovaleric acid</td>
+            <td>CC(C)(O)CC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">45</td>
+            <td>L-leucine</td>
+            <td>CC(C)C[C@H](N)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">46</td>
+            <td>[5-(6-aminopurin-9-yl)-4-hydroxy-2-[[[[3-hydroxy-2,2-dimethyl-4-[[3-[2-(2-methylpropanoylsulfanyl)ethylamino]-3-oxopropyl]amino]-4-oxobutoxy]-oxidophosphoryl]oxy-oxidophosphoryl]oxymethyl]oxolan-3-yl] phosphate</td>
+            <td>CC(C)C(=O)SCCN=C([O-])CCN=C([O-])C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">47</td>
+            <td>2-methylpropanoate</td>
+            <td>CC(C)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">48</td>
+            <td>4-methylpentanoate</td>
+            <td>CC(C)CCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">49</td>
+            <td>4-METHYL-1-PENTANOL</td>
+            <td>CC(C)CCCO</td>
+            </tr>
+            <tr>
+            <td align="right">50</td>
+            <td>ISOPENTANE</td>
+            <td>CCC(C)C</td>
+            </tr>
+            <tr>
+            <td align="right">51</td>
+            <td>Lactate</td>
+            <td>CC(O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">52</td>
+            <td>Lactoyl-CoA(4-)</td>
+            <td>CC(O)C(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">53</td>
+            <td>[(2R,3S,4R,5R)-5-(6-aminopurin-9-yl)-4-hydroxy-2-[[[[(3R)-3-hydroxy-2,2-dimethyl-4-oxo-4-[[3-oxo-3-(2-prop-2-enoylsulfanylethylamino)propyl]amino]butoxy]-oxidophosphoryl]oxy-oxidophosphoryl]oxymethyl]oxolan-3-yl] phosphate</td>
+            <td>C=CC(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">54</td>
+            <td>[(2R,3S,4R,5R)-5-(6-aminopurin-9-yl)-4-hydroxy-2-[[[[(3R)-3-hydroxy-2,2-dimethyl-4-oxo-4-[[3-oxo-3-(2-propanoylsulfanylethylamino)propyl]amino]butoxy]-oxidophosphoryl]oxy-oxidophosphoryl]oxymethyl]oxolan-3-yl] phosphate</td>
+            <td>CCC(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">55</td>
+            <td>1-propanol</td>
+            <td>CCCO</td>
+            </tr>
+            <tr>
+            <td align="right">56</td>
+            <td>ACRYLATE</td>
+            <td>C=CC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">57</td>
+            <td>UDP-N-acetyl-alpha-D-glucosamine</td>
+            <td>CC([O-])=N[C@H]1[C@@H](OP(=O)(O)OP(=O)(O)OC[C@H]2O[C@@H](n3ccc([O-])nc3=O)[C@H](O)[C@@H]2O)O[C@H](CO)[C@@H](O)[C@@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">58</td>
+            <td>UDP-alpha-D-glucuronate(3-)</td>
+            <td>O=C([O-])[C@H]1O[C@H](OP(=O)(O)OP(=O)([O-])OC[C@H]2O[C@@H](n3ccc([O-])nc3=O)[C@H](O)[C@@H]2O)[C@H](O)[C@@H](O)[C@@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">59</td>
+            <td>4-O-[2-(Acetylamino)-2-deoxy-beta-D-glucopyranosyl]-beta-D-glucopyranuronic acid</td>
+            <td>CC(O)=N[C@H]1[C@H](O[C@H]2[C@H](O)[C@@H](O)[C@H](O)O[C@@H]2C(=O)O)O[C@H](CO)[C@@H](O)[C@@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">60</td>
+            <td>(1S,2R,3R,4S,5S,6R)-2,3,4,5,6-pentahydroxycyclohexyl phosphate</td>
+            <td>O=P([O-])([O-])O[C@@H]1[C@H](O)[C@H](O)[C@@H](O)[C@H](O)[C@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">61</td>
+            <td> Cyclohexane-1,2,3,4,5,6-hexol (Inositol)  </td>
+            <td>O[C@H]1[C@H](O)[C@@H](O)[C@H](O)[C@@H](O)[C@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">62</td>
+            <td>Glycine</td>
+            <td>NCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">63</td>
+            <td>5-Aminolevulinic acid</td>
+            <td>NCC(=O)CCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">64</td>
+            <td>4,5-dioxopentanoate</td>
+            <td>O=CC(=O)CCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">65</td>
+            <td>D-glycerate</td>
+            <td>O=C([O-])[C@H](O)CO</td>
+            </tr>
+            <tr>
+            <td align="right">66</td>
+            <td>D-glyceraldehyde</td>
+            <td>O=C[C@H](O)CO</td>
+            </tr>
+            <tr>
+            <td align="right">67</td>
+            <td>3-phosphonato-D-glycerate(3-)</td>
+            <td>O=C([O-])[C@H](O)COP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">68</td>
+            <td>Phosphohydroxypyruvate</td>
+            <td>O=C([O-])C(=O)COP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">69</td>
+            <td>3-phospho-L-serine</td>
+            <td>N[C@@H](COP(=O)([O-])O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">70</td>
+            <td>L-serine</td>
+            <td>N[C@@H](CO)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">71</td>
+            <td>Ethanolaminium(1+)</td>
+            <td>[NH3+]CCO</td>
+            </tr>
+            <tr>
+            <td align="right">72</td>
+            <td>Phosphonatoenolpyruvate</td>
+            <td>C=C(OP(=O)([O-])[O-])C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">73</td>
+            <td>Pyruvate</td>
+            <td>CC(=O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">74</td>
+            <td>Acetyl-CoA(4-)</td>
+            <td>CC(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">75</td>
+            <td>Oxalacetate</td>
+            <td>O=C([O-])CC(=O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">76</td>
+            <td>4-methylpentanoate</td>
+            <td>CC(C)CCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">77</td>
+            <td>Propionate</td>
+            <td>CCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">78</td>
+            <td>UDP-D-glucose</td>
+            <td>O=c1nc(O)ccn1[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)OC2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@@H](O)[C@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">79</td>
+            <td>4H-1-Benzopyran-4-one, 2-(4-(beta-D-glucopyranosyloxy)phenyl)-2,3-dihy dro-5,7-dihydroxy-, (2S)-</td>
+            <td>O=C1CC(c2ccc(OC3OC(CO)C(O)C(O)C3O)cc2)Oc2cc(O)cc(O)c21</td>
+            </tr>
+            <tr>
+            <td align="right">80</td>
+            <td>UDP-L-rhamnose</td>
+            <td>C[C@@H]1OC(OP(=O)(O)OP(=O)(O)OC[C@H]2O[C@@H](n3ccc(O)nc3=O)[C@H](O)[C@@H]2O)[C@H](O)[C@H](O)[C@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">81</td>
+            <td>Quercetin 7-rhamnoside</td>
+            <td>CC1OC(Oc2cc(O)c3c(=O)c(O)c(-c4ccc(O)c(O)c4)oc3c2)C(O)C(O)C1O</td>
+            </tr>
+            <tr>
+            <td align="right">82</td>
+            <td>(2S,4R)-pentane-1,2,3,4,5-pentol  (Xylytol)</td>
+            <td>OC[C@@H](O)[C@H](O)[C@@H](O)CO</td>
+            </tr>
+            <tr>
+            <td align="right">83</td>
+            <td>D-Xylono-1,4-lactone</td>
+            <td>O=C1O[C@H](CO)[C@H](O)[C@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">84</td>
+            <td>D-Xylonate</td>
+            <td>O=C([O-])[C@H](O)[C@@H](O)[C@H](O)CO</td>
+            </tr>
+            <tr>
+            <td align="right">85</td>
+            <td>Glycolate</td>
+            <td>O=C([O-])CO</td>
+            </tr>
+            <tr>
+            <td align="right">86</td>
+            <td>ETHYLENE GLYCOL</td>
+            <td>OCCO</td>
+            </tr>
+            <tr>
+            <td align="right">87</td>
+            <td>1,2,4-BUTANETRIOL</td>
+            <td>OCCC(O)CO</td>
+            </tr>
+            <tr>
+            <td align="right">88</td>
+            <td>1,4-BUTANEDIOL</td>
+            <td>OCCCCO</td>
+            </tr>
+            <tr>
+            <td align="right">89</td>
+            <td>Malonyl-CoA(5-)</td>
+            <td>CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-])[C@@H](O)C([O-])=NCCC([O-])=NCCSC(=O)CC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">90</td>
+            <td> </td>
+            <td>CCC=CC/C=C/C/C=C/C/C=C/C/C=C/C/C=C/CCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">91</td>
+            <td>(5E,8E,11E,14E)-icosa-5,8,11,14-tetraenoate</td>
+            <td>CCCCC/C=C/C/C=C/C/C=C/C/C=C/CCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">92</td>
+            <td>6-Methylsalicylate</td>
+            <td>Cc1cccc([O-])c1C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">93</td>
+            <td>3-methylcatechol</td>
+            <td>Cc1cccc(O)c1O</td>
+            </tr>
+            <tr>
+            <td align="right">94</td>
+            <td>M-cresol</td>
+            <td>Cc1cccc(O)c1</td>
+            </tr>
+            <tr>
+            <td align="right">95</td>
+            <td>3-oxo-3-sulfanylpropanoic acid  (ionized form)</td>
+            <td> OC(=O)CC(=O)S[*]</td>
+            </tr>
+            <tr>
+            <td align="right">96</td>
+            <td>1,3,5,7,9,11,13-Pentadecaheptaene</td>
+            <td>C=C/C=C/C=C/C=C/C=C/C=C/C=C/C</td>
+            </tr>
+            <tr>
+            <td align="right">97</td>
+            <td>3-PENTANONE</td>
+            <td>CCC(=O)CC</td>
+            </tr>
+            <tr>
+            <td align="right">98</td>
+            <td>2-Butanone</td>
+            <td>CCC(C)=O</td>
+            </tr>
+            <tr>
+            <td align="right">99</td>
+            <td>4-Hydroxy-6-methyl-2-pyrone</td>
+            <td>Cc1cc(O)cc(=O)o1</td>
+            </tr>
+            <tr>
+            <td align="right">100</td>
+            <td> ethanethioic S-acid  (ionized form)</td>
+            <td> CC(=O)S[*]</td>
+            </tr>
+            <tr>
+            <td align="right">101</td>
+            <td>ISOAMYL ACETATE</td>
+            <td>CC(=O)OCCC(C)C</td>
+            </tr>
+            <tr>
+            <td align="right">102</td>
+            <td>ISOBUTYL ACETATE</td>
+            <td>CC(=O)OCC(C)C</td>
+            </tr>
+            <tr>
+            <td align="right">103</td>
+            <td> </td>
+            <td> CC(C)(COP([O-])(=O)OC[C@H](N[*])C([*])=O)[C@@H](O)C(=O)NCCC(=O)NCCSC(=O)CC(=O)C[*]</td>
+            </tr>
+            <tr>
+            <td align="right">104</td>
+            <td>3-hydroxypropanethioic S-acid  (ionized from)</td>
+            <td> O[C@H]([*])CC(=O)S[*]</td>
+            </tr>
+            <tr>
+            <td align="right">105</td>
+            <td> </td>
+            <td> CC(C)(COP([O-])(=O)OC[C@H](N[*])C([*])=O)[C@@H](O)C(=O)NCCC(=O)NCCSC(=O)\C=C\C[*]</td>
+            </tr>
+            <tr>
+            <td align="right">106</td>
+            <td>propanethioic S-acid  (ionized form)</td>
+            <td> [*]CCC(=O)S[*]</td>
+            </tr>
+            <tr>
+            <td align="right">107</td>
+            <td>Hydroxymethyl radical</td>
+            <td> OC[*]</td>
+            </tr>
+            <tr>
+            <td align="right">108</td>
+            <td>propanoic acid  (ionized form)</td>
+            <td> OC(=O)CC[*]</td>
+            </tr>
+            <tr>
+            <td align="right">109</td>
+            <td>Acetylene</td>
+            <td> [*]\C=C\[*]</td>
+            </tr>
+            <tr>
+            <td align="right">110</td>
+            <td>Methyl radical</td>
+            <td> C[R]</td>
+            </tr>
+            <tr>
+            <td align="right">111</td>
+            <td>Adipate</td>
+            <td>O=C([O-])CCCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">112</td>
+            <td>Ethyl formate  (ionized form)</td>
+            <td> CCOC([*])=O</td>
+            </tr>
+            <tr>
+            <td align="right">113</td>
+            <td>Methyl formate  (ionized form)</td>
+            <td> COC([*])=O</td>
+            </tr>
+            <tr>
+            <td align="right">114</td>
+            <td>Acetoacetyl-CoA(4-)</td>
+            <td>CC(=O)CC(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">115</td>
+            <td>formate</td>
+            <td>O=C[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">116</td>
+            <td>acetaldehyde</td>
+            <td>CC=O</td>
+            </tr>
+            <tr>
+            <td align="right">117</td>
+            <td>ethanol</td>
+            <td>CCO</td>
+            </tr>
+            <tr>
+            <td align="right">118</td>
+            <td>acetate</td>
+            <td>CC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">119</td>
+            <td>3,5-dihydroxy-3-methylpentanoate</td>
+            <td>CC(O)(CCO)CC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">120</td>
+            <td>3-methylbut-3-enyl pyrophosphate</td>
+            <td>C=C(C)CCOP(=O)([O-])OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">121</td>
+            <td>ISOPRENE</td>
+            <td>C=CC(=C)C</td>
+            </tr>
+            <tr>
+            <td align="right">122</td>
+            <td>3-methylbut-3-en-1-ol</td>
+            <td>C=C(C)CCO</td>
+            </tr>
+            <tr>
+            <td align="right">123</td>
+            <td>Geranyl diphosphate(3-)</td>
+            <td>CC(C)=CCC/C(C)=C/COP(=O)([O-])OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">124</td>
+            <td>GERANIOL</td>
+            <td>CC(C)=CCC/C(C)=C/CO</td>
+            </tr>
+            <tr>
+            <td align="right">125</td>
+            <td>ACRYLATE</td>
+            <td>C=CC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">126</td>
+            <td>Cis-trans-nepetalactol</td>
+            <td>CC1=COC(O)[C@H]2[C@@H]1CC[C@@H]2C</td>
+            </tr>
+            <tr>
+            <td align="right">127</td>
+            <td>(-)-alpha-Pinene</td>
+            <td>CC1=CC[C@H]2C[C@@H]1C2(C)C</td>
+            </tr>
+            <tr>
+            <td align="right">128</td>
+            <td>(+)-Sabinene</td>
+            <td>C=C1CC[C@]2(C(C)C)C[C@H]12</td>
+            </tr>
+            <tr>
+            <td align="right">129</td>
+            <td>MYRCENE</td>
+            <td>C=CC(=C)CCC=C(C)C</td>
+            </tr>
+            <tr>
+            <td align="right">130</td>
+            <td>(-)-Limonene</td>
+            <td>C=C(C)[C@@H]1CC=C(C)CC1</td>
+            </tr>
+            <tr>
+            <td align="right">131</td>
+            <td>(2E,6E)-3,7,11-Trimethyldodeca-2,6,10-trien-1-yl diphosphate</td>
+            <td>CC(C)=CCC/C(C)=C/CC/C(C)=C/COP(=O)([O-])OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">132</td>
+            <td>(2E,6E)-3,7,11-trimethyldodeca-2,6,10-trien-1-ol</td>
+            <td>CC(C)=CCC/C(C)=C/CC/C(C)=C/CO</td>
+            </tr>
+            <tr>
+            <td align="right">133</td>
+            <td>Farnesol</td>
+            <td>CC(C)=CCC/C(C)=C/CC/C(C)=C/CC/C=C(\C)CC/C=C(\C)CCC=C(C)C</td>
+            </tr>
+            <tr>
+            <td align="right">134</td>
+            <td>Maytenonic acid</td>
+            <td>CC1C(=O)CCC2C1(C)CCC1C2(C)CCC2(C)C3CC(C)(C(=O)O)CCC3(C)CCC12C</td>
+            </tr>
+            <tr>
+            <td align="right">135</td>
+            <td>[oxido(3,7,11,15-tetramethylhexadeca-2,6,10,14-tetraenoxy)phosphoryl] phosphate</td>
+            <td>CC(C)=CCCC(C)=CCCC(C)=CCCC(C)=CCOP(=O)([O-])OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">136</td>
+            <td>Geranylgeraniol</td>
+            <td>CC(C)=CCC/C(C)=C/CC/C(C)=C/CC/C(C)=C/CO</td>
+            </tr>
+            <tr>
+            <td align="right">137</td>
+            <td>Steviol(1-)</td>
+            <td>C=C1C[C@@]23CC[C@H]4[C@@](C)(CCC[C@@]4(C)C(=O)[O-])[C@@H]2CC[C@]1(O)C3</td>
+            </tr>
+            <tr>
+            <td align="right">138</td>
+            <td>Beta-carotene</td>
+            <td>CC1=C(/C=C/C(C)=C/C=C/C(C)=C/C=C/C=C(C)/C=C/C=C(C)/C=C/C2=C(C)CCCC2(C)C)C(C)(C)CCC1</td>
+            </tr>
+            <tr>
+            <td align="right">139</td>
+            <td>Retinol</td>
+            <td>CC1=C(/C=C/C(C)=C/C=C/C(C)=C/CO)C(C)(C)CCC1</td>
+            </tr>
+            <tr>
+            <td align="right">140</td>
+            <td>2,6,8-Nonatetraen-1-ol, 3,7-dimethyl-9-(2,6,6-trimethyl-1-cyclohexen-1-yl)-, (all-E)-</td>
+            <td>CC1=C(/C=C/C(C)=C/C=C/C(C)=C/C=C/C=C(C)/C=C/C=C(C)/C=C/C2=C(C)C(=O)[C@@H](O)CC2(C)C)C(C)(C)C[C@H](O)C1=O</td>
+            </tr>
+            <tr>
+            <td align="right">141</td>
+            <td>BETA-IONONE</td>
+            <td>CC(=O)/C=C/C1=C(C)CCCC1(C)C</td>
+            </tr>
+            <tr>
+            <td align="right">142</td>
+            <td>Valencene</td>
+            <td>C=C(C)[C@@H]1CCC2=CCC[C@@H](C)[C@]2(C)C1</td>
+            </tr>
+            <tr>
+            <td align="right">143</td>
+            <td>NOOTKATONE</td>
+            <td>C=C(C)[C@@H]1CCC2=CC(=O)C[C@@H](C)[C@]2(C)C1</td>
+            </tr>
+            <tr>
+            <td align="right">144</td>
+            <td>(-)-Abscisic acid</td>
+            <td>CC1=CC(=O)CC(C)(C)[C@]1(O)/C=C/C(C)=C\C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">145</td>
+            <td>Gossypol</td>
+            <td>Cc1cc2c(C(C)C)c(O)c(O)c(C=O)c2c(O)c1-c1c(C)cc2c(C(C)C)c(O)c(O)c(C=O)c2c1O</td>
+            </tr>
+            <tr>
+            <td align="right">146</td>
+            <td>Trans-beta-Farnesene</td>
+            <td>C=CC(=C)CC/C=C(\C)CCC=C(C)C</td>
+            </tr>
+            <tr>
+            <td align="right">147</td>
+            <td>(6R,7R)-1,7-dimethyl-7-(4-methylpent-3-enyl)tricyclo[2.2.1.02,6]heptane  </td>
+            <td>CC(C)=CCC[C@]1(C)[C@@H]2CC3[C@@H](C2)C31C</td>
+            </tr>
+            <tr>
+            <td align="right">148</td>
+            <td>Artemisinate</td>
+            <td>C=C(C(=O)[O-])[C@@H]1CC[C@@H](C)[C@@H]2CCC(C)=C[C@@H]21</td>
+            </tr>
+            <tr>
+            <td align="right">149</td>
+            <td>(E,R)-alpha-bisabolene</td>
+            <td>CC(C)=CC/C=C(\C)[C@H]1CC=C(C)CC1</td>
+            </tr>
+            <tr>
+            <td align="right">150</td>
+            <td>ALPHA-SANTALOL</td>
+            <td>C/C(=C/CCC1(C)C2CC3C(C2)C31C)CO</td>
+            </tr>
+            <tr>
+            <td align="right">151</td>
+            <td>(S)-3-Hydroxybutyryl coenzyme A</td>
+            <td>C[C@H](O)CC(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">152</td>
+            <td>(R)-3-Hydroxybutyryl coenzyme A</td>
+            <td>C[C@@H](O)CC(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">153</td>
+            <td>Crotonoyl-CoA(4-)</td>
+            <td>C/C=C/C(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">154</td>
+            <td>Butyryl-CoA(4-)</td>
+            <td>CCCC(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">155</td>
+            <td>1-butanol</td>
+            <td>CCCCO</td>
+            </tr>
+            <tr>
+            <td align="right">156</td>
+            <td>Butyrate</td>
+            <td>CCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">157</td>
+            <td>ETHYL BUTYRATE</td>
+            <td>CCCC(=O)OCC</td>
+            </tr>
+            <tr>
+            <td align="right">158</td>
+            <td>Acetone</td>
+            <td>CC(C)=O</td>
+            </tr>
+            <tr>
+            <td align="right">159</td>
+            <td>Isopropanol</td>
+            <td>CC(C)O</td>
+            </tr>
+            <tr>
+            <td align="right">160</td>
+            <td>1,3-BUTANEDIOL</td>
+            <td>CC(O)CCO</td>
+            </tr>
+            <tr>
+            <td align="right">161</td>
+            <td>(R)-3-hydroxybutyrate</td>
+            <td>C[C@@H](O)CC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">162</td>
+            <td>2-Hydroxyisobutyrate</td>
+            <td>CC(C)(O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">163</td>
+            <td>PROPANE</td>
+            <td>CCC</td>
+            </tr>
+            <tr>
+            <td align="right">164</td>
+            <td>hexanoate</td>
+            <td>CCCCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">165</td>
+            <td>octanoate</td>
+            <td>CCCCCCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">166</td>
+            <td>pentane</td>
+            <td>CCCCC</td>
+            </tr>
+            <tr>
+            <td align="right">167</td>
+            <td>8-hydroxyoctanoic acid</td>
+            <td>O=C(O)CCCCCCCO</td>
+            </tr>
+            <tr>
+            <td align="right">168</td>
+            <td>7-phospho-2-dehydro-3-deoxy-D-arabino-heptonate</td>
+            <td>O=C([O-])C(=O)C[C@@H](O)[C@H](O)[C@H](O)COP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">169</td>
+            <td>3-dehydroshikimate</td>
+            <td>O=C([O-])C1=CC(=O)[C@@H](O)[C@H](O)C1</td>
+            </tr>
+            <tr>
+            <td align="right">170</td>
+            <td>(3R,4S,5R)-3,4,5-trihydroxycyclohexene-1-carboxylate</td>
+            <td>O=C([O-])C1=C[C@@H](O)[C@@H](O)[C@H](O)C1</td>
+            </tr>
+            <tr>
+            <td align="right">171</td>
+            <td>Chorismate(2-)</td>
+            <td>C=C(O[C@@H]1C=C(C(=O)[O-])C=C[C@H]1O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">172</td>
+            <td>4-hydroxybenzoate</td>
+            <td>O=C(O)c1ccc([O-])cc1</td>
+            </tr>
+            <tr>
+            <td align="right">173</td>
+            <td>4-hydroxybenzoyl-CoA(4-)</td>
+            <td>CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])O)[C@@H](O)C([O-])=NCCC([O-])=NCCSC(=O)c1ccc([O-])cc1</td>
+            </tr>
+            <tr>
+            <td align="right">174</td>
+            <td>3,4-dihydroxybenzoate</td>
+            <td>O=C(O)c1ccc([O-])c(O)c1</td>
+            </tr>
+            <tr>
+            <td align="right">175</td>
+            <td>Pyrocatechol</td>
+            <td>Oc1ccccc1O</td>
+            </tr>
+            <tr>
+            <td align="right">176</td>
+            <td>Cis,cis-muconate</td>
+            <td>O=C([O-])/C=C\C=C/C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">177</td>
+            <td>Vanillin</td>
+            <td>COc1cc(C=O)ccc1O</td>
+            </tr>
+            <tr>
+            <td align="right">178</td>
+            <td>2-oxo-2H-pyran-4,6-dicarboxylate</td>
+            <td>O=C([O-])c1cc(C(=O)[O-])oc(=O)c1</td>
+            </tr>
+            <tr>
+            <td align="right">179</td>
+            <td>1-(2-carboxylato-2-oxoethyl)-4-hydroxycyclohexa-2,5-diene-1-carboxylate  </td>
+            <td>O=C([O-])C(=O)C[C@]1(C(=O)[O-])C=C[C@@H](O)C=C1</td>
+            </tr>
+            <tr>
+            <td align="right">180</td>
+            <td>2-(4-hydroxyphenyl)acetate</td>
+            <td>O=C(O)Cc1ccc([O-])cc1</td>
+            </tr>
+            <tr>
+            <td align="right">181</td>
+            <td>2-(4-Hydroxyphenyl)ethanol</td>
+            <td>OCCc1ccc(O)cc1</td>
+            </tr>
+            <tr>
+            <td align="right">182</td>
+            <td>4-Hydroxymandelate</td>
+            <td>O=C(O)C(O)c1ccc([O-])cc1</td>
+            </tr>
+            <tr>
+            <td align="right">183</td>
+            <td>(R)-3-(4-Hydroxyphenyl)lactate</td>
+            <td>O=C(O)[C@H](O)Cc1ccc([O-])cc1</td>
+            </tr>
+            <tr>
+            <td align="right">184</td>
+            <td>2-oxo-3-phenylpropanoate</td>
+            <td>O=C([O-])C(=O)Cc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">185</td>
+            <td>L-tyrosine</td>
+            <td>N[C@@H](Cc1ccc(O)cc1)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">186</td>
+            <td>(R)-2-Hydroxy-3-phenylpropionic acid</td>
+            <td>O=C(O)[C@H](O)Cc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">187</td>
+            <td>L-phenylalanine</td>
+            <td>N[C@@H](Cc1ccccc1)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">188</td>
+            <td>Cinnamate</td>
+            <td>O=C([O-])/C=C/c1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">189</td>
+            <td>Styrene</td>
+            <td>C=Cc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">190</td>
+            <td>(S)-Styrene oxide</td>
+            <td>c1ccc([C@H]2CO2)cc1</td>
+            </tr>
+            <tr>
+            <td align="right">191</td>
+            <td>(S)-(+)-1-Phenyl-1,2-ethanediol</td>
+            <td>OC[C@@H](O)c1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">192</td>
+            <td>2-phenylethanaminium</td>
+            <td>[NH3+]CCc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">193</td>
+            <td>(S)-Mandelate</td>
+            <td>O=C([O-])[C@@H](O)c1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">194</td>
+            <td>Phenylglyoxylate</td>
+            <td>O=C([O-])C(=O)c1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">195</td>
+            <td>(R)-Mandelate</td>
+            <td>O=C([O-])[C@H](O)c1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">196</td>
+            <td>D-PHENYLGLYCINE</td>
+            <td>N[C@@H](C(=O)O)c1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">197</td>
+            <td>L-Phenylglycine</td>
+            <td>N[C@H](C(=O)O)c1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">198</td>
+            <td>benzaldehyde</td>
+            <td>O=Cc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">199</td>
+            <td>Benzyl alcohol</td>
+            <td>OCc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">200</td>
+            <td>Benzyl glucosinolate</td>
+            <td>O=S(=O)([O-])O/N=C(/Cc1ccccc1)S[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">201</td>
+            <td>Rosavin</td>
+            <td>O[C@@H]1[C@@H](O)[C@H](OC/C=C/c2ccccc2)O[C@H](CO[C@@H]2OC[C@H](O)[C@H](O)[C@H]2O)[C@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">202</td>
+            <td>benzoate</td>
+            <td>O=C([O-])c1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">203</td>
+            <td>2-benzamidoacetate</td>
+            <td>O=C([O-])CN=C(O)c1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">204</td>
+            <td>Levodopa</td>
+            <td>N[C@@H](Cc1ccc(O)c(O)c1)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">205</td>
+            <td>Dopaminium(1+)</td>
+            <td>[NH3+]CCc1ccc(O)c(O)c1</td>
+            </tr>
+            <tr>
+            <td align="right">206</td>
+            <td>Hydroxytyrosol</td>
+            <td>OCCc1ccc(O)c(O)c1</td>
+            </tr>
+            <tr>
+            <td align="right">207</td>
+            <td>phenol</td>
+            <td>Oc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">208</td>
+            <td>tyraminium</td>
+            <td>[NH3+]CCc1ccc(O)cc1</td>
+            </tr>
+            <tr>
+            <td align="right">209</td>
+            <td>trans-4-coumarate</td>
+            <td>O=C(O)/C=C/c1ccc([O-])cc1</td>
+            </tr>
+            <tr>
+            <td align="right">210</td>
+            <td>4-Vinylphenol</td>
+            <td>C=Cc1ccc(O)cc1</td>
+            </tr>
+            <tr>
+            <td align="right">211</td>
+            <td>Trans-Caffeate</td>
+            <td>O=C(O)/C=C/c1ccc([O-])c(O)c1</td>
+            </tr>
+            <tr>
+            <td align="right">212</td>
+            <td>(E)-Ferulate</td>
+            <td>COc1cc(/C=C/C(=O)O)ccc1[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">213</td>
+            <td>Feruloyl-CoA</td>
+            <td>COc1cc(/C=C/C(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]2O[C@@H](n3cnc4c(N)ncnc43)[C@H](O)[C@@H]2OP(=O)([O-])O)ccc1[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">214</td>
+            <td>Homoeriodictyol chalcone</td>
+            <td>COc1cc(/C=C/C(=O)c2c(O)cc(O)cc2O)ccc1O</td>
+            </tr>
+            <tr>
+            <td align="right">215</td>
+            <td>Homoeriodictyol</td>
+            <td>COc1cc([C@@H]2CC(=O)c3c(O)cc(O)cc3O2)ccc1O</td>
+            </tr>
+            <tr>
+            <td align="right">216</td>
+            <td>Coniferaldehyde</td>
+            <td>COc1cc(/C=C/C=O)ccc1O</td>
+            </tr>
+            <tr>
+            <td align="right">217</td>
+            <td>CONIFERYL ALCOHOL</td>
+            <td>COc1cc(/C=C/CO)ccc1O</td>
+            </tr>
+            <tr>
+            <td align="right">218</td>
+            <td>Dhurrin</td>
+            <td>N#C[C@@H](O[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O)c1ccc(O)cc1</td>
+            </tr>
+            <tr>
+            <td align="right">219</td>
+            <td>rosmarinate anion</td>
+            <td>O=C(/C=C/c1ccc([O-])c(O)c1)OC(Cc1ccc(O)c(O)c1)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">220</td>
+            <td>trans-4-coumaroyl-CoA(4-)</td>
+            <td>CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])O)[C@@H](O)C([O-])=NCCC([O-])=NCCSC(=O)/C=C/c1ccc([O-])cc1</td>
+            </tr>
+            <tr>
+            <td align="right">221</td>
+            <td>resveratrol</td>
+            <td>Oc1ccc(/C=C/c2cc(O)cc(O)c2)cc1</td>
+            </tr>
+            <tr>
+            <td align="right">222</td>
+            <td>Malonyl-CoA(5-)</td>
+            <td>CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-])[C@@H](O)C([O-])=NCCC([O-])=NCCSC(=O)CC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">223</td>
+            <td>Emodin(1-)</td>
+            <td>Cc1cc(O)c2c(c1)C(=O)c1cc([O-])cc(O)c1C2=O</td>
+            </tr>
+            <tr>
+            <td align="right">224</td>
+            <td>Endocrocin</td>
+            <td>Cc1cc2c(c(O)c1C(=O)O)C(=O)c1c(O)cc(O)cc1C2=O</td>
+            </tr>
+            <tr>
+            <td align="right">225</td>
+            <td>Bisdemethoxycurcumin</td>
+            <td>O=C(/C=C/c1ccc(O)cc1)CC(=O)/C=C/c1ccc(O)cc1</td>
+            </tr>
+            <tr>
+            <td align="right">226</td>
+            <td>2&#39;,4,4&#39;,6&#39;-tetrahydroxychalcone(1-)</td>
+            <td>O=C(/C=C/c1ccc([O-])cc1)c1c(O)cc(O)cc1O</td>
+            </tr>
+            <tr>
+            <td align="right">227</td>
+            <td>Naringenin</td>
+            <td>O=C1C[C@@H](c2ccc(O)cc2)Oc2cc(O)cc(O)c21</td>
+            </tr>
+            <tr>
+            <td align="right">228</td>
+            <td>ERIODICTYOL</td>
+            <td>O=C1C[C@@H](c2ccc(O)c(O)c2)Oc2cc(O)cc(O)c21</td>
+            </tr>
+            <tr>
+            <td align="right">229</td>
+            <td>TAXIFOLIN</td>
+            <td>O=C1c2c(O)cc(O)cc2O[C@H](c2ccc(O)c(O)c2)[C@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">230</td>
+            <td>toluene</td>
+            <td>Cc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">231</td>
+            <td>phenylacetaldehyde</td>
+            <td>O=CCc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">232</td>
+            <td>2-phenylethanol</td>
+            <td>OCCc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">233</td>
+            <td>phenylacetate</td>
+            <td>O=C([O-])Cc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">234</td>
+            <td>4-PHENYLBUTYRIC ACID</td>
+            <td>O=C(O)CCCc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">235</td>
+            <td>6-phenylhexanoate</td>
+            <td>O=C([O-])CCCCCc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">236</td>
+            <td>cis-Cyclohexa-3,5-diene-1,2-diol</td>
+            <td>O[C@@H]1C=CC=C[C@@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">237</td>
+            <td>4-aminobenzoate</td>
+            <td>Nc1ccc(C(=O)[O-])cc1</td>
+            </tr>
+            <tr>
+            <td align="right">238</td>
+            <td>Isochorismate(2-)</td>
+            <td>C=C(O[C@H]1C=CC=C(C(=O)[O-])[C@@H]1O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">239</td>
+            <td>2-aminobenzoate</td>
+            <td>Nc1ccccc1C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">240</td>
+            <td>aniline</td>
+            <td>Nc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">241</td>
+            <td>METHYL ANTHRANILATE</td>
+            <td>COC(=O)c1ccccc1N</td>
+            </tr>
+            <tr>
+            <td align="right">242</td>
+            <td>L-tryptophan</td>
+            <td>N[C@@H](Cc1c[nH]c2ccccc12)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">243</td>
+            <td>(2S)-2-amino-3-(5-hydroxy-1H-indol-3-yl)propanoic acid</td>
+            <td>N[C@@H](Cc1c[nH]c2ccc(O)cc12)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">244</td>
+            <td>Serotonin(1+)</td>
+            <td>[NH3+]CCc1c[nH]c2ccc(O)cc12</td>
+            </tr>
+            <tr>
+            <td align="right">245</td>
+            <td>5-METHOXYTRYPTAMINE</td>
+            <td>COc1ccc2[nH]cc(CCN)c2c1</td>
+            </tr>
+            <tr>
+            <td align="right">246</td>
+            <td>Melatonin</td>
+            <td>COc1ccc2[nH]cc(CCN=C(C)O)c2c1</td>
+            </tr>
+            <tr>
+            <td align="right">247</td>
+            <td>Indolmycin(1+)</td>
+            <td>C[NH+]=C1N=C(O)[C@H]([C@H](C)c2c[nH]c3ccccc23)O1</td>
+            </tr>
+            <tr>
+            <td align="right">248</td>
+            <td>4-Hydroxyquinoline</td>
+            <td>O=c1cc[nH]c2ccccc12</td>
+            </tr>
+            <tr>
+            <td align="right">249</td>
+            <td>hapalindole H</td>
+            <td>[C-]#[N+][C@@H]1[C@H]2c3c[nH]c4cccc(c34)C(C)(C)[C@@H]2CC[C@]1(C)C=C</td>
+            </tr>
+            <tr>
+            <td align="right">250</td>
+            <td>Pendolmycin</td>
+            <td>C=CC(C)(C)c1ccc2c3c(c[nH]c13)C[C@@H](CO)N=C(O)[C@H](C(C)C)N2C</td>
+            </tr>
+            <tr>
+            <td align="right">251</td>
+            <td>(2R)-3-(3,4-dihydroxyphenyl)lactate</td>
+            <td>O=C(O)[C@H](O)Cc1ccc([O-])c(O)c1</td>
+            </tr>
+            <tr>
+            <td align="right">252</td>
+            <td>2-(4-aminophenyl)acetaldehyde</td>
+            <td>Nc1ccc(CC=O)cc1</td>
+            </tr>
+            <tr>
+            <td align="right">253</td>
+            <td>2-(4-aminophenyl)acetate</td>
+            <td>Nc1ccc(CC(=O)[O-])cc1</td>
+            </tr>
+            <tr>
+            <td align="right">254</td>
+            <td>2-(4-aminophenyl)ethanol</td>
+            <td>Nc1ccc(CCO)cc1</td>
+            </tr>
+            <tr>
+            <td align="right">255</td>
+            <td>4-Amino-L-Phenylalanine</td>
+            <td>Nc1ccc(C[C@H](N)C(=O)O)cc1</td>
+            </tr>
+            <tr>
+            <td align="right">256</td>
+            <td>2-(4-Aminophenyl)ethylamine</td>
+            <td>NCCc1ccc(N)cc1</td>
+            </tr>
+            <tr>
+            <td align="right">257</td>
+            <td>4-Aminocinnamic acid</td>
+            <td>Nc1ccc(C=CC(=O)O)cc1</td>
+            </tr>
+            <tr>
+            <td align="right">258</td>
+            <td>Menaquinone-7</td>
+            <td>CC(C)=CCC/C(C)=C/CC/C(C)=C/CC/C(C)=C/CC/C(C)=C/CC/C(C)=C/CC/C(C)=C/CC1=C(C)C(=O)c2ccccc2C1=O</td>
+            </tr>
+            <tr>
+            <td align="right">259</td>
+            <td>Methylenesuccinate(2-)</td>
+            <td>C=C(CC(=O)[O-])C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">260</td>
+            <td>glutaminic acid</td>
+            <td>N[C@@H](CCC(=O)[O-])C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">261</td>
+            <td>4-aminobutyric acid</td>
+            <td>NCCCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">262</td>
+            <td>Homocarnosine</td>
+            <td>NCCCC(O)=N[C@@H](Cc1cnc[nH]1)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">263</td>
+            <td>4-Guanidinobutyric acid</td>
+            <td>N=C(N)NCCCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">264</td>
+            <td>pyrrolidin-2-one</td>
+            <td>OC1=NCCC1</td>
+            </tr>
+            <tr>
+            <td align="right">265</td>
+            <td>L-glutamine</td>
+            <td>N=C(O)CC[C@H](N)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">266</td>
+            <td>alpha-D-glucosamine 6-phosphate(1-)</td>
+            <td>N[C@@H]1[C@@H](O)[C@H](O)[C@@H](COP(=O)([O-])O)O[C@@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">267</td>
+            <td>N-acetylornithine</td>
+            <td>CC(O)=N[C@@H](CCCN)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">268</td>
+            <td>L-ornithinium</td>
+            <td>N[C@@H](CCC[NH3+])C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">269</td>
+            <td>4-azaniumylbutylazanium</td>
+            <td>[NH3+]CCCC[NH3+]</td>
+            </tr>
+            <tr>
+            <td align="right">270</td>
+            <td>4-ammoniobutanal</td>
+            <td>[NH3+]CCCC=O</td>
+            </tr>
+            <tr>
+            <td align="right">271</td>
+            <td>4-aminobutyric acid</td>
+            <td>NCCCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">272</td>
+            <td>L-Theanine</td>
+            <td>CCN=C(O)CC[C@H](N)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">273</td>
+            <td>glutamate</td>
+            <td>N[C@H](CCC(=O)[O-])C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">274</td>
+            <td>L-glutamic acid</td>
+            <td>N[C@@H](CCC(=O)O)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">275</td>
+            <td>L-citrulline</td>
+            <td>N=C(O)NCCC[C@H](N)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">276</td>
+            <td>L-Argininosuccinic acid</td>
+            <td>N=C(NCCC[C@H](N)C(=O)O)N[C@@H](CC(=O)O)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">277</td>
+            <td>L-arginine cation</td>
+            <td>N=C(N)NCCC[C@H]([NH3+])C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">278</td>
+            <td>Agmatinium(2+)</td>
+            <td>NC(=[NH2+])NCCCC[NH3+]</td>
+            </tr>
+            <tr>
+            <td align="right">279</td>
+            <td>N-carbamoylputrescinium(1+)</td>
+            <td>N=C(O)NCCCC[NH3+]</td>
+            </tr>
+            <tr>
+            <td align="right">280</td>
+            <td>feruloylagmatine</td>
+            <td>COc1cc(/C=C/C(O)=NCCCCNC(=N)N)ccc1O</td>
+            </tr>
+            <tr>
+            <td align="right">281</td>
+            <td>Octopine</td>
+            <td>C[C@@H](N[C@@H](CCCNC(=N)N)C(=O)O)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">282</td>
+            <td>2-oxoarginine</td>
+            <td>N=C(N)NCCCC(=O)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">283</td>
+            <td>D-nopalinate(1-)</td>
+            <td>N=C(N)NCCC[C@H](N[C@H](CCC(=O)[O-])C(=O)O)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">284</td>
+            <td>Proclavaminic acid</td>
+            <td>NCC[C@@H](O)[C@@H](C(=O)O)N1CCC1=O</td>
+            </tr>
+            <tr>
+            <td align="right">285</td>
+            <td>L-proline</td>
+            <td>O=C(O)[C@@H]1CCCN1</td>
+            </tr>
+            <tr>
+            <td align="right">286</td>
+            <td>(2S)-3,4-dihydro-2H-pyrrole-2-carboxylate</td>
+            <td>O=C([O-])[C@@H]1CCC=N1</td>
+            </tr>
+            <tr>
+            <td align="right">287</td>
+            <td>L-Hydroxyproline</td>
+            <td>O=C(O)[C@@H]1C[C@@H](O)CN1</td>
+            </tr>
+            <tr>
+            <td align="right">288</td>
+            <td>D-proline</td>
+            <td>O=C(O)[C@H]1CCCN1</td>
+            </tr>
+            <tr>
+            <td align="right">289</td>
+            <td>5-Aminovaleric acid</td>
+            <td>NCCCCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">290</td>
+            <td>3,4-dihydro-2H-pyrrole-5-carboxylic acid</td>
+            <td>O=C(O)C1=NCCC1</td>
+            </tr>
+            <tr>
+            <td align="right">291</td>
+            <td>6-aminohexanoic acid</td>
+            <td>NCCCCCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">292</td>
+            <td>azepan-2-one</td>
+            <td>OC1=NCCCCC1</td>
+            </tr>
+            <tr>
+            <td align="right">293</td>
+            <td>2-Furoate</td>
+            <td>O=C([O-])c1ccco1</td>
+            </tr>
+            <tr>
+            <td align="right">294</td>
+            <td>2-furoyl-CoA(4-)</td>
+            <td>CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-])[C@@H](O)C([O-])=NCCC([O-])=NCCSC(=O)c1ccco1</td>
+            </tr>
+            <tr>
+            <td align="right">295</td>
+            <td>5-hydroxy-2-furoyl-CoA(5-)</td>
+            <td>CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-])[C@@H](O)C([O-])=NCCC([O-])=NCCSC(=O)c1ccc([O-])o1</td>
+            </tr>
+            <tr>
+            <td align="right">296</td>
+            <td>2-Oxoglutaryl-CoA</td>
+            <td>CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)(O)O)[C@@H](O)C(O)=NCCC(O)=NCCSC(=O)C(=O)CCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">297</td>
+            <td>2,4-dihydroxybutanoic acid</td>
+            <td>O=C(O)C(O)CCO</td>
+            </tr>
+            <tr>
+            <td align="right">298</td>
+            <td>1,3-PROPANEDIOL</td>
+            <td>OCCCO</td>
+            </tr>
+            <tr>
+            <td align="right">299</td>
+            <td>oxalate</td>
+            <td>O=C([O-])C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">300</td>
+            <td>glycolate</td>
+            <td>O=C([O-])CO</td>
+            </tr>
+            <tr>
+            <td align="right">301</td>
+            <td>glycolaldehyde</td>
+            <td>O=CCO</td>
+            </tr>
+            <tr>
+            <td align="right">302</td>
+            <td>ETHYLENE GLYCOL</td>
+            <td>OCCO</td>
+            </tr>
+            <tr>
+            <td align="right">303</td>
+            <td>4-HYDROXYDIHYDROFURAN-2(3H)-ONE</td>
+            <td>O=C1CC(O)CO1</td>
+            </tr>
+            <tr>
+            <td align="right">304</td>
+            <td>4-Deoxyerythronic acid</td>
+            <td>C[C@@H](O)[C@@H](O)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">305</td>
+            <td>4-hydroxybutyrate</td>
+            <td>O=C([O-])CCCO</td>
+            </tr>
+            <tr>
+            <td align="right">306</td>
+            <td>4-oxobutanoate</td>
+            <td>O=CCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">307</td>
+            <td>4-hydroxybutyryl-CoA(4-)</td>
+            <td>CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-])[C@@H](O)C([O-])=NCCC([O-])=NCCSC(=O)CCCO</td>
+            </tr>
+            <tr>
+            <td align="right">308</td>
+            <td>Gamma-Butyrolactone</td>
+            <td>O=C1CCCO1</td>
+            </tr>
+            <tr>
+            <td align="right">309</td>
+            <td>4-hydroxybutanal</td>
+            <td>O=CCCCO</td>
+            </tr>
+            <tr>
+            <td align="right">310</td>
+            <td>1,4-BUTANEDIOL</td>
+            <td>OCCCCO</td>
+            </tr>
+            <tr>
+            <td align="right">311</td>
+            <td>2-(2-hydroxyacetyl)oxypropanoic acid</td>
+            <td>CC(OC(=O)CO)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">312</td>
+            <td>adipate</td>
+            <td>O=C([O-])CCCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">313</td>
+            <td>(2S)-2-ammoniobutanedioate</td>
+            <td>N[C@@H](CC(=O)[O-])C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">314</td>
+            <td>Beta-alanine</td>
+            <td>NCCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">315</td>
+            <td>3-Hydroxypropionate</td>
+            <td>O=C([O-])CCO</td>
+            </tr>
+            <tr>
+            <td align="right">316</td>
+            <td>propanedioate</td>
+            <td>O=C([O-])CC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">317</td>
+            <td>(2S)-2-amino-4-oxobutanoic acid</td>
+            <td>N[C@@H](CC=O)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">318</td>
+            <td>L-homoserine</td>
+            <td>N[C@@H](CCO)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">319</td>
+            <td>L-threonine</td>
+            <td>C[C@@H](O)[C@H](N)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">320</td>
+            <td>2-oxobutanoate</td>
+            <td>CCC(=O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">321</td>
+            <td>L-2-Aminobutyric acid</td>
+            <td>CC[C@H](N)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">322</td>
+            <td>propionate</td>
+            <td>CCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">323</td>
+            <td>1-propanol</td>
+            <td>CCCO</td>
+            </tr>
+            <tr>
+            <td align="right">324</td>
+            <td>L-isoleucine</td>
+            <td>CC[C@H](C)[C@H](N)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">325</td>
+            <td>5-Methylhexan-3-one</td>
+            <td>CCC(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">326</td>
+            <td>(2R)-3-[2-[3-[[(2R)-4-[[[(2R,3S,4R,5R)-5-(6-aminopurin-9-yl)-4-hydroxy-3-phosphonatooxyoxolan-2-yl]methoxy-oxidophosphoryl]oxy-oxidophosphoryl]oxy-2-hydroxy-3,3-dimethylbutanoyl]amino]propanoylamino]ethylsulfanyl]-2-methyl-3-oxopropanoate</td>
+            <td>C[C@H](C(=O)[O-])C(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">327</td>
+            <td>5-methylhexan-3-one</td>
+            <td>CCC(=O)CC(C)C</td>
+            </tr>
+            <tr>
+            <td align="right">328</td>
+            <td>3-PENTANONE</td>
+            <td>CCC(=O)CC</td>
+            </tr>
+            <tr>
+            <td align="right">329</td>
+            <td>heptanoate</td>
+            <td>CCCCCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">330</td>
+            <td>pentanoate</td>
+            <td>CCCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">331</td>
+            <td>TIGLIC ACID</td>
+            <td>C/C=C(\C)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">332</td>
+            <td>2-Methylbutyrate</td>
+            <td>CCC(C)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">333</td>
+            <td>2-methylpentanoate</td>
+            <td>CCCC(C)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">334</td>
+            <td>2-Pentenoic acid</td>
+            <td>CC/C=C(/C)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">335</td>
+            <td>butane</td>
+            <td>CCCC</td>
+            </tr>
+            <tr>
+            <td align="right">336</td>
+            <td>L-methionine</td>
+            <td>CSCC[C@H](N)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">337</td>
+            <td>1-Aminocyclopropanecarboxylic acid</td>
+            <td>NC1(C(=O)O)CC1</td>
+            </tr>
+            <tr>
+            <td align="right">338</td>
+            <td>ETHYLENE</td>
+            <td>C=C</td>
+            </tr>
+            <tr>
+            <td align="right">339</td>
+            <td>trimethylenediaminium</td>
+            <td>[NH3+]CCC[NH3+]</td>
+            </tr>
+            <tr>
+            <td align="right">340</td>
+            <td>ectoine</td>
+            <td>CC1=NCC[C@@H](C(=O)O)N1</td>
+            </tr>
+            <tr>
+            <td align="right">341</td>
+            <td>L-lysinium(1+)</td>
+            <td>N[C@@H](CCCC[NH3+])C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">342</td>
+            <td>Cadaverine(2+)</td>
+            <td>[NH3+]CCCCC[NH3+]</td>
+            </tr>
+            <tr>
+            <td align="right">343</td>
+            <td>5-ammoniopentanamide</td>
+            <td>N=C(O)CCCC[NH3+]</td>
+            </tr>
+            <tr>
+            <td align="right">344</td>
+            <td>5-Aminovaleric acid</td>
+            <td>NCCCCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">345</td>
+            <td>5-oxopentanoate</td>
+            <td>O=CCCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">346</td>
+            <td>pentanedioate</td>
+            <td>O=C([O-])CCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">347</td>
+            <td>heptanedioate</td>
+            <td>O=C([O-])CCCCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">348</td>
+            <td>7-hydroxyheptanoic acid</td>
+            <td>O=C(O)CCCCCCO</td>
+            </tr>
+            <tr>
+            <td align="right">349</td>
+            <td>2-Piperidone</td>
+            <td>OC1=NCCCC1</td>
+            </tr>
+            <tr>
+            <td align="right">350</td>
+            <td>L-2-ammoniohexano-6-lactam</td>
+            <td>[NH3+][C@H]1CCCCN=C1O</td>
+            </tr>
+            <tr>
+            <td align="right">351</td>
+            <td>(3S)-3,6-diammoniohexanoate</td>
+            <td>N[C@@H](CCC[NH3+])CC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">352</td>
+            <td>L-2-aminoadipate(1-)</td>
+            <td>N[C@@H](CCCC(=O)[O-])C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">353</td>
+            <td>azepan-2-one</td>
+            <td>OC1=NCCCCC1</td>
+            </tr>
+            <tr>
+            <td align="right">354</td>
+            <td>1-butanol</td>
+            <td>CCCCO</td>
+            </tr>
+            <tr>
+            <td align="right">355</td>
+            <td>2-METHYL-1-BUTANOL</td>
+            <td>CCC(C)CO</td>
+            </tr>
+            <tr>
+            <td align="right">356</td>
+            <td>3-METHYL-1-PENTANOL</td>
+            <td>CCC(C)CCO</td>
+            </tr>
+            <tr>
+            <td align="right">357</td>
+            <td>terephthalate</td>
+            <td>O=C([O-])c1ccc(C(=O)[O-])cc1</td>
+            </tr>
+            <tr>
+            <td align="right">358</td>
+            <td>4-oxopentanoate</td>
+            <td>CC(=O)CCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">359</td>
+            <td>propionate</td>
+            <td>CCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">360</td>
+            <td>octanedioate</td>
+            <td>O=C([O-])CCCCCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">361</td>
+            <td>6-hydroxyhexanoate</td>
+            <td>O=C([O-])CCCCCO</td>
+            </tr>
+            <tr>
+            <td align="right">362</td>
+            <td>decanedioate</td>
+            <td>O=C([O-])CCCCCCCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">363</td>
+            <td>1,2,4-BUTANETRIOL</td>
+            <td>OCCC(O)CO</td>
+            </tr>
+            <tr>
+            <td align="right">364</td>
+            <td>ETHYLENE</td>
+            <td>C=C</td>
+            </tr>
+            <tr>
+            <td align="right">365</td>
+            <td> </td>
+            <td>Cc1c(C(=O)O)c([O-])cc2c1C(=O)c1c([O-])c([C@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)c(O)c(O)c1C2=O</td>
+            </tr>
+            <tr>
+            <td align="right">366</td>
+            <td>ACRYLATE</td>
+            <td>C=CC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">367</td>
+            <td>8-methyl-8-azoniabicyclo[3.2.1]octan-3-ol</td>
+            <td>C[NH+]1C2CCC1CC(O)C2</td>
+            </tr>
+            <tr>
+            <td align="right">368</td>
+            <td>[(1R,2R,4S,5S)-9-methyl-3-oxa-9-azatricyclo[3.3.1.02,4]nonan-7-yl] (2S)-3-hydroxy-2-phenylpropanoate  (Scopolamine)</td>
+            <td>CN1[C@@H]2C[C@@H](OC(=O)[C@H](CO)c3ccccc3)C[C@H]1[C@@H]1O[C@@H]12</td>
+            </tr>
+            <tr>
+            <td align="right">369</td>
+            <td> [(1S,5R)-8-methyl-8-azoniabicyclo[3.2.1]octan-3-yl] (2S)-3-hydroxy-2-phenylpropanoate  (S-Atropinium)</td>
+            <td>C[NH+]1[C@@H]2CC[C@H]1C[C@@H](OC(=O)[C@H](CO)c1ccccc1)C2</td>
+            </tr>
+            <tr>
+            <td align="right">370</td>
+            <td>cannabigerolate</td>
+            <td>CCCCCc1cc([O-])c(C/C=C(\C)CCC=C(C)C)c(O)c1C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">371</td>
+            <td>Delta(9)-tetrahydrocannabinolate</td>
+            <td>CCCCCc1cc2c(c([O-])c1C(=O)O)[C@@H]1C=C(C)CC[C@H]1C(C)(C)O2</td>
+            </tr>
+            <tr>
+            <td align="right">372</td>
+            <td>cannabidiolate</td>
+            <td>C=C(C)[C@@H]1CCC(C)=C[C@H]1c1c([O-])cc(CCCCC)c(C(=O)O)c1O</td>
+            </tr>
+            <tr>
+            <td align="right">373</td>
+            <td>1,3-PROPANEDIOL</td>
+            <td>OCCCO</td>
+            </tr>
+            <tr>
+            <td align="right">374</td>
+            <td>3-Hydroxypropionate</td>
+            <td>O=C([O-])CCO</td>
+            </tr>
+            <tr>
+            <td align="right">375</td>
+            <td>adipate</td>
+            <td>O=C([O-])CCCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">376</td>
+            <td>6-azaniumylhexylazanium</td>
+            <td>[NH3+]CCCCCC[NH3+]</td>
+            </tr>
+            <tr>
+            <td align="right">377</td>
+            <td>Zeaxanthin</td>
+            <td>CC1=C(/C=C/C(C)=C/C=C/C(C)=C/C=C/C=C(C)/C=C/C=C(C)/C=C/C2=C(C)C[C@@H](O)CC2(C)C)C(C)(C)C[C@H](O)C1</td>
+            </tr>
+            <tr>
+            <td align="right">378</td>
+            <td>proviolacein</td>
+            <td>O=C1N=C(c2c[nH]c3ccc(O)cc23)C=C1c1c[nH]c2ccccc12</td>
+            </tr>
+            <tr>
+            <td align="right">379</td>
+            <td>prodeoxyviolacein</td>
+            <td>O=C1N=C(c2c[nH]c3ccccc23)C=C1c1c[nH]c2ccccc12</td>
+            </tr>
+            <tr>
+            <td align="right">380</td>
+            <td>3-[2-hydroxy-5-(5-hydroxy-1H-indol-3-yl)-1H-pyrrol-3-yl]indol-2-one  (Violacein)</td>
+            <td>OC1=NC(c2c[nH]c3ccc(O)cc23)=C/C1=C1\C(O)=Nc2ccccc21</td>
+            </tr>
+            <tr>
+            <td align="right">381</td>
+            <td>3-[2-hydroxy-5-(1H-indol-3-yl)-1H-pyrrol-3-yl]indol-2-one  (Deoxyviolacein)</td>
+            <td>OC1=NC(c2c[nH]c3ccccc23)=C/C1=C1\C(O)=Nc2ccccc21</td>
+            </tr>
+            <tr>
+            <td align="right">382</td>
+            <td>silibinin</td>
+            <td>COc1cc([C@H]2Oc3cc([C@H]4Oc5cc(O)cc(O)c5C(=O)[C@@H]4O)ccc3O[C@@H]2CO)ccc1O</td>
+            </tr>
+            <tr>
+            <td align="right">383</td>
+            <td>(2R,3R)-3,5,7-trihydroxy-2-[2-(4-hydroxy-3-methoxyphenyl)-3-(hydroxymethyl)-2,3-dihydro-1,4-benzodioxin-6-yl]-2,3-dihydrochromen-4-one</td>
+            <td>COc1cc(C2Oc3ccc([C@H]4Oc5cc(O)cc(O)c5C(=O)[C@@H]4O)cc3OC2CO)ccc1O</td>
+            </tr>
+            <tr>
+            <td align="right">384</td>
+            <td>Spermidine(3+)</td>
+            <td>[NH3+]CCCC[NH2+]CCC[NH3+]</td>
+            </tr>
+            <tr>
+            <td align="right">385</td>
+            <td>bis(4-azaniumylbutyl)azanium</td>
+            <td>[NH3+]CCCC[NH2+]CCCC[NH3+]</td>
+            </tr>
+            <tr>
+            <td align="right">386</td>
+            <td>4-azaniumylbutyl-[3-(3-azaniumylpropylazaniumyl)propyl]azanium</td>
+            <td>[NH3+]CCCC[NH2+]CCC[NH2+]CCC[NH3+]</td>
+            </tr>
+            <tr>
+            <td align="right">387</td>
+            <td>3-azaniumylpropyl-[4-(3-azaniumylpropylazaniumyl)butyl]azanium</td>
+            <td>[NH3+]CCC[NH2+]CCCC[NH2+]CCC[NH3+]</td>
+            </tr>
+            <tr>
+            <td align="right">388</td>
+            <td>BETA-SITOSTEROL</td>
+            <td>CC[C@H](CC[C@@H](C)[C@H]1CC[C@H]2[C@@H]3CC=C4C[C@@H](O)CC[C@]4(C)[C@H]3CC[C@]12C)C(C)C</td>
+            </tr>
+            <tr>
+            <td align="right">389</td>
+            <td>(22S)-22-hydroxycampest-4-en-3-one</td>
+            <td>CC(C)[C@H](C)C[C@H](O)[C@@H](C)[C@H]1CC[C@H]2[C@@H]3CCC4=CC(=O)CC[C@]4(C)[C@H]3CC[C@]12C</td>
+            </tr>
+            <tr>
+            <td align="right">390</td>
+            <td>(3S,8S,9S,10R,13R,14S,17R)-17-[(2R,5R)-5,6-dimethylheptan-2-yl]-10,13-dimethyl-2,3,4,7,8,9,11,12,14,15,16,17-dodecahydro-1H-cyclopenta[a]phenanthren-3-ol</td>
+            <td>CC(C)[C@H](C)CC[C@@H](C)[C@H]1CC[C@H]2[C@@H]3CC=C4C[C@@H](O)CC[C@]4(C)[C@H]3CC[C@]12C</td>
+            </tr>
+            <tr>
+            <td align="right">391</td>
+            <td>(3S,9S,10R,13R,14R,17R)-17-[(E,2R,5R)-5,6-dimethylhept-3-en-2-yl]-10,13-dimethyl-2,3,4,9,11,12,14,15,16,17-decahydro-1H-cyclopenta[a]phenanthren-3-ol</td>
+            <td>CC(C)[C@@H](C)/C=C/[C@@H](C)[C@H]1CC[C@H]2C3=CC=C4C[C@@H](O)CC[C@]4(C)[C@H]3CC[C@]12C</td>
+            </tr>
+            <tr>
+            <td align="right">392</td>
+            <td>3-phosphonato-D-glycerate(3-)</td>
+            <td>O=C([O-])[C@H](O)COP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">393</td>
+            <td>glycine</td>
+            <td>NCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">394</td>
+            <td>UDP-N-acetyl-alpha-D-galactosamine</td>
+            <td>CC([O-])=N[C@H]1[C@@H](OP(=O)(O)OP(=O)(O)OC[C@H]2O[C@@H](n3ccc([O-])nc3=O)[C@H](O)[C@@H]2O)O[C@H](CO)[C@H](O)[C@@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">395</td>
+            <td> </td>
+            <td> CC(=O)N[C@H]1[C@H](O[*])O[C@H](CO)[C@H](O)[C@@H]1O[C@@H]1O[C@H](C(=O)O)[C@@H]([*])[C@H](O)[C@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">396</td>
+            <td> </td>
+            <td> CC(=O)N[C@H]1[C@H](O[*])O[C@H](CO)[C@H](O)[C@@H]1O[C@@H]1O[C@@H](C(=O)O)[C@@H]([*])[C@H](O)[C@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">397</td>
+            <td>2-methylpentanoate</td>
+            <td>CCCC(C)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">398</td>
+            <td>(R)-3-Hydroxybutyryl coenzyme A</td>
+            <td>C[C@@H](O)CC(=O)SCCN=C([O-])CCN=C([O-])[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">399</td>
+            <td>alpha-D-glucosamine 6-phosphate(1-)</td>
+            <td>N[C@@H]1[C@@H](O)[C@H](O)[C@@H](COP(=O)([O-])O)O[C@@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">400</td>
+            <td>L-2-ammoniohexano-6-lactam</td>
+            <td>[NH3+][C@H]1CCCCN=C1O</td>
+            </tr>
+            <tr>
+            <td align="right">401</td>
+            <td>Alpha-ketoglutarate</td>
+            <td>O=C([O-])CCC(=O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">402</td>
+            <td>Beta-alanine</td>
+            <td>NCCC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">403</td>
+            <td>(2R)-3-phosphoglycerate</td>
+            <td>C(C(C(=O)[O-])O)OP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">404</td>
+            <td>4-aminobutanal</td>
+            <td>C(CC=O)CN</td>
+            </tr>
+            <tr>
+            <td align="right">405</td>
+            <td>4-ammoniobutanal</td>
+            <td>[NH3+]CCCC=O</td>
+            </tr>
+            <tr>
+            <td align="right">406</td>
+            <td>6-Methylsalicylate</td>
+            <td>Cc1cccc([O-])c1C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">407</td>
+            <td>Alpha-ketoglutarate</td>
+            <td>O=C([O-])CCC(=O)C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">408</td>
+            <td>Beta-carotene</td>
+            <td>CC1=C(/C=C/C(C)=C/C=C/C(C)=C/C=C/C=C(C)/C=C/C=C(C)/C=C/C2=C(C)CCCC2(C)C)C(C)(C)CCC1</td>
+            </tr>
+            <tr>
+            <td align="right">409</td>
+            <td>(5Z,8Z,11Z,14Z)-icosa-5,8,11,14-tetraenoate</td>
+            <td>CCCCC/C=C\C/C=C\C/C=C\C/C=C\CCCC(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">410</td>
+            <td>Benzyl glucosinolate</td>
+            <td>O=S(=O)([O-])O/N=C(/Cc1ccccc1)S[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O</td>
+            </tr>
+            <tr>
+            <td align="right">411</td>
+            <td> </td>
+            <td>CC(C)(COP(=O)([O-])OC[C@H](N[*])C([*])=O)[C@@H](O)C(=O)NCCC(=O)NCCSC(=O)CC(=O)C[*]</td>
+            </tr>
+            <tr>
+            <td align="right">412</td>
+            <td>BETA-IONONE</td>
+            <td>CC(=O)/C=C/C1=C(C)CCCC1(C)C</td>
+            </tr>
+            <tr>
+            <td align="right">413</td>
+            <td>cis,cis-muconate</td>
+            <td>O=C([O-])/C=C\C=C/C(=O)[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">414</td>
+            <td>(2R)-3-(3,4-dihydroxyphenyl)lactate</td>
+            <td>O=C(O)[C@H](O)Cc1ccc([O-])c(O)c1</td>
+            </tr>
+            <tr>
+            <td align="right">415</td>
+            <td>glycerone phosphate(2-)</td>
+            <td>O=C(CO)COP(=O)([O-])[O-]</td>
+            </tr>
+            <tr>
+            <td align="right">416</td>
+            <td> </td>
+            <td>CCOC(=O)CCCCCCCCCCCC[*]</td>
+            </tr>
+            <tr>
+            <td align="right">417</td>
+            <td> </td>
+            <td> COC([*])=O</td>
+            </tr>
+            <tr>
+            <td align="right">418</td>
+            <td>L-2-ammoniohexano-6-lactam</td>
+            <td>[NH3+][C@H]1CCCCN=C1O</td>
+            </tr>
+            <tr>
+            <td align="right">419</td>
+            <td>(3S)-3,6-diammoniohexanoate</td>
+            <td>N[C@@H](CCC[NH3+])CC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">420</td>
+            <td> </td>
+            <td>[*]SC(=O)CC(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">421</td>
+            <td>METHYL ANTHRANILATE</td>
+            <td>COC(=O)c1ccccc1N</td>
+            </tr>
+            <tr>
+            <td align="right">422</td>
+            <td>Gamma-Butyrolactone</td>
+            <td>O=C1CCCO1</td>
+            </tr>
+            <tr>
+            <td align="right">423</td>
+            <td>2-phenylethanol</td>
+            <td>OCCc1ccccc1</td>
+            </tr>
+            <tr>
+            <td align="right">424</td>
+            <td>L-glutamic acid</td>
+            <td>N[C@@H](CCC(=O)O)C(=O)O</td>
+            </tr>
+            <tr>
+            <td align="right">425</td>
+            <td>3,4-dihydroxybenzoate</td>
+            <td>O=C(O)c1ccc([O-])c(O)c1</td>
+            </tr>
+            <tr>
+            <td align="right">426</td>
+            <td>SPERMINE (FULLY PROTONATED FORM)</td>
+            <td>[NH3+]CCC[NH2+]CCCC[NH2+]CCC[NH3+]</td>
+            </tr>
+            <tr>
+            <td align="right">427</td>
+            <td>UDP-alpha-D-glucose(2-)</td>
+            <td>O=c1nc([O-])ccn1[C@@H]1O[C@H](COP(=O)([O-])OP(=O)(O)O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@@H](O)[C@H]1O</td>
+            </tr>
+            </tbody></table>
+        </table>
+        <script>
+    
+         var table = document.getElementById('producibles_table'),rIndex;
+         
+         for(var i = 0; i < table.rows.length; i++)
+         {
+             table.rows[i].onclick = function()
+             {
+                  rIndex = this.rowIndex;
+                  console.log(rIndex);
+                  //document.getElementById("Field #1").value = this.cells[0].innerHTML;
+                  //document.getElementById("Field #2").value = this.cells[1].innerHTML;
+                  //document.getElementById("Field #3").value = this.cells[2].innerHTML;
+             };
+         }
 
-                <script type="text/javascript">
-                $(document).ready(function() {
-                    var table = $('#Producibles').DataTable({
-                        buttons:[
-                            {
-                                extend: 'createState',
-                                config: {
-                                    creationModal: true,
-                                    toggle: {
-                                        columns:{
-                                            search: true,
-                                            visible: true
-                                        },
-                                        length: true,
-                                        order: true,
-                                        paging: true,
-                                        search: true,
-                                    }
-                                }
-                            },
-                            'savedStates'
-                        ],
-                        lengthChange: false
-                    });
-                 
-                    table.buttons().container()
-                            .insertBefore( '#Producibles_filter' );
-                });
-            </script>   
-             </div>       
+  </script>
+        </div>
+        <script>
+        $(document).ready(function() {
+         var table = $('#producibles_table').DataTable({
+             buttons:[
+                 {
+                     extend: 'createState',
+                     config: {
+                         creationModal: true,
+                         toggle: {
+                             columns:{
+                                 search: true,
+                                 visible: true
+                             },
+                             length: true,
+                             order: true,
+                             paging: true,
+                             search: true,
+                           }
+                        }
+                  },
+                  'savedStates'
+               ],
+               lengthChange: false
+            });
+         
+            table.buttons().container()
+                  .insertBefore( '#producibles_filter' );
+      });
+      </script>
+      
+      <script>
+         $(document).ready(function(){
+            $("#dialogo_prod").dialog({
+             modal: true,
+             title: "Producibles",
+             width: 800,
+             minWidth: 200,
+             maxWidth: 1500, 
+             //show: "fold", 
+             hide: "scale",
+             autoOpen: false
+         });
+     });
+      </script>
+      <script>
+         $(document).ready(function(){
+            $('#producible_table').click(function(){
+               $.ajax({
+                  url:"static/website/files/producibles_names.csv",
+                  dataType:"text",
+                  success:function(data)
+                  {
+                     var producible_data = data.split(/\r?\n|\r/);
+                     var table_data = '<table class="table table-bordered table-condensed table-hover">';
+                     for(var count=0; count < producible_data.length; count++)
+                     {
+                        var cell_data = producible_data[count].split(";");
+                        table_data += '<tr>';
+                        for(var cell_count=0; cell_count < cell_data.length; cell_count++)
+                        {
+                           if(count == 0)
+                           {
+                                 table_data += '<th>'+cell_data[cell_count]+'</th>';
+                           }
+                           else
+                           {
+                                 table_data += '<td>'+cell_data[cell_count]+'</td>';
+                           }
+                        }
+                        table_data += '</tr>';
+                     }
+                     table_data += '</table>';
+                     $('#producible_table').html(table_data);
+                  }
+               });
+            });
+         
+         });
+         </script>
          <br>
         <input id="Detectable" type="button"  class="button_detectables" onclick="hideShow()" value="Detectable"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue"/>
         <br><br>
@@ -299,9 +2465,15 @@ __license__ = 'MIT'
 
 <!-- Javascript files-->
 <script src="{% static 'website/js/Home.js'%}"></script>
+<script src="{% static 'website/js/Producibles.js'%}"></script>
 <script src="{% static 'website/js/jquery-ui.js'%}"></script>
 <script src="{% static 'website/js/jquery-ui.min.js'%}"></script>
 <script src="{% static 'website/js/script.js'%}"></script> 
+<script src="{% static 'website/js/dataTables.jqueryui.min.js'%}"></script> 
+<script src="{% static 'website/js/dataTables.stateRestore.min.js'%}"></script> 
+<script src="{% static 'website/js/stateRestore.jqueryui.min.js'%}"></script> 
+<script src="{% static 'website/js/dataTables.buttons.min.js'%}"></script> 
+<script src="{% static 'website/js/buttons.jqueryui.min.js'%}"></script> 
 <!--  footer -->
 <footer>
     <br><br><br><br><br><br><br><br><br><br><br>
