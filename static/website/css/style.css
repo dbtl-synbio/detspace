@@ -43,7 +43,6 @@ basic
 
 .container {
      max-width: 1170px;
-     justify-content: center;
      align-items: center;
 }
 
@@ -261,7 +260,9 @@ button {
 }
 
 .visualizer {
-     padding-bottom: 60px;    
+     padding-bottom: 60px;
+     
+     
 }
 
 .titlepage h2 {
@@ -462,21 +463,6 @@ button {
 }
 
 .left  a i {
-    color: #fff;
-
-}
-.right {
-    position: absolute;
-    background: #00132b;
-    width: 80px;
-    right: 0;
-    height: 87px;
-    top: 0;
-    text-align: center;
-    line-height: 87px;
-
-}
-.right  a i {
     color: #fff;
 
 }
@@ -1351,12 +1337,7 @@ padding-bottom: 40px;}
       .flaticon-dribbble:before { content: "\f106"; }
       .flaticon-themeforest:before { content: "\f107"; }
 
-      #cy {
-        width: 300px;
-        height: 300px;
-        display: block;
-      }
-
+    
       .well {
         background: none;
     }
@@ -1428,5 +1409,6 @@ ul li {
 }
 
 #base {
-        width: 70%;
+        width: 100%;
 }
+ 

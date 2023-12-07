@@ -764,7 +764,7 @@ function run_viz(){
     hide_all_prod_pathways();
     show_cofactors(false);
     put_pathway_values('global_score');
-    make_pathway_table_sortable();  // Should be called only after the table has been populated with values
+    //make_pathway_table_sortable();  // Should be called only after the table has been populated with values
 
     // Pathway Handler stuff
     window.path_handler = new PathwayHandler(cy, pathways_info);
