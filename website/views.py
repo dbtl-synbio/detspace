@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
-from django.http import HttpResponse
+from django.conf import settings
+from django.http import HttpResponse, Http404
 from .models import Target
 import os
 # import pandas
@@ -68,3 +69,11 @@ def vis_template(request):
 def body_viz(request):
     return render(request, 'body_viz.html', {})
 
+def download(request, path):
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+            return response
+    raise Http404
