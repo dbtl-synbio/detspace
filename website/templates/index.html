@@ -7,6 +7,7 @@
  
     <div class="visualizer" id="base">
         
+      {% include './body_viz.html' %}  
     </div>
 
     <div style="clear:both">
@@ -14,11 +15,13 @@
     </div>
    </div>
 
-   <script>
+  <!--
+  <script>
       $( function() {
           $( "#base" ).load( "{% static 'website/files/body_viz.html' %}" );
       });
     </script>  
+-->
    
 {% endblock %}
 

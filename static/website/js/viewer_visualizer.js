@@ -807,9 +807,10 @@ function run_viz(){
                     .css({
                         'height': 60,
                         'width': 120,
+                        'shape': 'cut-rectangle',
                         'background-color': 'white',
-                        'border-width': 5,
-                        'border-color': 'black',
+                        'border-width': 2,
+                        'border-color': 'gray',
                         'border-style': 'solid',
                         'content': 'data(short_label)',
                         'text-valign': 'center',
@@ -822,19 +823,21 @@ function run_viz(){
                     .css({
                         'background-color': '#52be80',
                         'background-fit':'contain',
-                        'shape': 'roundrectangle',
+                        'shape': 'ellipse',
                         'width': 80,
                         'height': 80,
                         'label': 'data(short_label)',
-                        'font-size': '20px',
+                        'font-size': '14px',
                         // 'font-weight': 'bold',
-                        'text-valign': 'top',
+                        'text-valign': 'bottom',
                         'text-halign': 'center',
                         'text-margin-y': 8,
                         'text-opacity': 1,
                         'text-background-color': 'White',
                         'text-background-opacity': 0.85,
                         'text-background-shape': 'roundrectangle',
+                        'border-width': 8,
+                        'border-style': 'dotted',
                     })
                 .selector("node[type='chemical'][?target_chemical]")
                     .css({
@@ -865,12 +868,15 @@ function run_viz(){
                     .css({
                         'background-image': 'data(svg)',
                         'background-fit': 'contain',
-                        'border-width': 8,
+                        'border-width': 0,
                     })
                 .selector('edge')
                     .css({
-                        'curve-style': 'bezier',
+                        'curve-style': 'unbundled-bezier',
                         'line-color': '#999999',
+                        'line-fill': 'linear-gradient',
+                        'line-gradient-stop-colors': 'cyan magenta',
+                        'line-gradient-stop-positions': '0% 100%',
                         'width': '5px',
                         'target-arrow-shape': 'chevron',
                         'target-arrow-color': '#999999',
