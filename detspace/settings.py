@@ -46,7 +46,7 @@ MIDDLEWARE = [
     #'django_hosts.middleware.HostsResponseMiddleware'
 ]
 
-ROOT_URLCONF = 'covid.urls'
+ROOT_URLCONF = 'detspace.urls'
 
 TEMPLATES = [
     {
@@ -64,7 +64,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'covid.wsgi.application'
+WSGI_APPLICATION = 'detspace.wsgi.application'
 
 
 # Database
