@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
 from django.http import HttpResponse, Http404
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
 from .models import Target
 import os
 # import pandas
@@ -37,6 +40,9 @@ def about(request):
 def index(request):
     return render(request, 'index.html', {})
 
+def api_home(request):
+    return render(request, 'api.html', {})
+
 def target(request):
     targets = Target.objects.order_by('name')
     #targets = Target.objects.all()
@@ -69,11 +75,50 @@ def vis_template(request):
 def body_viz(request):
     return render(request, 'body_viz.html', {})
 
-def download(request, path):
-    file_path = os.path.join(settings.MEDIA_ROOT, path)
+@api_view(['GET'])
+def api(request, format=None):
+    print(request)
+    return Response({
+        'version': reverse('version', request=request, format=format),
+        'prod': reverse('producibles', request=request, format=format),
+        'det/prod_id': reverse('detectables', request=request, format=format),
+        'paths/prod_id/det_id': reverse('paths', request=request, format=format),
+    })
+
+@api_view(['GET'])
+def api_version(request, format=None):
+    return Response({
+        'app': 'DetSpace',
+        'version': '1.0'
+    })
+
+@api_view(['GET'])
+def prod(request, format=None):
+    return Response({
+        'prod_id': '21',
+        'name' : 'Naringenin',
+        'smiles': 'O=C2c3c(O[C@H](c1ccc(O)cc1)C2)cc(O)cc3O'
+    })
+
+@api_view(['GET'])
+def prod_detect(request, prod='1', format=None):
+    return Response({
+        'prod_id': str(prod),
+        'det_id': '12',
+        'name': 'quercetin',
+        'smiles': 'O=C1c3c(O/C(=C1/O)c2ccc(O)c(O)c2)cc(O)cc3O'
+    })
+
+@api_view(['GET'])
+def path_prod_det(request, prod='1', det='1'):
+    file_path = os.path.join(settings.STATICFILES_DIRS[0], 'website/files/D266P132.json')
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:
             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
             return response
     raise Http404
+
+@api_view(['GET'])
+def hello_world(request):
+    return Response({"message": "Hello, world!"})

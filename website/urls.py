@@ -1,4 +1,5 @@
 from django.urls import path, re_path
+
 from . import views
 
 urlpatterns = [
@@ -15,4 +16,13 @@ urlpatterns = [
     # path('body_viz.html', views.vis_template, name="body_viz"),
     path('<int:target_id>', views.info, name="info"),
     re_path(r'^get_log/$', views.hola, name='get_log'),
+    path('rest_framework/api.html',views.api_home,name="hello"),
+#    path('api.html',views.api_home,name="DetSpace API"),   
+    path('api/',views.api,name="DetSpace API"),   
+    path('api/version/',views.api_version,name="version"),   
+    path('api/prod/',views.prod,name="producibles"),  
+    path('api/det/',views.prod_detect,name="detectables"),  
+    path('api/det/<int:prod>/',views.prod_detect,name="detectables"),  
+    path('api/paths/',views.path_prod_det,name="paths"),
+    path('api/paths/<int:prod>/<int:det>/',views.path_prod_det,name="paths"),
 ]
