@@ -72,4 +72,11 @@ $(document).ready(function(){
 
  });
 
+// Button action that shows the network.json//
+ function show_pathways() {
+    $.getScript("static/website/files/network.json");
+    run_viz();
+    }
+
+
   

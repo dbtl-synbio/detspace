@@ -140,12 +140,6 @@ __license__ = 'MIT'
     <div class="left__buttons_panel">
         <br>
         <input id="load_pathway" type="button" onclick="show_pathways()" value="show_pathways"/>
-        <script>
-            function show_pathways() {
-		$.getScript("static/website/files/network.json");
-		run_viz();
-        }
-        </script>
         <input id="hide_pathway" type="button" value="hide_pathways"/>
         <br><br>
         <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
@@ -154,6 +148,7 @@ __license__ = 'MIT'
             {
                 var d=document.getElementById("list-container");
                 var displaytext=d.options[d.selectedIndex].text;
+                //var displaytext="Chassis: "+d.options[d.selectedIndex].text+"  Taxon_ID: ";
                 document.getElementById("txtvalue").value=displaytext;
                 $("#dialogo").dialog("close");
                 var display =1;
@@ -182,7 +177,7 @@ __license__ = 'MIT'
             </select>
          </div>
         <br><br>
-        <a data-toggle="modal" href="#myModal" class="button_producibles" id="producibles">Producibles</a><input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
+        <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producibles"/><input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
         <div class="modal fade" id="myModal">
          <div class="modal-dialog modal-lg">
            <div class="modal-content">
@@ -203,72 +198,72 @@ __license__ = 'MIT'
             <script>
                const tableRows = document.querySelectorAll(".producibles_table tbody tr");
 
-function setTableLinksHeights() {
+                     function setTableLinksHeights() {
 
-  for (const tableRow of tableRows) {
+                     for (const tableRow of tableRows) {
 
-    const tableRowLinks = tableRow.querySelectorAll("a");
+                        const tableRowLinks = tableRow.querySelectorAll("a");
 
-    setEqualHeights(tableRowLinks);
+                        setEqualHeights(tableRowLinks);
 
-  }
+                     }
 
-}
+                     }
 
-function setEqualHeights(el) {
+                     function setEqualHeights(el) {
 
-  let counter = 0;
+                     let counter = 0;
 
-  for (let i = 0; i < el.length; i++) {
+                     for (let i = 0; i < el.length; i++) {
 
-    el[i].style.removeProperty("height");
+                        el[i].style.removeProperty("height");
 
-    const singleHeight = el[i].offsetHeight;
+                        const singleHeight = el[i].offsetHeight;
 
-    if (counter < singleHeight) {
+                        if (counter < singleHeight) {
 
-      counter = singleHeight;
+                           counter = singleHeight;
 
-    }
+                        }
 
-  }
+                     }
 
-  for (let i = 0; i < el.length; i++) {
+                     for (let i = 0; i < el.length; i++) {
 
-    el[i].style.height = `${counter}px`;
+                        el[i].style.height = `${counter}px`;
 
-  }
+                     }
 
-}
+                     }
 
-setTableLinksHeights();
+                     setTableLinksHeights();
 
-window.addEventListener("resize", setTableLinksHeights);
+                     window.addEventListener("resize", setTableLinksHeights);
 
+                                 </script>
+                                 <script>
+                                    function ddlselect_prod()
+                                    {
+                                       var d=document.getElementById("producibles_table");
+                                       for(var i = 1; i < d.rows.length; i++)
+                        {
+                           d.rows[i].onclick = function()
+                           {
+                                 rIndex = this.rowIndex;
+                                 //var prod=$(this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
+                                 var prod=$(this.cells[1].innerHTML);
+                                    console.log(prod.text());
+                                    document.getElementById("txtvalue_prod").value=prod.text();
+                                    $('#myModal').modal('hide');
+                                    $('.modal-backdrop').remove();
+                              
+
+                           }
+                        }
+                                    }
             </script>
-            <script>
-               function ddlselect_prod()
-               {
-                   var d=document.getElementById("producibles_table");
-                   for(var i = 1; i < d.rows.length; i++)
-    {
-        d.rows[i].onclick = function()
-        {
-            rIndex = this.rowIndex;
-            var prod=$(this.cells[1].innerHTML);
-               console.log(prod.text());
-               document.getElementById("txtvalue_prod").value=prod.text();
-               $('#myModal').modal('hide');
-               $('body').removeClass('modal-open');
-               $('.modal-backdrop').remove();
-           
-
-        }
-    }
-               }
-           </script>
-         <br>
-        <input id="Detectable" type="button"  class="button_detectables" onclick="hideShow()" value="Detectable"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue"/>
+         <br><br>
+        <input id="Detectable" type="button"  class="button_detectables" onclick="hideShow()" value="Detectables"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue"/>
         <br><br>
     </div>
  
