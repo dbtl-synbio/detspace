@@ -25,4 +25,5 @@ urlpatterns = [
     path('api/det/<int:prod>/',views.prod_detect,name="detectables"),  
     path('api/paths/',views.path_prod_det,name="paths"),
     path('api/paths/<int:prod>/<int:det>/',views.path_prod_det,name="paths"),
+    path('api/net/<int:prod>/<int:det>/',views.net_prod_det,name="paths"),
 ]

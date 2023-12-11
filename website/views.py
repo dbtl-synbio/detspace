@@ -8,7 +8,10 @@ from rest_framework.reverse import reverse
 from .models import Target
 import os
 # import pandas
+import json
 import distutils.dir_util
+from io import StringIO
+from .utils import annotate_chemical_svg
 
 # from bs4 import BeautifulSoup
 
@@ -122,3 +125,20 @@ def path_prod_det(request, prod='1', det='1'):
 @api_view(['GET'])
 def hello_world(request):
     return Response({"message": "Hello, world!"})
+
+@api_view(['GET'])
+def net_prod_det(request, prod='1', det='1'):
+    basename = 'D'+str(det)+'P'+str(prod)
+    netname = basename+'_network.json'
+    pathname = basename+'_pathway.json'
+    netfile = os.path.join(settings.STATICFILES_DIRS[0], 'website/files',netname)
+    pathfile = os.path.join(settings.STATICFILES_DIRS[0], 'website/files',pathname)
+    net = json.load(open(netfile))
+    pathway = json.load(open(pathfile))
+    net = annotate_chemical_svg(net)
+    nets = 'network = '+json.dumps(net)+'\n'+'pathway_info = '+json.dumps(pathway)
+    with StringIO(nets) as fh:
+        response = HttpResponse(fh.read(), content_type="application/js")
+        response['Content-Disposition'] = 'inline; filename=' + basename+'.js'
+        return response
+    raise Http404
