@@ -263,7 +263,91 @@ __license__ = 'MIT'
                                     }
             </script>
          <br><br>
-        <input id="Detectable" type="button"  class="button_detectables" onclick="hideShow()" value="Detectables"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue"/>
+        <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectables"/><input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
+        <div class="modal fade" id="mynewModal">
+         <div class="modal-dialog modal-lg">
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               <h4 class="modal-title">Detectables</h4>
+             </div>
+             <div class="modal-body">
+               <table class="table table-bordered table-condensed table-hover" id="detectables_table"></table>
+               </table>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+             </div>
+           </div><!-- /.modal-content -->
+         </div><!-- /.modal-dialog -->
+         </div><!-- /.modal -->
+            <script>
+               const tableRows = document.querySelectorAll(".detectables_table tbody tr");
+
+                     function setTableLinksHeights() {
+
+                     for (const tableRow of tableRows) {
+
+                        const tableRowLinks = tableRow.querySelectorAll("a");
+
+                        setEqualHeights(tableRowLinks);
+
+                     }
+
+                     }
+
+                     function setEqualHeights(el) {
+
+                     let counter = 0;
+
+                     for (let i = 0; i < el.length; i++) {
+
+                        el[i].style.removeProperty("height");
+
+                        const singleHeight = el[i].offsetHeight;
+
+                        if (counter < singleHeight) {
+
+                           counter = singleHeight;
+
+                        }
+
+                     }
+
+                     for (let i = 0; i < el.length; i++) {
+
+                        el[i].style.height = `${counter}px`;
+
+                     }
+
+                     }
+
+                     setTableLinksHeights();
+
+                     window.addEventListener("resize", setTableLinksHeights);
+
+                                 </script>
+                                 <script>
+                                    function ddlselect_det()
+                                    {
+                                       var d=document.getElementById("detectables_table");
+                                       for(var i = 1; i < d.rows.length; i++)
+                        {
+                           d.rows[i].onclick = function()
+                           {
+                                 rIndex = this.rowIndex;
+                                 //var detec=$(this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
+                                 var detec=$(this.cells[1].innerHTML);
+                                    console.log(detec.text());
+                                    document.getElementById("txtvalue_det").value=detec.text();
+                                    $('#mynewModal').modal('hide');
+                                    $('.modal-backdrop').remove();
+                              
+
+                           }
+                        }
+                                    }
+            </script>
         <br><br>
     </div>
  
