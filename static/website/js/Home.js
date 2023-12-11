@@ -91,7 +91,7 @@ $(document).ready(function(){
              var table_data = '<table class="table table-bordered table-condensed table-hover" id="detectables_table">';
              for(var count=0; count < detectable_data.length; count++)
              {
-                var cell_data = detectable_data[count].split(",");
+                var cell_data = detectable_data[count].split(";");
                 table_data += '<tr>'+'id="detectable"';
                 for(var cell_count=0; cell_count < cell_data.length; cell_count++)
                 {
@@ -114,3 +114,42 @@ $(document).ready(function(){
 
  });
   
+//Conversion of the pairs table from csv to html//
+$(document).ready(function(){
+    $('#pairs').click(function(){
+       $.ajax({
+          url:"static/website/files/pairs_pathways.csv",
+          dataType:"text",
+          success:function(data)
+          {
+             var pairs_data = data.split(/\r?\n|\r/);
+             var table_data = '<table class="table table-bordered table-condensed table-hover" id="detectables_table">';
+             for(var count=0; count < pairs_data.length; count++)
+             {
+                var cell_data = pairs_data[count].split(";");
+                table_data += '<tr>'+'id="pair"';
+                for(var cell_count=0; cell_count < cell_data.length; cell_count++)
+                {
+                   if(count == 0)
+                   {
+                         table_data += '<th>'+cell_data[cell_count]+'</th>';
+                   }
+                   else
+                   {
+                         table_data += '<td>'+'<a href="#" onclick="ddlselect_det()">'+cell_data[cell_count]+'<a/>'+'</td>';
+                   }
+                }
+                table_data += '</tr>';
+             }
+             table_data += '</table>';
+             $('#detectables_table').html(table_data);
+          }
+       });
+    });
+
+ });
+
+
+ // Code for the insertion of a search window //
+
+ 

@@ -1421,6 +1421,7 @@ ul li {
     margin-left: 0px;
     background-color:dodgerblue;
     font-weight: 600;
+    margin-right:5px;
     cursor:pointer;
     height:30px;
 }
