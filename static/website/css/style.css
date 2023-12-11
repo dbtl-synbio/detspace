@@ -319,12 +319,12 @@ button {
 /*-- header --*/
 
 .header-area  {
-     padding: 30px 16px;
+     padding: 0px 0px;
      color: #f1f1f1;
      width: 100%;
      z-index: 9999999;
-     height: 87px;
-     background:#ed242e;
+     /*height: 17px;*/
+     background:#5d24edf1;
 }
 
 
@@ -1375,9 +1375,7 @@ padding-bottom: 40px;}
 
     width:20%;
 
-}
-
-.basic_class{
+}error: you need to resolve your current index first
 
     float: center;
     width:80%;
@@ -1390,8 +1388,7 @@ ul li {
     font-size: 13px;
     padding: 12px 8px 12px 50px;
     user-select: none;
-    cursor:pointer;
-}
+    cursor:pointer;error: you need to resolve your current index first
 
 .input_box_chassis{
     margin-left: 20px;
@@ -1425,9 +1422,7 @@ ul li {
     height:30px;
 }
 
-#base {
-        width: 100%;
-}
+#base {error: you need to resolve your current index first
  
 
 .modal-lg {

@@ -1,9 +1,91 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html lang="en">
 
 <div id="viewer">
     <div id="interaction" class="interact">
+        <div class="left__buttons_panel">
+            <br>
+            <input id="load_pathway" type="button" onclick="show_pathways()" value="show_pathways"/>
+            <script>
+                function show_pathways() {
+            $.getScript("static/website/files/network.json");
+            run_viz();
+            }
+            </script>
+            <input id="hide_pathway" type="button" value="hide_pathways"/>
+            <br><br>
+            <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
+            <script>
+                function ddlselect()
+                {
+                    var d=document.getElementById("list-container");
+                    var displaytext=d.options[d.selectedIndex].text;
+                    document.getElementById("txtvalue").value=displaytext;
+                    $("#dialogo").dialog("close");
+                    var display =1;
+                }
+            </script>
+            
+            <div id="dialogo" class ="hidden" style="display: none;">
+                <select id="list-container" autocomplete="off" onchange="ddlselect();">
+                    <option selected="selected" disabled="disabled">-- Select your chassis--</option>
+                    <option><a href="#">Bacilus Subtilis</a></option>
+                    <option><a href="#">Clostridium acetobutylicum</a></option>
+                    <option><a href="#">Deinococcus radiodurans</a></option>
+                    <option><a href="#">Escherichia Coli</a></option>
+                    <option><a href="#">Geobacter sulfurreducens</a></option>
+                    <option><a href="#">Klebsiella spp.</a></option>
+                    <option><a href="#">Mycoplasma spp.</a></option>
+                    <option><a href="#">Pseudomonas putida</a></option>
+                    <option><a href="#">Saccharomyces cerevisiae</a></option>
+                    <option><a href="#">Shewanella oneidensis</a></option>
+                    <option><a href="#">Streptomyces spp.</a></option>
+                    <option><a href="#">Synechocystis spp.</a></option>
+                    <option><a href="#">Yarrowia lipolytica</a></option>
+    
+                
+                
+                </select>
+             </div>
+             <script>
+                $(document).ready(function(){
+                   $("#dialogo").dialog({
+                    modal: true,
+                    title: "Chassis",
+                    width: 250,
+                    minWidth: 200,
+                    maxWidth: 400, 
+                    //show: "fold", 
+                    hide: "scale",
+                    autoOpen: false
+                });
+            });
+             </script>
+            <br><br>
+            <input id="Producibles" type="button" name="Producible" onclick="hideShow_prod()"  class="button_producibles" value="Producibles"/> <input type="text" 
+            autocomplete="off" onkeydown="return false;" id="txtvalue"/>
+            <div id="dialogo_prod" class ="hidden" style="display: none;">  
+            </div>
+             <br>
+             <input id="Detectable" type="button"  class="button_detectables" onclick="hideShow()" value="Detectable"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue"/>
+         <select name="pathviz" id="pathviz">
+           <option value="D266P132">Volvo</option>
+           <option value="D314P434">Saab</option>
+           <option value="D426P358">Mercedes</option>
+         </select>
+             <script type="text/javascript">
+           $("#pathviz").on('change', function(){
+               item = $(this).val();
+               namefile = item+'.json';
+               $.getScript("{% static "website/files/" %}"+namefile );
+           });
+                </script>   
+         
+            <br><br>
+        </div>
+     
         <div id="pathway_selection">
             <div class="info-title">Pathway selection</div>
             <div class="spacer"></div>
