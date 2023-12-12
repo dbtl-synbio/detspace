@@ -11,7 +11,6 @@ import json
 
 dic_prod={'ID':{'':''},'Molecule':"",'Smile':""}
 d_prod={'':{'Molecule':"",'Smile':"","Detectables":''}}
-d_prod
 producibles = dict(pd.read_csv('Producible.csv', delimiter=';'))
 p=dict(producibles['ID'])
 m=list(producibles['Molecule'])

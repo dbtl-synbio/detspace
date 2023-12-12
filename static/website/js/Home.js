@@ -76,6 +76,7 @@ $(document).ready(function(){
  function show_pathways() {
     $.getScript("static/website/files/network.json");
     run_viz();
+    console.log("static/website/files/network.json")
     }
 
     
@@ -101,7 +102,8 @@ $(document).ready(function(){
                    }
                    else
                    {
-                         table_data += '<td>'+'<a href="#" onclick="ddlselect_det()">'+cell_data[cell_count]+'<a/>'+'</td>';
+                        //if()   
+                        table_data += '<td>'+'<a href="#" onclick="ddlselect_det()">'+cell_data[cell_count]+'<a/>'+'</td>';
                    }
                 }
                 table_data += '</tr>';
@@ -151,5 +153,17 @@ $(document).ready(function(){
 
 
  // Code for the insertion of a search window //
+
+// Reading of the .json file//
+
+
+function Func() {
+   fetch("static/website/files/prod_det.json")
+       .then((res) => {
+       return res.json();
+   })
+   .then((data) => console.log(data));
+}
+
 
  

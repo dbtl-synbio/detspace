@@ -25,6 +25,7 @@ __license__ = 'MIT'
 
     <!-- Data -->
     <script src="{% static 'website/files/network.json'%}"></script>
+    <script src="{% static 'website/files/prod_det.json'%}"></script>
 
     <!-- Viewer -->
     <script src="{% static 'website/js/viewer_visualizer.js'%}"></script>
@@ -139,7 +140,7 @@ __license__ = 'MIT'
     <div class="left__buttons_panel">
         <br>
         <input id="load_pathway" type="button" onclick="show_pathways()" value="show_pathways"/>
-        <input id="hide_pathway" type="button" value="hide_pathways"/>
+        <input id="hide_pathway" type="button" onclick='Func()' value="hide_pathways"/>
         <br><br>
         <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
         <script>
@@ -249,9 +250,11 @@ __license__ = 'MIT'
                            d.rows[i].onclick = function()
                            {
                                  rIndex = this.rowIndex;
+                                 var prod_id=$(this.cells[0].innerHTML);
                                  //var prod=$(this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
                                  var prod=$(this.cells[1].innerHTML);
                                     console.log(prod.text());
+                                    console.log(prod_id.text());
                                     document.getElementById("txtvalue_prod").value=prod.text();
                                     $('#myModal').modal('hide');
                                     $('.modal-backdrop').remove();
@@ -336,8 +339,10 @@ __license__ = 'MIT'
                            {
                                  rIndex = this.rowIndex;
                                  //var detec=$(this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
+                                 var detec_id=$(this.cells[0].innerHTML);
                                  var detec=$(this.cells[1].innerHTML);
                                     console.log(detec.text());
+                                    console.log(detec_id.text());
                                     document.getElementById("txtvalue_det").value=detec.text();
                                     $('#mynewModal').modal('hide');
                                     $('.modal-backdrop').remove();
