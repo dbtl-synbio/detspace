@@ -7,13 +7,7 @@ Created on Mon Dec 11 16:35:10 2023
 """
 
 import pandas as pd
-from rdkit import Chem, DataStructs 
-from rdkit.Chem import AllChem
-import networkx as nx
-import csv
-from tqdm import tqdm
-import numpy as np
-from collections import defaultdict
+import json
 
 dic_prod={'ID':{'':''},'Molecule':"",'Smile':""}
 d_prod={'':{'Molecule':"",'Smile':"","Detectables":''}}
@@ -27,9 +21,7 @@ dic_prod['Smile']=s
 dic_prod['ID']=p
 
 print(producibles['ID'][2])
-for value in producibles['ID']:
-    producibles['ID'][value:'']
-    print(i)
+
 res = dict((v,k) for k,v in dic_prod['ID'].items())
 dic_prod['ID']=res
 detectables = (pd.read_csv('Detectable.csv', delimiter=';'))
@@ -57,8 +49,7 @@ for i in prod:
     print(detectables)
     dic_prod['ID'][i]=detectables
 
-test2 = dic_prod['ID'].values()
-print(dic_prod['ID'].values())
-for key,value in dic_prod.items():
-    print(key, "->", value)
+prod_det=json.dumps(dic_prod, indent = 3)
+with open("prod_det.json", "w") as outfile: 
+    json.dump(dic_prod, outfile)
     
