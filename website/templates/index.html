@@ -256,6 +256,7 @@ __license__ = 'MIT'
                                     console.log(prod.text());
                                     console.log(prod_id.text());
                                     document.getElementById("txtvalue_prod").value=prod.text();
+                                    $("#txtvalue_prod").attr("prod_id",prod_id.text());
                                     $('#myModal').modal('hide');
                                     $('.modal-backdrop').remove();
                               

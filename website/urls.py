@@ -20,8 +20,10 @@ urlpatterns = [
     path('api/',views.api,name="DetSpace API"),   
     path('api/version/',views.api_version,name="version"),   
     path('api/prod/',views.prod,name="producibles"),  
-    path('api/det/',views.prod_detect,name="detectables"),  
-    path('api/det/<int:prod>/',views.prod_detect,name="detectables"),  
+    path('api/prod/<int:detec>/',views.prod_detect,name="detect_producible"),  
+    path('api/det/',views.detec,name="detectables"),  
+    path('api/det/<int:prod>/',views.detect_prod,name="prod_detectable"),  
     path('api/paths/',views.path_prod_det,name="paths"),
     path('api/paths/<int:prod>/<int:det>/',views.path_prod_det,name="paths"),
+    path('api/net/<int:prod>/<int:det>/',views.net_prod_det,name="paths"),
 ]

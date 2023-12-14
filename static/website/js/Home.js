@@ -90,10 +90,19 @@ $(document).ready(function(){
           {
              var detectable_data = data.split(/\r?\n|\r/);
              var table_data = '<table class="table table-bordered table-condensed table-hover" id="detectables_table">';
+             var d_data = Func();
+             var prod_id=$("#txtvalue_prod").attr("prod_id");
              for(var count=0; count < detectable_data.length; count++)
              {
                 var cell_data = detectable_data[count].split(";");
                 table_data += '<tr>'+'id="detectable"';
+                var det_id = cell_data[0];
+                //var det_id = cell_data[0].innerHTML;
+                
+                if((prod_id="")||(det_id in d_data.value["prod_id"])){
+                //if((prod_id="")||(det_id in d_data)){
+                  
+                }
                 for(var cell_count=0; cell_count < cell_data.length; cell_count++)
                 {
                    if(count == 0)
@@ -102,9 +111,12 @@ $(document).ready(function(){
                    }
                    else
                    {
-                        //if()   
+                        
+                          
                         table_data += '<td>'+'<a href="#" onclick="ddlselect_det()">'+cell_data[cell_count]+'<a/>'+'</td>';
-                   }
+                     
+                          
+                        }
                 }
                 table_data += '</tr>';
              }
@@ -157,13 +169,32 @@ $(document).ready(function(){
 // Reading of the .json file//
 
 
-function Func() {
-   fetch("static/website/files/prod_det.json")
-       .then((res) => {
-       return res.json();
-   })
-   .then((data) => console.log(data));
-}
+//const data = function Func() => {
+   //fetch("static/website/files/prod_det.json")
+   //.then(response => response.json())
+   //.then(data => console.log(data))
+   //.then(json => return JSON.stringify(json))
+   //import dataJson from "static/website/files/prod_det.json" 
+       //.then((res) => {
+        //d_data=res.json();
+        //console.log(d_data)
+       //return res.json();
+   //}
+   //.then((data) => console.log(data));
+   //return d_data
 
 
+function get_det(){
+   $.getJSON( "/api/prod/", function( data ) {
+      var items = [];
+      $.each( data, function( key, val ) {
+        items.push( "<li id='" + key + "'>" + val["name"] + "</li>" );
+      });
+     
+      $( "<ul/>", {
+        "class": "my-new-list",
+        html: items.join( "" )
+      }).appendTo( "body" );
+    });
+   }
  
