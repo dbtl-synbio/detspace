@@ -500,17 +500,17 @@ function panel_chemical_producible_info(node, show=true){
             $("span.chem_info_smiles_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(smiles) + '">Look for identical structure using PubChem</a>');
         }
         if (pmid == "" || pmid == null){
-            $("span.chem_info_pmid".html("NA"));
+            $("span.chem_info_pmid").html("NA");
         } else {
             $("span.chem_info_pmid").html('<a target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/' + pmid+ '">'+pmid+'</a>');
         }
         if (kegg_id == "" || kegg_id == null){
-            $("span.chem_info_keggid".html("NA"));
+            $("span.chem_info_keggid").html("NA");
         } else {
             $("span.chem_info_keggid").html('<a target="_blank" href="https://www.genome.jp/entry/' + kegg_id+ '">'+kegg_id+'</a>');
         }
         if (mnx_id == "" || mnx_id == null){
-            $("span.chem_info_mnxid".html("NA"));
+            $("span.chem_info_mnxid").html("NA");
         } else {
             $("span.chem_info_mnxid").html('<a target="_blank" href="https://www.metanetx.org/chem_info/' + mnx_id+ '">'+mnx_id+'</a>');
         }
