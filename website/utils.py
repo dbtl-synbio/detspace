@@ -48,7 +48,7 @@ def get_detectables():
 
 def get_prod_det_pair():
     data_path = os.getenv('DETSPACE_DATA')
-    plist = pd.read_csv(os.path.join(data_path,"Pathways.csv"))
+    plist = pd.read_csv(os.path.join(data_path,"Pathways_pairs.csv"))
     detl = {}
     prodl = {}
     for row in plist.index:

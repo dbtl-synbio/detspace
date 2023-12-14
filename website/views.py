@@ -108,14 +108,14 @@ def detec(request, format=None):
     return Response(detecs)
 
 @api_view(['GET'])
-def prod_detect(request, prod='1', format=None):
-    detec = get_prod_detec(prod)
-    return Response(detec)
+def prod_detect(request, detec='1', format=None):
+    dl = get_prod_detec(detec)
+    return Response(dl)
 
 @api_view(['GET'])
-def detect_prod(request, detec='1', format=None):
-    detec = get_detec_prod(detec)
-    return Response(detec)
+def detect_prod(request, prod='1', format=None):
+    pl = get_prod_detec(prod)
+    return Response(pl)
 
 @api_view(['GET'])
 def path_prod_det(request, prod='1', det='1'):
