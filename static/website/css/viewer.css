@@ -494,15 +494,6 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
-
-/* Central panel: the graph ***************************************************/
-#cy {
-  float: left;
-  width: 60%;
-  height: 1000px;
-  margin-left: 22%;  /* +2 to compensate left pannel padding */
-}
-
 /* Right side panel: info *****************************************************/
 #info {
   float: right;
@@ -797,13 +788,6 @@
   overflow-y: auto;
 }
 
-/* Central panel: the graph ***************************************************/
-#cy {
-  float: left;
-  width: 60%;
-  height: 1000px;
-  margin-left: 22%;  /* +2 to compensate left pannel padding */
-}
 
 /* Right side panel: info *****************************************************/
 #info {

@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #'website.apps.WebsiteConfig',
-     'website'
+     'website',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -46,7 +47,7 @@ MIDDLEWARE = [
     #'django_hosts.middleware.HostsResponseMiddleware'
 ]
 
-ROOT_URLCONF = 'covid.urls'
+ROOT_URLCONF = 'detspace.urls'
 
 TEMPLATES = [
     {
@@ -64,7 +65,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'covid.wsgi.application'
+WSGI_APPLICATION = 'detspace.wsgi.application'
 
 
 # Database

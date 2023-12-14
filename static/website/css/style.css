@@ -43,7 +43,6 @@ basic
 
 .container {
      max-width: 1170px;
-     justify-content: center;
      align-items: center;
 }
 
@@ -261,9 +260,8 @@ button {
 }
 
 .visualizer {
-     text-align: center;
      padding-bottom: 60px;
-     width: 75%;
+     
      
 }
 
@@ -465,21 +463,6 @@ button {
 }
 
 .left  a i {
-    color: #fff;
-
-}
-.right {
-    position: absolute;
-    background: #00132b;
-    width: 80px;
-    right: 0;
-    height: 87px;
-    top: 0;
-    text-align: center;
-    line-height: 87px;
-
-}
-.right  a i {
     color: #fff;
 
 }
@@ -1302,6 +1285,7 @@ padding-bottom: 40px;}
     -ms-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
+
 }
 .single-profile:hover .single-profile-overlay{
     -webkit-transform:scale(1);
@@ -1354,12 +1338,7 @@ padding-bottom: 40px;}
       .flaticon-dribbble:before { content: "\f106"; }
       .flaticon-themeforest:before { content: "\f107"; }
 
-      #cy {
-        width: 300px;
-        height: 300px;
-        display: block;
-      }
-
+    
       .well {
         background: none;
     }
@@ -1375,6 +1354,13 @@ padding-bottom: 40px;}
     transform: translateX(0);
     transform-origin: left;
 }
+
+.table{
+    display: block !important;
+    overflow-x: auto !important;
+    width: 90% !important;
+  }
+ 
 
 .html.is-animating .transition-fade{
     opacity: 1;
@@ -1416,20 +1402,41 @@ ul li {
     margin-left: 0px;
     background-color:chartreuse;
     font-weight: 600;
+    margin-right:-15px;
+    cursor:pointer;
+    height:30px;
+    width:90px;
 }
 
 .button_producibles{
     margin-left: 0px;
     background-color:chocolate;
     font-weight: 600;
+    margin-right:5px;
+    cursor:pointer;
+    height:30px;
 }
 
 .button_detectables{
     margin-left: 0px;
     background-color:dodgerblue;
     font-weight: 600;
+    margin-right:5px;
+    cursor:pointer;
+    height:30px;
 }
 
 #base {
-        width: 70%;
+        width: 100%;
 }
+ 
+
+.modal-lg {
+    max-width: 80% !important;
+}
+
+.td a { 
+    display: block; 
+    border: 1px solid black;
+    padding: 16px; 
+ }
