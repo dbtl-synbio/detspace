@@ -109,7 +109,7 @@ def detec(request, format=None):
 
 @api_view(['GET'])
 def prod_detect(request, detec='1', format=None):
-    dl = get_prod_detec(detec)
+    dl = get_detec_prod(detec)
     return Response(dl)
 
 @api_view(['GET'])

@@ -67,16 +67,22 @@ def get_prod_det_pair():
 
 def get_prod_detec(prod):
     prodl, detl = get_prod_det_pair()
+    dets = get_detectables()
     pl = []
-    if str(prod) in prodl:
-        pl = [str(x) for x in sorted(prodl[str(prod)])]
+    for item in dets:
+        if str(prod) in prodl:
+            if item['ID'] in prodl[str(prod)]:
+                pl.append(item)
     return(pl)
 
 def get_detec_prod(det):
     prodl, detl = get_prod_det_pair()
+    prods = get_producibles()
     dl = []
-    if str(det) in detl:
-        dl = [str(x) for x in sorted(detl[str(det)])]
+    for item in prods:
+        if str(det) in detl:
+            if item['ID'] in detl[str(det)]:
+                dl.append(item)
     return(dl)
 
 def annotate_chemical_svg(network):
