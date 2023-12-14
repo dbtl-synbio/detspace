@@ -746,7 +746,7 @@ function in_chassis(chassis='ECOLI'){
 }
 
 // Live ///////////////////////////
-function run_viz(){
+function run_viz(network, pathways_info){
 
     // Cytoscape object to play with all along
     var cy = window.cy = cytoscape({

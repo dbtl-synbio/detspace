@@ -24,8 +24,8 @@ __license__ = 'MIT'
     <script src="{% static 'website/js/cytoscape-dagre-2.3.2.'%}js"></script>
 
     <!-- Data -->
-    <script src="{% static 'website/files/network.json'%}"></script>
-    <script src="{% static 'website/files/prod_det.json'%}"></script>
+    <!--<script src="{% static 'website/files/network.json'%}"></script>
+    <script src="{% static 'website/files/prod_det.json'%}"></script>-->
 
     <!-- Viewer -->
     <script src="{% static 'website/js/viewer_visualizer.js'%}"></script>
@@ -260,7 +260,7 @@ __license__ = 'MIT'
                                     $('.modal-backdrop').remove();
                                     if(product_chosen!=-1&&detect_chosen!=-1){
                                        $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
-                                       run_viz();
+                                       run_viz(network, pathways_info);
                                     }
                               
 
@@ -353,7 +353,7 @@ __license__ = 'MIT'
                                     $('.modal-backdrop').remove();
                                     if(product_chosen!=-1&&detect_chosen!=-1){
                                        $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
-                                       run_viz();
+                                       run_viz(network, pathways_info);
                                     }
                               
 
