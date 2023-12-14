@@ -39,38 +39,32 @@ $(document).ready(function(){
 
 //Conversion of the producibles table from csv to html//
 $(document).ready(function(){
-    $('#producibles').click(function(){
-       $.ajax({
-          url:"static/website/files/producibles_names.csv",
-          dataType:"text",
-          success:function(data)
-          {
-             var producible_data = data.split(/\r?\n|\r/);
-             var table_data = '<table class="table table-bordered table-condensed table-hover" id="producibles_table">';
-             for(var count=0; count < producible_data.length; count++)
-             {
-                var cell_data = producible_data[count].split(";");
-                table_data += '<tr>'+'id="producible"';
-                for(var cell_count=0; cell_count < cell_data.length; cell_count++)
-                {
-                   if(count == 0)
-                   {
-                         table_data += '<th>'+cell_data[cell_count]+'</th>';
-                   }
-                   else
-                   {
-                         table_data += '<td>'+'<a href="#" onclick="ddlselect_prod()">'+cell_data[cell_count]+'<a/>'+'</td>';
-                   }
-                }
-                table_data += '</tr>';
-             }
-             table_data += '</table>';
-             $('#producibles_table').html(table_data);
-          }
-       });
-    });
+   $('#producibles').click(function(){
+     var det_id=$("#txtvalue_det").attr("det_id");
+     if(det_id==undefined){
+        det_id=""
+     }
+      $.ajax({
+         url:"/api/prod/"+det_id,
+         dataType:"json",
+         success:function(data)
+         {
+            //var detectable_data = data.split(/\r?\n|\r/);
 
- });
+              var table_data = '<table class="table table-bordered table-condensed table-hover" id="producibles_table">';
+              $.each( data, function( index,val ) {
+                 table_data += '<tr'+'id="producible>"';
+                 table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_prod()">'+ val["Name"] + '</a>'+"</td>";
+                 table_data +="<td>" + val["SMILES"] + "</td>";
+                 table_data += '</tr>';
+               });
+              table_data += '</table>';
+              $('#producibles_table').html(table_data);
+           ;}//success
+      });
+   });
+
+});
 
 // Button action that shows the network.json//
  function show_pathways() {
@@ -83,46 +77,27 @@ $(document).ready(function(){
 //Conversion of the detectables table from csv to html//
 $(document).ready(function(){
     $('#detectables').click(function(){
+      var prod_id=$("#txtvalue_prod").attr("prod_id");
+      if(prod_id==undefined){
+         prod_id=""
+      }
        $.ajax({
-          url:"static/website/files/detectables_names.csv",
-          dataType:"text",
+          url:"/api/det/"+prod_id,
+          dataType:"json",
           success:function(data)
           {
-             var detectable_data = data.split(/\r?\n|\r/);
-             var table_data = '<table class="table table-bordered table-condensed table-hover" id="detectables_table">';
-             var d_data = Func();
-             var prod_id=$("#txtvalue_prod").attr("prod_id");
-             for(var count=0; count < detectable_data.length; count++)
-             {
-                var cell_data = detectable_data[count].split(";");
-                table_data += '<tr>'+'id="detectable"';
-                var det_id = cell_data[0];
-                //var det_id = cell_data[0].innerHTML;
-                
-                if((prod_id="")||(det_id in d_data.value["prod_id"])){
-                //if((prod_id="")||(det_id in d_data)){
-                  
-                }
-                for(var cell_count=0; cell_count < cell_data.length; cell_count++)
-                {
-                   if(count == 0)
-                   {
-                         table_data += '<th>'+cell_data[cell_count]+'</th>';
-                   }
-                   else
-                   {
-                        
-                          
-                        table_data += '<td>'+'<a href="#" onclick="ddlselect_det()">'+cell_data[cell_count]+'<a/>'+'</td>';
-                     
-                          
-                        }
-                }
-                table_data += '</tr>';
-             }
-             table_data += '</table>';
-             $('#detectables_table').html(table_data);
-          }
+             //var detectable_data = data.split(/\r?\n|\r/);
+
+               var table_data = '<table class="table table-bordered table-condensed table-hover" id="detectables_table">';
+               $.each( data, function( index,val ) {
+                  table_data += '<tr'+'id="detectable>"';
+                  table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_det()">'+ val["Name"] + '</a>'+"</td>";
+                  table_data +="<td>" + val["SMILES"] + "</td>";
+                  table_data += '</tr>';
+                });
+               table_data += '</table>';
+               $('#detectables_table').html(table_data);
+            ;}//success
        });
     });
 
@@ -185,10 +160,10 @@ $(document).ready(function(){
 
 
 function get_det(){
-   $.getJSON( "/api/prod/", function( data ) {
+   $.getJSON( "/api/det/", function( data ) {
       var items = [];
-      $.each( data, function( key, val ) {
-        items.push( "<li id='" + key + "'>" + val["name"] + "</li>" );
+      $.each( data, function( index,val ) {
+        items.push( "<li id='" + val["ID"] + "'>" + val["Name"] + "</li>" );
       });
      
       $( "<ul/>", {

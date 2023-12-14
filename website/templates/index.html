@@ -249,14 +249,12 @@ __license__ = 'MIT'
                         {
                            d.rows[i].onclick = function()
                            {
-                                 rIndex = this.rowIndex;
-                                 var prod_id=$(this.cells[0].innerHTML);
-                                 //var prod=$(this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
-                                 var prod=$(this.cells[1].innerHTML);
-                                    console.log(prod.text());
-                                    console.log(prod_id.text());
-                                    document.getElementById("txtvalue_prod").value=prod.text();
-                                    $("#txtvalue_prod").attr("prod_id",prod_id.text());
+                              rIndex = this.rowIndex;
+                                 //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
+                                 var produc=$(this.cells[0]);
+                                    console.log(produc.text());
+                                    document.getElementById("txtvalue_prod").value=produc.text();
+                                    $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
                                     $('#myModal').modal('hide');
                                     $('.modal-backdrop').remove();
                               
@@ -339,12 +337,11 @@ __license__ = 'MIT'
                            d.rows[i].onclick = function()
                            {
                                  rIndex = this.rowIndex;
-                                 //var detec=$(this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
-                                 var detec_id=$(this.cells[0].innerHTML);
-                                 var detec=$(this.cells[1].innerHTML);
+                                 //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
+                                 var detec=$(this.cells[0]);
                                     console.log(detec.text());
-                                    console.log(detec_id.text());
                                     document.getElementById("txtvalue_det").value=detec.text();
+                                    $("#txtvalue_det").attr("det_id",detec.attr("id"));
                                     $('#mynewModal').modal('hide');
                                     $('.modal-backdrop').remove();
                               
