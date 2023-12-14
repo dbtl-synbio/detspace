@@ -1,11 +1,83 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import os
+import pandas as pd
+from . import models
 from rdkit.Chem import MolFromInchi
 from rdkit.Chem.Draw import rdMolDraw2D
 from rdkit.Chem.AllChem import Compute2DCoords
 from urllib import parse
 
 
+def init_db1():
+    data_path = os.getenv('DETSPACE_DATA')
+    plist = pd.read_csv(os.path.join(data_path,"Producible.csv"))
+    models.Producibles.clear()
+    for prod in plist:
+        p = models.Producibles( [prod[0],prod[1]])
+        p.save()
+
+
+def get_producibles():
+    data_path = os.getenv('DETSPACE_DATA')
+    plist = pd.read_csv(os.path.join(data_path,"Producible.csv"))
+    prods = []
+    for row in plist.index:
+        item = {}
+        for col in plist.columns:
+            val = str( plist.loc[row,col] )
+            if val == 'nan':
+                val = ''
+            item[col] = str( val )
+        prods.append( item )
+    return(prods)
+
+def get_detectables():
+    data_path = os.getenv('DETSPACE_DATA')
+    plist = pd.read_csv(os.path.join(data_path,"Detectable.csv"))
+    dets = []
+    for row in plist.index:
+        item = {}
+        for col in plist.columns:
+            val = str( plist.loc[row,col] )
+            if val == 'nan':
+                val = ''
+            item[col] = str( val )
+        dets.append( item )
+    return(dets)
+
+def get_prod_det_pair():
+    data_path = os.getenv('DETSPACE_DATA')
+    plist = pd.read_csv(os.path.join(data_path,"Pathways.csv"))
+    detl = {}
+    prodl = {}
+    for row in plist.index:
+        val = plist.loc[row,'Pair']
+        try:
+            det,prod = val[1:].split("P")
+        except:
+            continue
+        if det not in detl:
+            detl[det] = set()
+        detl[det].add(prod)
+        if prod not in prodl:
+            prodl[prod] = set()
+        prodl[prod].add(det)
+    return(prodl,detl)
+
+def get_prod_detec(prod):
+    prodl, detl = get_prod_det_pair()
+    pl = []
+    if str(prod) in prodl:
+        pl = [str(x) for x in sorted(prodl[str(prod)])]
+    return(pl)
+
+def get_detec_prod(det):
+    prodl, detl = get_prod_det_pair()
+    dl = []
+    if str(det) in detl:
+        dl = [str(x) for x in sorted(detl[str(det)])]
+    return(dl)
 
 def annotate_chemical_svg(network):
     """Annotate chemical nodes with SVGs depiction.
@@ -30,5 +102,6 @@ def annotate_chemical_svg(network):
                 node['data']['svg'] = None
 
     return network
+
 
 

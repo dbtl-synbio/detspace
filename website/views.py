@@ -7,11 +7,11 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from .models import Target
 import os
-# import pandas
+import pandas as pd
 import json
 import distutils.dir_util
 from io import StringIO
-from .utils import annotate_chemical_svg
+from .utils import annotate_chemical_svg, get_detectables, get_producibles, get_prod_detec, get_detec_prod
 
 # from bs4 import BeautifulSoup
 
@@ -84,7 +84,9 @@ def api(request, format=None):
     return Response({
         'version': reverse('version', request=request, format=format),
         'prod': reverse('producibles', request=request, format=format),
-        'det/prod_id': reverse('detectables', request=request, format=format),
+ #       'prod/det_id': reverse('detect_prod', request=request, format=format),
+        'det': reverse('detectables', request=request, format=format),
+ #       'det/prod_id': reverse('prod_detectable', request=request, format=format),
         'paths/prod_id/det_id': reverse('paths', request=request, format=format),
     })
 
@@ -97,20 +99,23 @@ def api_version(request, format=None):
 
 @api_view(['GET'])
 def prod(request, format=None):
-    return Response({
-        'prod_id': '21',
-        'name' : 'Naringenin',
-        'smiles': 'O=C2c3c(O[C@H](c1ccc(O)cc1)C2)cc(O)cc3O'
-    })
+    prods = get_producibles()
+    return Response(prods)
+
+@api_view(['GET'])
+def detec(request, format=None):
+    detecs = get_detectables()
+    return Response(detecs)
 
 @api_view(['GET'])
 def prod_detect(request, prod='1', format=None):
-    return Response({
-        'prod_id': str(prod),
-        'det_id': '12',
-        'name': 'quercetin',
-        'smiles': 'O=C1c3c(O/C(=C1/O)c2ccc(O)c(O)c2)cc(O)cc3O'
-    })
+    detec = get_prod_detec(prod)
+    return Response(detec)
+
+@api_view(['GET'])
+def detect_prod(request, detec='1', format=None):
+    detec = get_detec_prod(detec)
+    return Response(detec)
 
 @api_view(['GET'])
 def path_prod_det(request, prod='1', det='1'):
