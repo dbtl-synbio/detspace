@@ -245,7 +245,7 @@ __license__ = 'MIT'
                                     function ddlselect_prod()
                                     {
                                        var d=document.getElementById("producibles_table");
-                                       for(var i = 1; i < d.rows.length; i++)
+                                       for(var i = 0; i < d.rows.length; i++)
                         {
                            d.rows[i].onclick = function()
                            {
@@ -255,6 +255,7 @@ __license__ = 'MIT'
                                     console.log(produc.text());
                                     document.getElementById("txtvalue_prod").value=produc.text();
                                     $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
+                                    document.getElementById("txtvalue_det").value="";
                                     $('#myModal').modal('hide');
                                     $('.modal-backdrop').remove();
                               
@@ -332,7 +333,7 @@ __license__ = 'MIT'
                                     function ddlselect_det()
                                     {
                                        var d=document.getElementById("detectables_table");
-                                       for(var i = 1; i < d.rows.length; i++)
+                                       for(var i = 0; i < d.rows.length; i++)
                         {
                            d.rows[i].onclick = function()
                            {
