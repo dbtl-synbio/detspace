@@ -245,7 +245,7 @@ __license__ = 'MIT'
                                     function ddlselect_prod()
                                     {
                                        var d=document.getElementById("producibles_table");
-                                       for(var i = 1; i < d.rows.length; i++)
+                                       for(var i = 0; i < d.rows.length; i++)
                         {
                            d.rows[i].onclick = function()
                            {
@@ -253,11 +253,15 @@ __license__ = 'MIT'
                                  //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
                                  var produc=$(this.cells[0]);
                                     console.log(produc.text());
+                                    product_chosen=produc.attr("id");
                                     document.getElementById("txtvalue_prod").value=produc.text();
                                     $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
                                     $('#myModal').modal('hide');
                                     $('.modal-backdrop').remove();
-                                    $.getScript("api/net/"+produc.attr("id")+"/"+detec.attr("id"))
+                                    if(product_chosen!=-1&&detect_chosen!=-1){
+                                       $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+                                       run_viz();
+                                    }
                               
 
                            }
@@ -342,10 +346,15 @@ __license__ = 'MIT'
                                  //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
                                  var detec=$(this.cells[0]);
                                     console.log(detec.text());
+                                    detect_chosen=detec.attr("id")
                                     document.getElementById("txtvalue_det").value=detec.text();
                                     $("#txtvalue_det").attr("det_id",detec.attr("id"));
                                     $('#mynewModal').modal('hide');
                                     $('.modal-backdrop').remove();
+                                    if(product_chosen!=-1&&detect_chosen!=-1){
+                                       $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+                                       run_viz();
+                                    }
                               
 
                            }

@@ -173,3 +173,5 @@ function get_det(){
     });
    }
  
+var product_chosen=-1
+var detect_chosen=-1
