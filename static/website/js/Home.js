@@ -172,4 +172,7 @@ function get_det(){
       }).appendTo( "body" );
     });
    }
+
+   var produc=0;
+   var detec=1;
  
