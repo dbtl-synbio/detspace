@@ -134,11 +134,12 @@ def hello_world(request):
 
 @api_view(['GET'])
 def net_prod_det(request, prod='1', det='1'):
+    data_path = os.getenv('DETSPACE_DATA')
     basename = 'D'+str(det)+'P'+str(prod)
     netname = basename+'_network.json'
     pathname = basename+'_pathway.json'
-    netfile = os.path.join(settings.STATICFILES_DIRS[0], 'website/files',netname)
-    pathfile = os.path.join(settings.STATICFILES_DIRS[0], 'website/files',pathname)
+    netfile = os.path.join(data_path, 'P'+str(prod),netname)
+    pathfile = os.path.join(data_path, 'P'+str(prod),pathname)
     net = json.load(open(netfile))
     pathway = json.load(open(pathfile))
     net = annotate_chemical_svg(net)
