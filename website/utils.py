@@ -41,7 +41,9 @@ def get_producibles():
         iid = item["ID"]
         if iid in prodl:
             item['Effectors'] = len( prodl[iid] );
-            item['Pathways'] = sum( [ prodl[iid][x] for x in prodl[iid] ])           
+            item['Pathways'] = sum( [ prodl[iid][x] for x in prodl[iid] ]) 
+            item['Selected'] = 0
+            item['Compounds'] = sorted( prodl[iid].keys() )         
             dprods.append(item)
     return(dprods)
 
@@ -83,6 +85,8 @@ def get_detectables():
         if iid in detl:
             item['Products'] = len( detl[iid] );
             item['Pathways'] = sum( [ detl[iid][x] for x in detl[iid] ])           
+            item['Selected'] = 0
+            item['Compounds'] = sorted( detl[iid].keys() )         
             pdetect.append(item)
     return(pdetect)
 
