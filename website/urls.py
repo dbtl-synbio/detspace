@@ -25,5 +25,6 @@ urlpatterns = [
     path('api/det/<int:prod>/',views.detect_prod,name="prod_detectable"),  
     path('api/paths/',views.path_prod_det,name="paths"),
     path('api/paths/<int:prod>/<int:det>/',views.path_prod_det,name="paths"),
-    path('api/net/<int:prod>/<int:det>/',views.net_prod_det,name="paths"),
+   path('api/net/<int:prod>/<int:det>/',views.net_prod_det,name="paths"),
+    path('api/chassis/',views.chassis,name="chassis"),  
 ]

@@ -1,19 +1,8 @@
 
 
-
-var product_chosen=-1;
-var detect_chosen=-1;
 var network = {};
 var pathways_info = {};
 
-
-
-
-//const Home = () => {
-
-    const handleClick = () => {
-        console.log('You have selected Acinetobacter baumannii AYE');
-    }
 
 
     var div =document.getElementById('dialogo');
@@ -48,7 +37,30 @@ $(document).ready(function(){
  });
 });
 
-//Conversion of the producibles table from csv to html//
+//Conversion of the chassis table from json to html//
+$(document).ready(function(){
+   $('#Chassis').click(function(){
+      $.ajax({
+         url:"/api/chassis/",
+         dataType:"json",
+         success:function(data)
+         {
+              var table_data = '<table class="table table-bordered table-condensed table-hover" id="chassis_table">';
+              $.each( data, function( index,val ) {
+                 table_data += '<tr'+'id="chassis>"';
+                 table_data += "<td>" + val["Organism"] + "</td>";
+                 table_data +="<td id='" + val["Organism"] + "'>" + '<a href="#" onclick="ddlselect()">'+ val["Orgid"] + '</a>'+"</td>";
+                 table_data += '</tr>';
+               });
+              table_data += '</table>';
+              $('#chassis_table').html(table_data);
+           ;}//success
+      });
+   });
+
+});
+
+//Conversion of the producibles table from json to html//
 $(document).ready(function(){
    $('#producibles').click(function(){
      var det_id=$("#txtvalue_det").attr("det_id");
@@ -84,7 +96,7 @@ $(document).ready(function(){
     }
 
     
-//Conversion of the detectables table from csv to html//
+//Conversion of the detectables table from json to html//
 $(document).ready(function(){
     $('#detectables').click(function(){
       var prod_id=$("#txtvalue_prod").attr("prod_id");
@@ -190,12 +202,12 @@ function delete_chassis() {
  
 function delete_producible() {
    document.getElementById("txtvalue_prod").value="";
-   $("#txtvalue_prod").attr("prod_id",detec.attr("id"));
+   $("#txtvalue_prod").attr("prod_id","");
    }
    
 
 function delete_detectable() {
    document.getElementById("txtvalue_det").value="";
-   $("#txtvalue_det").attr("det_id",detec.attr("id"));
+   $("#txtvalue_det").attr("det_id","");
    }
 

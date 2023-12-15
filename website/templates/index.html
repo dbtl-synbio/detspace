@@ -142,7 +142,7 @@ __license__ = 'MIT'
         <input id="load_pathway" type="button" onclick="show_pathways()" value="show_pathways"/>
         <input id="hide_pathway" type="button" onclick="" value="hide_pathways"/>
         <br><br>
-        <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
+        <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
         <input id="Delete selection" type="button" onclick="delete_chassis()" value="Clean"/>
         <script>
             function ddlselect()
@@ -153,7 +153,27 @@ __license__ = 'MIT'
                 document.getElementById("txtvalue").value=displaytext;
                 $("#dialogo").dialog("close");
                 var display =1;
-            }
+                var d=document.getElementById("chassis_table");
+                                       for(var i = 0; i < d.rows.length; i++)
+                        {
+                           d.rows[i].onclick = function()
+                           {
+                              rIndex = this.rowIndex;
+                                 //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
+                                 var chassis=$(this.cells[0]);
+                                    console.log(chassis.text());
+                                    //product_chosen=produc.attr("id");
+                                    // document.getElementById("txtvalue_prod").value=produc.text();
+                                    // $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
+                                    // $('#myModal').modal('hide');
+                                    // $('.modal-backdrop').remove();
+                                    // if(product_chosen!=-1 && detect_chosen!=-1){
+                                    //    $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+                                    }
+                              
+
+                           }
+                        }
         </script>
         
         <div id="dialogo" class ="hidden" style="display: none;">
@@ -164,7 +184,7 @@ __license__ = 'MIT'
                 <option><a href="#">Deinococcus radiodurans</a></option>
                 <option><a href="#">Escherichia Coli</a></option>
                 <option><a href="#">Geobacter sulfurreducens</a></option>
-                <option><a href="#">Klebsiella spp.</a></option>
+                <option><a href="#">Klebsiella sp. 4_1_44FAA.</a></option>
                 <option><a href="#">Mycoplasma spp.</a></option>
                 <option><a href="#">Pseudomonas putida</a></option>
                 <option><a href="#">Saccharomyces cerevisiae</a></option>
@@ -172,13 +192,10 @@ __license__ = 'MIT'
                 <option><a href="#">Streptomyces spp.</a></option>
                 <option><a href="#">Synechocystis spp.</a></option>
                 <option><a href="#">Yarrowia lipolytica</a></option>
-
-            
-            
             </select>
          </div>
         <br><br>
-        <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producibles"/><input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
+        <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producibles"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
         <input id="Delete selection" type="button" onclick="delete_producible()" value="Clean"/>
         <div class="modal fade" id="myModal">
          <div class="modal-dialog modal-lg">
@@ -255,12 +272,13 @@ __license__ = 'MIT'
                                  //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
                                  var produc=$(this.cells[1]);
                                     console.log(produc.text());
-                                    product_chosen=produc.attr("id");
                                     document.getElementById("txtvalue_prod").value=produc.text();
                                     $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
                                     $('#myModal').modal('hide');
                                     $('.modal-backdrop').remove();
-                                    if(product_chosen!=-1 && detect_chosen!=-1){
+                                    let product_chosen= $("#txtvalue_prod").attr("prod_id");
+                                    let detect_chosen= $("#txtvalue_det").attr("det_id");
+                                    if(product_chosen!="" && detect_chosen!=""){
                                        $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
                                     }
                               
@@ -271,7 +289,7 @@ __license__ = 'MIT'
 
                                  </script>
          <br><br>
-        <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectables"/><input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
+        <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectables"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
         <input id="Delete selection" type="button" onclick="delete_detectable()" value="Clean"/>
         <div class="modal fade" id="mynewModal">
          <div class="modal-dialog modal-lg">
@@ -345,15 +363,15 @@ __license__ = 'MIT'
                            d.rows[i].onclick = function()
                            {
                                  rIndex = this.rowIndex;
-                                 //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
                                  var detec=$(this.cells[1]);
                                     console.log(detec.text());
-                                    detect_chosen=detec.attr("id")
                                     document.getElementById("txtvalue_det").value=detec.text();
                                     $("#txtvalue_det").attr("det_id",detec.attr("id"));
                                     $('#mynewModal').modal('hide');
                                     $('.modal-backdrop').remove();
-                                    if(product_chosen!=-1 && detect_chosen!=-1){
+                                    let product_chosen= $("#txtvalue_prod").attr("prod_id");
+                                    let detect_chosen= $("#txtvalue_det").attr("det_id");
+                                    if(product_chosen!="" && detect_chosen!=""){
                                        $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
                                     }
                               
@@ -361,8 +379,8 @@ __license__ = 'MIT'
                            }
                         }
                                     }
-            </script>
 
+                                 </script>
         <br><br>
     </div>
  

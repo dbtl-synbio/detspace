@@ -1394,7 +1394,7 @@ ul li {
 }
 
 .input_box_chassis{
-    margin-left: 20px;
+    margin-left: 30px;
     top: 0px;
 }
 
@@ -1402,7 +1402,7 @@ ul li {
     margin-left: 0px;
     background-color:chartreuse;
     font-weight: 600;
-    margin-right:-15px;
+    margin-right:5px;
     cursor:pointer;
     height:30px;
     width:90px;
@@ -1440,3 +1440,24 @@ ul li {
     border: 1px solid black;
     padding: 16px; 
  }
+
+ .txtvalue_chassis{
+    caret-color: transparent;
+    background: #C0C0C0;
+    font-weight: 600;
+    width: 220px;
+}
+
+.txtvalue_prod{
+    caret-color: transparent;
+    background: #C0C0C0;
+    font-weight: 600;
+    width: 220px;
+}
+
+.txtvalue_det{
+    caret-color: transparent;
+    background: #C0C0C0;
+    font-weight: 600;
+    width: 220px;
+}

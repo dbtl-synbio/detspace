@@ -11,7 +11,7 @@ import pandas as pd
 import json
 import distutils.dir_util
 from io import StringIO
-from .utils import annotate_chemical_svg, get_detectables, get_producibles, get_prod_detec, get_detec_prod
+from .utils import annotate_chemical_svg, get_detectables, get_producibles, get_prod_detec, get_detec_prod, get_chassis
 
 # from bs4 import BeautifulSoup
 
@@ -129,6 +129,11 @@ def path_prod_det(request, prod='1', det='1'):
     raise Http404
 
 @api_view(['GET'])
+def chassis(request, format=None):
+    orgs = get_chassis()
+    return Response(orgs)
+
+@api_view(['GET'])
 def hello_world(request):
     return Response({"message": "Hello, world!"})
 
@@ -138,12 +143,13 @@ def net_prod_det(request, prod='1', det='1'):
     basename = 'D'+str(det)+'P'+str(prod)
     netname = basename+'_network.json'
     pathname = basename+'_pathway.json'
-    netfile = os.path.join(data_path, 'P'+str(prod),netname)
-    pathfile = os.path.join(data_path, 'P'+str(prod),pathname)
+    netfile = os.path.join(data_path,'data','json_pair_files','P'+str(prod),netname)
+    pathfile = os.path.join(data_path,'data','json_pair_files','P'+str(prod),pathname)
+    net = json.load(open(netfile))
     net = json.load(open(netfile))
     pathway = json.load(open(pathfile))
     net = annotate_chemical_svg(net)
-    nets = 'network = '+json.dumps(net)+'\n'+'pathways_info = '+json.dumps(pathway)
+    nets = 'network = '+json.dumps(net)+'\n'+'pathway_info = '+json.dumps(pathway)
     with StringIO(nets) as fh:
         response = HttpResponse(fh.read(), content_type="application/js")
         response['Content-Disposition'] = 'inline; filename=' + basename+'.js'
