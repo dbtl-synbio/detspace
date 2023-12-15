@@ -1,8 +1,3 @@
-/*
-__author__ = 'Thomas Duigou'
-__license__ = 'MIT'
-*/
-
 /* Basic layout ***************************************************************/
 
 body {
@@ -78,7 +73,7 @@ body {
     height: 1000px;
     position: relative;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: auto; 
 }
 
 #panel_startup_legend {
@@ -144,7 +139,7 @@ body {
     color: #003399;
 }
 
-#panel_chemical_info, #panel_reaction_info {
+#panel_chemical_info, #panel_reaction_info, #panel_chemical_producible_info, #panel_chemical_detectable_info {
     display: none;
 }
 
@@ -241,6 +236,7 @@ body {
 #info div.raw-text {
     line-height: 1.4;
     width: auto;
+    max-height: 100px;
     background-color: #fff;
     padding: 8px 12px;
     margin-right: -1%;
@@ -250,11 +246,50 @@ body {
 }
 
 #info .raw-text {
-    /* overflow-x: scroll; */
+    /*overflow-y: scroll; */
     /* white-space: nowrap; */
-    white-space: normal;
+    white-space: nowrap;
     word-wrap: break-word;
     margin-left: 2%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#table_detectable_info {
+    overflow-x: scroll;
+    width: auto;
+}
+
+#table_detectable_info table {
+    border: solid 1px #DDEEEE;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: Consolas,"courier new", "monospace";
+    font-size: 1em;
+}
+
+#table_detectable_info thead th {
+    background-color: #6ad16d;
+    border: solid 1px #6ad16d;
+    color: #fff;
+    text-align: center;
+    max-width: 40px;
+    white-space: nowrap;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#table_detectable_info tbody td {
+    border: solid 1px #DDEEEE;
+    color: #333;
+    background-color: #fff;
+    padding: 0 10px 0 10px;
+    max-width: 40px;
+    white-space: nowrap;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 #info .link {

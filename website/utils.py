@@ -157,6 +157,3 @@ def annotate_chemical_svg(network):
                 node['data']['svg'] = None
 
     return network
-
-
-

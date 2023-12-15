@@ -1284,6 +1284,7 @@ padding-bottom: 40px;}
     -ms-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
+
 }
 .single-profile:hover .single-profile-overlay{
     -webkit-transform:scale(1);
@@ -1353,6 +1354,13 @@ padding-bottom: 40px;}
     transform-origin: left;
 }
 
+.table{
+    display: block !important;
+    overflow-x: auto !important;
+    width: 90% !important;
+  }
+ 
+
 .html.is-animating .transition-fade{
     opacity: 1;
     transform: translateX(100%);
@@ -1364,7 +1372,7 @@ padding-bottom: 40px;}
 
 .left__buttons_panel{
 
-    width:20%;
+    width:30%;
 
 }
 
@@ -1385,7 +1393,7 @@ ul li {
 }
 
 .input_box_chassis{
-    margin-left: 20px;
+    margin-left: 30px;
     top: 0px;
 }
 
@@ -1393,21 +1401,64 @@ ul li {
     margin-left: 0px;
     background-color:chartreuse;
     font-weight: 600;
+    margin-right:5px;
+    cursor:pointer;
+    height:30px;
+    width:90px;
 }
 
 .button_producibles{
     margin-left: 0px;
     background-color:chocolate;
     font-weight: 600;
+    margin-right:5px;
+    cursor:pointer;
+    height:30px;
 }
 
 .button_detectables{
     margin-left: 0px;
     background-color:dodgerblue;
     font-weight: 600;
+    margin-right:5px;
+    cursor:pointer;
+    height:30px;
 }
 
 #base {
         width: 100%;
+
 }
  
+
+.modal-lg {
+    max-width: 80% !important;
+}
+
+.td a { 
+    display: block; 
+    border: 1px solid black;
+    padding: 16px; 
+ }
+
+ .txtvalue_chassis{
+    caret-color: transparent;
+    background: #C0C0C0;
+    font-weight: 600;
+    width: 220px;
+}
+
+.txtvalue_prod{
+    caret-color: transparent;
+    background: #C0C0C0;
+    font-weight: 600;
+    width: 220px;
+}
+
+.txtvalue_det{
+    caret-color: transparent;
+    background: #C0C0C0;
+    font-weight: 600;
+    width: 220px;
+}
+

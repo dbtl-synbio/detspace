@@ -1,3 +1,4 @@
+<
 {% extends 'base.html' %}
 
 {% load static %}
@@ -5,24 +6,304 @@
 {% block content %}
    <div class="main_body">
  
-    <div class="visualizer" id="base">
+       <div class="left__buttons_panel">
+        <br>
+        <input id="load_pathway" type="button" onclick="show_pathways()" value="show_pathways"/>
+        <input id="hide_pathway" type="button" onclick="" value="hide_pathways"/>
+        <br><br>
+        <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
+        <input id="Delete selection" type="button" onclick="delete_chassis()" value="Clean"/>
+        <script>
+            function ddlselect()
+            {
+                var d=document.getElementById("list-container");
+                var displaytext=d.options[d.selectedIndex].text;
+                //var displaytext="Chassis: "+d.options[d.selectedIndex].text+"  Taxon_ID: ";
+                document.getElementById("txtvalue").value=displaytext;
+                $("#dialogo").dialog("close");
+                var display =1;
+                var d=document.getElementById("chassis_table");
+                                       for(var i = 0; i < d.rows.length; i++)
+                        {
+                           d.rows[i].onclick = function()
+                           {
+                              rIndex = this.rowIndex;
+                                 //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
+                                 var chassis=$(this.cells[0]);
+                                    console.log(chassis.text());
+                                    //product_chosen=produc.attr("id");
+                                    // document.getElementById("txtvalue_prod").value=produc.text();
+                                    // $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
+                                    // $('#myModal').modal('hide');
+                                    // $('.modal-backdrop').remove();
+                                    // if(product_chosen!=-1 && detect_chosen!=-1){
+                                    //    $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+                                    }
+                              
+
+                           }
+                        }
+        </script>
         
-      {% include './body_viz.html' %}  
+        <div id="dialogo" class ="hidden" style="display: none;">
+            <select id="list-container" autocomplete="off" onchange="ddlselect();">
+                <option selected="selected" disabled="disabled">-- Select your chassis--</option>
+                <option><a href="#">Bacilus Subtilis</a></option>
+                <option><a href="#">Clostridium acetobutylicum</a></option>
+                <option><a href="#">Deinococcus radiodurans</a></option>
+                <option><a href="#">Escherichia Coli</a></option>
+                <option><a href="#">Geobacter sulfurreducens</a></option>
+                <option><a href="#">Klebsiella sp. 4_1_44FAA.</a></option>
+                <option><a href="#">Mycoplasma spp.</a></option>
+                <option><a href="#">Pseudomonas putida</a></option>
+                <option><a href="#">Saccharomyces cerevisiae</a></option>
+                <option><a href="#">Shewanella oneidensis</a></option>
+                <option><a href="#">Streptomyces spp.</a></option>
+                <option><a href="#">Synechocystis spp.</a></option>
+                <option><a href="#">Yarrowia lipolytica</a></option>
+            </select>
+         </div>
+        <br><br>
+        <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producibles"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
+        <input id="Delete selection" type="button" onclick="delete_producible()" value="Clean"/>
+        <div class="modal fade" id="myModal">
+         <div class="modal-dialog modal-lg">
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               <h4 class="modal-title">Producibles</h4>
+             </div>
+             <div class="modal-body">
+               <table class="table table-bordered table-condensed table-hover" id="producibles_table"></table>
+               </table>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+             </div>
+           </div><!-- /.modal-content -->
+         </div><!-- /.modal-dialog -->
+         </div><!-- /.modal -->
+            <script>
+               const tableRows = document.querySelectorAll(".producibles_table tbody tr");
+
+                     function setTableLinksHeights() {
+
+                     for (const tableRow of tableRows) {
+
+                        const tableRowLinks = tableRow.querySelectorAll("a");
+
+                        setEqualHeights(tableRowLinks);
+
+                     }
+
+                     }
+
+                     function setEqualHeights(el) {
+
+                     let counter = 0;
+
+                     for (let i = 0; i < el.length; i++) {
+
+                        el[i].style.removeProperty("height");
+
+                        const singleHeight = el[i].offsetHeight;
+
+                        if (counter < singleHeight) {
+
+                           counter = singleHeight;
+
+                        }
+
+                     }
+
+                     for (let i = 0; i < el.length; i++) {
+
+                        el[i].style.height = `${counter}px`;
+
+                     }
+
+                     }
+
+                     setTableLinksHeights();
+
+                     window.addEventListener("resize", setTableLinksHeights);
+
+                                 </script>
+                                 <script>
+                                    function ddlselect_prod()
+                                    {
+                                       var d=document.getElementById("producibles_table");
+                                       for(var i = 0; i < d.rows.length; i++)
+                        {
+                           d.rows[i].onclick = function()
+                           {
+                              rIndex = this.rowIndex;
+                                 //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
+                                 var produc=$(this.cells[1]);
+                                    console.log(produc.text());
+                                    document.getElementById("txtvalue_prod").value=produc.text();
+                                    $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
+                                    $('#myModal').modal('hide');
+                                    $('.modal-backdrop').remove();
+                                    let product_chosen= $("#txtvalue_prod").attr("prod_id");
+                                    let detect_chosen= $("#txtvalue_det").attr("det_id");
+                                    if(product_chosen!="" && detect_chosen!=""){
+                                       $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+                                    }
+                              
+
+                           }
+                        }
+                                    }
+
+                                 </script>
+         <br><br>
+        <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectables"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
+        <input id="Delete selection" type="button" onclick="delete_detectable()" value="Clean"/>
+        <div class="modal fade" id="mynewModal">
+         <div class="modal-dialog modal-lg">
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               <h4 class="modal-title">Detectables</h4>
+             </div>
+             <div class="modal-body">
+               <table class="table table-bordered table-condensed table-hover" id="detectables_table"></table>
+               </table>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+             </div>
+           </div><!-- /.modal-content -->
+         </div><!-- /.modal-dialog -->
+         </div><!-- /.modal -->
+            <script>
+               const tableRows = document.querySelectorAll(".detectables_table tbody tr");
+
+                     function setTableLinksHeights() {
+
+                     for (const tableRow of tableRows) {
+
+                        const tableRowLinks = tableRow.querySelectorAll("a");
+
+                        setEqualHeights(tableRowLinks);
+
+                     }
+
+                     }
+
+                     function setEqualHeights(el) {
+
+                     let counter = 0;
+
+                     for (let i = 0; i < el.length; i++) {
+
+                        el[i].style.removeProperty("height");
+
+                        const singleHeight = el[i].offsetHeight;
+
+                        if (counter < singleHeight) {
+
+                           counter = singleHeight;
+
+                        }
+
+                     }
+
+                     for (let i = 0; i < el.length; i++) {
+
+                        el[i].style.height = `${counter}px`;
+
+                     }
+
+                     }
+
+                     setTableLinksHeights();
+
+                     window.addEventListener("resize", setTableLinksHeights);
+
+                                 </script>
+                                 <script>
+                                    function ddlselect_det()
+                                    {
+                                       var d=document.getElementById("detectables_table");
+                                       for(var i = 0; i < d.rows.length; i++)
+                        {
+                           d.rows[i].onclick = function()
+                           {
+                                 rIndex = this.rowIndex;
+                                 var detec=$(this.cells[1]);
+                                    console.log(detec.text());
+                                    document.getElementById("txtvalue_det").value=detec.text();
+                                    $("#txtvalue_det").attr("det_id",detec.attr("id"));
+                                    $('#mynewModal').modal('hide');
+                                    $('.modal-backdrop').remove();
+                                    let product_chosen= $("#txtvalue_prod").attr("prod_id");
+                                    let detect_chosen= $("#txtvalue_det").attr("det_id");
+                                    if(product_chosen!="" && detect_chosen!=""){
+                                       $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+                                    }
+                              
+
+                           }
+                        }
+                                    }
+
+                                 </script>
+        <br><br>
+    </div>
+ 
+    <div class="visualizer" id="base">
+   
+
+      <script>
+         $( function() {
+             $( "#base" ).load( "{% static 'website/files/body_viz.html' %}" );
+         });
+       </script>  
     </div>
 
     <div style="clear:both">
     
     </div>
-   </div>
 
-  <!--
-  <script>
-      $( function() {
-          $( "#base" ).load( "{% static 'website/files/body_viz.html' %}" );
-      });
-    </script>  
--->
    
-{% endblock %}
+</div>
+
+
+
+<!-- Javascript files-->
+<script src="{% static 'website/js/jquery.min.js'%}"type="text/javascript"></script>
+      <script src="{% static 'website/js/bootstrap.bundle.min.js'%}"></script>
+      <script src="{% static 'website/js/bootstrap.min.js'%}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+      <script src="{% static 'website/js/owl.carousel.min.js'%}"></script>
+      <script src="{% static 'website/js/custom.js'%}"></script>
+      <script src="{% static 'website/js/cytoscape.min.js'%}"></script>
+      <script src="{% static 'website/js/cytoscape.umd.js'%}"></script>
+      <script src="{% static 'website/js/cytoscape.esm.min.js'%}"></script>
+      <script src="{% static 'website/js/cytoscape.cjs.js'%}"></script>
+      <script src="{% static 'website/js/cytoscape.esm.js'%}"></script>
+      <script src="{% static 'website/js/viewer.js'%}"></script>
+      <script src="{% static 'website/js/chroma.min.js'%}"></script>
+      <script src="{% static 'website/js/dagre.js'%}"></script>
+      <script src="{% static 'website/js/cytoscape-dagre.js'%}"></script>
+      <script defer src="{% static 'website/node_modules/swup/dist/swup.umd.js'%}"></script>
+      <script defer src="{% static 'website/js/script.js'%}"></script>
+      <script src="{% static 'website/js/Home.js'%}"></script>
+      <script src="{% static 'website/js/Producibles.js'%}"></script>
+      <script src="{% static 'website/js/jquery-ui.js'%}"></script>
+      <script src="{% static 'website/js/jquery-ui.min.js'%}"></script>
+      <script src="{% static 'website/js/script.js'%}"></script> 
+      <script src="{% static 'website/js/dataTables.jqueryui.min.js'%}"></script>
+      <script src="{% static 'website/js/dataTables.stateRestore.min.js'%}"></script> 
+      <script src="{% static 'website/js/stateRestore.jqueryui.min.js'%}"></script> 
+      <script src="{% static 'website/js/dataTables.buttons.min.js'%}"></script> 
+      <script src="{% static 'website/js/buttons.jqueryui.min.js'%}"></script>
+      <script src="{% static 'website/js/dataTables.bootstrap5.min.js'%}"></script>  
+      <script src="{% static 'website/js/dataTables.responsive.min.js'%}"></script> 
+      <script src="{% static 'website/js/responsive.bootstrap5.min.js'%}"></script> 
+      <!-- Table sorter -->
+      <script src="{% static 'website/js/jquery.tablesorter.min.js'%}"></script>
 
  
