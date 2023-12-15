@@ -751,7 +751,8 @@ function run_viz(network, pathways_info){
     // Cytoscape object to play with all along
     var cy = window.cy = cytoscape({
         container: document.getElementById('cy'),
-        motionBlur: true
+        motionBlur: true,
+        wheelSensitivity: 0.25
     });
 
     // Basic stuff to do only once
@@ -768,7 +769,7 @@ function run_viz(network, pathways_info){
     hide_all_prod_pathways();
     show_cofactors(false);
     put_pathway_values('global_score');
-    //make_pathway_table_sortable();  // Should be called only after the table has been populated with values
+    make_pathway_table_sortable();  // Should be called only after the table has been populated with values
 
     // Pathway Handler stuff
     window.path_handler = new PathwayHandler(cy, pathways_info);
@@ -783,7 +784,7 @@ function run_viz(network, pathways_info){
         // Reset the graph
         cy.json({elements: {}});
         cy.minZoom(1e-50);
-        
+
         // Load the full network
         cy.json({elements: network['elements']});
         
