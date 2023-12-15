@@ -38,7 +38,10 @@ def get_producibles():
     prods = get_all_producibles()
     dprods = []
     for item in prods:
-        if item["ID"] in prodl:
+        iid = item["ID"]
+        if iid in prodl:
+            item['Effectors'] = len( prodl[iid] );
+            item['Pathways'] = sum( [ prodl[iid][x] for x in prodl[iid] ])           
             dprods.append(item)
     return(dprods)
 
@@ -76,7 +79,10 @@ def get_detectables():
     detec = get_all_detectables()
     pdetect = []
     for item in detec:
-        if item["ID"] in detl:
+        iid = item["ID"]
+        if iid in detl:
+            item['Products'] = len( detl[iid] );
+            item['Pathways'] = sum( [ detl[iid][x] for x in detl[iid] ])           
             pdetect.append(item)
     return(pdetect)
 
@@ -108,7 +114,7 @@ def get_prod_detec(prod):
     if prod in prodl:
         for item in dets:
             if item['ID'] in prodl[prod]:
-                item['Pathways'] = prodl[prod][item['ID']]
+                item['Selected'] = prodl[prod][item['ID']]
                 pl.append(item)
     return(pl)
 
@@ -120,8 +126,7 @@ def get_detec_prod(det):
     if det in detl:
         for item in prods:
             if item['ID'] in detl[det]:
-                item['Effectors'] = len(prodl[item['ID']])
-                item['Pathways'] = detl[det][item['ID']]
+                item['Selected'] = detl[det][item['ID']]
                 dl.append(item)
     return(dl)
 
