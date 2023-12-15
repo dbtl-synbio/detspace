@@ -1,3 +1,14 @@
+
+
+
+var product_chosen=-1;
+var detect_chosen=-1;
+var network = {};
+var pathways_info = {};
+
+
+
+
 //const Home = () => {
 
     const handleClick = () => {
@@ -54,6 +65,7 @@ $(document).ready(function(){
               var table_data = '<table class="table table-bordered table-condensed table-hover" id="producibles_table">';
               $.each( data, function( index,val ) {
                  table_data += '<tr'+'id="producible>"';
+                 table_data += "<td>" + val["ID"] + "</td>";
                  table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_prod()">'+ val["Name"] + '</a>'+"</td>";
                  table_data +="<td>" + val["SMILES"] + "</td>";
                  table_data += '</tr>';
@@ -68,9 +80,7 @@ $(document).ready(function(){
 
 // Button action that shows the network.json//
  function show_pathways() {
-    $.getScript("static/website/files/network.json");
-    run_viz();
-    console.log("static/website/files/network.json")
+    run_viz(network, pathways_info);
     }
 
     
@@ -91,6 +101,7 @@ $(document).ready(function(){
                var table_data = '<table class="table table-bordered table-condensed table-hover" id="detectables_table">';
                $.each( data, function( index,val ) {
                   table_data += '<tr'+'id="detectable>"';
+                  table_data += "<td>" + val["ID"] + "</td>";
                   table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_det()">'+ val["Name"] + '</a>'+"</td>";
                   table_data +="<td>" + val["SMILES"] + "</td>";
                   table_data += '</tr>';
@@ -173,5 +184,18 @@ function get_det(){
     });
    }
  
-var product_chosen=-1
-var detect_chosen=-1
+function delete_chassis() {
+   document.getElementById("txtvalue").value="";
+   }
+ 
+function delete_producible() {
+   document.getElementById("txtvalue_prod").value="";
+   $("#txtvalue_prod").attr("prod_id",detec.attr("id"));
+   }
+   
+
+function delete_detectable() {
+   document.getElementById("txtvalue_det").value="";
+   $("#txtvalue_det").attr("det_id",detec.attr("id"));
+   }
+
