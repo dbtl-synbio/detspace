@@ -143,8 +143,8 @@ def net_prod_det(request, prod='1', det='1'):
     basename = 'D'+str(det)+'P'+str(prod)
     netname = basename+'_network.json'
     pathname = basename+'_pathway.json'
-    netfile = os.path.join(data_path,'P'+str(prod),netname)
-    pathfile = os.path.join(data_path,'P'+str(prod),pathname)
+    netfile = os.path.join(data_path,'data','json_pair_files',P'+str(prod),netname)
+    pathfile = os.path.join(data_path,'data','json_pair_files','P'+str(prod),pathname)
     net = json.load(open(netfile))
     pathway = json.load(open(pathfile))
     net = annotate_chemical_svg(net)
