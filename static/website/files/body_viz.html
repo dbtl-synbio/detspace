@@ -1,90 +1,5 @@
-<!DOCTYPE html>
-
-<html lang="en">
-
 <div id="viewer">
     <div id="interaction" class="interact">
-        <div class="left__buttons_panel">
-            <br>
-            <input id="load_pathway" type="button" onclick="show_pathways()" value="show_pathways"/>
-            <script>
-                function show_pathways() {
-            $.getScript("static/website/files/network.json");
-            run_viz();
-            }
-            </script>
-            <input id="hide_pathway" type="button" value="hide_pathways"/>
-            <br><br>
-            <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
-            <script>
-                function ddlselect()
-                {
-                    var d=document.getElementById("list-container");
-                    var displaytext=d.options[d.selectedIndex].text;
-                    document.getElementById("txtvalue").value=displaytext;
-                    $("#dialogo").dialog("close");
-                    var display =1;
-                }
-            </script>
-            
-            <div id="dialogo" class ="hidden" style="display: none;">
-                <select id="list-container" autocomplete="off" onchange="ddlselect();">
-                    <option selected="selected" disabled="disabled">-- Select your chassis--</option>
-                    <option><a href="#">Bacilus Subtilis</a></option>
-                    <option><a href="#">Clostridium acetobutylicum</a></option>
-                    <option><a href="#">Deinococcus radiodurans</a></option>
-                    <option><a href="#">Escherichia Coli</a></option>
-                    <option><a href="#">Geobacter sulfurreducens</a></option>
-                    <option><a href="#">Klebsiella spp.</a></option>
-                    <option><a href="#">Mycoplasma spp.</a></option>
-                    <option><a href="#">Pseudomonas putida</a></option>
-                    <option><a href="#">Saccharomyces cerevisiae</a></option>
-                    <option><a href="#">Shewanella oneidensis</a></option>
-                    <option><a href="#">Streptomyces spp.</a></option>
-                    <option><a href="#">Synechocystis spp.</a></option>
-                    <option><a href="#">Yarrowia lipolytica</a></option>
-    
-                
-                
-                </select>
-             </div>
-             <script>
-                $(document).ready(function(){
-                   $("#dialogo").dialog({
-                    modal: true,
-                    title: "Chassis",
-                    width: 250,
-                    minWidth: 200,
-                    maxWidth: 400, 
-                    //show: "fold", 
-                    hide: "scale",
-                    autoOpen: false
-                });
-            });
-             </script>
-            <br><br>
-            <input id="Producibles" type="button" name="Producible" onclick="hideShow_prod()"  class="button_producibles" value="Producibles"/> <input type="text" 
-            autocomplete="off" onkeydown="return false;" id="txtvalue"/>
-            <div id="dialogo_prod" class ="hidden" style="display: none;">  
-            </div>
-             <br>
-             <input id="Detectable" type="button"  class="button_detectables" onclick="hideShow()" value="Detectable"/> <input type="text" autocomplete="off" onkeydown="return false;" id="txtvalue"/>
-         <select name="pathviz" id="pathviz">
-           <option value="D266P132">Volvo</option>
-           <option value="D314P434">Saab</option>
-           <option value="D426P358">Mercedes</option>
-         </select>
-             <script type="text/javascript">
-           $("#pathviz").on('change', function(){
-               item = $(this).val();
-               namefile = item+'.json';
-               $.getScript("{% static "website/files/" %}"+namefile );
-           });
-                </script>   
-         
-            <br><br>
-        </div>
-     
         <div id="pathway_selection">
             <div class="info-title">Pathway selection</div>
             <div class="spacer"></div>
@@ -95,6 +10,7 @@
             <input id="hide_all_pathways_button" type="button" value="Hide all pathways"/>
             <input id="redraw_pathways_button" type="button" value="Refresh layout"/>
         </div>
+        <!--
         <div id="cofacor_handling">
             <div class="info-title">Cofactor options</div>
             <div class="spacer"></div>
@@ -111,17 +27,16 @@
             <div class="info-title">Export to Galaxy</div>
             <div class="spacer"></div>
             <input id="download_galaxy_button" type="button" value="Export to Galaxy"/>
-        </div>
+        </div>--->
     </div>
     <div id="cy"></div>
     <div id="info">
         <div id="molecule"></div>
         <div class="info" id="information">
-            <!-- Statup legend -->
+            <!-- Statup legend
             <div id="panel_startup_legend">
                 <div class="info-title">Legend</div>
-                <div class="info-subtitle">How to</div>
-
+                <div class="info-subtitle">How to</div>    
                 <div class="help-tip">1/ Pass the mouse hover pathway IDs (the "Pathway" column in the left table) to emphasize a specific path.</div>
                 <div class="help-tip">2/ Click once on a pathway ID (in the left table) to "pin" a path. When at least one pathway is pinned,
                     other pathways are faded.Click a second time on a pinned pathway ID to unpin it.</div>
@@ -142,7 +57,7 @@
                     <p><span class="symbol-compound symbol-precursor-color">▢</span>&nbsp;Precursors</p>
                     <p><span class="symbol-compound symbol-source-color">▢</span>&nbsp;Source</p>
                 </div>
-            </div>
+            </div> -->
             <!-- Information on a selected chemical -->
             <div id="panel_chemical_info">
                 <div class="info-title">Chemical</div>
@@ -164,29 +79,12 @@
                 <div>
                     <div class="info-subtitle">InChI</div>
                     <div class="raw-text"><span class="chem_info_inchi"></span></div>
-                    <div class="link raw-text"><span class="chem_info_inchi_search"></span></div>
                 </div>
                 <!-- Inchikey -->
                 <div>
                     <div class="info-subtitle">InChIKey</div>
                     <div class="raw-text"><span class="chem_info_inchikey"></span></div>
-                    <div class="link raw-text"><span class="chem_info_inchikey_search"></span></div>
                 </div>
-                <!-- Cofactor 
-                <div>
-                    <div class="info-subtitle">Is a cofactor?</div>
-                    <div class="raw-text"><span class="chem_info_iscofactor"></span></div>
-                </div>-->
-                <!-- Precursor 
-                <div>
-                    <div class="info-subtitle">Is a precursor?</div>
-                    <div class="raw-text"><span class="chem_info_isprecursor"></span></div>
-                </div>-->
-                <!-- Crosslinks 
-                <div>
-                    <div class="info-subtitle">Crosslinks</div>
-                    <div class="raw-text chem_info_xlinks"></div>
-                </div>-->
                 <!-- Pathways involved in -->
                 <div>
                     <div class="info-subtitle">Pathways involved in</div>
@@ -214,37 +112,31 @@
                 <div>
                     <div class="info-subtitle">InChI</div>
                     <div class="raw-text"><span class="chem_info_inchi"></span></div>
-                    <div class="link raw-text"><span class="chem_info_inchi_search"></span></div>
                 </div>
                 <!-- Inchikey -->
                 <div>
                     <div class="info-subtitle">InChIKey</div>
                     <div class="raw-text"><span class="chem_info_inchikey"></span></div>
-                    <div class="link raw-text"><span class="chem_info_inchikey_search"></span></div>
                 </div>
                 <!-- PMID -->
                 <div>
                     <div class="info-subtitle">PMID</div>
                     <div class="raw-text"><span class="chem_info_pmid"></span></div>
-                    <div class="link raw-text"><span class="chem_info_pmid_search"></span></div>
                 </div>
                 <!-- KEGG ID -->
                 <div>
                     <div class="info-subtitle">KEGG ID</div>
                     <div class="raw-text"><span class="chem_info_keggid"></span></div>
-                    <div class="link raw-text"><span class="chem_info_keggid_search"></span></div>
                 </div>
                 <!-- MNX ID -->
                 <div>
                     <div class="info-subtitle">MNX ID</div>
                     <div class="raw-text"><span class="chem_info_mnxid"></span></div>
-                    <div class="link raw-text"><span class="chem_info_mnxid_search"></span></div>
                 </div>
                 <!-- Link to Systemsbiotech -->
                 <div>
                     <div class="info-subtitle">Reference</div>
                     <div class="raw-text"><span class="chem_info_sbtreference"></span></div>
-                    <div class="link raw-text"><span class="chem_info_sbtreference_search"></span></div>
                 </div>
             </div>
             <!-- Information on a detectable chemical -->
@@ -268,56 +160,14 @@
                 <div>
                     <div class="info-subtitle">InChI</div>
                     <div class="raw-text"><span class="chem_info_inchi"></span></div>
-                    <div class="link raw-text"><span class="chem_info_inchi_search"></span></div>
                 </div>
                 <!-- Inchikey -->
                 <div>
                     <div class="info-subtitle">InChIKey</div>
                     <div class="raw-text"><span class="chem_info_inchikey"></span></div>
-                    <div class="link raw-text"><span class="chem_info_inchikey_search"></span></div>
                 </div>
-                <!-- Species -->
-                <div>
-                    <div class="info-subtitle">Species</div>
-                    <div class="raw-text"><span class="chem_info_species"></span></div>
-                    <div class="link raw-text"><span class="chem_info_species_search"></span></div>
-                </div>
-                <!-- TF -->
-                <div>
-                    <div class="info-subtitle">Transcription factor</div>
-                    <div class="raw-text"><span class="chem_info_tf"></span></div>
-                    <div class="link raw-text"><span class="chem_info_tf_search"></span></div>
-                </div>
-                <!-- Bibliographic reference -->
-                <div>
-                    <div class="info-subtitle">Bibliographic reference</div>
-                    <div class="raw-text"><span class="chem_info_biblioref"></span></div>
-                    <div class="link raw-text"><span class="chem_info_biblioref_search"></span></div>
-                </div>
-                <!-- Database reference -->
-                <div>
-                    <div class="info-subtitle">Database reference</div>
-                    <div class="raw-text"><span class="chem_info_dataref"></span></div>
-                    <div class="link raw-text"><span class="chem_info_dataref_search"></span></div>
-                </div>
-                <!-- NCBI Accession-->
-                <div>
-                    <div class="info-subtitle">NCBI Accession</div>
-                    <div class="raw-text"><span class="chem_info_ncbi"></span></div>
-                    <div class="link raw-text"><span class="chem_info_ncbi_search"></span></div>
-                </div>
-                <!-- UniProt -->
-                <div>
-                    <div class="info-subtitle">UniProt</div>
-                    <div class="raw-text"><span class="chem_info_uniprot"></span></div>
-                    <div class="link raw-text"><span class="chem_info_uniprot_search"></span></div>
-                </div>
-                <!-- AA sequence -->
-                <div>
-                    <div class="info-subtitle">AA sequence</div>
-                    <div class="raw-text"><span class="chem_info_aaseq"></span></div>
-                    <div class="link raw-text"><span class="chem_info_aaseq_search"></span></div>
-                </div>
+                <div class="info-subtitle">Sensbio Information</div>
+                <div id="table_detectable_info"></div>
             </div>
             <!-- Information on a selected reaction -->
             <div id="panel_reaction_info">
@@ -329,16 +179,6 @@
                     <div class="info-subtitle">EC number(s)</div>
                     <div class="raw-text reaction_info_ecnumbers"></div>
                 </div>
-                <!-- Crosslinks
-                <div>
-                    <div class="info-subtitle">Crosslinks</div>
-                    <div class="raw-text reaction_info_xlinks"></div>
-                </div> -->
-                <!-- Thermodynamic
-                <div>
-                    <div class="info-subtitle">&#916;<sub>r</sub>G' (kJ/mol)</div>
-                    <div class="raw-text"><span class="reaction_info_thermo"></span></div>
-                </div> -->
                 <!-- Rule score -->
                 <div>
                     <div class="info-subtitle">Rule score</div>
@@ -364,11 +204,6 @@
                     <div class="info-subtitle">Pathways involved in</div>
                     <div class="raw-text reaction_info_pathids"></div>
                 </div>
-                <!-- UniProt IDs
-                <div>
-                    <div class="info-subtitle">UniProt IDs (Selenzyme score)</div>
-                    <div class="raw-text reaction_info_uniprot_crosslinks"></div>
-                </div> -->
                 <!-- Crosslink to Selenzyme -->
                 <div>
                     <div class="info-subtitle">Enzyme selection</div>

@@ -75,13 +75,24 @@ $(document).ready(function(){
             //var detectable_data = data.split(/\r?\n|\r/);
 
               var table_data = '<table class="table table-bordered table-condensed table-hover" id="producibles_table">';
+              table_data += '<tr'+'id="producible>"';
+              table_data +="<th>" + "ID" + "</th>";
+              table_data +="<th>" + "Name" + "</th>";
+              table_data +="<th>" + "SMILES" + "</th>";
+              table_data +="<th>" + "Effectors" + "</th>";
+              table_data +="<th>" + "Pathways" + "</th>";
+              table_data +="<th>" + "Selected" + "</th>";
+              table_data += '</tr>';
               $.each( data, function( index,val ) {
-                 table_data += '<tr'+'id="producible>"';
-                 table_data += "<td>" + val["ID"] + "</td>";
-                 table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_prod()">'+ val["Name"] + '</a>'+"</td>";
-                 table_data +="<td>" + val["SMILES"] + "</td>";
-                 table_data += '</tr>';
-               });
+               table_data += '<tr'+'id="producible>"';
+               table_data += "<td>" + val["ID"] + "</td>";
+               table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_prod()">'+ val["Name"] + '</a>'+"</td>";
+               table_data +="<td>" + val["SMILES"] + "</td>";
+               table_data +="<td>" + val["Effectors"] + "</td>";
+               table_data +="<td>" + val["Pathways"] + "</td>";
+               table_data +="<td>" + val["Selected"] + "</td>";
+               table_data += '</tr>';
+             });
               table_data += '</table>';
               $('#producibles_table').html(table_data);
            ;}//success
@@ -111,11 +122,22 @@ $(document).ready(function(){
              //var detectable_data = data.split(/\r?\n|\r/);
 
                var table_data = '<table class="table table-bordered table-condensed table-hover" id="detectables_table">';
+               table_data += '<tr'+'id="detectable>"';
+               table_data +="<th>" + "ID" + "</th>";
+               table_data +="<th>" + "Name" + "</th>";
+               table_data +="<th>" + "SMILES" + "</th>";
+               table_data +="<th>" + "Products" + "</th>";
+               table_data +="<th>" + "Pathways" + "</th>";
+               table_data +="<th>" + "Selected" + "</th>";
+               table_data += '</tr>';
                $.each( data, function( index,val ) {
                   table_data += '<tr'+'id="detectable>"';
                   table_data += "<td>" + val["ID"] + "</td>";
                   table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_det()">'+ val["Name"] + '</a>'+"</td>";
                   table_data +="<td>" + val["SMILES"] + "</td>";
+                  table_data +="<td>" + val["Products"] + "</td>";
+                  table_data +="<td>" + val["Pathways"] + "</td>";
+                  table_data +="<td>" + val["Selected"] + "</td>";
                   table_data += '</tr>';
                 });
                table_data += '</table>';

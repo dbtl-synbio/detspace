@@ -148,7 +148,7 @@ def net_prod_det(request, prod='1', det='1'):
     net = json.load(open(netfile))
     pathway = json.load(open(pathfile))
     net = annotate_chemical_svg(net)
-    nets = 'network = '+json.dumps(net)+'\n'+'pathway_info = '+json.dumps(pathway)
+    nets = 'network = '+json.dumps(net)+'\n'+'pathways_info = '+json.dumps(pathway)
     with StringIO(nets) as fh:
         response = HttpResponse(fh.read(), content_type="application/js")
         response['Content-Disposition'] = 'inline; filename=' + basename+'.js'

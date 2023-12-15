@@ -881,7 +881,7 @@ function run_viz(network, pathways_info){
                     .css({
                         'curve-style': 'unbundled-bezier',
                         'line-color': '#999999',
-                        'line-fill': 'linear-gradient',
+                        'line-fill': 'solid',
                         'line-gradient-stop-colors': 'cyan magenta',
                         'line-gradient-stop-positions': '0% 100%',
                         'width': '5px',
