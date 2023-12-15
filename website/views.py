@@ -11,7 +11,7 @@ import pandas as pd
 import json
 import distutils.dir_util
 from io import StringIO
-from .utils import annotate_chemical_svg, get_detectables, get_producibles, get_prod_detec, get_detec_prod
+from .utils import annotate_chemical_svg, get_detectables, get_producibles, get_prod_detec, get_detec_prod, get_chassis
 
 # from bs4 import BeautifulSoup
 
@@ -88,6 +88,7 @@ def api(request, format=None):
         'det': reverse('detectables', request=request, format=format),
  #       'det/prod_id': reverse('prod_detectable', request=request, format=format),
         'paths/prod_id/det_id': reverse('paths', request=request, format=format),
+        'chassis': reverse('chassis', request=request, format=format),
     })
 
 @api_view(['GET'])
@@ -128,16 +129,22 @@ def path_prod_det(request, prod='1', det='1'):
     raise Http404
 
 @api_view(['GET'])
+def chassis(request, format=None):
+    orgs = get_chassis()
+    return Response(orgs)
+
+@api_view(['GET'])
 def hello_world(request):
     return Response({"message": "Hello, world!"})
 
 @api_view(['GET'])
 def net_prod_det(request, prod='1', det='1'):
+    data_path = os.getenv('DETSPACE_DATA')
     basename = 'D'+str(det)+'P'+str(prod)
     netname = basename+'_network.json'
     pathname = basename+'_pathway.json'
-    netfile = os.path.join(settings.STATICFILES_DIRS[0], 'website/files',netname)
-    pathfile = os.path.join(settings.STATICFILES_DIRS[0], 'website/files',pathname)
+    netfile = os.path.join(data_path,'P'+str(prod),netname)
+    pathfile = os.path.join(data_path,'P'+str(prod),pathname)
     net = json.load(open(netfile))
     pathway = json.load(open(pathfile))
     net = annotate_chemical_svg(net)

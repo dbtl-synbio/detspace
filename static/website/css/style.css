@@ -266,7 +266,7 @@ button {
 }
 
 .titlepage h2 {
-    text-transform: uppercase;
+ /**   text-transform: uppercase; **/
      font-size: 45px;
      color: #353d47;
      line-height: 50px;
@@ -624,11 +624,11 @@ button {
 .about {
     background: #fff;
     padding: 80px 50px;
-    position: relative;
+    position: relative; 
     margin: 0 70px;
     box-shadow: 3px 0 62px rgba(13, 3, 3, 0.18);
     border-radius: 60px;
-    margin-top: -130px;
+    margin-top: -130px; 
 }
 
 .container_width {max-width: 1380px;
@@ -636,7 +636,6 @@ button {
  display: block;
  margin: 0 auto;
  clear: both;
-
 
 }
 
@@ -914,7 +913,7 @@ button {
     line-height: 20px;
     font-weight: bold;
     padding-top: 42px;
-    text-transform: uppercase;
+/**    text-transform: uppercase; **/
 }
 
 .reader p {
