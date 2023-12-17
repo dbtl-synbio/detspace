@@ -11,8 +11,9 @@
         <input id="load_pathway" type="button" onclick="show_pathways()" value="show_pathways"/>
         <input id="hide_pathway" type="button" onclick="" value="hide_pathways"/>
         <br><br>
-        <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
-        <input id="Delete selection" type="button" onclick="delete_chassis()" value="Clean"/>
+        <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> 
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
+        <button  id="Delete selection" onclick="delete_chassis()" class="btn"><i class="fa fa-close"></i> Clean</button>
         <script>
             function ddlselect()
             {
@@ -65,7 +66,7 @@
          </div>
         <br><br>
         <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producibles"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
-        <input id="Delete selection" type="button" onclick="delete_producible()" value="Clean"/>
+        <button  id="Delete selection" onclick= "delete_producible()" class="btn"><i class="fa fa-close"></i> Clean</button>
         <div class="modal fade" id="myModal">
          <div class="modal-dialog modal-lg">
            <div class="modal-content">
@@ -159,7 +160,7 @@
                                  </script>
          <br><br>
         <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectables"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
-        <input id="Delete selection" type="button" onclick="delete_detectable()" value="Clean"/>
+        <button  id="Delete selection" onclick= "delete_detectable()" class="btn"><i class="fa fa-close"></i> Clean</button>
         <div class="modal fade" id="mynewModal">
          <div class="modal-dialog modal-lg">
            <div class="modal-content">

@@ -1462,3 +1462,7 @@ ul li {
     width: 220px;
 }
 
+.close_button{
+    display: inline-block;
+  content: "\00d7"; /* This will render the 'X' */
+}

@@ -26,7 +26,7 @@ body {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 10px;
     width: 80%;
-    max-width: 250px;
+    max-width: 400px;
     height: 1000px;
 }
 
@@ -59,9 +59,9 @@ body {
 /* Central panel: the graph ***************************************************/
 #cy {
     float: left;
-    width: 60%;
+    width: 70%;
     height: 800px;  
-    margin-left: 22%;  /* +2 to compensate left pannel padding */
+    margin-left: 40%;  /* +2 to compensate left pannel padding */
 }
 
 /* Right side panel: info *****************************************************/
