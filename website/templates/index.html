@@ -14,6 +14,7 @@
         <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> 
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
         <button  id="Delete selection" onclick="delete_chassis()" class="btn"><i class="fa fa-close"></i></button>
+
         
         <div id="dialogo" class ="hidden" style="display: none;">
             <select id="list-container" autocomplete="off" onchange="ddlselect();">
@@ -47,9 +48,7 @@
                    console.log(displaytext)
                    $("#dialogo").dialog("close");
                    var display =1;
-<<<<<<< HEAD
-                  
-=======
+
                    var d=document.getElementById("chassis_table");
                                           for(var i = 0; i < d.rows.length; i++)
                            {
@@ -63,7 +62,6 @@
                                  
    
                               }
->>>>>>> c08439bc8dd879d8d6338edc01c413b3e1d54b7e
                            }
            </script>
          </div>
@@ -106,7 +104,6 @@
                      let counter = 0;
 
                      for (let i = 0; i < el.length; i++) {
-
                         el[i].style.removeProperty("height");
 
                         const singleHeight = el[i].offsetHeight;
@@ -114,7 +111,7 @@
                         if (counter < singleHeight) {
 
                            counter = singleHeight;
-
+ 
                         }
 
                      }
