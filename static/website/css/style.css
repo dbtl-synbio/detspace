@@ -141,19 +141,19 @@ ul {
 ol {
      margin: 0px;
      padding: 0px;
-     list-style: none;
+     list-style: decimal;
 }
 
 p {
      margin: 0px;
      font-weight: 500;
      font-size: 15px;
-     line-height: 24px;
+     line-height: 12px;
 }
 
 a {
-     color: #222222;
-     text-decoration: none;
+     color: #d92525;
+     text-decoration: none; 
      outline: none !important;
 }
 
@@ -622,25 +622,13 @@ button {
 /** about section **/
 
 .about {
-    background: #fff;
-    padding: 80px 50px;
-    position: relative; 
-    margin: 0 70px;
-    box-shadow: 3px 0 62px rgba(13, 3, 3, 0.18);
-    border-radius: 60px;
-    margin-top: -130px; 
+    padding-top: 10px;
 }
-
-.container_width {max-width: 1380px;
- padding: 0 15px;
- display: block;
- margin: 0 auto;
- clear: both;
-
-}
-
-.about .titlepage {
-     padding-bottom: 0;
+.about .titlepage {    
+    padding-top: 10px;
+    padding-bottom: 0;
+    padding-left: 50px;
+    padding-t: 20px;
 }
 .about .titlepage h2 {
     position: relative;
@@ -662,7 +650,7 @@ button {
     font-size: 17px;
     line-height: 30px;
     color: #111111;
-    padding: 35px 0px 50px 0px;
+    padding: 10px 0px 10px 0px;
 }
 
 
