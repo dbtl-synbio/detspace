@@ -875,7 +875,7 @@ function run_viz(network, pathways_info){
                     .css({
                         'background-image': 'data(svg)',
                         'background-fit': 'contain',
-                        'border-width': 0,
+                        'border-width': 8,
                     })
                 .selector('edge')
                     .css({

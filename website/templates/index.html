@@ -5,12 +5,8 @@
 
 {% block content %}
    <div class="main_body">
- 
-       <div class="left__buttons_panel">
-        <br>
-        <input id="load_pathway" type="button" onclick="show_pathways()" value="show_pathways"/>
-        <input id="hide_pathway" type="button" onclick="" value="hide_pathways"/>
-        <br><br>
+      <div id="interaction" class="interact">
+        <div class="info-title">Selection panel</div>
         <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> 
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
         <button  id="Delete selection" onclick="delete_chassis()" class="btn"><i class="fa fa-close"></i></button>
@@ -47,35 +43,35 @@
                    console.log(displaytext)
                    $("#dialogo").dialog("close");
                    var display =1;
-<<<<<<< HEAD
                   
-=======
-                   var d=document.getElementById("chassis_table");
-                                          for(var i = 0; i < d.rows.length; i++)
-                           {
-                              d.rows[i].onclick = function()
-                              {
-                                 rIndex = this.rowIndex;
-                                    //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
-                                    var chassis=$(this.cells[0]);
-                                       console.log(chassis.text());
-                                       }
-                                 
-   
-                              }
->>>>>>> c08439bc8dd879d8d6338edc01c413b3e1d54b7e
                            }
            </script>
          </div>
-        <br><br>
         <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producibles"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
         <button  id="Delete selection" onclick= "delete_producible()" class="btn"><i class="fa fa-close"></i></button>
+        
+        <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectables"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
+        <button  id="Delete selection" onclick= "delete_detectable()" class="btn"><i class="fa fa-close"></i></button>
+
+        <input id="load_pathway" type="button" onclick="show_pathways()" value="Generate" style="margin-top: 10px"/>
+
+        <div id="pathway_selection">
+         <div class="info-title">Viewer tools</div>
+         <div class="spacer"></div>
+         <div id="table_choice">
+             <!-- Will be filled by viewer.js -->
+         </div>
+         <input id="view_all_pathways_button" type="button" value="Show all pathways"/>
+         <input id="hide_all_pathways_button" type="button" value="Hide all pathways"/>
+         <input id="redraw_pathways_button" type="button" value="Refresh layout"/>
+     </div>
+</div>
         <div class="modal fade" id="myModal">
          <div class="modal-dialog modal-lg">
            <div class="modal-content">
              <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                <h4 class="modal-title">Producibles</h4>
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
              </div>
              <div class="modal-body">
                <table class="table table-bordered table-condensed table-hover" id="producibles_table"></table>
@@ -86,52 +82,7 @@
            </div><!-- /.modal-content -->
          </div><!-- /.modal-dialog -->
          </div><!-- /.modal -->
-            <!-- <script>
-               const tableRows = document.querySelectorAll(".producibles_table tbody tr");
 
-                     function setTableLinksHeights() {
-
-                     for (const tableRow of tableRows) {
-
-                        const tableRowLinks = tableRow.querySelectorAll("a");
-
-                        setEqualHeights(tableRowLinks);
-
-                     }
-
-                     }
-
-                     function setEqualHeights(el) {
-
-                     let counter = 0;
-
-                     for (let i = 0; i < el.length; i++) {
-
-                        el[i].style.removeProperty("height");
-
-                        const singleHeight = el[i].offsetHeight;
-
-                        if (counter < singleHeight) {
-
-                           counter = singleHeight;
-
-                        }
-
-                     }
-
-                     for (let i = 0; i < el.length; i++) {
-
-                        el[i].style.height = `${counter}px`;
-
-                     }
-
-                     }
-
-                     setTableLinksHeights();
-
-                     window.addEventListener("resize", setTableLinksHeights);
-
-                                 </script> -->
                                  <script>
                                     function ddlselect_prod()
                                     {
@@ -160,15 +111,12 @@
                                     }
 
                                  </script>
-         <br><br>
-        <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectables"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
-        <button  id="Delete selection" onclick= "delete_detectable()" class="btn"><i class="fa fa-close"></i></button>
         <div class="modal fade" id="mynewModal">
          <div class="modal-dialog modal-lg">
            <div class="modal-content">
              <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                <h4 class="modal-title">Detectables</h4>
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
              </div>
              <div class="modal-body">
                <table class="table table-bordered table-condensed table-hover" id="detectables_table"></table>
@@ -180,52 +128,6 @@
            </div><!-- /.modal-content -->
          </div><!-- /.modal-dialog -->
          </div><!-- /.modal -->
-            <script>
-               const tableRows = document.querySelectorAll(".detectables_table tbody tr");
-
-                     function setTableLinksHeights() {
-
-                     for (const tableRow of tableRows) {
-
-                        const tableRowLinks = tableRow.querySelectorAll("a");
-
-                        setEqualHeights(tableRowLinks);
-
-                     }
-
-                     }
-
-                     function setEqualHeights(el) {
-
-                     let counter = 0;
-
-                     for (let i = 0; i < el.length; i++) {
-
-                        el[i].style.removeProperty("height");
-
-                        const singleHeight = el[i].offsetHeight;
-
-                        if (counter < singleHeight) {
-
-                           counter = singleHeight;
-
-                        }
-
-                     }
-
-                     for (let i = 0; i < el.length; i++) {
-
-                        el[i].style.height = `${counter}px`;
-
-                     }
-
-                     }
-
-                     setTableLinksHeights();
-
-                     window.addEventListener("resize", setTableLinksHeights);
-
-                                 </script>
                                  <script>
                                     function ddlselect_det()
                                     {
@@ -253,9 +155,9 @@
                                     }
 
                                  </script>
-        <br><br>
-    </div>
+   
  
+
     <div class="visualizer" id="base">
    
 
@@ -280,32 +182,13 @@
       <script src="{% static 'website/js/bootstrap.bundle.min.js'%}"></script>
       <script src="{% static 'website/js/bootstrap.min.js'%}"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-      <script src="{% static 'website/js/owl.carousel.min.js'%}"></script>
-      <script src="{% static 'website/js/custom.js'%}"></script>
-      <script src="{% static 'website/js/cytoscape.min.js'%}"></script>
-      <script src="{% static 'website/js/cytoscape.umd.js'%}"></script>
-      <script src="{% static 'website/js/cytoscape.esm.min.js'%}"></script>
-      <script src="{% static 'website/js/cytoscape.cjs.js'%}"></script>
-      <script src="{% static 'website/js/cytoscape.esm.js'%}"></script>
-      <script src="{% static 'website/js/viewer.js'%}"></script>
       <script src="{% static 'website/js/chroma.min.js'%}"></script>
       <script src="{% static 'website/js/dagre.js'%}"></script>
-      <script src="{% static 'website/js/cytoscape-dagre.js'%}"></script>
-      <script defer src="{% static 'website/node_modules/swup/dist/swup.umd.js'%}"></script>
-      <script defer src="{% static 'website/js/script.js'%}"></script>
       <script src="{% static 'website/js/Home.js'%}"></script>
       <script src="{% static 'website/js/Producibles.js'%}"></script>
       <script src="{% static 'website/js/jquery-ui.js'%}"></script>
       <script src="{% static 'website/js/jquery-ui.min.js'%}"></script>
-      <script src="{% static 'website/js/script.js'%}"></script> 
-      <script src="{% static 'website/js/dataTables.jqueryui.min.js'%}"></script>
-      <script src="{% static 'website/js/dataTables.stateRestore.min.js'%}"></script> 
-      <script src="{% static 'website/js/stateRestore.jqueryui.min.js'%}"></script> 
-      <script src="{% static 'website/js/dataTables.buttons.min.js'%}"></script> 
-      <script src="{% static 'website/js/buttons.jqueryui.min.js'%}"></script>
-      <script src="{% static 'website/js/dataTables.bootstrap5.min.js'%}"></script>  
-      <script src="{% static 'website/js/dataTables.responsive.min.js'%}"></script> 
-      <script src="{% static 'website/js/responsive.bootstrap5.min.js'%}"></script> 
+      <!-- <script src="{% static 'website/js/buttons.jqueryui.min.js'%}"></script> -->
       <!-- Table sorter -->
       <script src="{% static 'website/js/jquery.tablesorter.min.js'%}"></script>
 

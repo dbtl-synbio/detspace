@@ -347,8 +347,8 @@ button {
 }
 .site-navbar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
 }
 
 .site-navbar ul {
@@ -1344,7 +1344,7 @@ padding-bottom: 40px;}
 
     .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
-    background-color: blue;
+    background-color: rgb(164, 164, 255);
 }
 
 .transition-fade {
@@ -1392,37 +1392,37 @@ ul li {
     cursor:pointer;
 }
 
-.input_box_chassis{
-    margin-left: 30px;
-    top: 0px;
-}
-
 .button_chassis{
-    margin-left: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     background-color:chartreuse;
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
     height:30px;
-    width:90px;
+    width:100px;
 }
 
 .button_producibles{
     margin-left: 0px;
+    margin-bottom: 10px;
     background-color:chocolate;
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
     height:30px;
+    width:100px;
 }
 
 .button_detectables{
     margin-left: 0px;
+    
     background-color:dodgerblue;
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
     height:30px;
+    width:100px;
 }
 
 #base {
@@ -1445,21 +1445,24 @@ ul li {
     caret-color: transparent;
     background: #C0C0C0;
     font-weight: 600;
-    width: 220px;
+    width: 50%;
+    font-size: 0,8em;
 }
 
 .txtvalue_prod{
     caret-color: transparent;
     background: #C0C0C0;
     font-weight: 600;
-    width: 220px;
+    width: 50%;
+    font-size: 0,8em;
 }
 
 .txtvalue_det{
     caret-color: transparent;
     background: #C0C0C0;
     font-weight: 600;
-    width: 220px;
+    width: 50%;
+    font-size: 0,8em;
 }
 
 .close_button{
