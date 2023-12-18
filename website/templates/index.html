@@ -1,4 +1,4 @@
-<
+
 {% extends 'base.html' %}
 
 {% load static %}
@@ -18,19 +18,19 @@
         <div id="dialogo" class ="hidden" style="display: none;">
             <select id="list-container" autocomplete="off" onchange="ddlselect();">
                 <option selected="selected" disabled="disabled">-- Select your chassis--</option>
-                <option><a href="#">Bacilus Subtilis</a></option>
-                <option><a href="#">Clostridium acetobutylicum</a></option>
-                <option><a href="#">Deinococcus radiodurans</a></option>
-                <option><a href="#">Escherichia Coli</a></option>
-                <option><a href="#">Geobacter sulfurreducens</a></option>
-                <option><a href="#">Klebsiella sp. 4_1_44FAA.</a></option>
-                <option><a href="#">Mycoplasma spp.</a></option>
-                <option><a href="#">Pseudomonas putida</a></option>
-                <option><a href="#">Saccharomyces cerevisiae</a></option>
-                <option><a href="#">Shewanella oneidensis</a></option>
-                <option><a href="#">Streptomyces spp.</a></option>
-                <option><a href="#">Synechocystis spp.</a></option>
-                <option><a href="#">Yarrowia lipolytica</a></option>
+                <option>Bacilus Subtilis</option>
+                <option>Clostridium acetobutylicum</option>
+                <option>Deinococcus radiodurans</option>
+                <option>Escherichia Coli</option>
+                <option>Geobacter sulfurreducens</option>
+                <option>Klebsiella sp. 4_1_44FAA</option>
+                <option>Mycoplasma spp.</option>
+                <option>Pseudomonas putida</option>
+                <option>Saccharomyces cerevisiae</option>
+                <option>Shewanella oneidensis</option>
+                <option>Streptomyces spp.</option>
+                <option>Synechocystis spp.</option>
+                <option>Yarrowia lipolytica</option>
             </select>
          
 
@@ -41,9 +41,10 @@
                    var displaytext=d.options[d.selectedIndex].text;
                    //var displaytext="Chassis: "+d.options[d.selectedIndex].text+"  Taxon_ID: ";
                    document.getElementById("txtvalue").value=displaytext;
+                   console.log(displaytext)
                    $("#dialogo").dialog("close");
                    var display =1;
-                   var d=document.getElementById("chassis_table");
+                   var orgid=document.getElementById("chassis_table");
                                           for(var i = 0; i < d.rows.length; i++)
                            {
                               d.rows[i].onclick = function()
@@ -52,13 +53,6 @@
                                     //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
                                     var chassis=$(this.cells[0]);
                                        console.log(chassis.text());
-                                       //product_chosen=produc.attr("id");
-                                       // document.getElementById("txtvalue_prod").value=produc.text();
-                                       // $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
-                                       // $('#myModal').modal('hide');
-                                       // $('.modal-backdrop').remove();
-                                       // if(product_chosen!=-1 && detect_chosen!=-1){
-                                       //    $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
                                        }
                                  
    
@@ -78,7 +72,6 @@
              </div>
              <div class="modal-body">
                <table class="table table-bordered table-condensed table-hover" id="producibles_table"></table>
-               </table>
              </div>
              <div class="modal-footer">
                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -86,7 +79,7 @@
            </div><!-- /.modal-content -->
          </div><!-- /.modal-dialog -->
          </div><!-- /.modal -->
-            <script>
+            <!-- <script>
                const tableRows = document.querySelectorAll(".producibles_table tbody tr");
 
                      function setTableLinksHeights() {
@@ -131,7 +124,7 @@
 
                      window.addEventListener("resize", setTableLinksHeights);
 
-                                 </script>
+                                 </script> -->
                                  <script>
                                     function ddlselect_prod()
                                     {
