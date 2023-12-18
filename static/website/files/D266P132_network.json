@@ -1,0 +1,768 @@
+{
+    "elements": {
+        "nodes": [
+            {
+                "data": {
+                    "id": "TARGET_0000000001",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [],
+                    "prod_path": false,
+                    "label": "TARGET_0000000001",
+                    "short_label": "TARGET_0000000001",
+                    "all_labels": "TARGET_0000000001",
+                    "type": "chemical",
+                    "smiles": "NCCS(=O)(=O)O",
+                    "inchi": "InChI=1S/C2H7NO3S/c3-1-2-7(4,5)6/h1-3H2,(H,4,5,6)",
+                    "inchikey": "XOAAWQZATWQOTB-UHFFFAOYSA-N",
+                    "target_chemical": true,
+                    "sink_chemical": false,
+                    "inter_chemical": false,
+                    "source_chemical": false,
+                    "cofactor": false,
+                    "svg": "",
+                    "rsmiles": null,
+                    "rule_ids": null,
+                    "rule_score": null,
+                    "rxn_template_ids": null,
+                    "ec_numbers": null,
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "TARGET_0000000001",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "CMPD_0000000002",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [],
+                    "prod_path": false,
+                    "label": "CMPD_0000000002",
+                    "short_label": "CMPD_0000000002",
+                    "all_labels": "CMPD_0000000002",
+                    "type": "chemical",
+                    "smiles": "CC(N)C(=O)O",
+                    "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)",
+                    "inchikey": "QNAYBMKLOCPYGJ-UHFFFAOYSA-N",
+                    "target_chemical": false,
+                    "sink_chemical": false,
+                    "inter_chemical": false,
+                    "source_chemical": false,
+                    "cofactor": false,
+                    "svg": "",
+                    "rsmiles": null,
+                    "rule_ids": null,
+                    "rule_score": null,
+                    "rxn_template_ids": null,
+                    "ec_numbers": null,
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "CMPD_0000000002",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "CMPD_0000000003",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "label": "CMPD_0000000003",
+                    "short_label": "CMPD_0000000003",
+                    "all_labels": "CMPD_0000000003",
+                    "type": "chemical",
+                    "smiles": "CC(C)C(N)C(=O)O",
+                    "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)",
+                    "inchikey": "KZSNJWFQEVHDMF-UHFFFAOYSA-N",
+                    "target_chemical": false,
+                    "sink_chemical": false,
+                    "inter_chemical": false,
+                    "source_chemical": true,
+                    "cofactor": false,
+                    "svg": "",
+                    "rsmiles": null,
+                    "rule_ids": null,
+                    "rule_score": null,
+                    "rxn_template_ids": null,
+                    "ec_numbers": null,
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "CMPD_0000000003",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "CMPD_0000000004",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [
+                        "TRS_1"
+                    ],
+                    "prod_path": false,
+                    "label": "CMPD_0000000004",
+                    "short_label": "CMPD_0000000004",
+                    "all_labels": "CMPD_0000000004",
+                    "type": "chemical",
+                    "smiles": "O=CCS(=O)(=O)O",
+                    "inchi": "InChI=1S/C2H4O4S/c3-1-2-7(4,5)6/h1H,2H2,(H,4,5,6)",
+                    "inchikey": "JTJIXCMSHWPJJE-UHFFFAOYSA-N",
+                    "target_chemical": false,
+                    "sink_chemical": false,
+                    "inter_chemical": true,
+                    "source_chemical": false,
+                    "cofactor": false,
+                    "svg":  "",
+                    "rsmiles": null,
+                    "rule_ids": null,
+                    "rule_score": null,
+                    "rxn_template_ids": null,
+                    "ec_numbers": null,
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "CMPD_0000000004",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "CMPD_0000000005",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [],
+                    "prod_path": false,
+                    "label": "CMPD_0000000005",
+                    "short_label": "CMPD_0000000005",
+                    "all_labels": "CMPD_0000000005",
+                    "type": "chemical",
+                    "smiles": "CC(=O)C(=O)O",
+                    "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+                    "inchikey": "LCTONWCANYUPML-UHFFFAOYSA-N",
+                    "target_chemical": false,
+                    "sink_chemical": false,
+                    "inter_chemical": false,
+                    "source_chemical": false,
+                    "cofactor": false,
+                    "svg":  "",
+                    "rsmiles": null,
+                    "rule_ids": null,
+                    "rule_score": null,
+                    "rxn_template_ids": null,
+                    "ec_numbers": null,
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "CMPD_0000000005",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "EColi_1636",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [
+                        "TRS_1"
+                    ],
+                    "prod_path": false,
+                    "label": "EColi_1636",
+                    "short_label": "EColi_1636",
+                    "all_labels": "EColi_1636",
+                    "type": "chemical",
+                    "smiles": "O=S(=O)(O)CCO",
+                    "inchi": "InChI=1S/C2H6O4S/c3-1-2-7(4,5)6/h3H,1-2H2,(H,4,5,6)",
+                    "inchikey": "SUMDYPCJJOFFON-UHFFFAOYSA-N",
+                    "target_chemical": false,
+                    "sink_chemical": false,
+                    "inter_chemical": false,
+                    "source_chemical": false,
+                    "cofactor": false,
+                    "svg":  "",
+                    "rsmiles": null,
+                    "rule_ids": null,
+                    "rule_score": null,
+                    "rxn_template_ids": null,
+                    "ec_numbers": null,
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "EColi_1636",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "RR-02-c2567e9cf3f95e10-16-F",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [],
+                    "prod_path": false,
+                    "label": "RR-02-c2567e9cf3f95e10-16-F",
+                    "all_labels": "RR-02-c2567e9cf3f95e10-16-F",
+                    "type": "reaction",
+                    "inchi": null,
+                    "inchikey": null,
+                    "cofactor": null,
+                    "ec_numbers": "[2.6.1.66]",
+                    "rule_score": 1.0,
+                    "rsmiles": "[O:1]([S:2](=[O:3])(=[O:4])[C:5]([C:6]([N:7]([H:8])[H:9])([H:10])[H:11])([H:12])[H:13])[H:14]>>O=C(O[H:11])[C:6]([C:5]([S:2]([O:1][H:14])(=[O:3])=[O:4])([H:12])[H:13])([N:7]([H:8])[H:9])[H:10]",
+                    "rule_ids": "RR-02-c2567e9cf3f95e10-16-F",
+                    "rxn_template_ids": "RR-02-c2567e9cf3f95e10-16-F",
+                    "short_label": "RR-02-c2567e9cf3f95e10-16-F",
+                    "sink_chemical": null,
+                    "inter_chemical": null,
+                    "source_chemical": null,
+                    "target_chemical": null,
+                    "smiles": null,
+                    "svg": null,
+                    "uniprot_ids": {},
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "RR-02-c2567e9cf3f95e10-16-F",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "RR-02-d8501eae0aab16ea-16-F",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [],
+                    "prod_path": false,
+                    "label": "RR-02-d8501eae0aab16ea-16-F",
+                    "all_labels": "RR-02-d8501eae0aab16ea-16-F",
+                    "type": "reaction",
+                    "inchi": null,
+                    "inchikey": null,
+                    "cofactor": null,
+                    "ec_numbers": "[2.6.1.77]",
+                    "rule_score": 0.8251685759721918,
+                    "rsmiles": "[N:1]([C:2]([C:3]([S:4](=[O:5])(=[O:6])[O:7][H:8])([H:9])[H:10])([H:11])[H:12])([H:13])[H:14]>>([H]OC(=NC([H])([H])C([H])([H])S[H:13])C([H])([H])C([H])([H])N=C(O[H])C([H])(O[H])C(C([H])([H])[H])(C([H])([H])[H])C([H])([H])OP(=O)(O[H])OP(=O)(O[H])OC([H])([H])C1([H])OC([H])(N2:C([H]):N:C3:C(N([H])[H]):N:C([H]):N:C:3:2)C([H])(O[H])C1([H])OP(=O)(O[H])O[H].[H]OC1([H])C([H])([H])C([H])([H])C2(C([H])([H])[H])C([H])(C([H])([H])C([H])([H])C3([H])C2([H])C([H])([H])C([H])(O[H])C2(C([H])([H])[H])C([H])(C([H])(C([H])([H])[H])C([H])([H])C([H])([H])C(O[H:14])=[N:1][C:2]([C:3]([S:4](=[O:5])(=[O:6])[O:7][H:8])([H:9])[H:10])([H:11])[H:12])C([H])([H])C([H])([H])C32[H])C1([H])[H])",
+                    "rule_ids": "RR-02-d8501eae0aab16ea-16-F",
+                    "rxn_template_ids": "RR-02-d8501eae0aab16ea-16-F",
+                    "short_label": "RR-02-d8501eae0aab16ea-16-F",
+                    "sink_chemical": null,
+                    "inter_chemical": null,
+                    "source_chemical": null,
+                    "target_chemical": null,
+                    "smiles": null,
+                    "svg": null,
+                    "uniprot_ids": {},
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "RR-02-d8501eae0aab16ea-16-F",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "RR-02-a1dfecf929c96333-16-F",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [
+                        "TRS_1"
+                    ],
+                    "prod_path": false,
+                    "label": "RR-02-a1dfecf929c96333-16-F",
+                    "all_labels": "RR-02-a1dfecf929c96333-16-F",
+                    "type": "reaction",
+                    "inchi": null,
+                    "inchikey": null,
+                    "cofactor": null,
+                    "ec_numbers": "[1.1.1, NOEC, 1.1.2.-]",
+                    "rule_score": 0.0,
+                    "rsmiles": "[N:1]([C:2]([C:3]([S:4](=[O:5])(=[O:6])[O:7][H:8])([H:9])[H:10])([H:11])[H:12])([H:13])[H:14]>>([H]OC(=NC([H])([H])C([H])([H])S[H:13])C([H])([H])C([H])([H])N=C(O[H])C([H])(O[H])C(C([H])([H])[H])(C([H])([H])[H])C([H])([H])OP(=O)(O[H])OP(=O)(O[H])OC([H])([H])C1([H])OC([H])(N2:C([H]):N:C3:C(N([H])[H]):N:C([H]):N:C:3:2)C([H])(O[H])C1([H])OP(=O)(O[H])O[H].[H]OC1([H])C([H])([H])C([H])([H])C2(C([H])([H])[H])C([H])(C([H])([H])C([H])([H])C3([H])C2([H])C([H])([H])C([H])(O[H])C2(C([H])([H])[H])C([H])(C([H])(C([H])([H])[H])C([H])([H])C([H])([H])C(O[H:14])=[N:1][C:2]([C:3]([S:4](=[O:5])(=[O:6])[O:7][H:8])([H:9])[H:10])([H:11])[H:12])C([H])([H])C([H])([H])C32[H])C1([H])[H])",
+                    "rule_ids": "RR-02-a1dfecf929c96333-16-F",
+                    "rxn_template_ids": "RR-02-a1dfecf929c96333-16-F",
+                    "short_label": "RR-02-a1dfecf929c96333-16-F",
+                    "sink_chemical": null,
+                    "inter_chemical": null,
+                    "source_chemical": null,
+                    "target_chemical": null,
+                    "smiles": null,
+                    "svg": null,
+                    "uniprot_ids": {},
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "RR-02-a1dfecf929c96333-16-F",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXM23",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "label": "MNXM23",
+                    "short_label": "MNXM23",
+                    "all_labels": "MNXM23",
+                    "type": "chemical",
+                    "smiles": "CC(=O)C(=O)[O-]",
+                    "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+                    "inchikey": "LCTONWCANYUPML-UHFFFAOYSA-M",
+                    "target_chemical": false,
+                    "sink_chemical": false,
+                    "inter_chemical": false,
+                    "source_chemical": false,
+                    "cofactor": false,
+                    "svg": "data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27iso-8859-1%27%3F%3E%0A%3Csvg%20version%3D%271.1%27%20baseProfile%3D%27full%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xmlns%3Ardkit%3D%27http%3A//www.rdkit.org/xml%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xmlns%3Axlink%3D%27http%3A//www.w3.org/1999/xlink%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xml%3Aspace%3D%27preserve%27%0Awidth%3D%27200px%27%20height%3D%27200px%27%20viewBox%3D%270%200%20200%20200%27%3E%0A%3C%21--%20END%20OF%20HEADER%20--%3E%0A%3Crect%20style%3D%27opacity%3A1.0%3Bfill%3A%23FFFFFF%3Bstroke%3Anone%27%20width%3D%27200.0%27%20height%3D%27200.0%27%20x%3D%270.0%27%20y%3D%270.0%27%3E%20%3C/rect%3E%0A%3Cpath%20class%3D%27bond-0%20atom-0%20atom-1%27%20d%3D%27M%20179.6%2C30.8%20L%20139.8%2C99.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-1%20atom-1%20atom-2%27%20d%3D%27M%20139.8%2C99.8%20L%2060.2%2C99.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-2%20atom-1%20atom-3%27%20d%3D%27M%20132.9%2C99.8%20L%20149.6%2C128.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-2%20atom-1%20atom-3%27%20d%3D%27M%20149.6%2C128.8%20L%20166.4%2C157.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-2%20atom-1%20atom-3%27%20d%3D%27M%20143.3%2C93.9%20L%20160.0%2C122.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-2%20atom-1%20atom-3%27%20d%3D%27M%20160.0%2C122.8%20L%20176.7%2C151.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-3%20atom-2%20atom-4%27%20d%3D%27M%2060.2%2C99.8%20L%2044.3%2C127.3%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-3%20atom-2%20atom-4%27%20d%3D%27M%2044.3%2C127.3%20L%2028.5%2C154.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2067.1%2C99.8%20L%2050.5%2C71.0%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2050.5%2C71.0%20L%2033.8%2C42.2%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2056.7%2C105.8%20L%2040.1%2C77.0%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2040.1%2C77.0%20L%2023.5%2C48.2%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20d%3D%27M%20141.8%2C96.4%20L%20139.8%2C99.8%20L%20135.8%2C99.8%27%20style%3D%27fill%3Anone%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%3B%27%20/%3E%0A%3Cpath%20d%3D%27M%2064.2%2C99.8%20L%2060.2%2C99.8%20L%2059.4%2C101.2%27%20style%3D%27fill%3Anone%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%3B%27%20/%3E%0A%3Cpath%20class%3D%27atom-3%27%20d%3D%27M%20169.3%20168.9%0AQ%20169.3%20163.4%2C%20172.0%20160.4%0AQ%20174.6%20157.4%2C%20179.6%20157.4%0AQ%20184.6%20157.4%2C%20187.3%20160.4%0AQ%20190.0%20163.4%2C%20190.0%20168.9%0AQ%20190.0%20174.3%2C%20187.3%20177.5%0AQ%20184.6%20180.6%2C%20179.6%20180.6%0AQ%20174.7%20180.6%2C%20172.0%20177.5%0AQ%20169.3%20174.4%2C%20169.3%20168.9%0AM%20179.6%20178.0%0AQ%20183.1%20178.0%2C%20184.9%20175.7%0AQ%20186.8%20173.4%2C%20186.8%20168.9%0AQ%20186.8%20164.4%2C%20184.9%20162.2%0AQ%20183.1%20159.9%2C%20179.6%20159.9%0AQ%20176.2%20159.9%2C%20174.3%20162.2%0AQ%20172.5%20164.4%2C%20172.5%20168.9%0AQ%20172.5%20173.4%2C%20174.3%20175.7%0AQ%20176.2%20178.0%2C%20179.6%20178.0%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-4%27%20d%3D%27M%2010.0%20168.9%0AQ%2010.0%20163.4%2C%2012.7%20160.4%0AQ%2015.4%20157.4%2C%2020.4%20157.4%0AQ%2025.4%20157.4%2C%2028.0%20160.4%0AQ%2030.7%20163.4%2C%2030.7%20168.9%0AQ%2030.7%20174.3%2C%2028.0%20177.5%0AQ%2025.3%20180.6%2C%2020.4%20180.6%0AQ%2015.4%20180.6%2C%2012.7%20177.5%0AQ%2010.0%20174.4%2C%2010.0%20168.9%0AM%2020.4%20178.0%0AQ%2023.8%20178.0%2C%2025.6%20175.7%0AQ%2027.5%20173.4%2C%2027.5%20168.9%0AQ%2027.5%20164.4%2C%2025.6%20162.2%0AQ%2023.8%20159.9%2C%2020.4%20159.9%0AQ%2016.9%20159.9%2C%2015.0%20162.2%0AQ%2013.2%20164.4%2C%2013.2%20168.9%0AQ%2013.2%20173.4%2C%2015.0%20175.7%0AQ%2016.9%20178.0%2C%2020.4%20178.0%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-4%27%20d%3D%27M%2033.9%20161.1%0AL%2041.6%20161.1%0AL%2041.6%20162.8%0AL%2033.9%20162.8%0AL%2033.9%20161.1%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-5%27%20d%3D%27M%2010.0%2030.9%0AQ%2010.0%2025.5%2C%2012.7%2022.5%0AQ%2015.4%2019.4%2C%2020.4%2019.4%0AQ%2025.4%2019.4%2C%2028.0%2022.5%0AQ%2030.7%2025.5%2C%2030.7%2030.9%0AQ%2030.7%2036.4%2C%2028.0%2039.5%0AQ%2025.3%2042.6%2C%2020.4%2042.6%0AQ%2015.4%2042.6%2C%2012.7%2039.5%0AQ%2010.0%2036.4%2C%2010.0%2030.9%0AM%2020.4%2040.1%0AQ%2023.8%2040.1%2C%2025.6%2037.8%0AQ%2027.5%2035.4%2C%2027.5%2030.9%0AQ%2027.5%2026.5%2C%2025.6%2024.3%0AQ%2023.8%2022.0%2C%2020.4%2022.0%0AQ%2016.9%2022.0%2C%2015.0%2024.2%0AQ%2013.2%2026.5%2C%2013.2%2030.9%0AQ%2013.2%2035.5%2C%2015.0%2037.8%0AQ%2016.9%2040.1%2C%2020.4%2040.1%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3C/svg%3E%0A",
+                    "rsmiles": null,
+                    "rule_ids": null,
+                    "rule_score": null,
+                    "rxn_template_ids": null,
+                    "ec_numbers": null,
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "MNXM23",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXM726861",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "label": "MNXM726861",
+                    "short_label": "MNXM726861",
+                    "all_labels": "MNXM726861",
+                    "type": "chemical",
+                    "smiles": "CC(=O)[C@](C)(O)C(=O)[O-]",
+                    "inchi": "InChI=1S/C5H8O4/c1-3(6)5(2,9)4(7)8/h9H,1-2H3,(H,7,8)/p-1/t5-/m0/s1",
+                    "inchikey": "NMDWGEGFJUBKLB-YFKPBYRVSA-M",
+                    "target_chemical": false,
+                    "sink_chemical": false,
+                    "inter_chemical": false,
+                    "source_chemical": false,
+                    "cofactor": false,
+                    "svg": "data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27iso-8859-1%27%3F%3E%0A%3Csvg%20version%3D%271.1%27%20baseProfile%3D%27full%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xmlns%3Ardkit%3D%27http%3A//www.rdkit.org/xml%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xmlns%3Axlink%3D%27http%3A//www.w3.org/1999/xlink%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xml%3Aspace%3D%27preserve%27%0Awidth%3D%27200px%27%20height%3D%27200px%27%20viewBox%3D%270%200%20200%20200%27%3E%0A%3C%21--%20END%20OF%20HEADER%20--%3E%0A%3Crect%20style%3D%27opacity%3A1.0%3Bfill%3A%23FFFFFF%3Bstroke%3Anone%27%20width%3D%27200.0%27%20height%3D%27200.0%27%20x%3D%270.0%27%20y%3D%270.0%27%3E%20%3C/rect%3E%0A%3Cpath%20class%3D%27bond-0%20atom-0%20atom-2%27%20d%3D%27M%20122.4%2C40.5%20L%20135.3%2C88.7%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-1%20atom-4%20atom-1%27%20d%3D%27M%20100.0%2C124.0%20L%2067.4%2C161.9%20L%2062.1%2C156.6%20Z%27%20style%3D%27fill%3A%23000000%3Bfill-rule%3Aevenodd%3Bfill-opacity%3A1%3Bstroke%3A%23000000%3Bstroke-width%3A0.5px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%3B%27%20/%3E%0A%3Cpath%20class%3D%27bond-2%20atom-2%20atom-4%27%20d%3D%27M%20135.3%2C88.7%20L%20100.0%2C124.0%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-3%20atom-2%20atom-5%27%20d%3D%27M%20132.2%2C91.8%20L%20153.3%2C97.4%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-3%20atom-2%20atom-5%27%20d%3D%27M%20153.3%2C97.4%20L%20174.4%2C103.1%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-3%20atom-2%20atom-5%27%20d%3D%27M%20134.2%2C84.5%20L%20155.3%2C90.2%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-3%20atom-2%20atom-5%27%20d%3D%27M%20155.3%2C90.2%20L%20176.3%2C95.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-3%20atom-4%27%20d%3D%27M%2064.7%2C88.7%20L%20100.0%2C124.0%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-5%20atom-3%20atom-6%27%20d%3D%27M%2067.8%2C91.8%20L%2073.3%2C71.1%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-5%20atom-3%20atom-6%27%20d%3D%27M%2073.3%2C71.1%20L%2078.8%2C50.5%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-5%20atom-3%20atom-6%27%20d%3D%27M%2060.5%2C89.8%20L%2066.1%2C69.2%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-5%20atom-3%20atom-6%27%20d%3D%27M%2066.1%2C69.2%20L%2071.6%2C48.5%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-6%20atom-3%20atom-7%27%20d%3D%27M%2064.7%2C88.7%20L%2048.1%2C93.2%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-6%20atom-3%20atom-7%27%20d%3D%27M%2048.1%2C93.2%20L%2031.5%2C97.6%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-7%20atom-4%20atom-8%27%20d%3D%27M%20100.0%2C124.0%20L%20113.6%2C137.6%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-7%20atom-4%20atom-8%27%20d%3D%27M%20113.6%2C137.6%20L%20127.2%2C151.2%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20d%3D%27M%20134.6%2C86.3%20L%20135.3%2C88.7%20L%20133.5%2C90.5%27%20style%3D%27fill%3Anone%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%3B%27%20/%3E%0A%3Cpath%20d%3D%27M%2066.5%2C90.5%20L%2064.7%2C88.7%20L%2063.9%2C88.9%27%20style%3D%27fill%3Anone%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%3B%27%20/%3E%0A%3Cpath%20class%3D%27atom-5%27%20d%3D%27M%20177.0%20101.7%0AQ%20177.0%2098.3%2C%20178.7%2096.4%0AQ%20180.4%2094.5%2C%20183.5%2094.5%0AQ%20186.6%2094.5%2C%20188.3%2096.4%0AQ%20190.0%2098.3%2C%20190.0%20101.7%0AQ%20190.0%20105.1%2C%20188.3%20107.1%0AQ%20186.6%20109.0%2C%20183.5%20109.0%0AQ%20180.4%20109.0%2C%20178.7%20107.1%0AQ%20177.0%20105.1%2C%20177.0%20101.7%0AM%20183.5%20107.4%0AQ%20185.7%20107.4%2C%20186.8%20106.0%0AQ%20188.0%20104.5%2C%20188.0%20101.7%0AQ%20188.0%2098.9%2C%20186.8%2097.5%0AQ%20185.7%2096.1%2C%20183.5%2096.1%0AQ%20181.4%2096.1%2C%20180.2%2097.5%0AQ%20179.0%2098.9%2C%20179.0%20101.7%0AQ%20179.0%20104.5%2C%20180.2%20106.0%0AQ%20181.4%20107.4%2C%20183.5%20107.4%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-6%27%20d%3D%27M%2071.1%2040.5%0AQ%2071.1%2037.1%2C%2072.8%2035.2%0AQ%2074.5%2033.3%2C%2077.6%2033.3%0AQ%2080.8%2033.3%2C%2082.4%2035.2%0AQ%2084.1%2037.1%2C%2084.1%2040.5%0AQ%2084.1%2044.0%2C%2082.4%2045.9%0AQ%2080.7%2047.9%2C%2077.6%2047.9%0AQ%2074.5%2047.9%2C%2072.8%2045.9%0AQ%2071.1%2044.0%2C%2071.1%2040.5%0AM%2077.6%2046.3%0AQ%2079.8%2046.3%2C%2080.9%2044.8%0AQ%2082.1%2043.4%2C%2082.1%2040.5%0AQ%2082.1%2037.8%2C%2080.9%2036.4%0AQ%2079.8%2034.9%2C%2077.6%2034.9%0AQ%2075.5%2034.9%2C%2074.3%2036.3%0AQ%2073.1%2037.7%2C%2073.1%2040.5%0AQ%2073.1%2043.4%2C%2074.3%2044.8%0AQ%2075.5%2046.3%2C%2077.6%2046.3%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-7%27%20d%3D%27M%2010.0%20101.7%0AQ%2010.0%2098.3%2C%2011.7%2096.4%0AQ%2013.4%2094.5%2C%2016.5%2094.5%0AQ%2019.6%2094.5%2C%2021.3%2096.4%0AQ%2023.0%2098.3%2C%2023.0%20101.7%0AQ%2023.0%20105.1%2C%2021.3%20107.1%0AQ%2019.6%20109.0%2C%2016.5%20109.0%0AQ%2013.4%20109.0%2C%2011.7%20107.1%0AQ%2010.0%20105.1%2C%2010.0%20101.7%0AM%2016.5%20107.4%0AQ%2018.6%20107.4%2C%2019.8%20106.0%0AQ%2021.0%20104.5%2C%2021.0%20101.7%0AQ%2021.0%2098.9%2C%2019.8%2097.5%0AQ%2018.6%2096.1%2C%2016.5%2096.1%0AQ%2014.3%2096.1%2C%2013.2%2097.5%0AQ%2012.0%2098.9%2C%2012.0%20101.7%0AQ%2012.0%20104.5%2C%2013.2%20106.0%0AQ%2014.3%20107.4%2C%2016.5%20107.4%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-7%27%20d%3D%27M%2025.0%2096.8%0AL%2029.8%2096.8%0AL%2029.8%2097.8%0AL%2025.0%2097.8%0AL%2025.0%2096.8%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-8%27%20d%3D%27M%20128.8%20159.3%0AQ%20128.8%20155.9%2C%20130.5%20154.0%0AQ%20132.2%20152.1%2C%20135.3%20152.1%0AQ%20138.4%20152.1%2C%20140.1%20154.0%0AQ%20141.8%20155.9%2C%20141.8%20159.3%0AQ%20141.8%20162.8%2C%20140.1%20164.7%0AQ%20138.4%20166.7%2C%20135.3%20166.7%0AQ%20132.2%20166.7%2C%20130.5%20164.7%0AQ%20128.8%20162.8%2C%20128.8%20159.3%0AM%20135.3%20165.1%0AQ%20137.5%20165.1%2C%20138.6%20163.6%0AQ%20139.8%20162.2%2C%20139.8%20159.3%0AQ%20139.8%20156.6%2C%20138.6%20155.2%0AQ%20137.5%20153.7%2C%20135.3%20153.7%0AQ%20133.1%20153.7%2C%20132.0%20155.1%0AQ%20130.8%20156.5%2C%20130.8%20159.3%0AQ%20130.8%20162.2%2C%20132.0%20163.6%0AQ%20133.1%20165.1%2C%20135.3%20165.1%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-8%27%20d%3D%27M%20144.0%20152.3%0AL%20145.9%20152.3%0AL%20145.9%20158.3%0AL%20153.1%20158.3%0AL%20153.1%20152.3%0AL%20155.0%20152.3%0AL%20155.0%20166.4%0AL%20153.1%20166.4%0AL%20153.1%20159.9%0AL%20145.9%20159.9%0AL%20145.9%20166.4%0AL%20144.0%20166.4%0AL%20144.0%20152.3%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3C/svg%3E%0A",
+                    "rsmiles": null,
+                    "rule_ids": null,
+                    "rule_score": null,
+                    "rxn_template_ids": null,
+                    "ec_numbers": null,
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "MNXM726861",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXM734",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "label": "MNXM734",
+                    "short_label": "MNXM734",
+                    "all_labels": "MNXM734",
+                    "type": "chemical",
+                    "smiles": "CC(C)(O)[C@@H](O)C(=O)[O-]",
+                    "inchi": "InChI=1S/C5H10O4/c1-5(2,9)3(6)4(7)8/h3,6,9H,1-2H3,(H,7,8)/p-1/t3-/m0/s1",
+                    "inchikey": "JTEYKUFKXGDTEU-VKHMYHEASA-M",
+                    "target_chemical": false,
+                    "sink_chemical": false,
+                    "inter_chemical": false,
+                    "source_chemical": false,
+                    "cofactor": false,
+                    "svg": "data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27iso-8859-1%27%3F%3E%0A%3Csvg%20version%3D%271.1%27%20baseProfile%3D%27full%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xmlns%3Ardkit%3D%27http%3A//www.rdkit.org/xml%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xmlns%3Axlink%3D%27http%3A//www.w3.org/1999/xlink%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xml%3Aspace%3D%27preserve%27%0Awidth%3D%27200px%27%20height%3D%27200px%27%20viewBox%3D%270%200%20200%20200%27%3E%0A%3C%21--%20END%20OF%20HEADER%20--%3E%0A%3Crect%20style%3D%27opacity%3A1.0%3Bfill%3A%23FFFFFF%3Bstroke%3Anone%27%20width%3D%27200.0%27%20height%3D%27200.0%27%20x%3D%270.0%27%20y%3D%270.0%27%3E%20%3C/rect%3E%0A%3Cpath%20class%3D%27bond-0%20atom-0%20atom-4%27%20d%3D%27M%20154.6%2C70.6%20L%20132.9%2C109.9%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-1%20atom-1%20atom-4%27%20d%3D%27M%20111.2%2C149.3%20L%20132.9%2C109.9%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-2%20atom-2%20atom-3%27%20d%3D%27M%2093.6%2C88.3%20L%2055.2%2C111.5%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-3%20atom-2%20atom-4%27%20d%3D%27M%2093.6%2C88.3%20L%20132.9%2C109.9%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2093.2%2C84.8%20L%2093.8%2C84.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A1.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2092.8%2C81.2%20L%2094.1%2C81.2%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A1.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2092.4%2C77.7%20L%2094.4%2C77.7%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A1.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2092.0%2C74.2%20L%2094.6%2C74.1%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A1.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2091.5%2C70.7%20L%2094.9%2C70.6%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A1.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2091.1%2C67.2%20L%2095.2%2C67.1%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A1.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2090.7%2C63.6%20L%2095.4%2C63.5%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A1.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2090.3%2C60.1%20L%2095.7%2C60.0%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A1.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2089.9%2C56.6%20L%2096.0%2C56.5%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A1.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-2%20atom-5%27%20d%3D%27M%2089.5%2C53.1%20L%2096.2%2C52.9%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A1.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-5%20atom-3%20atom-6%27%20d%3D%27M%2051.8%2C109.6%20L%2052.1%2C129.1%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-5%20atom-3%20atom-6%27%20d%3D%27M%2052.1%2C129.1%20L%2052.5%2C148.6%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-5%20atom-3%20atom-6%27%20d%3D%27M%2058.5%2C109.5%20L%2058.9%2C129.0%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-5%20atom-3%20atom-6%27%20d%3D%27M%2058.9%2C129.0%20L%2059.3%2C148.4%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-6%20atom-3%20atom-7%27%20d%3D%27M%2055.2%2C111.5%20L%2039.2%2C102.7%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-6%20atom-3%20atom-7%27%20d%3D%27M%2039.2%2C102.7%20L%2023.2%2C93.9%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-7%20atom-4%20atom-8%27%20d%3D%27M%20132.9%2C109.9%20L%20148.9%2C118.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-7%20atom-4%20atom-8%27%20d%3D%27M%20148.9%2C118.8%20L%20164.9%2C127.6%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20d%3D%27M%2091.7%2C89.4%20L%2093.6%2C88.3%20L%2095.6%2C89.4%27%20style%3D%27fill%3Anone%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%3B%27%20/%3E%0A%3Cpath%20d%3D%27M%2057.1%2C110.4%20L%2055.2%2C111.5%20L%2054.4%2C111.1%27%20style%3D%27fill%3Anone%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%3B%27%20/%3E%0A%3Cpath%20class%3D%27atom-5%27%20d%3D%27M%2086.8%2043.4%0AQ%2086.8%2040.4%2C%2088.4%2038.7%0AQ%2089.9%2037.0%2C%2092.7%2037.0%0AQ%2095.5%2037.0%2C%2097.0%2038.7%0AQ%2098.5%2040.4%2C%2098.5%2043.4%0AQ%2098.5%2046.5%2C%2097.0%2048.3%0AQ%2095.5%2050.0%2C%2092.7%2050.0%0AQ%2089.9%2050.0%2C%2088.4%2048.3%0AQ%2086.8%2046.5%2C%2086.8%2043.4%0AM%2092.7%2048.6%0AQ%2094.6%2048.6%2C%2095.7%2047.3%0AQ%2096.7%2046.0%2C%2096.7%2043.4%0AQ%2096.7%2040.9%2C%2095.7%2039.7%0AQ%2094.6%2038.4%2C%2092.7%2038.4%0AQ%2090.7%2038.4%2C%2089.7%2039.7%0AQ%2088.6%2040.9%2C%2088.6%2043.4%0AQ%2088.6%2046.0%2C%2089.7%2047.3%0AQ%2090.7%2048.6%2C%2092.7%2048.6%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-5%27%20d%3D%27M%20100.5%2037.1%0AL%20102.2%2037.1%0AL%20102.2%2042.5%0AL%20108.7%2042.5%0AL%20108.7%2037.1%0AL%20110.4%2037.1%0AL%20110.4%2049.8%0AL%20108.7%2049.8%0AL%20108.7%2044.0%0AL%20102.2%2044.0%0AL%20102.2%2049.8%0AL%20100.5%2049.8%0AL%20100.5%2037.1%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-6%27%20d%3D%27M%2050.2%20156.4%0AQ%2050.2%20153.4%2C%2051.7%20151.7%0AQ%2053.2%20150.0%2C%2056.1%20150.0%0AQ%2058.9%20150.0%2C%2060.4%20151.7%0AQ%2061.9%20153.4%2C%2061.9%20156.4%0AQ%2061.9%20159.5%2C%2060.4%20161.3%0AQ%2058.8%20163.0%2C%2056.1%20163.0%0AQ%2053.3%20163.0%2C%2051.7%20161.3%0AQ%2050.2%20159.5%2C%2050.2%20156.4%0AM%2056.1%20161.6%0AQ%2058.0%20161.6%2C%2059.0%20160.3%0AQ%2060.1%20159.0%2C%2060.1%20156.4%0AQ%2060.1%20153.9%2C%2059.0%20152.7%0AQ%2058.0%20151.4%2C%2056.1%20151.4%0AQ%2054.1%20151.4%2C%2053.1%20152.7%0AQ%2052.0%20153.9%2C%2052.0%20156.4%0AQ%2052.0%20159.0%2C%2053.1%20160.3%0AQ%2054.1%20161.6%2C%2056.1%20161.6%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-7%27%20d%3D%27M%2010.0%2089.9%0AQ%2010.0%2086.8%2C%2011.5%2085.1%0AQ%2013.0%2083.4%2C%2015.8%2083.4%0AQ%2018.7%2083.4%2C%2020.2%2085.1%0AQ%2021.7%2086.8%2C%2021.7%2089.9%0AQ%2021.7%2093.0%2C%2020.1%2094.7%0AQ%2018.6%2096.5%2C%2015.8%2096.5%0AQ%2013.0%2096.5%2C%2011.5%2094.7%0AQ%2010.0%2093.0%2C%2010.0%2089.9%0AM%2015.8%2095.0%0AQ%2017.8%2095.0%2C%2018.8%2093.8%0AQ%2019.9%2092.4%2C%2019.9%2089.9%0AQ%2019.9%2087.4%2C%2018.8%2086.1%0AQ%2017.8%2084.9%2C%2015.8%2084.9%0AQ%2013.9%2084.9%2C%2012.8%2086.1%0AQ%2011.8%2087.4%2C%2011.8%2089.9%0AQ%2011.8%2092.5%2C%2012.8%2093.8%0AQ%2013.9%2095.0%2C%2015.8%2095.0%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-7%27%20d%3D%27M%2023.5%2085.5%0AL%2027.8%2085.5%0AL%2027.8%2086.4%0AL%2023.5%2086.4%0AL%2023.5%2085.5%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-8%27%20d%3D%27M%20166.4%20131.6%0AQ%20166.4%20128.6%2C%20167.9%20126.9%0AQ%20169.4%20125.2%2C%20172.2%20125.2%0AQ%20175.1%20125.2%2C%20176.6%20126.9%0AQ%20178.1%20128.6%2C%20178.1%20131.6%0AQ%20178.1%20134.7%2C%20176.5%20136.5%0AQ%20175.0%20138.2%2C%20172.2%20138.2%0AQ%20169.4%20138.2%2C%20167.9%20136.5%0AQ%20166.4%20134.8%2C%20166.4%20131.6%0AM%20172.2%20136.8%0AQ%20174.2%20136.8%2C%20175.2%20135.5%0AQ%20176.3%20134.2%2C%20176.3%20131.6%0AQ%20176.3%20129.2%2C%20175.2%20127.9%0AQ%20174.2%20126.6%2C%20172.2%20126.6%0AQ%20170.3%20126.6%2C%20169.2%20127.9%0AQ%20168.2%20129.1%2C%20168.2%20131.6%0AQ%20168.2%20134.2%2C%20169.2%20135.5%0AQ%20170.3%20136.8%2C%20172.2%20136.8%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-8%27%20d%3D%27M%20180.1%20125.3%0AL%20181.8%20125.3%0AL%20181.8%20130.7%0AL%20188.3%20130.7%0AL%20188.3%20125.3%0AL%20190.0%20125.3%0AL%20190.0%20138.0%0AL%20188.3%20138.0%0AL%20188.3%20132.2%0AL%20181.8%20132.2%0AL%20181.8%20138.0%0AL%20180.1%20138.0%0AL%20180.1%20125.3%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3C/svg%3E%0A",
+                    "rsmiles": null,
+                    "rule_ids": null,
+                    "rule_score": null,
+                    "rxn_template_ids": null,
+                    "ec_numbers": null,
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "MNXM734",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXM732866",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "label": "MNXM732866",
+                    "short_label": "MNXM732866",
+                    "all_labels": "MNXM732866",
+                    "type": "chemical",
+                    "smiles": "CC(C)C(=O)C(=O)[O-]",
+                    "inchi": "InChI=1S/C5H8O3/c1-3(2)4(6)5(7)8/h3H,1-2H3,(H,7,8)/p-1",
+                    "inchikey": "QHKABHOOEWYVLI-UHFFFAOYSA-M",
+                    "target_chemical": false,
+                    "sink_chemical": false,
+                    "inter_chemical": false,
+                    "source_chemical": false,
+                    "cofactor": false,
+                    "svg": "data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27iso-8859-1%27%3F%3E%0A%3Csvg%20version%3D%271.1%27%20baseProfile%3D%27full%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xmlns%3Ardkit%3D%27http%3A//www.rdkit.org/xml%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xmlns%3Axlink%3D%27http%3A//www.w3.org/1999/xlink%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xml%3Aspace%3D%27preserve%27%0Awidth%3D%27200px%27%20height%3D%27200px%27%20viewBox%3D%270%200%20200%20200%27%3E%0A%3C%21--%20END%20OF%20HEADER%20--%3E%0A%3Crect%20style%3D%27opacity%3A1.0%3Bfill%3A%23FFFFFF%3Bstroke%3Anone%27%20width%3D%27200.0%27%20height%3D%27200.0%27%20x%3D%270.0%27%20y%3D%270.0%27%3E%20%3C/rect%3E%0A%3Cpath%20class%3D%27bond-0%20atom-0%20atom-2%27%20d%3D%27M%2010.0%2C87.8%20L%2051.8%2C112.0%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-1%20atom-1%20atom-2%27%20d%3D%27M%2051.8%2C160.2%20L%2051.8%2C112.0%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-2%20atom-2%20atom-3%27%20d%3D%27M%2051.8%2C112.0%20L%2093.6%2C87.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-3%20atom-3%20atom-4%27%20d%3D%27M%2093.6%2C87.8%20L%20135.3%2C112.0%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-3%20atom-5%27%20d%3D%27M%2097.2%2C89.9%20L%2097.2%2C69.1%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-3%20atom-5%27%20d%3D%27M%2097.2%2C69.1%20L%2097.2%2C48.3%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-3%20atom-5%27%20d%3D%27M%2089.9%2C89.9%20L%2089.9%2C69.1%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-4%20atom-3%20atom-5%27%20d%3D%27M%2089.9%2C69.1%20L%2089.9%2C48.3%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-5%20atom-4%20atom-6%27%20d%3D%27M%20135.3%2C112.0%20L%20152.3%2C102.2%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-5%20atom-4%20atom-6%27%20d%3D%27M%20152.3%2C102.2%20L%20169.2%2C92.4%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-6%20atom-4%20atom-7%27%20d%3D%27M%20131.7%2C109.9%20L%20131.7%2C130.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-6%20atom-4%20atom-7%27%20d%3D%27M%20131.7%2C130.8%20L%20131.7%2C151.7%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-6%20atom-4%20atom-7%27%20d%3D%27M%20138.9%2C109.9%20L%20138.9%2C130.8%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20class%3D%27bond-6%20atom-4%20atom-7%27%20d%3D%27M%20138.9%2C130.8%20L%20138.9%2C151.7%27%20style%3D%27fill%3Anone%3Bfill-rule%3Aevenodd%3Bstroke%3A%23FF0000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%27%20/%3E%0A%3Cpath%20d%3D%27M%2091.5%2C89.0%20L%2093.6%2C87.8%20L%2095.6%2C89.0%27%20style%3D%27fill%3Anone%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%3B%27%20/%3E%0A%3Cpath%20d%3D%27M%20133.2%2C110.7%20L%20135.3%2C112.0%20L%20136.2%2C111.5%27%20style%3D%27fill%3Anone%3Bstroke%3A%23000000%3Bstroke-width%3A2.0px%3Bstroke-linecap%3Abutt%3Bstroke-linejoin%3Amiter%3Bstroke-opacity%3A1%3B%27%20/%3E%0A%3Cpath%20class%3D%27atom-5%27%20d%3D%27M%2087.3%2039.6%0AQ%2087.3%2036.4%2C%2088.9%2034.5%0AQ%2090.5%2032.7%2C%2093.6%2032.7%0AQ%2096.6%2032.7%2C%2098.2%2034.5%0AQ%2099.8%2036.4%2C%2099.8%2039.6%0AQ%2099.8%2043.0%2C%2098.2%2044.8%0AQ%2096.5%2046.7%2C%2093.6%2046.7%0AQ%2090.5%2046.7%2C%2088.9%2044.8%0AQ%2087.3%2043.0%2C%2087.3%2039.6%0AM%2093.6%2045.2%0AQ%2095.6%2045.2%2C%2096.8%2043.8%0AQ%2097.9%2042.4%2C%2097.9%2039.6%0AQ%2097.9%2037.0%2C%2096.8%2035.6%0AQ%2095.6%2034.2%2C%2093.6%2034.2%0AQ%2091.5%2034.2%2C%2090.3%2035.6%0AQ%2089.2%2036.9%2C%2089.2%2039.6%0AQ%2089.2%2042.4%2C%2090.3%2043.8%0AQ%2091.5%2045.2%2C%2093.6%2045.2%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-6%27%20d%3D%27M%20170.8%2087.9%0AQ%20170.8%2084.6%2C%20172.5%2082.8%0AQ%20174.1%2080.9%2C%20177.1%2080.9%0AQ%20180.1%2080.9%2C%20181.8%2082.8%0AQ%20183.4%2084.6%2C%20183.4%2087.9%0AQ%20183.4%2091.2%2C%20181.7%2093.1%0AQ%20180.1%2095.0%2C%20177.1%2095.0%0AQ%20174.1%2095.0%2C%20172.5%2093.1%0AQ%20170.8%2091.2%2C%20170.8%2087.9%0AM%20177.1%2093.4%0AQ%20179.2%2093.4%2C%20180.3%2092.0%0AQ%20181.5%2090.6%2C%20181.5%2087.9%0AQ%20181.5%2085.2%2C%20180.3%2083.8%0AQ%20179.2%2082.5%2C%20177.1%2082.5%0AQ%20175.0%2082.5%2C%20173.9%2083.8%0AQ%20172.8%2085.2%2C%20172.8%2087.9%0AQ%20172.8%2090.6%2C%20173.9%2092.0%0AQ%20175.0%2093.4%2C%20177.1%2093.4%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-6%27%20d%3D%27M%20185.3%2083.2%0AL%20190.0%2083.2%0AL%20190.0%2084.2%0AL%20185.3%2084.2%0AL%20185.3%2083.2%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3Cpath%20class%3D%27atom-7%27%20d%3D%27M%20129.1%20160.2%0AQ%20129.1%20157.0%2C%20130.7%20155.1%0AQ%20132.3%20153.3%2C%20135.3%20153.3%0AQ%20138.4%20153.3%2C%20140.0%20155.1%0AQ%20141.6%20157.0%2C%20141.6%20160.2%0AQ%20141.6%20163.6%2C%20140.0%20165.4%0AQ%20138.3%20167.3%2C%20135.3%20167.3%0AQ%20132.3%20167.3%2C%20130.7%20165.4%0AQ%20129.1%20163.6%2C%20129.1%20160.2%0AM%20135.3%20165.8%0AQ%20137.4%20165.8%2C%20138.5%20164.4%0AQ%20139.7%20163.0%2C%20139.7%20160.2%0AQ%20139.7%20157.6%2C%20138.5%20156.2%0AQ%20137.4%20154.8%2C%20135.3%20154.8%0AQ%20133.2%20154.8%2C%20132.1%20156.2%0AQ%20131.0%20157.5%2C%20131.0%20160.2%0AQ%20131.0%20163.0%2C%20132.1%20164.4%0AQ%20133.2%20165.8%2C%20135.3%20165.8%0A%27%20fill%3D%27%23FF0000%27/%3E%0A%3C/svg%3E%0A",
+                    "rsmiles": null,
+                    "rule_ids": null,
+                    "rule_score": null,
+                    "rxn_template_ids": null,
+                    "ec_numbers": null,
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "MNXM732866",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXR146818",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "label": "MNXR146818",
+                    "all_labels": "MNXR146818",
+                    "type": "reaction",
+                    "inchi": null,
+                    "inchikey": null,
+                    "cofactor": null,
+                    "rule_ids": "MNXR146818",
+                    "rxn_template_ids": "MNXR146818",
+                    "short_label": "MNXR146818",
+                    "sink_chemical": null,
+                    "inter_chemical": null,
+                    "source_chemical": null,
+                    "target_chemical": null,
+                    "smiles": null,
+                    "svg": null,
+                    "uniprot_ids": {},
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "MNXR146818",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXR97523",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "label": "MNXR97523",
+                    "all_labels": "MNXR97523",
+                    "type": "reaction",
+                    "inchi": null,
+                    "inchikey": null,
+                    "cofactor": null,
+                    "rule_ids": "MNXR97523",
+                    "rxn_template_ids": "MNXR97523",
+                    "short_label": "MNXR97523",
+                    "sink_chemical": null,
+                    "inter_chemical": null,
+                    "source_chemical": null,
+                    "target_chemical": null,
+                    "smiles": null,
+                    "svg": null,
+                    "uniprot_ids": {},
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "MNXR97523",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXR97358",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "label": "MNXR97358",
+                    "all_labels": "MNXR97358",
+                    "type": "reaction",
+                    "inchi": null,
+                    "inchikey": null,
+                    "cofactor": null,
+                    "rule_ids": "MNXR97358",
+                    "rxn_template_ids": "MNXR97358",
+                    "short_label": "MNXR97358",
+                    "sink_chemical": null,
+                    "inter_chemical": null,
+                    "source_chemical": null,
+                    "target_chemical": null,
+                    "smiles": null,
+                    "svg": null,
+                    "uniprot_ids": {},
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "MNXR97358",
+                            "url": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXR96230",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "label": "MNXR96230",
+                    "all_labels": "MNXR96230",
+                    "type": "reaction",
+                    "inchi": null,
+                    "inchikey": null,
+                    "cofactor": null,
+                    "rule_ids": "MNXR96230",
+                    "rxn_template_ids": "MNXR96230",
+                    "short_label": "MNXR96230",
+                    "sink_chemical": null,
+                    "inter_chemical": null,
+                    "source_chemical": null,
+                    "target_chemical": null,
+                    "smiles": null,
+                    "svg": null,
+                    "uniprot_ids": {},
+                    "xlinks": [
+                        {
+                            "db_name": "",
+                            "entity_id": "MNXR96230",
+                            "url": ""
+                        }
+                    ]
+                }
+            }
+        ],
+        "edges": [
+            {
+                "data": {
+                    "id": "CMPD_0000000003_RR-02-c2567e9cf3f95e10-16-F",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [],
+                    "prod_path": false,
+                    "source": "CMPD_0000000003",
+                    "target": "RR-02-c2567e9cf3f95e10-16-F"
+                }
+            },
+            {
+                "data": {
+                    "id": "CMPD_0000000005_RR-02-c2567e9cf3f95e10-16-F",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [],
+                    "prod_path": false,
+                    "source": "CMPD_0000000005",
+                    "target": "RR-02-c2567e9cf3f95e10-16-F"
+                }
+            },
+            {
+                "data": {
+                    "id": "RR-02-c2567e9cf3f95e10-16-F_CMPD_0000000002",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [],
+                    "prod_path": false,
+                    "source": "RR-02-c2567e9cf3f95e10-16-F",
+                    "target": "CMPD_0000000002"
+                }
+            },
+            {
+                "data": {
+                    "id": "CMPD_0000000002_RR-02-d8501eae0aab16ea-16-F",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [],
+                    "prod_path": false,
+                    "source": "CMPD_0000000002",
+                    "target": "RR-02-d8501eae0aab16ea-16-F"
+                }
+            },
+            {
+                "data": {
+                    "id": "CMPD_0000000004_RR-02-d8501eae0aab16ea-16-F",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [],
+                    "prod_path": false,
+                    "source": "CMPD_0000000004",
+                    "target": "RR-02-d8501eae0aab16ea-16-F"
+                }
+            },
+            {
+                "data": {
+                    "id": "RR-02-d8501eae0aab16ea-16-F_TARGET_0000000001",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [],
+                    "prod_path": false,
+                    "source": "RR-02-d8501eae0aab16ea-16-F",
+                    "target": "TARGET_0000000001"
+                }
+            },
+            {
+                "data": {
+                    "id": "EColi_1636_RR-02-a1dfecf929c96333-16-F",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [
+                        "TRS_1"
+                    ],
+                    "prod_path": false,
+                    "source": "EColi_1636",
+                    "target": "RR-02-a1dfecf929c96333-16-F"
+                }
+            },
+            {
+                "data": {
+                    "id": "RR-02-a1dfecf929c96333-16-F_CMPD_0000000004",
+                    "path_ids": [
+                        "Path_0"
+                    ],
+                    "inter_ids": [
+                        "TRS_1"
+                    ],
+                    "prod_path": false,
+                    "source": "RR-02-a1dfecf929c96333-16-F",
+                    "target": "CMPD_0000000004"
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXM23_MNXR146818",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "source": "MNXM23",
+                    "target": "MNXR146818"
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXR146818_MNXM726861",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "source": "MNXR146818",
+                    "target": "MNXM726861"
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXM726861_MNXR97523",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "source": "MNXM726861",
+                    "target": "MNXR97523"
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXR97523_MNXM734",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "source": "MNXR97523",
+                    "target": "MNXM734"
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXM734_MNXR97358",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "source": "MNXM734",
+                    "target": "MNXR97358"
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXR97358_MNXM732866",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "source": "MNXR97358",
+                    "target": "MNXM732866"
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXM732866_MNXR96230",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "source": "MNXM732866",
+                    "target": "MNXR96230"
+                }
+            },
+            {
+                "data": {
+                    "id": "MNXR96230_CMPD_0000000003",
+                    "path_ids": [],
+                    "inter_ids": [],
+                    "prod_path": true,
+                    "source": "MNXR96230",
+                    "target": "CMPD_0000000003"
+                }
+            }
+        ]
+    }
+}
