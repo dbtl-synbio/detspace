@@ -2,6 +2,7 @@
 
 var network = {};
 var pathways_info = {};
+var orgid="ECOLI";
 
 
 
@@ -46,6 +47,9 @@ $(document).ready(function(){
          success:function(data)
          {
               var table_data = '<table class="table table-bordered table-condensed table-hover" id="chassis_table">';
+              table_data += '<tr'+'id=chassis>';
+              table_data +="<th>" + "Organism" + "</th>";
+              table_data +="<th>" + "ORGID" + "</th>";
               $.each( data, function( index,val ) {
                  table_data += '<tr'+'id="chassis>"';
                  table_data += "<td>" + val["Organism"] + "</td>";
@@ -75,7 +79,7 @@ $(document).ready(function(){
             //var detectable_data = data.split(/\r?\n|\r/);
 
               var table_data = '<table class="table table-bordered table-condensed table-hover" id="producibles_table">';
-              table_data += '<tr'+'id="producible>"';
+              table_data += '<tr'+'id="producible">';
               table_data +="<th>" + "ID" + "</th>";
               table_data +="<th>" + "Name" + "</th>";
               table_data +="<th>" + "SMILES" + "</th>";
@@ -84,7 +88,7 @@ $(document).ready(function(){
               table_data +="<th>" + "Selected" + "</th>";
               table_data += '</tr>';
               $.each( data, function( index,val ) {
-               table_data += '<tr'+'id="producible>"';
+               table_data += '<tr'+'id="producible">';
                table_data += "<td>" + val["ID"] + "</td>";
                table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_prod()">'+ val["Name"] + '</a>'+"</td>";
                table_data +="<td>" + val["SMILES"] + "</td>";
@@ -104,6 +108,8 @@ $(document).ready(function(){
 // Button action that shows the network.json//
  function show_pathways() {
     run_viz(network, pathways_info);
+    let orgid=$("#list-container").children(":selected").attr("id");
+    in_chassis(orgid);
     }
 
     
@@ -122,7 +128,7 @@ $(document).ready(function(){
              //var detectable_data = data.split(/\r?\n|\r/);
 
                var table_data = '<table class="table table-bordered table-condensed table-hover" id="detectables_table">';
-               table_data += '<tr'+'id="detectable>"';
+               table_data += '<tr'+'id="detectable">';
                table_data +="<th>" + "ID" + "</th>";
                table_data +="<th>" + "Name" + "</th>";
                table_data +="<th>" + "SMILES" + "</th>";
@@ -131,7 +137,7 @@ $(document).ready(function(){
                table_data +="<th>" + "Selected" + "</th>";
                table_data += '</tr>';
                $.each( data, function( index,val ) {
-                  table_data += '<tr'+'id="detectable>"';
+                  table_data += '<tr'+'id="detectable">';
                   table_data += "<td>" + val["ID"] + "</td>";
                   table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_det()">'+ val["Name"] + '</a>'+"</td>";
                   table_data +="<td>" + val["SMILES"] + "</td>";
@@ -221,6 +227,8 @@ function get_det(){
 function delete_chassis() {
    document.getElementById("txtvalue").value="";
    $("#txtvalue").attr("chassis_id","");
+   document.getElementById("list-container").value="";
+   $("#list-container").children(":selected").attr("id","");
    }
  
 function delete_producible() {
