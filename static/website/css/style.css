@@ -352,6 +352,7 @@ button {
 }
 
 .site-navbar ul {
+    display: flex;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -360,6 +361,7 @@ button {
 }
 
 .site-navbar ul li a {
+    display: flex;
     color: #fef6fc;
     font-size: 17px;
     display: block;
@@ -368,72 +370,24 @@ button {
 }
 
 .site-navbar ul li {
+    display: flex;
     padding-right: 70px;
 }
 
 .site-navbar ul li:last-child {
+    display: flex;
     padding-right: 0;
 }
 
 .site-navbar ul li a:hover {
+    display: flex;
     color: #00132b;
 }
 .site-navbar ul li a.active {
+    display: flex;
     color: #00132b;
 }
 
-/* navbar regular css end */
-
-
-/* nav-toggler css start */
-
-.nav-toggler {
-    border: 3px solid #fff;
-    padding: 5px;
-    background-color: transparent;
-    cursor: pointer;
-    height: 39px;
-    display: none;
-    z-index: 99999;
-}
-
-.nav-toggler span,
-.nav-toggler span:before,
-.nav-toggler span:after {
-    width: 28px;
-    height: 3px;
-    background-color: #fff;
-    display: block;
-    transition: .3s;
-}
-
-.nav-toggler span:before {
-    content: '';
-    transform: translateY(-9px);
-}
-
-.nav-toggler span:after {
-    content: '';
-    transform: translateY(6px);
-}
-
-.nav-toggler.toggler-open span {
-    background-color: transparent;
-}
-
-.nav-toggler.toggler-open span:before {
-    transform: translateY(0px) rotate(45deg);
-}
-
-.nav-toggler.toggler-open span:after {
-    transform: translateY(-3px) rotate(-45deg);
-}
-
-
-/* nav-toggler css start */
-
-
-/* intro-area css start */
 
 .intro-area {
     height: calc(100vh - 61px);
@@ -755,47 +709,6 @@ button {
     margin-top: 40px;
 
 }
-.owl-carousel .owl-item img {
-    width: inherit !important;
-    text-align: center;
-    margin: 0 auto;
-    height: 90px;
-}
-
-.owl-carousel .owl-nav.disabled {
-     display: inherit !important;
-    padding-top: 80px;
-}
-
-
-.owl-carousel .owl-nav button.owl-next, 
-.owl-carousel .owl-nav button.owl-prev {
-     width: 90px;
-     height: 90px;
-     background-color: #ed1c24 !important;
-     color: #fff !important;
-     font-size: 55px !important;
-     line-height: 30px !important;
-     opacity: 1;
-     border-radius: 50px;
-     transition: ease-in all 0.5s;
-     box-shadow: 0 0 80px rgba(13, 3, 3, 0.11);
-}
-.owl-carousel .owl-nav button.owl-next:hover, 
-.owl-carousel .owl-nav button.owl-prev:hover {
-     background-color: #fff !important;
-     transition: ease-in all 0.5s;
-     color: #000 !important;
-}
-.owl-next {
-    position: absolute;
-    right: 42%;
-}
-.owl-prev {
-    position: absolute;
-    left: 42%;
-}
-
 
 /** end protect **/
 
@@ -1344,7 +1257,7 @@ padding-bottom: 40px;}
 
     .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
-    background-color: blue;
+    background-color: rgb(112, 112, 224);
 }
 
 .transition-fade {
@@ -1372,7 +1285,7 @@ padding-bottom: 40px;}
 
 .left__buttons_panel{
 
-    width:30%;
+    width:20%;
 
 }
 
@@ -1392,37 +1305,35 @@ ul li {
     cursor:pointer;
 }
 
-.input_box_chassis{
-    margin-left: 30px;
-    top: 0px;
-}
-
 .button_chassis{
-    margin-left: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     background-color:chartreuse;
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
     height:30px;
-    width:90px;
+    width:100px;
 }
 
 .button_producibles{
-    margin-left: 0px;
+    margin-bottom: 10px;
     background-color:chocolate;
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
     height:30px;
+    width:100px;
 }
 
 .button_detectables{
-    margin-left: 0px;
+    margin-bottom: 10px;
     background-color:dodgerblue;
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
     height:30px;
+    width:100px;
 }
 
 #base {
@@ -1445,24 +1356,34 @@ ul li {
     caret-color: transparent;
     background: #C0C0C0;
     font-weight: 600;
-    width: 220px;
+    width: 50%;
+    font-size: 0.82em;
 }
 
 .txtvalue_prod{
     caret-color: transparent;
     background: #C0C0C0;
     font-weight: 600;
-    width: 220px;
+    width: 50%;
+    font-size: 0.82em;
 }
 
 .txtvalue_det{
     caret-color: transparent;
     background: #C0C0C0;
     font-weight: 600;
-    width: 220px;
+    width: 50%;
+    font-size: 0.82em;
 }
 
 .close_button{
-    display: inline-block;
-  content: "\00d7"; /* This will render the 'X' */
+    float: right;
+    content: "\00d7"; /* This will render the 'X' */
+}
+
+.modal-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }

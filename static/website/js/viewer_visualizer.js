@@ -843,7 +843,6 @@ function run_viz(network, pathways_info){
                         'text-background-color': 'White',
                         'text-background-opacity': 0.85,
                         'text-background-shape': 'roundrectangle',
-                        'border-width': 8,
                         'border-style': 'dotted',
                     })
                 .selector("node[type='chemical']")  // ie: intermediates
@@ -875,7 +874,7 @@ function run_viz(network, pathways_info){
                     .css({
                         'background-image': 'data(svg)',
                         'background-fit': 'contain',
-                        'border-width': 0,
+                        'border-width': 8,
                     })
                 .selector('edge')
                     .css({
