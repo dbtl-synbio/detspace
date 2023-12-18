@@ -13,38 +13,7 @@
         <br><br>
         <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> 
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
-        <button  id="Delete selection" onclick="delete_chassis()" class="btn"><i class="fa fa-close"></i> Clean</button>
-        <script>
-            function ddlselect()
-            {
-                var d=document.getElementById("list-container");
-                var displaytext=d.options[d.selectedIndex].text;
-                //var displaytext="Chassis: "+d.options[d.selectedIndex].text+"  Taxon_ID: ";
-                document.getElementById("txtvalue").value=displaytext;
-                $("#dialogo").dialog("close");
-                var display =1;
-                var d=document.getElementById("chassis_table");
-                                       for(var i = 0; i < d.rows.length; i++)
-                        {
-                           d.rows[i].onclick = function()
-                           {
-                              rIndex = this.rowIndex;
-                                 //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
-                                 var chassis=$(this.cells[0]);
-                                    console.log(chassis.text());
-                                    //product_chosen=produc.attr("id");
-                                    // document.getElementById("txtvalue_prod").value=produc.text();
-                                    // $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
-                                    // $('#myModal').modal('hide');
-                                    // $('.modal-backdrop').remove();
-                                    // if(product_chosen!=-1 && detect_chosen!=-1){
-                                    //    $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
-                                    }
-                              
-
-                           }
-                        }
-        </script>
+        <button  id="Delete selection" onclick="delete_chassis()" class="btn"><i class="fa fa-close"></i></button>
         
         <div id="dialogo" class ="hidden" style="display: none;">
             <select id="list-container" autocomplete="off" onchange="ddlselect();">
@@ -63,10 +32,43 @@
                 <option><a href="#">Synechocystis spp.</a></option>
                 <option><a href="#">Yarrowia lipolytica</a></option>
             </select>
+         
+
+            <script>
+               function ddlselect()
+               {
+                   var d=document.getElementById("list-container");
+                   var displaytext=d.options[d.selectedIndex].text;
+                   //var displaytext="Chassis: "+d.options[d.selectedIndex].text+"  Taxon_ID: ";
+                   document.getElementById("txtvalue").value=displaytext;
+                   $("#dialogo").dialog("close");
+                   var display =1;
+                   var d=document.getElementById("chassis_table");
+                                          for(var i = 0; i < d.rows.length; i++)
+                           {
+                              d.rows[i].onclick = function()
+                              {
+                                 rIndex = this.rowIndex;
+                                    //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
+                                    var chassis=$(this.cells[0]);
+                                       console.log(chassis.text());
+                                       //product_chosen=produc.attr("id");
+                                       // document.getElementById("txtvalue_prod").value=produc.text();
+                                       // $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
+                                       // $('#myModal').modal('hide');
+                                       // $('.modal-backdrop').remove();
+                                       // if(product_chosen!=-1 && detect_chosen!=-1){
+                                       //    $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+                                       }
+                                 
+   
+                              }
+                           }
+           </script>
          </div>
         <br><br>
         <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producibles"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
-        <button  id="Delete selection" onclick= "delete_producible()" class="btn"><i class="fa fa-close"></i> Clean</button>
+        <button  id="Delete selection" onclick= "delete_producible()" class="btn"><i class="fa fa-close"></i></button>
         <div class="modal fade" id="myModal">
          <div class="modal-dialog modal-lg">
            <div class="modal-content">
@@ -160,7 +162,7 @@
                                  </script>
          <br><br>
         <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectables"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
-        <button  id="Delete selection" onclick= "delete_detectable()" class="btn"><i class="fa fa-close"></i> Clean</button>
+        <button  id="Delete selection" onclick= "delete_detectable()" class="btn"><i class="fa fa-close"></i></button>
         <div class="modal fade" id="mynewModal">
          <div class="modal-dialog modal-lg">
            <div class="modal-content">

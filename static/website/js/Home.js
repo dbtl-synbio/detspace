@@ -220,6 +220,7 @@ function get_det(){
  
 function delete_chassis() {
    document.getElementById("txtvalue").value="";
+   $("#txtvalue").attr("chassis_id","");
    }
  
 function delete_producible() {
