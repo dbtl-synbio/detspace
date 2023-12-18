@@ -18,19 +18,18 @@
         <div id="dialogo" class ="hidden" style="display: none;">
             <select id="list-container" autocomplete="off" onchange="ddlselect();">
                 <option selected="selected" disabled="disabled">-- Select your chassis--</option>
-                <option>Bacilus Subtilis</option>
-                <option>Clostridium acetobutylicum</option>
-                <option>Deinococcus radiodurans</option>
-                <option>Escherichia Coli</option>
-                <option>Geobacter sulfurreducens</option>
-                <option>Klebsiella sp. 4_1_44FAA</option>
-                <option>Mycoplasma spp.</option>
-                <option>Pseudomonas putida</option>
-                <option>Saccharomyces cerevisiae</option>
-                <option>Shewanella oneidensis</option>
-                <option>Streptomyces spp.</option>
-                <option>Synechocystis spp.</option>
-                <option>Yarrowia lipolytica</option>
+                <option id="BSUB">Bacilus Subtilis</option>
+                <option id="GCF_000008765">Clostridium acetobutylicum</option>
+                <option id="GCF_001638825">Deinococcus radiodurans</option>
+                <option id="ECOLI">Escherichia Coli</option>
+                <option id="GCF_000007985">Geobacter sulfurreducens</option>
+                <option id="GCF_000238715">Klebsiella sp. 4_1_44FAA</option>
+                <option id="PPUT160488">Pseudomonas putida</option>
+                <option id="YEAST">Saccharomyces cerevisiae</option>
+                <option id="GCF_00014615">Shewanella oneidensis</option>
+                <option id="SCO">Streptomyces spp.</option>
+                <option id="GCF_000340785">Synechocystis spp.</option>
+                <option id="YARROWIA">Yarrowia lipolytica</option>
             </select>
          
 
@@ -39,24 +38,28 @@
                {
                    var d=document.getElementById("list-container");
                    var displaytext=d.options[d.selectedIndex].text;
+                   $("#list-container").change(function() {
+                     console.log( $(this).children(":selected").attr("id"));
+                   orgid = $(this).children(":selected").attr("id");
+                   });
                    //var displaytext="Chassis: "+d.options[d.selectedIndex].text+"  Taxon_ID: ";
                    document.getElementById("txtvalue").value=displaytext;
                    console.log(displaytext)
                    $("#dialogo").dialog("close");
                    var display =1;
-                   var orgid=document.getElementById("chassis_table");
-                                          for(var i = 0; i < d.rows.length; i++)
-                           {
-                              d.rows[i].onclick = function()
-                              {
-                                 rIndex = this.rowIndex;
-                                    //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
-                                    var chassis=$(this.cells[0]);
-                                       console.log(chassis.text());
-                                       }
+                  //  var orgid=document.getElementById("chassis_table");
+                  //                         for(var i = 0; i < d.rows.length; i++)
+                  //          {
+                  //             d.rows[i].onclick = function()
+                  //             {
+                  //                rIndex = this.rowIndex;
+                  //                   //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
+                  //                   var chassis=$(this.cells[0]);
+                  //                      console.log(chassis.text());
+                  //                      }
                                  
    
-                              }
+                  //             }
                            }
            </script>
          </div>

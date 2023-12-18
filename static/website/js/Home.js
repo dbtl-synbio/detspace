@@ -2,6 +2,7 @@
 
 var network = {};
 var pathways_info = {};
+var orgid="ECOLI";
 
 
 
@@ -107,6 +108,8 @@ $(document).ready(function(){
 // Button action that shows the network.json//
  function show_pathways() {
     run_viz(network, pathways_info);
+    let orgid=$("#list-container").children(":selected").attr("id");
+    in_chassis(orgid);
     }
 
     
@@ -224,6 +227,8 @@ function get_det(){
 function delete_chassis() {
    document.getElementById("txtvalue").value="";
    $("#txtvalue").attr("chassis_id","");
+   document.getElementById("list-container").value="";
+   $("#list-container").children(":selected").attr("id","");
    }
  
 function delete_producible() {

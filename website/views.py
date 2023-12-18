@@ -10,6 +10,7 @@ import os
 import pandas as pd
 import json
 import distutils.dir_util
+import zipfile
 from io import StringIO
 from .utils import annotate_chemical_svg, get_detectables, get_producibles, get_prod_detec, get_detec_prod, get_chassis
 
@@ -140,13 +141,14 @@ def hello_world(request):
 @api_view(['GET'])
 def net_prod_det(request, prod='1', det='1'):
     data_path = os.getenv('DETSPACE_DATA')
+    zf=zipfile.ZipFile(os.path.join(data_path,'data','json_pair_files.zip'))
     basename = 'D'+str(det)+'P'+str(prod)
     netname = basename+'_network.json'
     pathname = basename+'_pathway.json'
-    netfile = os.path.join(data_path,'data','json_pair_files','P'+str(prod),netname)
-    pathfile = os.path.join(data_path,'data','json_pair_files','P'+str(prod),pathname)
-    net = json.load(open(netfile))
-    pathway = json.load(open(pathfile))
+    netfile = os.path.join('json_pair_files','P'+str(prod),netname)
+    pathfile = os.path.join('json_pair_files','P'+str(prod),pathname)
+    net = json.load(zf.open(netfile))
+    pathway = json.load(zf.open(pathfile))
     net = annotate_chemical_svg(net)
     nets = 'network = '+json.dumps(net)+'\n'+'pathways_info = '+json.dumps(pathway)
     with StringIO(nets) as fh:
