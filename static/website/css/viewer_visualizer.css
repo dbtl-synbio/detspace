@@ -64,7 +64,6 @@ body {
     border-color: black;
     border-width: 2px;
     border-left-style: solid;
-    border-right-style: solid;
 }
 
 /* Right side panel: info *****************************************************/
@@ -369,4 +368,10 @@ body {
 }
 #table_choice table tbody td.path_info:hover {
     cursor: pointer;
+}
+
+@media only screen and (max-width= 620px){
+    .interaction, .cy, .info{
+        width:100%
+    }
 }

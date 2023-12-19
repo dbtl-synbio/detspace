@@ -67,7 +67,7 @@
      </div>
 </div>
         <div class="modal fade" id="myModal">
-         <div class="modal-dialog modal-lg">
+         <div class="modal-dialog modal-lg modal-dialog-centered">
            <div class="modal-content">
              <div class="modal-header">
                <h4 class="modal-title">Producibles</h4>
@@ -92,7 +92,6 @@
                            d.rows[i].onclick = function()
                            {
                               rIndex = this.rowIndex;
-                                 //var detec=$(<a href="#" onclick="ddlselect_prod()">this.cells[1].innerHTML+" "+this.cells[2].innerHTML);
                                  var produc=$(this.cells[1]);
                                     console.log(produc.text());
                                     document.getElementById("txtvalue_prod").value=produc.text();

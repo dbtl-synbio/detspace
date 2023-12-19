@@ -457,6 +457,7 @@ function panel_chemical_info(node, show=false){
         }
         // Show
         $("#panel_chemical_info").show();
+        document.getElementById("cy").style.borderRightStyle="solid";
     } else {
         $("#panel_chemical_info").hide();
     }
@@ -525,6 +526,7 @@ function panel_chemical_producible_info(node, show=true){
         $("span.chem_info_sbtreference").html('<a target="_blank" href="http://systemsbiotech.co.kr/"' + '">SystemsBioTech</a>');
         // Show
         $("#panel_chemical_producible_info").show();
+        document.getElementById("cy").style.borderRightStyle="solid";
     } else {
         $("#panel_chemical_producible_info").hide();
     }
@@ -576,6 +578,7 @@ function panel_chemical_detectable_info(node, show=true){
         build_detectable_info(node);
         // Show
         $("#panel_chemical_detectable_info").show();
+        document.getElementById("cy").style.borderRightStyle="solid";
     } else {
         $("#panel_chemical_detectable_info").hide();
     }
@@ -633,6 +636,7 @@ function panel_reaction_info(node, show=true){
         $("span.reaction_info_selenzyme_crosslink").html('<a target="_blank" href="http://selenzyme.synbiochem.co.uk/results?smarts=' + encodeURIComponent( rsmiles ) + '">Crosslink to Selenzyme</a>');
         // Show
         $("#panel_reaction_info").show();
+        document.getElementById("cy").style.borderRightStyle="solid";
     } else {
         $("#panel_reaction_info").hide();
     }
