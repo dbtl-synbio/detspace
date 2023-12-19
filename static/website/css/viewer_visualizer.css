@@ -49,6 +49,9 @@ body {
     overflow-y: auto;
 }
 
+#pathway_selection {
+    visibility: hidden;
+}
 #pathway_selection > div#table_choice {
     max-height: 40em;
     overflow-x: hidden;

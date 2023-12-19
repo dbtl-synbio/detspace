@@ -107,6 +107,7 @@ $(document).ready(function(){
     run_viz(network, pathways_info);
     let orgid=$("#list-container").children(":selected").attr("id");
     in_chassis(orgid);
+    document.getElementById("pathway_selection").style.visibility="visible";
     }
 
     
