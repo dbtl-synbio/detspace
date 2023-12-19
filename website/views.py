@@ -19,24 +19,6 @@ from .utils import annotate_chemical_svg, get_detectables, get_producibles, get_
 def home(request):
     return render(request, 'home.html', {})
 
-def contact(request):
-    if request.method == "POST":
-        message_email = request.POST['message-email']
-        message = request.POST['message']
-
-        # send an email
-        send_mail(
-           'Suggestions and additional help' , # subject
-            message, # message
-            message_email, # from email
-            ['demo@gmail.com'], # To email
-            )
-        
-        return render(request, 'contact.html', {})
-    else:
-        return render(request, 'contact.html', {})
-def chassis(request):
-    return render(request, 'chassis.html', {})
 
 def about(request):
     return render(request, 'about.html', {})
@@ -46,32 +28,6 @@ def index(request):
 
 def api_home(request):
     return render(request, 'api.html', {})
-
-def target(request):
-    targets = Target.objects.order_by('name')
-    #targets = Target.objects.all()
-    return render(request, 'target.html', {'targets': targets})
-
-def effector(request):
-    return render(request, 'effector.html', {})
-
-def plasmid(request):
-    return render(request, 'plasmid.html', {})
-
-def specifications(request):
-    return render(request, 'specifications.html', {})
-
-def info(request, target_id):
-    targets = Target.objects.get(pk=target_id)
-    #targets = Target.objects.all()
-    return render(request, 'info.html', {'target': target})
-
-
-def hola(request):
-    #results = request.GET.get('chassis',None)+' y ya estaría'
-    r = open('website/templates/index.html').read()
-    results = {'url_data':r}
-    return HttpResponse(results)
 
 def vis_template(request):
     return render(request, 'vis_template.html', {})
@@ -121,11 +77,12 @@ def detect_prod(request, prod='1', format=None):
 
 @api_view(['GET'])
 def path_prod_det(request, prod='1', det='1'):
-    file_path = os.path.join(settings.STATICFILES_DIRS[0], 'website/files/D266P132.json')
-    if os.path.exists(file_path):
-        with open(file_path, 'rb') as fh:
+    data_path = os.getenv('DETSPACE_DATA')
+    zf=zipfile.ZipFile(os.path.join(data_path,'data','json_pair_files.zip'))
+    if os.path.exists(data_path):
+        with open(data_path, 'rb') as fh:
             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
-            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(data_path)
             return response
     raise Http404
 
@@ -133,10 +90,6 @@ def path_prod_det(request, prod='1', det='1'):
 def chassis(request, format=None):
     orgs = get_chassis()
     return Response(orgs)
-
-@api_view(['GET'])
-def hello_world(request):
-    return Response({"message": "Hello, world!"})
 
 @api_view(['GET'])
 def net_prod_det(request, prod='1', det='1'):
