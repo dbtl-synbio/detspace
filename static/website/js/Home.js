@@ -11,6 +11,16 @@ var orgid="ECOLI";
     
     function hideShow() 
     {
+      $("#dialogo").dialog({
+         modal: true,
+         title: "Chassis",
+         width: 250,
+         minWidth: 200,
+         maxWidth: 400, 
+         //show: "fold", 
+         hide: "scale",
+         autoOpen: false
+     });
         if(display == 1)
         {
             $("#dialogo").dialog("close");
@@ -21,22 +31,9 @@ var orgid="ECOLI";
             $("#dialogo").dialog("open");
             display = 0;
         }
+        
     }
 //}
-
-//Chassis dialog//
-$(document).ready(function(){
-    $("#dialogo").dialog({
-     modal: true,
-     title: "Chassis",
-     width: 250,
-     minWidth: 200,
-     maxWidth: 400, 
-     //show: "fold", 
-     hide: "scale",
-     autoOpen: false
- });
-});
 
 //Conversion of the chassis table from json to html//
 $(document).ready(function(){

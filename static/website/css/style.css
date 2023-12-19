@@ -622,25 +622,14 @@ button {
 /** about section **/
 
 .about {
-    background: #fff;
-    padding: 80px 50px;
-    position: relative; 
-    margin: 0 70px;
-    box-shadow: 3px 0 62px rgba(13, 3, 3, 0.18);
-    border-radius: 60px;
-    margin-top: -130px; 
-}
-
-.container_width {max-width: 1380px;
- padding: 0 15px;
- display: block;
- margin: 0 auto;
- clear: both;
-
+    padding-top: 10px;
 }
 
 .about .titlepage {
-     padding-bottom: 0;
+    padding-top: 10px;
+    padding-bottom: 0;
+    padding-left: 50px;
+    /**padding-t: 20px;**/
 }
 .about .titlepage h2 {
     position: relative;
@@ -671,35 +660,6 @@ button {
 }
 
 /** end about section **/
-
-
-/** coronata section **/
-
-.coronata {
-    background: #fff;
-   padding-top: 100px;
-  
-}
-
-.coronata .titlepage {
-     padding-bottom: 0;
-}
-
-.coronata .titlepage p {
-    font-weight: normal;
-    font-size: 17px;
-    line-height: 30px;
-    color: #111111;
-    padding: 35px 0px 50px 0px;
-}
-
-
-.coronata_img figure {
-     margin: 0;
-}
-
-/** end coronata section **/
-
 
 
 /** protect **/
