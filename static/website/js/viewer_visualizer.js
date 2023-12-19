@@ -575,7 +575,7 @@ function panel_chemical_detectable_info(node, show=true){
             $('div.img-box').hide();
         }
         // Inject detectable table with info
-        build_detectable_info(node);
+        //build_detectable_info(node);
         // Show
         $("#panel_chemical_detectable_info").show();
         document.getElementById("cy").style.borderRightStyle="solid";
@@ -848,7 +848,6 @@ function run_viz(network, pathways_info){
                         'text-background-opacity': 0.85,
                         'text-background-shape': 'roundrectangle',
                         'border-width': 8,
-                        'border-style': 'dotted',
                     })
                 .selector("node[type='chemical']")  // ie: intermediates
                     .css({

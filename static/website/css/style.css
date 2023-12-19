@@ -1317,9 +1317,25 @@ padding-bottom: 40px;}
 .table{
     display: block !important;
     overflow-x: auto !important;
-    width: 90% !important;
+    width: 100% !important;
+    text-align:center;
   }
  
+#producibles_table {
+    font-size: 1em;
+}
+
+#producibles_table thead {
+    font-size: 1.5em;
+}
+
+#detectables_table {
+    font-size: 1em;
+}
+
+#detectables_table thead {
+    font-size: 1.5em;
+}
 
 .html.is-animating .transition-fade{
     opacity: 1;
@@ -1393,10 +1409,13 @@ ul li {
 .modal {
     overflow-y:auto;
   }
-  
+
+.modal_title {
+    height: 2%;
+}
 
 .modal-lg {
-    max-width: 70% !important;
+    max-width: 60% !important;
 }
 
 .td a { 
