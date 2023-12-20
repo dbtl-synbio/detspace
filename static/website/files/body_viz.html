@@ -2,32 +2,7 @@
     <div id="info">
         <div id="molecule"></div>
         <div class="info" id="information">
-            <!-- Statup legend
-            <div id="panel_startup_legend">
-                <div class="info-title">Legend</div>
-                <div class="info-subtitle">How to</div>    
-                <div class="help-tip">1/ Pass the mouse hover pathway IDs (the "Pathway" column in the left table) to emphasize a specific path.</div>
-                <div class="help-tip">2/ Click once on a pathway ID (in the left table) to "pin" a path. When at least one pathway is pinned,
-                    other pathways are faded.Click a second time on a pinned pathway ID to unpin it.</div>
-                <div class="help-tip">3/ Mark / unmark the checkboxes (the "Show" column in the left table) to select which pathways are visible.</div>
-                <div class="help-tip">4/ Cofactors are hidden by default. One can use the "Show cofactors" and "Hide cofactors" button to change this display.</div>
-                <div class="help-tip">5/ Click on the <span class="pathway_info_icon"></span> icon (in the left table) to visualise information about a pathway</div>
-                <div class="help-tip">6/ Click on a node to visualise information about chemicals and reactions</div>
-                <div class="info-subtitle">Node shape</div>
-                <div class="help-content">
-                    <p><span class="symbol-compound">&#9634;</span>&nbsp;Chemical</p>
-                    <p><span class="symbol-transformation">&#9711;</span>&nbsp;Transformation (in/outgoing arrows show direction)</p>
-                </div>
-                <div class="info-subtitle">Compound color</div>
-                <div class="help-content">
-                    <p><span class="symbol-compound symbol-target-color">▢</span>&nbsp;Target</p>
-                    <p><span class="symbol-compound symbol-inter-color">▢</span>&nbsp;Intermediate chemicals</p>
-                    <p><span class="symbol-compound symbol-host-color">▢</span>&nbsp;Host</p>
-                    <p><span class="symbol-compound symbol-precursor-color">▢</span>&nbsp;Precursors</p>
-                    <p><span class="symbol-compound symbol-source-color">▢</span>&nbsp;Source</p>
-                </div>
-            </div> -->
-            <!-- Information on a selected chemical -->
+                        <!-- Information on a selected chemical -->
             <div id="panel_chemical_info">
                 <div class="info-title">Chemical</div>
                 <div class="info-name"><span class="chem_info_label"></span></div>
@@ -59,7 +34,9 @@
                     <div class="info-subtitle">Pathways involved in</div>
                     <div class="raw-text chem_info_pathids"></div>
                 </div>
-            </div>
+            <div>
+                    <button type="button" class="btn btn-default panel_button" onclick="hide_all_panel()">Close</button>
+                </div>            </div>
             <!-- Information on a producible chemical -->
             <div id="panel_chemical_producible_info">
                 <div class="info-title">Producible chemical</div>
@@ -107,6 +84,9 @@
                     <div class="info-subtitle">Reference</div>
                     <div class="raw-text"><span class="chem_info_sbtreference"></span></div>
                 </div>
+<div>
+                    <button type="button" class="btn btn-default panel_button" onclick="hide_all_panel()">Close</button>
+                </div>
             </div>
             <!-- Information on a detectable chemical -->
             <div id="panel_chemical_detectable_info">
@@ -137,6 +117,9 @@
                 </div>
                 <!-- <div class="info-subtitle">Sensbio Information</div> -->
                 <div id="table_detectable_info"></div>
+<div>
+                    <button type="button" class="btn btn-default panel_button" onclick="hide_all_panel()">Close</button>
+                </div>
             </div>
             <!-- Information on a selected reaction -->
             <div id="panel_reaction_info">
@@ -178,6 +161,14 @@
                     <div class="info-subtitle">Enzyme selection</div>
                     <div class="raw-text"><span class="reaction_info_selenzyme_crosslink"></span></div>
                 </div>
+<div>
+                    <button type="button" class="btn btn-default panel_button" onclick="hide_all_panel()">Close</button>
+                </div>
             </div>
         </div>
     </div>
+<script>
+    $(function(){
+        $("#info").draggable();
+    })
+</script>

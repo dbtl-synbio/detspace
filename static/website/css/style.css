@@ -399,13 +399,6 @@ button {
     color: #00132b;
 }
 
-.title-left span{
-    color: #fef6fc;
-    font-size: 16px;
-    cursor:auto;
-    text-transform: capitalize;
-}
-
 /* navbar regular css end */
 
 
@@ -1395,7 +1388,7 @@ ul li {
 .button_chassis{
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color:chartreuse;
+    background-color:rgb(131, 211, 52);
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
@@ -1423,11 +1416,6 @@ ul li {
     cursor:pointer;
     height:30px;
     width:100px;
-}
-
-#base {
-        width: 100%;
-
 }
  
 .modal {
