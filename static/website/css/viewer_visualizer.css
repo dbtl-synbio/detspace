@@ -8,6 +8,7 @@ body {
     float:center;
     width: 100%;
     margin-right: auto;
+    position: relative;
 }
 
 #viewer {
@@ -19,21 +20,26 @@ body {
 #interaction {
     position: absolute;
     z-index: 11;
-    background-color: #E8E9E8;
+    background-color: white;
     padding: 0 1% 0 1%;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-top-right-radius: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     width: 20%;
-    height: 1000px;
+    height: 90vh; 
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    z-index: 2;
 }
 
 #interaction div.info-title {
     font-weight: bold;
     font-size: 1.8em;
     font-family: sans-serif;
-    font-variant: small-caps;
+    font-variant: normal;
     text-align: left;
     padding-top: 5%;
     padding-right: 5%;
@@ -49,93 +55,46 @@ body {
     overflow-y: auto;
 }
 
+#pathway_selection {
+    visibility: hidden;
+}
 #pathway_selection > div#table_choice {
     max-height: 40em;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
+#info_pair { 
+    margin-top:10px;
+    visibility: hidden;
+}
+
 /* Central panel: the graph ***************************************************/
 #cy {
     float: left;
-    width: 60%;
-    height: 1000px;
-    margin-left: 22%;  /* +2 to compensate left pannel padding */
+    width: 100%;
+    height: 90vh;  
+    margin-left: 22%;
+    border-color: black;
+    border-width: 2px;
 }
 
 /* Right side panel: info *****************************************************/
 #info {
-    float: right;
+    position: absolute;
+    top:0;
+    right:0;
     border-radius: 5px;
-    background-color: #E8E9E8;
+    background-color: white;
     width: 18%;  /* -2 to compensate left panel padding */
-    height: 1000px;
-    position: relative;
+    height: 75vh; 
     overflow-x: hidden;
-    overflow-y: auto; 
-}
-
-#panel_startup_legend {
-    display: block;
-}
-
-#panel_startup_legend > .help-content > p {
-    text-align: center;
-    display: block;
-    padding-top: 0.1em;
-    padding-bottom: 0.1em;
-    margin-left: 1em;
-    margin-right: 1em;
-}
-
-#panel_startup_legend span.pathway_info_icon {
-    margin: auto;
-    content: "";
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M13.646 13.354a.5.5 0 010-.708L16.293 10l-2.647-2.646a.5.5 0 01.708-.708l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M6.5 10a.5.5 0 01.5-.5h9a.5.5 0 010 1H7a.5.5 0 01-.5-.5z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M4 15.5A1.5 1.5 0 012.5 14V6A1.5 1.5 0 014 4.5h7A1.5 1.5 0 0112.5 6v1.5a.5.5 0 01-1 0V6a.5.5 0 00-.5-.5H4a.5.5 0 00-.5.5v8a.5.5 0 00.5.5h7a.5.5 0 00.5-.5v-1.5a.5.5 0 011 0V14a1.5 1.5 0 01-1.5 1.5H4z" clip-rule="evenodd"></path></svg>');
-    background-repeat: no-repeat;
-    display: inline-block;
-    width: 1.5em;
-    height: 1.5em;
-    vertical-align: bottom;
-}
-
-#panel_startup_legend > .help-tip {
-    text-align: left;
-    font-family: serif;
-    font-style: italic;
-    padding-top: 1em;
-    margin-left: 1em;
-    margin-right: 1em;
-}
-
-#panel_startup_legend > .help-content .symbol-compound {
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-#panel_startup_legend > .help-content .symbol-transformation {
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-#panel_startup_legend > .help-content .symbol-target-color {
-    color: #CC3333;
-}
-
-#panel_startup_legend > .help-content .symbol-inter-color {
-    color: #333333;
-}
-
-#panel_startup_legend > .help-content .symbol-precursor-color {
-    color: #FFCC33;
-}
-
-#panel_startup_legend > .help-content .symbol-host-color {
-    color: #336600;
-}
-
-#panel_startup_legend > .help-content .symbol-source-color {
-    color: #003399;
+    overflow-y: auto;
+    z-index: 9;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 #panel_chemical_info, #panel_reaction_info, #panel_chemical_producible_info, #panel_chemical_detectable_info {
@@ -152,11 +111,18 @@ body {
     overflow-y: auto;
 }
 
+.panel_button{
+    margin-top:2%;
+    position: absolute;
+    bottom:0px;
+    right:0px;
+}
+
 #info div.info-title {
     font-weight: bold;
     font-size: 1.8em;
     font-family: sans-serif;
-    font-variant: small-caps;
+    font-variant: normal;
     text-align: right;
     padding-top: 5%;
     padding-right: 5%;
@@ -240,7 +206,7 @@ body {
     padding: 8px 12px;
     margin-right: -1%;
     border-left: 4px solid #4CAF50;
-    font-family: Consolas,"courier new", "monospace";
+    font-family: sans-serif;
     font-size: 1em;
 }
 
@@ -263,7 +229,7 @@ body {
     border: solid 1px #DDEEEE;
     border-collapse: collapse;
     border-spacing: 0;
-    font-family: Consolas,"courier new", "monospace";
+    font-family: sans-serif;
     font-size: 1em;
 }
 
@@ -315,6 +281,7 @@ body {
     border: solid 1px #DDEEEE;
     border-collapse: collapse;
     border-spacing: 0;
+    margin-bottom: 10px;
     /* font: normal 13px Arial, sans-serif; */
 }
 #table_choice table thead th {
@@ -364,4 +331,10 @@ body {
 }
 #table_choice table tbody td.path_info:hover {
     cursor: pointer;
+}
+
+@media only screen and (max-width= 620px){
+    .interaction, .cy, .info{
+        width:100%
+    }
 }
