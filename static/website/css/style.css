@@ -141,18 +141,18 @@ ul {
 ol {
      margin: 0px;
      padding: 0px;
-     list-style: none;
+     list-style: decimal;
 }
 
 p {
      margin: 0px;
      font-weight: 500;
      font-size: 15px;
-     line-height: 24px;
+     line-height: 12px;
 }
 
 a {
-     color: #222222;
+     color: #d92525;
      text-decoration: none;
      outline: none !important;
 }
@@ -1382,7 +1382,7 @@ ul li {
 .button_producibles{
     margin-left: 0px;
     margin-bottom: 10px;
-    background-color:rgb(98, 65, 219);
+    background-color:rgb(65, 190, 219);
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
