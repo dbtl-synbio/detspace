@@ -866,8 +866,8 @@ function run_viz(network, pathways_info){
                     })
                 .selector("node[type='chemical'][?source_chemical]")
                     .css({
-                        'background-color': '#003399',
-                        'border-color': '#003399',
+                        'background-color': 'rgb(98, 65, 219);',
+                        'border-color': 'rgb(98, 65, 219);',
                     })
                 .selector("node[type='chemical'][?inter_chemical]")
                     .css({
@@ -882,6 +882,7 @@ function run_viz(network, pathways_info){
                     })
                 .selector('edge')
                     .css({
+                        'target-label': 'Detectable',
                         'curve-style': 'unbundled-bezier',
                         'line-color': '#999999',
                         'line-fill': 'solid',

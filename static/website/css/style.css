@@ -1382,7 +1382,7 @@ ul li {
 .button_producibles{
     margin-left: 0px;
     margin-bottom: 10px;
-    background-color:chocolate;
+    background-color:rgb(98, 65, 219);
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
@@ -1393,7 +1393,7 @@ ul li {
 .button_detectables{
     margin-left: 0px;
     
-    background-color:dodgerblue;
+    background-color:#cc3333;
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
