@@ -1,8 +1,9 @@
-//const Home = () => {
 
-    const handleClick = () => {
-        console.log('You have selected Acinetobacter baumannii AYE');
-    }
+
+var network = {};
+var pathways_info = {};
+var orgid="ECOLI";
+
 
 
     var div =document.getElementById('dialogo');
@@ -10,6 +11,16 @@
     
     function hideShow() 
     {
+      $("#dialogo").dialog({
+         modal: true,
+         title: "Chassis",
+         width: 250,
+         minWidth: 200,
+         maxWidth: 400, 
+         //show: "fold", 
+         hide: "scale",
+         autoOpen: false
+     });
         if(display == 1)
         {
             $("#dialogo").dialog("close");
@@ -20,24 +31,37 @@
             $("#dialogo").dialog("open");
             display = 0;
         }
+        
     }
 //}
 
-//Chassis dialog//
+//Conversion of the chassis table from json to html//
 $(document).ready(function(){
-    $("#dialogo").dialog({
-     modal: true,
-     title: "Chassis",
-     width: 250,
-     minWidth: 200,
-     maxWidth: 400, 
-     //show: "fold", 
-     hide: "scale",
-     autoOpen: false
- });
+   $('#Chassis').click(function(){
+      $.ajax({
+         url:"/api/chassis/",
+         dataType:"json",
+         success:function(data)
+         {
+              var table_data = '<table class="table table-bordered table-condensed table-hover" id="chassis_table">';
+              table_data += '<tr'+'id=chassis>';
+              table_data +="<th>" + "Organism" + "</th>";
+              table_data +="<th>" + "ORGID" + "</th>";
+              $.each( data, function( index,val ) {
+                 table_data += '<tr'+'id="chassis>"';
+                 table_data += "<td>" + val["Organism"] + "</td>";
+                 table_data +="<td id='" + val["Organism"] + "'>" + '<a href="#" onclick="ddlselect()">'+ val["Orgid"] + '</a>'+"</td>";
+                 table_data += '</tr>';
+               });
+              table_data += '</table>';
+              $('#chassis_table').html(table_data);
+           ;}//success
+      });
+   });
+
 });
 
-//Conversion of the producibles table from csv to html//
+//Conversion of the producibles table from json to html//
 $(document).ready(function(){
    $('#producibles').click(function(){
      var det_id=$("#txtvalue_det").attr("det_id");
@@ -50,17 +74,29 @@ $(document).ready(function(){
          success:function(data)
          {
             //var detectable_data = data.split(/\r?\n|\r/);
-
-              var table_data = '<table class="table table-bordered table-condensed table-hover" id="producibles_table">';
-              $.each( data, function( index,val ) {
-                 table_data += '<tr'+'id="producible>"';
-                 table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_prod()">'+ val["Name"] + '</a>'+"</td>";
-                 table_data +="<td>" + val["SMILES"] + "</td>";
-                 table_data += '</tr>';
-               });
-              table_data += '</table>';
-              $('#producibles_table').html(table_data);
-           ;}//success
+            let table_base = $('<table class="table table-striped table-hover" id="producibles_table"></table>');
+            let field_names = ['Name', 'SMILES', 'Effectors', 'Pathways', 'Selected'];
+            let field_classes = ['name_head', 'smiles_head', 'effectors_head', 'pathways_head', 'selected_head'];
+            let table_row = $('<tr></tr>');
+            for (let i=0; i<field_names.length;i++){
+               let value = field_names[i];
+               table_row.append($('<th class="'+field_classes[i]+'"></th>').html(value));
+            }
+            table_base.append($('<thead class= "thead-dark"></thead>').append(table_row));
+            
+            let table_body = $('<tbody ></tbody>');
+            $.each( data, function( index,val ) {
+               let table_row = $('<tr></tr>');
+               table_row.append($("<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_prod()">'+ val["Name"] + '</a>'+"</td>"));
+               table_row.append($("<td class='smiles'>" + val["SMILES"] + "</td>"));
+               table_row.append($("<td class='effectors'>" + val["Effectors"] + "</td>"));
+               table_row.append($("<td class='pathways'>" + val["Pathways"] + "</td>"));
+               table_row.append($("<td class='selected'>" + val["Selected"] + "</td>"));
+               table_body.append(table_row);
+            });
+            table_base.append(table_body);
+            $('#producibles_modal_table').html(table_base);
+           ;}
       });
    });
 
@@ -68,13 +104,22 @@ $(document).ready(function(){
 
 // Button action that shows the network.json//
  function show_pathways() {
-    $.getScript("static/website/files/network.json");
-    run_viz();
-    console.log("static/website/files/network.json")
-    }
+    run_viz(network, pathways_info);
+    let orgid=$("#list-container").children(":selected").attr("id");
+    in_chassis(orgid);
+    document.getElementById("pathway_selection").style.visibility="visible";
+    document.getElementById("info_pair").style.visibility="visible";
+    document.getElementById("info").style.borderLeftStyle="hidden";
+    document.getElementById("info").style.borderBottomStyle="hidden";
+    document.getElementById("info").style.borderTopStyle="hidden";
+    document.getElementById("info").style.borderRightStyle="hidden";
+    //document.getElementById("cy").style.width="78%";
+    document.getElementById("info").style.width="0%";
+    count_intermediate();
+ }
 
     
-//Conversion of the detectables table from csv to html//
+//Conversion of the detectables table from json to html//
 $(document).ready(function(){
     $('#detectables').click(function(){
       var prod_id=$("#txtvalue_prod").attr("prod_id");
@@ -88,15 +133,27 @@ $(document).ready(function(){
           {
              //var detectable_data = data.split(/\r?\n|\r/);
 
-               var table_data = '<table class="table table-bordered table-condensed table-hover" id="detectables_table">';
-               $.each( data, function( index,val ) {
-                  table_data += '<tr'+'id="detectable>"';
-                  table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_det()">'+ val["Name"] + '</a>'+"</td>";
-                  table_data +="<td>" + val["SMILES"] + "</td>";
-                  table_data += '</tr>';
-                });
-               table_data += '</table>';
-               $('#detectables_table').html(table_data);
+             let table_base = $('<table class="table table-striped table-hover" id="detectables_table"></table>');
+             let field_names = ['Name', 'SMILES', 'Products', 'Pathways', 'Selected'];
+             let table_row = $('<tr></tr>');
+             for (let i=0; i<field_names.length;i++){
+                let value = field_names[i];
+                table_row.append($('<th></th>').html(value));
+             }
+             table_base.append($('<thead class= "thead-dark"></thead>').append(table_row));
+             
+             let table_body = $('<tbody ></tbody>');
+             $.each( data, function( index,val ) {
+                let table_row = $('<tr></tr>');
+                table_row.append($("<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_det()">'+ val["Name"] + '</a>'+"</td>"));
+                table_row.append($("<td>" + val["SMILES"] + "</td>"));
+                table_row.append($("<td>" + val["Products"] + "</td>"));
+                table_row.append($("<td>" + val["Pathways"] + "</td>"));
+                table_row.append($("<td>" + val["Selected"] + "</td>"));
+                table_body.append(table_row);
+             });
+             table_base.append(table_body);
+             $('#detectables_modal_table').html(table_base);
             ;}//success
        });
     });
@@ -173,3 +230,21 @@ function get_det(){
     });
    }
  
+function delete_chassis() {
+   document.getElementById("txtvalue").value="";
+   $("#txtvalue").attr("chassis_id","");
+   document.getElementById("list-container").value="";
+   $("#list-container").children(":selected").attr("id","");
+   }
+ 
+function delete_producible() {
+   document.getElementById("txtvalue_prod").value="";
+   $("#txtvalue_prod").attr("prod_id","");
+   }
+   
+
+function delete_detectable() {
+   document.getElementById("txtvalue_det").value="";
+   $("#txtvalue_det").attr("det_id","");
+   }
+

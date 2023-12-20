@@ -457,6 +457,10 @@ function panel_chemical_info(node, show=false){
         }
         // Show
         $("#panel_chemical_info").show();
+        document.getElementById("info").style.borderLeftStyle="solid";
+        document.getElementById("info").style.borderBottomStyle="solid";
+        document.getElementById("info").style.borderRightStyle="solid";
+        document.getElementById("info").style.borderTopStyle="solid";
     } else {
         $("#panel_chemical_info").hide();
     }
@@ -525,6 +529,10 @@ function panel_chemical_producible_info(node, show=true){
         $("span.chem_info_sbtreference").html('<a target="_blank" href="http://systemsbiotech.co.kr/"' + '">SystemsBioTech</a>');
         // Show
         $("#panel_chemical_producible_info").show();
+        document.getElementById("info").style.borderLeftStyle="solid";
+        document.getElementById("info").style.borderBottomStyle="solid";
+        document.getElementById("info").style.borderRightStyle="solid";
+        document.getElementById("info").style.borderTopStyle="solid";
     } else {
         $("#panel_chemical_producible_info").hide();
     }
@@ -573,10 +581,14 @@ function panel_chemical_detectable_info(node, show=true){
             $('div.img-box').hide();
         }
         // Inject detectable table with info
-        build_detectable_info(node);
+        //build_detectable_info(node);
         // Show
         $("#panel_chemical_detectable_info").show();
-    } else {
+        document.getElementById("info").style.borderLeftStyle="solid";
+        document.getElementById("info").style.borderBottomStyle="solid";
+        document.getElementById("info").style.borderRightStyle="solid";
+        document.getElementById("info").style.borderTopStyle="solid";
+        } else {
         $("#panel_chemical_detectable_info").hide();
     }
 } 
@@ -633,7 +645,11 @@ function panel_reaction_info(node, show=true){
         $("span.reaction_info_selenzyme_crosslink").html('<a target="_blank" href="http://selenzyme.synbiochem.co.uk/results?smarts=' + encodeURIComponent( rsmiles ) + '">Crosslink to Selenzyme</a>');
         // Show
         $("#panel_reaction_info").show();
-    } else {
+        document.getElementById("info").style.borderLeftStyle="solid";
+        document.getElementById("info").style.borderBottomStyle="solid";
+        document.getElementById("info").style.borderRightStyle="solid";
+        document.getElementById("info").style.borderTopStyle="solid";
+        } else {
         $("#panel_reaction_info").hide();
     }
 }
@@ -720,6 +736,12 @@ function show_all_panels(){
 }
 
 function hide_all_panel(){
+    document.getElementById("info").style.borderLeftStyle="hidden";
+    document.getElementById("info").style.borderBottomStyle="hidden";
+    document.getElementById("info").style.borderTopStyle="hidden";
+    document.getElementById("info").style.borderRightStyle="hidden";
+    //document.getElementById("cy").style.width="78%";
+    //document.getElementById("info").style.width="0%";
     $("#panel_chemical_info").hide();
     $("#panel_chemical_producible").hide();
     $("#panel_reaction_info").hide();
@@ -745,8 +767,25 @@ function in_chassis(chassis='ECOLI'){
     }
 }
 
+function count_intermediate(){
+    let nodes = cy.nodes().filter('[type = "chemical"]');
+    let total_intermediate = 0;
+    let in_chassis = 0;
+    for (let n = 0; n < nodes.size(); n++){
+        let node = nodes[n];
+        if (node.data('inter_chemical')){
+            total_intermediate++;
+        }
+        if (node.data('sink_chemical')){
+            in_chassis++;
+        }
+    }
+    document.getElementById('txt_intermediate_compounds').innerHTML='Intermediate compounds: ' + String(total_intermediate);
+    document.getElementById('txt_chassis_compounds').innerHTML='Compounds in chassis: ' + String(in_chassis);    
+}
+
 // Live ///////////////////////////
-function run_viz(){
+function run_viz(network, pathways_info){
 
     // Cytoscape object to play with all along
     var cy = window.cy = cytoscape({
@@ -814,9 +853,10 @@ function run_viz(){
                     .css({
                         'height': 60,
                         'width': 120,
+                        'shape': 'cut-rectangle',
                         'background-color': 'white',
-                        'border-width': 5,
-                        'border-color': 'black',
+                        'border-width': 2,
+                        'border-color': 'gray',
                         'border-style': 'solid',
                         'content': 'data(short_label)',
                         'text-valign': 'center',
@@ -829,19 +869,20 @@ function run_viz(){
                     .css({
                         'background-color': '#52be80',
                         'background-fit':'contain',
-                        'shape': 'roundrectangle',
+                        'shape': 'ellipse',
                         'width': 80,
                         'height': 80,
                         'label': 'data(short_label)',
-                        'font-size': '20px',
+                        'font-size': '14px',
                         // 'font-weight': 'bold',
-                        'text-valign': 'top',
+                        'text-valign': 'bottom',
                         'text-halign': 'center',
                         'text-margin-y': 8,
                         'text-opacity': 1,
                         'text-background-color': 'White',
                         'text-background-opacity': 0.85,
                         'text-background-shape': 'roundrectangle',
+                        'border-width': 4,
                     })
                 .selector("node[type='chemical']")  // ie: intermediates
                     .css({
@@ -850,8 +891,8 @@ function run_viz(){
                     })  
                 .selector("node[type='chemical'][?sink_chemical]")
                     .css({
-                        'background-color': '#336600',
-                        'border-color': '#336600'
+                        'background-color': '#83d334',
+                        'border-color': '#83d334',
                     })
                 .selector("node[type='chemical'][?target_chemical]")
                     .css({
@@ -860,8 +901,8 @@ function run_viz(){
                     })
                 .selector("node[type='chemical'][?source_chemical]")
                     .css({
-                        'background-color': '#003399',
-                        'border-color': '#003399',
+                        'background-color': '#41BEDB',
+                        'border-color': '#41BEDB',
                     })
                 .selector("node[type='chemical'][?inter_chemical]")
                     .css({
@@ -872,13 +913,16 @@ function run_viz(){
                     .css({
                         'background-image': 'data(svg)',
                         'background-fit': 'contain',
-                        'border-width': 8,
+                        'border-width': 4,
                     })
                 .selector('edge')
                     .css({
-                        'curve-style': 'bezier',
+                        'curve-style': 'unbundled-bezier',
                         'line-color': '#999999',
-                        'width': '5px',
+                        'line-fill': 'solid',
+                        'line-gradient-stop-colors': 'cyan magenta',
+                        'line-gradient-stop-positions': '0% 100%',
+                        'width': '2px',
                         'target-arrow-shape': 'chevron',
                         'target-arrow-color': '#999999',
                         'arrow-scale' : 2
@@ -894,7 +938,7 @@ function run_viz(){
                     })
                 .selector('node:selected')
                     .css({
-                        'border-width': 5,
+                        'border-width': 4,
                         'border-color': 'black'
                     })
         );
@@ -904,6 +948,8 @@ function run_viz(){
             // Dump into console
             console.log(node.data());
             // Print info
+            //document.getElementById("cy").style.width="60%";
+            document.getElementById("info").style.width="18%";
             if (node.is('[type = "chemical"]')){
                 panel_startup_info(false);
                 panel_reaction_info(null, false);
@@ -954,7 +1000,9 @@ function run_viz(){
         // Playing with zoom to get the best fit
         cy.minZoom(1e-50);
         cy.on('layoutstop', function(e){
-            cy.minZoom(cy.zoom()*0.75);  // 0.9 to enable the user dezoom a little
+
+            cy.minZoom(cy.zoom()*0.5);  // 0.9 to enable the user dezoom a little
+
         });
         // Layout
         let layout = element_collection.layout({
