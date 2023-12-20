@@ -866,8 +866,8 @@ function run_viz(network, pathways_info){
                     })
                 .selector("node[type='chemical'][?source_chemical]")
                     .css({
-                        'background-color': 'rgb(65, 190, 219);',
-                        'border-color': 'rgb(65, 190, 219);',
+                        'background-color': '#41bedb',
+                        'border-color': '#41bedb',
                     })
                 .selector("node[type='chemical'][?inter_chemical]")
                     .css({
