@@ -14,7 +14,7 @@ __license__ = 'MIT'
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <!-- mobile metas -->
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <meta name="viewport" content="initial-scale=1.0, width=device-width">
       <!-- site metas -->
       <title>{% block title %}DetSpace: Detectable Pathway Engineering Tool{% endblock %}</title>
       <meta name="keywords" content="">
@@ -45,7 +45,6 @@ __license__ = 'MIT'
       <script src="{% static 'website/js/jquery-3.6.0.min.js'%}"></script>   
       <script src="{% static 'website/js/cytoscape-3.19.0.min.js'%}"></script>     
       <script src="{% static 'website/js/jquery-ui-1.12.1.min.js'%}"></script>  
-      <script src="{% static 'website/js/jquery.dataTables.js'%}"></script>   
 
       <!-- Dagre layout -->
       <script src="{% static 'website/js/dagre-0.8.5.min.js'%}"></script>
@@ -65,21 +64,12 @@ __license__ = 'MIT'
       <link rel="stylesheet" href="{% static 'website/css/jquery-ui.structure.min.css'%}">
       <link rel="stylesheet" href="{% static 'website/css/jquery-ui.theme.css'%}">
       <link rel="stylesheet" href="{% static 'website/css/jquery-ui.theme.min.css'%}">
-      <link rel="stylesheet" href="{% static 'website/css/dataTables.jqueryui.min.css'%}">
-      <link rel="stylesheet" href="{% static 'website/css/buttons.jqueryui.min.css'%}">
-      <link rel="stylesheet" href="{% static 'website/css/stateRestore.jqueryui.min.css'%}">
 
       <!-- Javascript files-->
       <script src="{% static 'website/js/Home.js'%}"></script>
       <script src="{% static 'website/js/Producibles.js'%}"></script>
       <script src="{% static 'website/js/jquery-ui.js'%}"></script>
       <script src="{% static 'website/js/jquery-ui.min.js'%}"></script>
-      <script src="{% static 'website/js/script.js'%}"></script> 
-      <script src="{% static 'website/js/dataTables.jqueryui.min.js'%}"></script> 
-      <script src="{% static 'website/js/dataTables.stateRestore.min.js'%}"></script> 
-      <script src="{% static 'website/js/stateRestore.jqueryui.min.js'%}"></script> 
-      <script src="{% static 'website/js/dataTables.buttons.min.js'%}"></script> 
-      <script src="{% static 'website/js/buttons.jqueryui.min.js'%}"></script> 
 
         <!-- Javascript files-->
 
@@ -87,29 +77,10 @@ __license__ = 'MIT'
      <script src="{% static 'website/js/bootstrap.bundle.min.js'%}"></script>
      <script src="{% static 'website/js/bootstrap.min.js'%}"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-     <script src="{% static 'website/js/owl.carousel.min.js'%}"></script>
-     <script src="{% static 'website/js/custom.js'%}"></script>
-     <script src="{% static 'website/js/cytoscape.min.js'%}"></script>
-     <script src="{% static 'website/js/cytoscape.umd.js'%}"></script>
-     <script src="{% static 'website/js/cytoscape.esm.min.js'%}"></script>
-     <script src="{% static 'website/js/cytoscape.cjs.js'%}"></script>
-     <script src="{% static 'website/js/cytoscape.esm.js'%}"></script>
-     <script src="{% static 'website/js/viewer.js'%}"></script>
      <script src="{% static 'website/js/chroma.min.js'%}"></script>
      <script src="{% static 'website/js/dagre.js'%}"></script>
-     <script src="{% static 'website/js/cytoscape-dagre.js'%}"></script>
-     <!--<script defer src="{% static 'website/node_modules/swup/dist/swup.umd.js'%}"></script>-->
-     <script defer src="{% static 'website/js/script.js'%}"></script>
-     <!--<script src="https://unpkg.com/@swup/js-plugin@3"></script>-->
      <!-- Table sorter -->
      <script src="{% static 'website/js/jquery.tablesorter.min.js'%}"></script>
-
-     <!-- Data -->
-      <!--<script src="{% static "website/templates/network.json"%}"></script>-->
-
-
-      <!-- Data -->
-      <script src="{% static 'website/files/network.json'%}"></script>
 
       <!-- Viewer -->
       <script src="{% static 'website/js/viewer_visualizer.js'%}"></script>
@@ -119,36 +90,15 @@ __license__ = 'MIT'
  
        <!-- Local libraries -->
     <script src="{% static 'website/js/jquery-3.6.0.min.js'%}"></script>   
-    <script src="{% static 'website/js/cytoscape-3.19.0.min.js'%}"></script>     
     <script src="{% static 'website/js/jquery-ui-1.12.1.min.js'%}"></script>  
-    <script src="{% static 'website/js/jquery.dataTables.js'%}"></script>   
 
     <!-- Dagre layout -->
     <script src="{% static 'website/js/dagre-0.8.5.min.js'%}"></script>
-    <script src="{% static 'website/js/cytoscape-dagre-2.3.2.'%}js"></script>
-
-    <!-- Data -->
-    <!--<script src="{% static 'website/files/network.json'%}"></script>
-    <script src="{% static 'website/files/prod_det.json'%}"></script>-->
-
-    <!-- Viewer -->
-    <script src="{% static 'website/js/viewer_visualizer.js'%}"></script>
 
     <!-- CSS and JS stuff -->
-    <link href="{% static 'website/css/viewer_visualizer.css'%}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'website/css/viewer.css'%}" rel="stylesheet" type="text/css"/>
    <link href="{% static 'website/css/jquery.tablesorte.theme.default.min.css'%}" rel="stylesheet" type="text/css"/>
    <script src="{% static 'website/js/jquery.min.js'%}"type="text/javascript"></script>
    <script src="{% static 'website/js/bootstrap.min.js'%}"></script> 
-   <script src="{% static 'website/js/dataTables.jqueryui.min.js'%}"></script>
-   <script src="{% static 'website/js/dataTables.stateRestore.min.js'%}"></script> 
-   <script src="{% static 'website/js/jquery.dataTables.min.js'%}"></script> 
-   <script src="{% static 'website/js/stateRestore.jqueryui.min.js'%}"></script> 
-   <script src="{% static 'website/js/dataTables.buttons.min.js'%}"></script> 
-   <script src="{% static 'website/js/buttons.jqueryui.min.js'%}"></script>
-   <script src="{% static 'website/js/dataTables.bootstrap.min.js'%}"></script>  
-   <script src="{% static 'website/js/dataTables.responsive.min.js'%}"></script> 
-   <script src="{% static 'website/js/responsive.bootstrap.min.js'%}"></script>
    <script src="{% static 'website/js/Home.js'%}"></script>
 
     <!-- Testing chroma.js -->
@@ -165,10 +115,6 @@ __license__ = 'MIT'
     <link rel="stylesheet" href="{% static 'website/css/jquery-ui.structure.min.css'%}">
     <link rel="stylesheet" href="{% static 'website/css/jquery-ui.theme.css'%}">
     <link rel="stylesheet" href="{% static 'website/css/jquery-ui.theme.min.css'%}">
-    <link rel="stylesheet" href="{% static 'website/css/dataTables.jqueryui.min.css'%}">
-    <link rel="stylesheet" href="{% static 'website/css/buttons.jqueryui.min.css'%}">
-    <link rel="stylesheet" href="{% static 'website/css/stateRestore.jqueryui.min.css'%}">
-    <link rel="stylesheet" href="{% static 'website/css/responsive.bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -177,8 +123,6 @@ __license__ = 'MIT'
 <link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css'%}">
 <!-- style css -->
 <link rel="stylesheet" href="{% static 'website/css/style.css'%}">
-<!-- Responsive-->
-<link rel="stylesheet" href="{% static 'website/css/responsive.css'%}">
 <!-- fevicon -->
 <link rel="icon" href="{% static 'website/images/fevicon.ico' %}"/>
 <!-- Scrollbar Custom CSS -->

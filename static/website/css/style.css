@@ -141,19 +141,19 @@ ul {
 ol {
      margin: 0px;
      padding: 0px;
-     list-style: decimal;
+     list-style: none;
 }
 
 p {
      margin: 0px;
      font-weight: 500;
      font-size: 15px;
-     line-height: 12px;
+     line-height: 24px;
 }
 
 a {
-     color: #d92525;
-     text-decoration: none; 
+     color: #222222;
+     text-decoration: none;
      outline: none !important;
 }
 
@@ -347,8 +347,8 @@ button {
 }
 .site-navbar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: left;
 }
 
 .site-navbar ul {
@@ -624,11 +624,12 @@ button {
 .about {
     padding-top: 10px;
 }
-.about .titlepage {    
+
+.about .titlepage {
     padding-top: 10px;
     padding-bottom: 0;
     padding-left: 50px;
-    padding-t: 20px;
+    /**padding-t: 20px;**/
 }
 .about .titlepage h2 {
     position: relative;
@@ -650,7 +651,7 @@ button {
     font-size: 17px;
     line-height: 30px;
     color: #111111;
-    padding: 10px 0px 10px 0px;
+    padding: 35px 0px 50px 0px;
 }
 
 
@@ -659,35 +660,6 @@ button {
 }
 
 /** end about section **/
-
-
-/** coronata section **/
-
-.coronata {
-    background: #fff;
-   padding-top: 100px;
-  
-}
-
-.coronata .titlepage {
-     padding-bottom: 0;
-}
-
-.coronata .titlepage p {
-    font-weight: normal;
-    font-size: 17px;
-    line-height: 30px;
-    color: #111111;
-    padding: 35px 0px 50px 0px;
-}
-
-
-.coronata_img figure {
-     margin: 0;
-}
-
-/** end coronata section **/
-
 
 
 /** protect **/
@@ -1332,7 +1304,7 @@ padding-bottom: 40px;}
 
     .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
-    background-color: blue;
+    background-color: rgb(164, 164, 255);
 }
 
 .transition-fade {
@@ -1345,9 +1317,25 @@ padding-bottom: 40px;}
 .table{
     display: block !important;
     overflow-x: auto !important;
-    width: 90% !important;
+    width: 100% !important;
+    text-align:center;
   }
  
+#producibles_table {
+    font-size: 1em;
+}
+
+#producibles_table thead {
+    font-size: 1.5em;
+}
+
+#detectables_table {
+    font-size: 1em;
+}
+
+#detectables_table thead {
+    font-size: 1.5em;
+}
 
 .html.is-animating .transition-fade{
     opacity: 1;
@@ -1380,37 +1368,37 @@ ul li {
     cursor:pointer;
 }
 
-.input_box_chassis{
-    margin-left: 30px;
-    top: 0px;
-}
-
 .button_chassis{
-    margin-left: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     background-color:chartreuse;
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
     height:30px;
-    width:90px;
+    width:100px;
 }
 
 .button_producibles{
     margin-left: 0px;
+    margin-bottom: 10px;
     background-color:chocolate;
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
     height:30px;
+    width:100px;
 }
 
 .button_detectables{
     margin-left: 0px;
+    
     background-color:dodgerblue;
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
     height:30px;
+    width:100px;
 }
 
 #base {
@@ -1418,9 +1406,16 @@ ul li {
 
 }
  
+.modal {
+    overflow-y:auto;
+  }
+
+.modal_title {
+    height: 2%;
+}
 
 .modal-lg {
-    max-width: 80% !important;
+    max-width: 60% !important;
 }
 
 .td a { 
@@ -1433,21 +1428,24 @@ ul li {
     caret-color: transparent;
     background: #C0C0C0;
     font-weight: 600;
-    width: 220px;
+    width: 50%;
+    font-size: 0,8em;
 }
 
 .txtvalue_prod{
     caret-color: transparent;
     background: #C0C0C0;
     font-weight: 600;
-    width: 220px;
+    width: 50%;
+    font-size: 0,8em;
 }
 
 .txtvalue_det{
     caret-color: transparent;
     background: #C0C0C0;
     font-weight: 600;
-    width: 220px;
+    width: 50%;
+    font-size: 0,8em;
 }
 
 .close_button{

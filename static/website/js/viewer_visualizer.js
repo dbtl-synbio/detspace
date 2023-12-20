@@ -457,6 +457,7 @@ function panel_chemical_info(node, show=false){
         }
         // Show
         $("#panel_chemical_info").show();
+        document.getElementById("cy").style.borderRightStyle="solid";
     } else {
         $("#panel_chemical_info").hide();
     }
@@ -525,6 +526,7 @@ function panel_chemical_producible_info(node, show=true){
         $("span.chem_info_sbtreference").html('<a target="_blank" href="http://systemsbiotech.co.kr/"' + '">SystemsBioTech</a>');
         // Show
         $("#panel_chemical_producible_info").show();
+        document.getElementById("cy").style.borderRightStyle="solid";
     } else {
         $("#panel_chemical_producible_info").hide();
     }
@@ -573,9 +575,10 @@ function panel_chemical_detectable_info(node, show=true){
             $('div.img-box').hide();
         }
         // Inject detectable table with info
-        build_detectable_info(node);
+        //build_detectable_info(node);
         // Show
         $("#panel_chemical_detectable_info").show();
+        document.getElementById("cy").style.borderRightStyle="solid";
     } else {
         $("#panel_chemical_detectable_info").hide();
     }
@@ -633,6 +636,7 @@ function panel_reaction_info(node, show=true){
         $("span.reaction_info_selenzyme_crosslink").html('<a target="_blank" href="http://selenzyme.synbiochem.co.uk/results?smarts=' + encodeURIComponent( rsmiles ) + '">Crosslink to Selenzyme</a>');
         // Show
         $("#panel_reaction_info").show();
+        document.getElementById("cy").style.borderRightStyle="solid";
     } else {
         $("#panel_reaction_info").hide();
     }
@@ -844,7 +848,6 @@ function run_viz(network, pathways_info){
                         'text-background-opacity': 0.85,
                         'text-background-shape': 'roundrectangle',
                         'border-width': 8,
-                        'border-style': 'dotted',
                     })
                 .selector("node[type='chemical']")  // ie: intermediates
                     .css({
@@ -875,7 +878,7 @@ function run_viz(network, pathways_info){
                     .css({
                         'background-image': 'data(svg)',
                         'background-fit': 'contain',
-                        'border-width': 0,
+                        'border-width': 8,
                     })
                 .selector('edge')
                     .css({

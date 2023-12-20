@@ -11,6 +11,16 @@ var orgid="ECOLI";
     
     function hideShow() 
     {
+      $("#dialogo").dialog({
+         modal: true,
+         title: "Chassis",
+         width: 250,
+         minWidth: 200,
+         maxWidth: 400, 
+         //show: "fold", 
+         hide: "scale",
+         autoOpen: false
+     });
         if(display == 1)
         {
             $("#dialogo").dialog("close");
@@ -21,22 +31,9 @@ var orgid="ECOLI";
             $("#dialogo").dialog("open");
             display = 0;
         }
+        
     }
 //}
-
-//Chassis dialog//
-$(document).ready(function(){
-    $("#dialogo").dialog({
-     modal: true,
-     title: "Chassis",
-     width: 250,
-     minWidth: 200,
-     maxWidth: 400, 
-     //show: "fold", 
-     hide: "scale",
-     autoOpen: false
- });
-});
 
 //Conversion of the chassis table from json to html//
 $(document).ready(function(){
@@ -77,29 +74,29 @@ $(document).ready(function(){
          success:function(data)
          {
             //var detectable_data = data.split(/\r?\n|\r/);
-
-              var table_data = '<table class="table table-bordered table-condensed table-hover" id="producibles_table">';
-              table_data += '<tr'+'id="producible">';
-              table_data +="<th>" + "ID" + "</th>";
-              table_data +="<th>" + "Name" + "</th>";
-              table_data +="<th>" + "SMILES" + "</th>";
-              table_data +="<th>" + "Effectors" + "</th>";
-              table_data +="<th>" + "Pathways" + "</th>";
-              table_data +="<th>" + "Selected" + "</th>";
-              table_data += '</tr>';
-              $.each( data, function( index,val ) {
-               table_data += '<tr'+'id="producible">';
-               table_data += "<td>" + val["ID"] + "</td>";
-               table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_prod()">'+ val["Name"] + '</a>'+"</td>";
-               table_data +="<td>" + val["SMILES"] + "</td>";
-               table_data +="<td>" + val["Effectors"] + "</td>";
-               table_data +="<td>" + val["Pathways"] + "</td>";
-               table_data +="<td>" + val["Selected"] + "</td>";
-               table_data += '</tr>';
-             });
-              table_data += '</table>';
-              $('#producibles_table').html(table_data);
-           ;}//success
+            let table_base = $('<table class="table table-striped table-hover" id="producibles_table"></table>');
+            let field_names = ['Name', 'SMILES', 'Effectors', 'Pathways', 'Selected'];
+            let field_classes = ['name_head', 'smiles_head', 'effectors_head', 'pathways_head', 'selected_head'];
+            let table_row = $('<tr></tr>');
+            for (let i=0; i<field_names.length;i++){
+               let value = field_names[i];
+               table_row.append($('<th class="'+field_classes[i]+'"></th>').html(value));
+            }
+            table_base.append($('<thead class= "thead-dark"></thead>').append(table_row));
+            
+            let table_body = $('<tbody ></tbody>');
+            $.each( data, function( index,val ) {
+               let table_row = $('<tr></tr>');
+               table_row.append($("<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_prod()">'+ val["Name"] + '</a>'+"</td>"));
+               table_row.append($("<td class='smiles'>" + val["SMILES"] + "</td>"));
+               table_row.append($("<td class='effectors'>" + val["Effectors"] + "</td>"));
+               table_row.append($("<td class='pathways'>" + val["Pathways"] + "</td>"));
+               table_row.append($("<td class='selected'>" + val["Selected"] + "</td>"));
+               table_body.append(table_row);
+            });
+            table_base.append(table_body);
+            $('#producibles_modal_table').html(table_base);
+           ;}
       });
    });
 
@@ -110,6 +107,7 @@ $(document).ready(function(){
     run_viz(network, pathways_info);
     let orgid=$("#list-container").children(":selected").attr("id");
     in_chassis(orgid);
+    document.getElementById("pathway_selection").style.visibility="visible";
     }
 
     
@@ -127,27 +125,27 @@ $(document).ready(function(){
           {
              //var detectable_data = data.split(/\r?\n|\r/);
 
-               var table_data = '<table class="table table-bordered table-condensed table-hover" id="detectables_table">';
-               table_data += '<tr'+'id="detectable">';
-               table_data +="<th>" + "ID" + "</th>";
-               table_data +="<th>" + "Name" + "</th>";
-               table_data +="<th>" + "SMILES" + "</th>";
-               table_data +="<th>" + "Products" + "</th>";
-               table_data +="<th>" + "Pathways" + "</th>";
-               table_data +="<th>" + "Selected" + "</th>";
-               table_data += '</tr>';
-               $.each( data, function( index,val ) {
-                  table_data += '<tr'+'id="detectable">';
-                  table_data += "<td>" + val["ID"] + "</td>";
-                  table_data +="<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_det()">'+ val["Name"] + '</a>'+"</td>";
-                  table_data +="<td>" + val["SMILES"] + "</td>";
-                  table_data +="<td>" + val["Products"] + "</td>";
-                  table_data +="<td>" + val["Pathways"] + "</td>";
-                  table_data +="<td>" + val["Selected"] + "</td>";
-                  table_data += '</tr>';
-                });
-               table_data += '</table>';
-               $('#detectables_table').html(table_data);
+             let table_base = $('<table class="table table-striped table-hover" id="detectables_table"></table>');
+             let field_names = ['Name', 'SMILES', 'Products', 'Pathways', 'Selected'];
+             let table_row = $('<tr></tr>');
+             for (let i=0; i<field_names.length;i++){
+                let value = field_names[i];
+                table_row.append($('<th></th>').html(value));
+             }
+             table_base.append($('<thead class= "thead-dark"></thead>').append(table_row));
+             
+             let table_body = $('<tbody ></tbody>');
+             $.each( data, function( index,val ) {
+                let table_row = $('<tr></tr>');
+                table_row.append($("<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_det()">'+ val["Name"] + '</a>'+"</td>"));
+                table_row.append($("<td>" + val["SMILES"] + "</td>"));
+                table_row.append($("<td>" + val["Products"] + "</td>"));
+                table_row.append($("<td>" + val["Pathways"] + "</td>"));
+                table_row.append($("<td>" + val["Selected"] + "</td>"));
+                table_body.append(table_row);
+             });
+             table_base.append(table_body);
+             $('#detectables_modal_table').html(table_base);
             ;}//success
        });
     });

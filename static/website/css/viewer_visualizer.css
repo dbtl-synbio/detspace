@@ -19,14 +19,13 @@ body {
 #interaction {
     position: absolute;
     z-index: 11;
-    background-color: #E8E9E8;
+    background-color: white;
     padding: 0 1% 0 1%;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 10px;
-    width: 80%;
-    max-width: 400px;
+    width: 20%;
     height: 1000px;
 }
 
@@ -50,6 +49,9 @@ body {
     overflow-y: auto;
 }
 
+#pathway_selection {
+    visibility: hidden;
+}
 #pathway_selection > div#table_choice {
     max-height: 40em;
     overflow-x: hidden;
@@ -59,16 +61,19 @@ body {
 /* Central panel: the graph ***************************************************/
 #cy {
     float: left;
-    width: 70%;
-    height: 800px;  
-    margin-left: 25%;  /* +2 to compensate left pannel padding */
+    width: 60%;
+    height: 1000px;  
+    margin-left: 22%;  /* +2 to compensate left pannel padding */
+    border-color: black;
+    border-width: 2px;
+    border-left-style: solid;
 }
 
 /* Right side panel: info *****************************************************/
 #info {
     float: right;
     border-radius: 5px;
-    background-color: #E8E9E8;
+    background-color: white;
     width: 18%;  /* -2 to compensate left panel padding */
     height: 1000px;
     position: relative;
@@ -316,6 +321,7 @@ body {
     border: solid 1px #DDEEEE;
     border-collapse: collapse;
     border-spacing: 0;
+    margin-bottom: 10px;
     /* font: normal 13px Arial, sans-serif; */
 }
 #table_choice table thead th {
@@ -365,4 +371,10 @@ body {
 }
 #table_choice table tbody td.path_info:hover {
     cursor: pointer;
+}
+
+@media only screen and (max-width= 620px){
+    .interaction, .cy, .info{
+        width:100%
+    }
 }
