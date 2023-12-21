@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% load static %}
@@ -5,10 +6,10 @@
 {% block content %}
    <div class="main_body">
       <div id="interaction" class="interact">
-        <div class="info-title">Selection panel</div>
+        <div class="info-subtitle" style="margin-top:2%">Choose chassis organism</div>
         <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> 
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
-        <button  id="Delete selection" onclick="delete_chassis()" class="btn"><i class="fa fa-close"></i></button>
+        <button  id="Delete selection" onclick="delete_chassis()" class="btn"></button>
         
         <div id="dialogo" class ="hidden" style="display: none;">
             <select id="list-container" autocomplete="off" onchange="ddlselect();">
@@ -29,8 +30,7 @@
          
 
             <script>
-               function ddlselect()
-               {
+                function ddlselect(){
                    var d=document.getElementById("list-container");
                    var displaytext=d.options[d.selectedIndex].text;
                    $("#list-container").change(function() {
@@ -42,25 +42,38 @@
                    console.log(displaytext)
                    $("#dialogo").dialog("close");
                    var display =1;
-                  
-                           }
-           </script>
+                }
+            </script>
          </div>
-        <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producible"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
-        <button  id="Delete selection" onclick= "delete_producible()">
-          <img src="{% static 'website/icon/arrow_button.svg' %}" alt="Select"></img>
-        </button>
+        <div class="info-subtitle">Select detectable route</div>
+        <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producible"/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
+        <button  id="Delete selection" onclick= "delete_producible()" class="btn"></button>
         
-        <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectable"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
-        <button  id="Delete selection" onclick= "delete_detectable()" class="btn"><i class="fa fa-close"></i></button>
+        <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectable"/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
+        <button  id="Delete selection" onclick= "delete_detectable()" class="btn"></button>
 
         <input id="load_pathway" type="button" onclick="show_pathways()" value="Generate" style="margin-top: 10px"/>
+
+<!--         <div class="info-subtitle" style="margin-top:2%">Choose chassis organism</div>
+        <p style="float: left">Chassis:</p>
+        <input type="text" onfocus="blur()" class="txtvalue_selection" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
+        <div class="info-subtitle">Select detectable route</div>
+        <p style="float: left">Producible:</p>
+        <input type="text" onfocus="blur()" class="txtvalue_selection" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
+        <p style="float: left">Detectable:</p>
+        <input type="text" onfocus="blur()" class="txtvalue_selection" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
+ -->
         <div id="info_pair">
-          <p id="txt_intermediate_compounds">Intermediate compounds:</p>
-          <p id="txt_chassis_compounds">Compounds in chassis:</p>
+          <p id="txt_intermediate_compounds" class="info_txt">Intermediate compounds:</p>
+          <p id="txt_chassis_compounds" class="info_txt">Compounds in chassis:</p>
+          <p id="txt_heterologous_compounds" class="info_txt">Heterologous compounds:</p>
+          <p id="txt_suplement_compounds" class="info_txt">Suplement compounds:</p>
+          <p id="txt_precursor_compounds" class="info_txt">Precursor compounds:</p>
         </div>
         <div id="pathway_selection">
-         <div class="info-title">Viewer tools</div>
+         <div class="info-subtitle">Pathways information</div>
          <div class="spacer"></div>
          <div id="table_choice">
              <!-- Will be filled by viewer.js -->
@@ -70,11 +83,6 @@
          <input id="redraw_pathways_button" type="button" value="Refresh layout"/>
      </div>
 </div>
-<script>
-  $(function(){
-      $("#interaction").draggable();
-  })
-</script>
         <div class="modal fade" id="myModal">
          <div class="modal-dialog modal-lg modal-dialog-centered">
            <div class="modal-content">
@@ -83,12 +91,13 @@
              </div>
              <div class="modal-body" id="producibles_modal_table">
              </div>
-             <div class="modal-footer">
+             <!-- <div class="modal-footer">
                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             </div>
+             </div> -->
            </div><!-- /.modal-content -->
          </div><!-- /.modal-dialog -->
          </div><!-- /.modal -->
+
                                  <script>
                                     function ddlselect_prod()
                                     {
@@ -126,9 +135,9 @@
                <table class="table table-striped table-hover" id="detectables_modal_table"></table>
                </table>
              </div>
-             <div class="modal-footer">
+             <!-- <div class="modal-footer">
                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             </div>
+             </div> -->
            </div><!-- /.modal-content -->
          </div><!-- /.modal-dialog -->
          </div><!-- /.modal -->
