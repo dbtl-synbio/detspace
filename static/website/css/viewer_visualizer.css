@@ -8,7 +8,7 @@ body {
     float:center;
     width: 100%;
     margin-right: auto;
-    position: relative;
+    position:relative;
 }
 
 #viewer {
@@ -27,12 +27,12 @@ body {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     width: 20%;
-    height: 90vh; 
-    border-left-style: solid;
-    border-right-style: solid;
-    border-top-style: solid;
-    border-bottom-style: solid;
-    z-index: 2;
+    height: 90vh;
+    border-left-style:solid;
+    border-right-style:solid;
+    border-top-style:solid;
+    border-bottom-style:solid;
+    z-index:2;
 }
 
 #interaction div.info-title {
@@ -64,9 +64,9 @@ body {
     overflow-y: auto;
 }
 
-#info_pair { 
+#info_pair{
     margin-top:10px;
-    visibility: hidden;
+    visibility:hidden;
 }
 
 /* Central panel: the graph ***************************************************/
@@ -74,23 +74,22 @@ body {
     float: left;
     width: 100%;
     height: 90vh;  
-    margin-left: 22%;
     border-color: black;
     border-width: 2px;
 }
 
 /* Right side panel: info *****************************************************/
 #info {
-    position: absolute;
     top:0;
     right:0;
     border-radius: 5px;
     background-color: white;
-    width: 18%;  /* -2 to compensate left panel padding */
-    height: 75vh; 
+    width: 0%;  /* -2 to compensate left panel padding */
+    height: 75vh;
+    position: absolute;
     overflow-x: hidden;
-    overflow-y: auto;
-    z-index: 9;
+    overflow-y: auto; 
+    z-index:9;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -101,6 +100,13 @@ body {
     display: none;
 }
 
+.panel_button {
+    margin-top:2%;
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+
 #panel_chemical_info .chem_info_pathids {
     max-height: 20em;
     overflow-y: auto;
@@ -109,13 +115,7 @@ body {
 #panel_reaction_info .reaction_info_pathids {
     max-height: 20em;
     overflow-y: auto;
-}
 
-.panel_button{
-    margin-top:2%;
-    position: absolute;
-    bottom:0px;
-    right:0px;
 }
 
 #info div.info-title {
