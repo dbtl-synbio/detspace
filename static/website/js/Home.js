@@ -103,20 +103,19 @@ $(document).ready(function(){
 });
 
 // Button action that shows the network.json//
- function show_pathways() {
-    run_viz(network, pathways_info);
-    let orgid=$("#list-container").children(":selected").attr("id");
-    in_chassis(orgid);
-    document.getElementById("pathway_selection").style.visibility="visible";
-    document.getElementById("info_pair").style.visibility="visible";
-    document.getElementById("info").style.borderLeftStyle="hidden";
-    document.getElementById("info").style.borderBottomStyle="hidden";
-    document.getElementById("info").style.borderTopStyle="hidden";
-    document.getElementById("info").style.borderRightStyle="hidden";
-    //document.getElementById("cy").style.width="78%";
-    document.getElementById("info").style.width="0%";
-    count_intermediate();
- }
+function show_pathways() {
+   run_viz(network, pathways_info);
+   let orgid=$("#list-container").children(":selected").attr("id");
+   in_chassis(orgid);
+   document.getElementById("pathway_selection").style.visibility="visible";
+   document.getElementById("info_pair").style.visibility="visible";
+   document.getElementById("info").style.borderLeftStyle="hidden";
+   document.getElementById("info").style.borderBottomStyle="hidden";
+   document.getElementById("info").style.borderTopStyle="hidden";
+   document.getElementById("info").style.borderRightStyle="hidden";
+   document.getElementById("info").style.width="0%";
+   count_intermediate();
+}
 
     
 //Conversion of the detectables table from json to html//

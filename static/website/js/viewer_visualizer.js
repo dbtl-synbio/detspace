@@ -588,7 +588,7 @@ function panel_chemical_detectable_info(node, show=true){
         document.getElementById("info").style.borderBottomStyle="solid";
         document.getElementById("info").style.borderRightStyle="solid";
         document.getElementById("info").style.borderTopStyle="solid";
-        } else {
+    } else {
         $("#panel_chemical_detectable_info").hide();
     }
 } 
@@ -649,7 +649,7 @@ function panel_reaction_info(node, show=true){
         document.getElementById("info").style.borderBottomStyle="solid";
         document.getElementById("info").style.borderRightStyle="solid";
         document.getElementById("info").style.borderTopStyle="solid";
-        } else {
+    } else {
         $("#panel_reaction_info").hide();
     }
 }
@@ -740,8 +740,7 @@ function hide_all_panel(){
     document.getElementById("info").style.borderBottomStyle="hidden";
     document.getElementById("info").style.borderTopStyle="hidden";
     document.getElementById("info").style.borderRightStyle="hidden";
-    //document.getElementById("cy").style.width="78%";
-    //document.getElementById("info").style.width="0%";
+    document.getElementById("info").style.width="0%";  
     $("#panel_chemical_info").hide();
     $("#panel_chemical_producible").hide();
     $("#panel_reaction_info").hide();
@@ -766,7 +765,6 @@ function in_chassis(chassis='ECOLI'){
         node.data('sink_chemical', in_sink);
     }
 }
-
 function count_intermediate(){
     let nodes = cy.nodes().filter('[type = "chemical"]');
     let total_intermediate = 0;
@@ -901,8 +899,8 @@ function run_viz(network, pathways_info){
                     })
                 .selector("node[type='chemical'][?source_chemical]")
                     .css({
-                        'background-color': '#41BEDB',
-                        'border-color': '#41BEDB',
+                        'background-color': '#41bedb',
+                        'border-color': '#41bedb',
                     })
                 .selector("node[type='chemical'][?inter_chemical]")
                     .css({
@@ -948,7 +946,6 @@ function run_viz(network, pathways_info){
             // Dump into console
             console.log(node.data());
             // Print info
-            //document.getElementById("cy").style.width="60%";
             document.getElementById("info").style.width="18%";
             if (node.is('[type = "chemical"]')){
                 panel_startup_info(false);
