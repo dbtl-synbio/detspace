@@ -65,10 +65,29 @@ body {
 }
 
 #info_pair{
-    margin-top:10px;
     visibility:hidden;
 }
 
+.info_txt{
+    margin-top:10px;
+}
+
+.info-subtitle{
+    font-family: sans-serif;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.txtvalue_selection{
+    caret-color: transparent;
+    background: #ffffff;
+    font-weight: 600;
+    width: 50%;
+    font-size: 0,8em;
+    border-style: none;
+    border-bottom-style: solid;
+
+}
 /* Central panel: the graph ***************************************************/
 #cy {
     float: left;
@@ -101,10 +120,13 @@ body {
 }
 
 .panel_button {
-    margin-top:2%;
+    margin-top:1.5%;
+    margin-left:1.5%;
     position:absolute;
-    bottom:0;
-    right:0;
+    top:0;
+    left:0;
+    background-color: white;
+    font-size:1.5em;
 }
 
 #panel_chemical_info .chem_info_pathids {
@@ -194,6 +216,7 @@ body {
 
 #info div.info-subtitle {
     font-family: sans-serif;
+    font-weight: bold;
     padding-left: 2%;
     padding-top: 5%;
 }
