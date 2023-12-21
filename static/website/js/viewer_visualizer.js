@@ -457,7 +457,10 @@ function panel_chemical_info(node, show=false){
         }
         // Show
         $("#panel_chemical_info").show();
-        document.getElementById("cy").style.borderRightStyle="solid";
+        document.getElementById("info").style.borderLeftStyle="solid";
+        document.getElementById("info").style.borderBottomStyle="solid";
+        document.getElementById("info").style.borderRightStyle="solid";
+        document.getElementById("info").style.borderTopStyle="solid";
     } else {
         $("#panel_chemical_info").hide();
     }
@@ -526,7 +529,10 @@ function panel_chemical_producible_info(node, show=true){
         $("span.chem_info_sbtreference").html('<a target="_blank" href="http://systemsbiotech.co.kr/"' + '">SystemsBioTech</a>');
         // Show
         $("#panel_chemical_producible_info").show();
-        document.getElementById("cy").style.borderRightStyle="solid";
+        document.getElementById("info").style.borderLeftStyle="solid";
+        document.getElementById("info").style.borderBottomStyle="solid";
+        document.getElementById("info").style.borderRightStyle="solid";
+        document.getElementById("info").style.borderTopStyle="solid";
     } else {
         $("#panel_chemical_producible_info").hide();
     }
@@ -578,7 +584,10 @@ function panel_chemical_detectable_info(node, show=true){
         //build_detectable_info(node);
         // Show
         $("#panel_chemical_detectable_info").show();
-        document.getElementById("cy").style.borderRightStyle="solid";
+        document.getElementById("info").style.borderLeftStyle="solid";
+        document.getElementById("info").style.borderBottomStyle="solid";
+        document.getElementById("info").style.borderRightStyle="solid";
+        document.getElementById("info").style.borderTopStyle="solid";
     } else {
         $("#panel_chemical_detectable_info").hide();
     }
@@ -636,7 +645,10 @@ function panel_reaction_info(node, show=true){
         $("span.reaction_info_selenzyme_crosslink").html('<a target="_blank" href="http://selenzyme.synbiochem.co.uk/results?smarts=' + encodeURIComponent( rsmiles ) + '">Crosslink to Selenzyme</a>');
         // Show
         $("#panel_reaction_info").show();
-        document.getElementById("cy").style.borderRightStyle="solid";
+        document.getElementById("info").style.borderLeftStyle="solid";
+        document.getElementById("info").style.borderBottomStyle="solid";
+        document.getElementById("info").style.borderRightStyle="solid";
+        document.getElementById("info").style.borderTopStyle="solid";
     } else {
         $("#panel_reaction_info").hide();
     }
@@ -724,6 +736,11 @@ function show_all_panels(){
 }
 
 function hide_all_panel(){
+    document.getElementById("info").style.borderLeftStyle="hidden";
+    document.getElementById("info").style.borderBottomStyle="hidden";
+    document.getElementById("info").style.borderTopStyle="hidden";
+    document.getElementById("info").style.borderRightStyle="hidden";
+    document.getElementById("info").style.width="0%";  
     $("#panel_chemical_info").hide();
     $("#panel_chemical_producible").hide();
     $("#panel_reaction_info").hide();
@@ -747,6 +764,22 @@ function in_chassis(chassis='ECOLI'){
         }
         node.data('sink_chemical', in_sink);
     }
+}
+function count_intermediate(){
+    let nodes = cy.nodes().filter('[type = "chemical"]');
+    let total_intermediate = 0;
+    let in_chassis = 0;
+    for (let n = 0; n < nodes.size(); n++){
+        let node = nodes[n];
+        if (node.data('inter_chemical')){
+            total_intermediate++;
+        }
+        if (node.data('sink_chemical')){
+            in_chassis++;
+        }
+    }
+    document.getElementById('txt_intermediate_compounds').innerHTML='Intermediate compounds: ' + String(total_intermediate);
+    document.getElementById('txt_chassis_compounds').innerHTML='Compounds in chassis: ' + String(in_chassis);    
 }
 
 // Live ///////////////////////////
@@ -847,7 +880,7 @@ function run_viz(network, pathways_info){
                         'text-background-color': 'White',
                         'text-background-opacity': 0.85,
                         'text-background-shape': 'roundrectangle',
-                        'border-width': 8,
+                        'border-width': 4,
                     })
                 .selector("node[type='chemical']")  // ie: intermediates
                     .css({
@@ -856,8 +889,8 @@ function run_viz(network, pathways_info){
                     })  
                 .selector("node[type='chemical'][?sink_chemical]")
                     .css({
-                        'background-color': '#336600',
-                        'border-color': '#336600'
+                        'background-color': '#83d334',
+                        'border-color': '#83d334',
                     })
                 .selector("node[type='chemical'][?target_chemical]")
                     .css({
@@ -866,8 +899,8 @@ function run_viz(network, pathways_info){
                     })
                 .selector("node[type='chemical'][?source_chemical]")
                     .css({
-                        'background-color': '#003399',
-                        'border-color': '#003399',
+                        'background-color': '#41bedb',
+                        'border-color': '#41bedb',
                     })
                 .selector("node[type='chemical'][?inter_chemical]")
                     .css({
@@ -878,7 +911,7 @@ function run_viz(network, pathways_info){
                     .css({
                         'background-image': 'data(svg)',
                         'background-fit': 'contain',
-                        'border-width': 8,
+                        'border-width': 4,
                     })
                 .selector('edge')
                     .css({
@@ -887,7 +920,7 @@ function run_viz(network, pathways_info){
                         'line-fill': 'solid',
                         'line-gradient-stop-colors': 'cyan magenta',
                         'line-gradient-stop-positions': '0% 100%',
-                        'width': '5px',
+                        'width': '2px',
                         'target-arrow-shape': 'chevron',
                         'target-arrow-color': '#999999',
                         'arrow-scale' : 2
@@ -903,7 +936,7 @@ function run_viz(network, pathways_info){
                     })
                 .selector('node:selected')
                     .css({
-                        'border-width': 5,
+                        'border-width': 4,
                         'border-color': 'black'
                     })
         );
@@ -913,6 +946,7 @@ function run_viz(network, pathways_info){
             // Dump into console
             console.log(node.data());
             // Print info
+            document.getElementById("info").style.width="18%";
             if (node.is('[type = "chemical"]')){
                 panel_startup_info(false);
                 panel_reaction_info(null, false);
