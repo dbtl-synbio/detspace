@@ -1000,6 +1000,9 @@ function run_viz(network, pathways_info){
             console.log(edge.data());
         });
         
+        cy.on('mouseover', 'node', function(evt){
+            
+        })
     }
     
     /**
@@ -1148,7 +1151,7 @@ function run_viz(network, pathways_info){
                 reverse_visibility(edge)
             }
         });
-        refresh_layout()
+        //refresh_layout()
     }
 
     /**
