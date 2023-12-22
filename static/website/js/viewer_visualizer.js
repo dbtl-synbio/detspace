@@ -740,6 +740,7 @@ function hide_all_panel(){
     document.getElementById("info").style.borderBottomStyle="hidden";
     document.getElementById("info").style.borderTopStyle="hidden";
     document.getElementById("info").style.borderRightStyle="hidden";    
+    document.getElementById("info").style.width="0%";  
     $("#panel_chemical_info").hide();
     $("#panel_chemical_producible").hide();
     $("#panel_reaction_info").hide();
@@ -766,19 +767,32 @@ function in_chassis(chassis='ECOLI'){
 }
 function count_intermediate(){
     let nodes = cy.nodes().filter('[type = "chemical"]');
-    let total_intermediate = 0;
+    let suplement = 0;
     let in_chassis = 0;
+let intermediate = 0;
+    let heterologous = 0;
+    let precursor = 0;
     for (let n = 0; n < nodes.size(); n++){
         let node = nodes[n];
         if (node.data('inter_chemical')){
-            total_intermediate++;
-        }
-        if (node.data('sink_chemical')){
+            suplement++;
+        }else if (node.data('source_chemical') == false && node.data('target_chemical') == false && node.data('prod_path') == false){
+            if (node.data('sink_chemical') && node.data('inter_ids').length ==0){
             in_chassis++;
+        intermediate++;
+            }else if (node.data('inter_ids').length ==0){
+                heterologous++;
+                intermediate++;
+            }else {
+                precursor++;
+            }
         }
     }
-    document.getElementById('txt_intermediate_compounds').innerHTML='Intermediate compounds: ' + String(total_intermediate);
+    document.getElementById('txt_intermediate_compounds').innerHTML='Intermediate compounds: ' + String(intermediate);
     document.getElementById('txt_chassis_compounds').innerHTML='Compounds in chassis: ' + String(in_chassis);    
+document.getElementById('txt_precursor_compounds').innerHTML='Precursor compounds: ' + String(precursor);
+    document.getElementById('txt_suplement_compounds').innerHTML='Suplement compounds: ' + String(suplement);    
+    document.getElementById('txt_heterologous_compounds').innerHTML='Heterologous compounds: ' + String(heterologous);
 }
 
 // Live ///////////////////////////
@@ -978,6 +992,7 @@ function run_viz(network, pathways_info){
                 panel_chemical_detectable_info(null, false)
                 panel_reaction_info(node, true);
             }
+count_intermediate();
         });
 
         cy.on('tap', 'edge', function(evt){
@@ -985,6 +1000,9 @@ function run_viz(network, pathways_info){
             console.log(edge.data());
         });
         
+cy.on('mouseover', 'node', function(evt){
+            
+        })
     }
     
     /**
@@ -1133,7 +1151,7 @@ function run_viz(network, pathways_info){
                 reverse_visibility(edge)
             }
         });
-        refresh_layout()
+        //refresh_layout()
     }
 
     /**
