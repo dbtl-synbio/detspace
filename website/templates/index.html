@@ -6,10 +6,10 @@
 {% block content %}
    <div class="main_body">
       <div id="interaction" class="interact">
-        <div class="info-title">Selection panel</div>
+        <div class="info-subtitle" style="margin-top:2%">Choose chassis organism</div>
         <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> 
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
-        <button  id="Delete selection" onclick="delete_chassis()" class="btn"></button>
+        <button  id="Delete selection" onclick="delete_chassis()" class="btn"><i class="fa fa-close"></i></button>
         
         <div id="dialogo" class ="hidden" style="display: none;">
             <select id="list-container" autocomplete="off" onchange="ddlselect();">
@@ -30,8 +30,7 @@
          
 
             <script>
-               function ddlselect()
-               {
+               function ddlselect(){
                    var d=document.getElementById("list-container");
                    var displaytext=d.options[d.selectedIndex].text;
                    $("#list-container").change(function() {
@@ -43,23 +42,28 @@
                    console.log(displaytext)
                    $("#dialogo").dialog("close");
                    var display =1;
-                  
-                           }
+                                             }
            </script>
          </div>
-        <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producible"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
-        <button  id="Delete selection" onclick= "delete_producible()" class="btn"></button>
+        <div class="info-subtitle">Select detectable route</div>
+        <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producible"/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
+        <button  id="Delete selection" onclick= "delete_producible()" class="btn"><i class="fa fa-close"></i></button>
         
-        <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectable"/><input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
-        <button  id="Delete selection" onclick= "delete_detectable()" class="btn"></button>
+        <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectable"/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
+        <button  id="Delete selection" onclick= "delete_detectable()" class="btn"><i class="fa fa-close"></i></button>
 
         <input id="load_pathway" type="button" onclick="show_pathways()" value="Generate" style="margin-top: 10px"/>
         <div id="info_pair">
-          <p id="txt_intermediate_compounds">Intermediate compounds:</p>
-          <p id="txt_chassis_compounds">Compounds in chassis:</p>
+          <p id="txt_intermediate_compounds" class="info_txt">Intermediate compounds:</p>
+          <p id="txt_chassis_compounds" class="info_txt">Compounds in chassis:</p>
+<p id="txt_heterologous_compounds" class="info_txt">Heterologous compounds:</p>
+          <p id="txt_suplement_compounds" class="info_txt">Suplement compounds:</p>
+          <p id="txt_precursor_compounds" class="info_txt">Precursor compounds:</p>
         </div>
         <div id="pathway_selection">
-         <div class="info-title">Viewer tools</div>
+         <div class="info-subtitle">Pathways information</div>
          <div class="spacer"></div>
          <div id="table_choice">
              <!-- Will be filled by viewer.js -->
@@ -69,12 +73,7 @@
          <input id="redraw_pathways_button" type="button" value="Refresh layout"/>
      </div>
 </div>
-        <script>
-  $(function(){
-      $("#interaction").draggable();
-  })
-</script>
-        <div class="modal fade" id="myModal">
+                <div class="modal fade" id="myModal">
          <div class="modal-dialog modal-lg modal-dialog-centered">
            <div class="modal-content">
              <div class="modal-header">
@@ -89,34 +88,7 @@
          </div><!-- /.modal-dialog -->
          </div><!-- /.modal -->
 
-                                 <script>
-                                    function ddlselect_prod()
-                                    {
-                                       var d=document.getElementById("producibles_table");
-                                       for(var i = 0; i < d.rows.length; i++)
-                        {
-                           d.rows[i].onclick = function()
-                           {
-                              rIndex = this.rowIndex;
-                                 var produc=$(this.cells[0]);
-                                    console.log(produc.text());
-                                    document.getElementById("txtvalue_prod").value=produc.text();
-                                    $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
-                                    $('#myModal').modal('hide');
-                                    $('.modal-backdrop').remove();
-                                    let product_chosen= $("#txtvalue_prod").attr("prod_id");
-                                    let detect_chosen= $("#txtvalue_det").attr("det_id");
-                                    if(product_chosen!="" && detect_chosen!=""){
-                                       $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
-                                    }
-                              
-
-                           }
-                        }
-                                    }
-
-                                 </script>
-        <div class="modal fade" id="mynewModal">
+                                         <div class="modal fade" id="mynewModal">
          <div class="modal-dialog modal-lg">
            <div class="modal-content">
              <div class="modal-header">

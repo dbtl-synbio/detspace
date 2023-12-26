@@ -1,16 +1,11 @@
-
-
 var network = {};
 var pathways_info = {};
 var orgid="ECOLI";
 
-
-
     var div =document.getElementById('dialogo');
     var display =0;
     
-    function hideShow() 
-    {
+    function hideShow() {
       $("#dialogo").dialog({
          modal: true,
          title: "Chassis",
@@ -21,19 +16,14 @@ var orgid="ECOLI";
          hide: "scale",
          autoOpen: false
      });
-        if(display == 1)
-        {
+        if(display == 1){
             $("#dialogo").dialog("close");
             display = 1;
-        }
-        else
-        {
+        } else {
             $("#dialogo").dialog("open");
             display = 0;
         }
-        
-    }
-//}
+            }
 
 //Conversion of the chassis table from json to html//
 $(document).ready(function(){
@@ -71,8 +61,7 @@ $(document).ready(function(){
       $.ajax({
          url:"/api/prod/"+det_id,
          dataType:"json",
-         success:function(data)
-         {
+         success:function(data){
             //var detectable_data = data.split(/\r?\n|\r/);
             let table_base = $('<table class="table table-striped table-hover" id="producibles_table"></table>');
             let field_names = ['Name', 'SMILES', 'Effectors', 'Pathways', 'Selected'];
@@ -87,7 +76,7 @@ $(document).ready(function(){
             let table_body = $('<tbody ></tbody>');
             $.each( data, function( index,val ) {
                let table_row = $('<tr></tr>');
-               table_row.append($("<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_prod()">'+ val["Name"] + '</a>'+"</td>"));
+               table_row.append($("<td class='click_prod' id='" + val["ID"] + "'>" + '<a href="#">'+ val["Name"] + '</a>'+"</td>"));
                table_row.append($("<td class='smiles'>" + val["SMILES"] + "</td>"));
                table_row.append($("<td class='effectors'>" + val["Effectors"] + "</td>"));
                table_row.append($("<td class='pathways'>" + val["Pathways"] + "</td>"));
@@ -96,10 +85,22 @@ $(document).ready(function(){
             });
             table_base.append(table_body);
             $('#producibles_modal_table').html(table_base);
+
+            $("td.click_prod").click(function(){
+               var produc = $(this);
+               document.getElementById("txtvalue_prod").value=produc.text();
+               $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
+               $('#myModal').modal('hide');
+               $('.modal-backdrop').remove();
+               let product_chosen= $("#txtvalue_prod").attr("prod_id");
+               let detect_chosen= $("#txtvalue_det").attr("det_id");
+               if(product_chosen!="" && detect_chosen!=""){
+                  $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+               }
+            });
            ;}
       });
    });
-
 });
 
 // Button action that shows the network.json//
@@ -113,7 +114,7 @@ function show_pathways() {
    document.getElementById("info").style.borderBottomStyle="hidden";
    document.getElementById("info").style.borderTopStyle="hidden";
    document.getElementById("info").style.borderRightStyle="hidden";
-   document.getElementById("info").style.width="0%";
+      document.getElementById("info").style.width="0%";
    count_intermediate();
 }
 
@@ -246,4 +247,3 @@ function delete_detectable() {
    document.getElementById("txtvalue_det").value="";
    $("#txtvalue_det").attr("det_id","");
    }
-

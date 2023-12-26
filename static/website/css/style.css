@@ -39,6 +39,10 @@ basic
 
 * {
      box-sizing: border-box !important;
+     padding: 0;
+     padding-right: 0;
+     margin: 0;
+     box-sizing: border-box;
 }
 
 .container {
@@ -57,11 +61,194 @@ body {
      font-family: 'Poppins', sans-serif;
      line-height: 1.80857;
      font-weight: normal;
+     margin:0;
+     padding:0;
 }
 
+body:not(.modal-open){
+    padding-right: 0px !important;
+  }
+  
 
-/*font-family: 'Roboto', sans-serif;*/
+.nav_detspace{
+    background: #0082e6;
+    height: 80px;
+    width: 100%;
+    padding-right: 0;
 
+}
+
+.label_logo{
+    color:white;
+    font-size: 1.5em;
+    line-height: 80px;
+    padding: 0 20px;
+    font-weight: bolder;
+}
+
+.nav_detspace ul{
+    float: center;
+    margin-right: 40px;
+    align-items: center;
+    margin-left: 20%;
+}
+
+.nav_detspace ul li{
+    display: inline-block;
+    line-height:55px;
+    margin: 0 5px;
+    font-weight: bold;
+    
+}
+
+.nav_detspace ul li a{
+    color:white;
+    font-size: 1.4em;
+    margin: 0 5px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    
+}
+
+.checkbtn{
+    font-size:30px;
+    color:white;
+    float:right;
+    justify-content:right;
+    line-height:80px;
+    margin-right:40px;
+    cursor:pointer;
+    display:none;
+}
+
+#check{
+    display:none;
+}
+
+@media (max-width: 1381px){
+    .nav_detspace{
+        height: 130px;
+    }
+    
+    .label_logo{
+    font-size: 1.2em;
+    padding-left: 10px;
+    }
+    .nav_detspace ul li a{
+
+        font-size: 1.1em;
+        
+    }
+}
+
+@media (max-width: 775px){
+    /* .checkbtn{
+        display:block;
+    } */
+
+    /* .nav_detspace ul{
+        position:fixed;
+        width:100%;
+        height: 100vh;
+        background: #2c3e50;
+        top:80px;
+        left:-100%;
+        text-align: center;
+        transition: all .5s;
+    }
+    .nav_detspace ul li{
+        display:block;
+        margin:50px;
+        line-height: 30px;
+    }
+    .nav_detspace ul li a{
+
+        font-size: 1em;
+        
+    } */
+    /* a.active,a:hover{
+        background: none;
+        color:#0082e6;
+    }
+    #check:checked ~ ul{
+        left: 0;
+    } */
+    .nav_detspace{
+        height: 160px;
+    }
+    .nav_detspace ul li{
+        line-height:40px;
+        margin-left: 40px;    
+    }
+    
+    .nav_detspace ul{
+        margin-left: 10%;
+    }
+}
+
+    @media (max-width: 540px){
+        .label_logo{
+        font-size: 0.9em;
+        padding-left: 10px;
+        line-height: 40px;
+        padding: 0 5px;
+        font-weight: bolder;
+    
+        }
+        .nav_detspace ul li a{
+    
+            font-size: 0.8em;
+            padding: 1px 3px;
+            
+        }
+
+        .nav_detspace ul li{
+            line-height:30px;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .nav_detspace{
+            height: 140px;
+        }
+
+        ul li {
+            font-size: 13px;
+            padding: 6px 2px 6px 26px;
+        }
+    }
+
+    @media (max-width: 402px){
+        .label_logo{
+        font-size: 0.8em;
+        padding-left: 10px;
+        line-height: 20px;
+        padding: 0 3px;
+        font-weight: bolder;
+    
+        }
+        .nav_detspace ul li a{
+    
+            font-size: 0.7em;
+            padding: 1px 3px;
+            
+        }
+
+        .nav_detspace ul li{
+            line-height:18px;
+            display: inline-block;
+            margin-left: 0%;
+        }
+    }
+
+    @media (max-width: 258px){
+        
+        .nav_detspace{
+            height: 210px;
+        }
+
+    }
+
+    
 a {
      color: #1f1f1f;
      text-decoration: none !important;
@@ -71,6 +258,11 @@ a {
      -ms-transition: all .3s ease-in-out;
      -o-transition: all .3s ease-in-out;
      transition: all .3s ease-in-out;
+}
+
+a.active,a:hover{
+    background: #1b9bff;
+    transition: .3s;
 }
 
 h1,
@@ -200,9 +392,7 @@ img {
      box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .25);
 }
 
-.navbar-form input {
-     border: none !important;
-}
+
 
 .badge {
      font-weight: 500;
@@ -332,121 +522,6 @@ button {
 
 }
 
-
-.logo_sm {display: none;}
-
-
-
-.logo_midle {color: #fef6fc; font-weight: bold; color: #fff !important;}
-.logo_midle::before {
-    position: absolute;
-    content: "";
-    bottom: -93px;
-    width: 158px;
-    height: 96px;
-    background: url(../website/images/bacteria.png);
-    z-index: 999;
-    margin: 0 auto;
-    left: 0;
-    right: 26px;
-}
-.site-navbar {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    display : inline;
-
-}
-
-.site-navbar ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    align-items: left;
-}
-
-.site-navbar ul li a {
-    color: #fef6fc;
-    font-size: 17px;
-    display: block;
-    text-decoration: none;
-    margin-left:70%;
-    align-items: center;
-    justify-content: center;
-    padding-left:14%;
-    padding-right: 10%;
-    margin-right:20%;
-}
-
-.site-navbar ul li {
-    margin-left:-20%;
-    color: #fef6fc;
-    font-size: 16px;
-    cursor:auto;
-    padding-right:30%;
-    display : inline;
-}
-
-.site-navbar ul li:last-child {
-    padding-right: 0;
-}
-
-.site-navbar ul li a:hover {
-    color: #00132b;
-}
-.site-navbar ul li a.active {
-    color: #00132b;
-}
-
-/* navbar regular css end */
-
-
-/* nav-toggler css start */
-
-.nav-toggler {
-    border: 3px solid #fff;
-    padding: 5px;
-    background-color: transparent;
-    cursor: pointer;
-    height: 39px;
-    display: none;
-    z-index: 99999;
-}
-
-.nav-toggler span,
-.nav-toggler span:before,
-.nav-toggler span:after {
-    width: 28px;
-    height: 3px;
-    background-color: #fff;
-    display: block;
-    transition: .3s;
-}
-
-.nav-toggler span:before {
-    content: '';
-    transform: translateY(-9px);
-}
-
-.nav-toggler span:after {
-    content: '';
-    transform: translateY(6px);
-}
-
-.nav-toggler.toggler-open span {
-    background-color: transparent;
-}
-
-.nav-toggler.toggler-open span:before {
-    transform: translateY(0px) rotate(45deg);
-}
-
-.nav-toggler.toggler-open span:after {
-    transform: translateY(-3px) rotate(-45deg);
-}
-
-
 /* nav-toggler css start */
 
 
@@ -468,7 +543,7 @@ button {
 
 .left {
 
-    position: absolute;
+position: absolute;
     background: #00132b;
     width: 80px;
     left: 0;
@@ -584,16 +659,6 @@ button {
 }
 
 
-.photog .read_more {
-    margin-right: 15px;
-    font-weight: normal;
-    background:#fff;
-    color: #000;
-    height: 50px;
-    line-height: 50px;
-    max-width: 204px;
-}
-
 
 .photog .read_more:hover {background: #ed1c24; color: #fff;}
 .slider_main .carousel-item {
@@ -639,7 +704,7 @@ button {
 /** about section **/
 
 .about {
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 .about .titlepage {
@@ -1392,8 +1457,8 @@ ul li {
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
-    height:30px;
-    width:100px;
+    height:4%;
+    width:30%;
 }
 
 .button_producibles{
@@ -1403,19 +1468,18 @@ ul li {
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
-    height:30px;
-    width:100px;
+    height:4%;
+    width:30%;
 }
 
 .button_detectables{
     margin-left: 0px;
-    
     background-color:#cc3333;
     font-weight: 600;
     margin-right:5px;
     cursor:pointer;
-    height:30px;
-    width:100px;
+    height:4%;
+    width:30%;
 }
  
 .modal {
@@ -1461,6 +1525,6 @@ ul li {
 }
 
 .close_button{
-    display: inline-block;
+  display: inline-block;
   content: "\00d7"; /* This will render the 'X' */
 }

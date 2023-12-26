@@ -47,7 +47,7 @@ File Name: responsive.css
         line-height: 53px; padding-bottom: 40px;
     }
     
- .about {margin: 0 10px; padding: 80px 20px; margin-top: -90px;}
+ .about {margin: 0 10px; padding: 80px 20px;}
 
  .titlepage h2 {font-size: 33px; line-height: 40px;}
 .about_img {padding-right: 0; padding-left: 0;}
@@ -98,12 +98,6 @@ File Name: responsive.css
         line-height: 53px;
         padding-bottom: 29px;
 padding-top: 42px;
-    }
-  .about {margin: 0 10px; padding: 80px 20px; margin-top: -90px;}
-    .about_img, .coronata_img {
-      padding-left: 0;
-      padding-right: 0;
-      margin-top: 30px;
     }
    .latest {
     max-width: 425px;
@@ -220,7 +214,6 @@ padding-top: 42px;
     padding: 80px 10px;
     position: relative;
     margin: 0px;
-    margin-top: -70px;
 }
    .latest {
     max-width: 425px;
