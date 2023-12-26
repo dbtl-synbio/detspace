@@ -1,5 +1,11 @@
 name: detspace
 dependencies:
   - python 3.7
+  - pandas
+  - rdkit::rdkit
   - django
   - bs4
+  - pip
+  - pip:
+    - djangorestframework
+    - gunicorn==20.1.*

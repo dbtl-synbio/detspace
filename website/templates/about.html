@@ -4,52 +4,83 @@
 
 {% block content %}
 
-<br><br><br><br><br><br><br><br><br><br><br>
+ <!-- <br><br><br><br><br><br><br><br><br><br><br> -->
       <!-- about -->
+      <body>
       <div class="about">
-         <div class="container_width">
-            <div class="row d_flex">
-                   <div class="col-md-7">
-                  <div class="titlepage text_align_left">
-                     <h2>About plasmid design </h2>
-                     <p>A plasmid is a small circular DNA molecule found in bacteria and some other microscopic organisms. 
-                        Plasmids are physically separate from chromosomal DNA and replicate independently. 
-                        They typically have a small number of genes — notably, some associated with antibiotic resistance — and can be passed from one cell to another. Scientists use recombinant DNA methods to splice genes that they want to study into a plasmid. When the plasmid copies itself, it also makes copies of the inserted gene. 
-                     </p>
-                     <a class="read_more" href="about.html">About More</a>
-                  </div>
-               </div>
-               <div class="col-md-5">
-                  <div class="about_img text_align_center">
-                     <figure><img src="{% static 'website/images/plasmid_2.png'%}" alt="#"/></figure>
-                  </div>
+         <div class="main_body">
+            <div class="container_width">
+               <div class="row d_flex">
+   <!--                   <div class="col-md-7"> -->
+                     <div class="titlepage text_align_left">
+                        <h2>DetSpace: Engineering detectable pathways for bio-based production</h2>
+                        <p><b>DetSpace</b> allows the selection and design of a biological circuit that performs the sensing of a bio-based chemical
+                           by its enzymatic conversion into a allosteric transcription factor-based detectable molecule. In that way, <b>DetSpace</b> 
+                           provides a tool for precision engineering of bio-based pathways of industrial interest for the bioeconomy.
+                        </p>
+
+                        <h3>Steps:</h3>
+                        
+                           <ol>
+                              <li>Select the <b>chassis organism</b> where the pathway will be engineered.</li>
+                              <li>Select the <b>target compound</b> of interest from a list that contains a comprehensive metabolic map for production of bio-based chemicals.</li>
+                              <li>Select the <b>effector compound</b> of a transcription factor that can be connected to the target product.</li>
+                              <li><b>Retrosynthetic routes</b> for production of the precursors in the chassis are graphically displayed, as well as required supplements to add to the growth media.</li>
+                              <li>For the target bio-based production, the main <b>backbone upstream routes</b> for bio-based production are detailed.</li>
+                              <li><b>DetSpace</b> provides the list of enzyme sequences, selected through the Selenzyme algorithm and the combinatorial library 
+                                 of the genetic circuits for building the detectable pathway.</li>
+                           </ol> 
+                        </p>
+                        <h3>API usage</h3> 
+                        <p><b>DetSpace</b> provides an API for easy access to the main functionalities of the tool. 
+                           The code is freely available at the <a href="https://github.com/dbtl-synbio/detspace" target="_blank">GitHub repository</a>.</p>
+                           <link rel="stylesheet"
+                                 href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+                           <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+                           <script>hljs.initHighlightingOnLoad();</script>
+                           <pre><code class="python">
+   import requests
+   import urllib.parse
+
+   url = "https://detspace.i2sysbio.uv.es"
+
+   def version():
+      """ Returns API version"""
+      api_url = urllib.parse.urljoin(url,"api/version")
+      response = requests.get(api_url)
+      return response.json()
+
+   def prod():
+      """ Returns producibles"""
+      api_url = urllib.parse.urljoin(url,"api/prod")
+      response = requests.get(api_url)
+      return response.json()
+
+   def det():
+      """ Returns detectables"""
+      api_url = urllib.parse.urljoin(url,"api/det")
+      response = requests.get(api_url)
+      return response.json()
+
+   def prod_det(det):
+      """ Returns producibles connected to given detectable"""
+      api_url = urllib.parse.urljoin(url,"/".join(["api/prod",str(det)]))
+      response = requests.get(api_url)
+      return response.json()
+
+   def det_prod(prod):
+      """ Returns detectables connected to given producible"""
+      api_url = urllib.parse.urljoin(url,"/".join(["api/det",str(prod)]))
+      response = requests.get(api_url)
+      return response.json()
+      </code></pre>
+                        <p>
+                           <small>Contact: <a href="mailto:pablo.carbonell@upv.es">pablo.carbonell@upv.es</a></small>
+                        </p>
+                     </div>
                </div>
             </div>
          </div>
+         <!-- end about -->
       </div>
-      
-      <br><br><br><br><br><br><br><br><br><br>
-      
-      <div class="about">
-         <div class="container_width">
-            <div class="row d_flex">
-                   <div class="col-md-7">
-                  <div class="titlepage text_align_left">
-                     <h2>About the metabolic space </h2>
-                     <p>The metabolic space is the 
-                     </p>
-                     <a class="read_more" href="about.html">About More</a>
-                  </div>
-               </div>
-               <div class="col-md-5">
-                  <div class="about_img text_align_center">
-                     <figure><img src="images/about.png" alt="#"/></figure>
-                  </div>
-               </div>
-              
-            </div>
-         </div>
-      </div>
-      <!-- end about -->
-      <br><br><br><br><br><br><br><br><br><br><br>
 {% endblock %}

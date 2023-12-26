@@ -739,7 +739,7 @@ function hide_all_panel(){
     document.getElementById("info").style.borderLeftStyle="hidden";
     document.getElementById("info").style.borderBottomStyle="hidden";
     document.getElementById("info").style.borderTopStyle="hidden";
-    document.getElementById("info").style.borderRightStyle="hidden";
+    document.getElementById("info").style.borderRightStyle="hidden";    
     document.getElementById("info").style.width="0%";  
     $("#panel_chemical_info").hide();
     $("#panel_chemical_producible").hide();
@@ -1000,8 +1000,7 @@ function run_viz(network, pathways_info){
             console.log(edge.data());
         });
         
-        cy.on('mouseover', 'node', function(evt){
-            
+        cy.on('mouseover', 'node', function(evt){            
         })
     }
     

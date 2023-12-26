@@ -19,4 +19,3 @@ class Target(models.Model):
 
     def __str__(self):
        return f"{self.name} is the target"
-

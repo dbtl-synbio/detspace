@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #'website.apps.WebsiteConfig',
      'website',
-    'rest_framework'
+     'rest_framework'
 ]
 
 MIDDLEWARE = [

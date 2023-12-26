@@ -1,0 +1,62 @@
+            <!-- header -->
+            <!-- <header class="header-area"> -->
+               <!--<h4>DetSpace: Engineering detectable pathways for bio-based production</h4>-->
+                <!--
+                   <div class="left">
+                      <a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a>
+                   </div>
+                   -->
+                   <!-- <div class="container">
+                   
+                   <div>
+                            <div class="navbar-area">
+                               <nav class="site-navbar">
+                                  <ul>
+                                     <li>DetSpace: Engineering pathways for bio-based production</li>
+                                     <li><a href="index.html">DetSpace</a></li>
+                                     <li><a href="api/">API</a></li>
+                                     <li><a href="{% url 'about' %}">About</a></li>
+                                  </ul>
+                                  <button class="nav-toggler">
+                                  <span></span>
+                                  </button>
+                               </nav>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </header>
+                <div style="clear:both"> </div> -->
+             <!-- end header -->
+   {% load static %}
+   <!DOCTYPE html>
+
+   <!--
+   __author__ = 'Martin, H., Marin, R., Carbonell, P.'
+   __copyright__ = 'ai2 UPV, I2SysBio CSIC/UV'
+   __license__ = 'MIT'
+   -->
+
+   <html lang="en">
+
+   <head>
+         <!-- basic -->
+         <meta charset="utf-8">
+         <meta name="viewport" content="initial-scale=1.0, width=device-width">
+         <!-- style css -->
+         <link rel="stylesheet" href="{% static 'website/css/style.css'%}">
+         <script src="https://kit.fontawesome.com/cffb7498e6.js" crossorigin="anonymous"></script>
+   </head>
+   <body>
+      <nav class="nav_detspace">
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+               <i class="fas fa-bars"></i>
+            </label>
+         <ul>
+            <li><a href="index.html">DetSpace: Engineering detectable pathways for bio-based production</a></li>
+            <li><a href="api/">API</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+         </ul>
+      </nav>
+   </body>
