@@ -243,10 +243,10 @@ body {
     overflow: hidden;
 }
 
-#table_detectable_info {
+/* #table_detectable_info {
     overflow-x: scroll;
     width: auto;
-}
+} */
 
 #table_detectable_info table {
     border: solid 1px #DDEEEE;
