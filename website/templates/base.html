@@ -37,7 +37,7 @@ __license__ = 'MIT'
       <link href="{% static 'website/css/viewer.css'%}" rel="stylesheet" type="text/css"/>
       <link href="{% static 'website/css/jquery.tablesorte.theme.default.min.css'%}" rel="stylesheet" type="text/css"/>
       <script src="https://ajax.googleapis.com/ajax/libs//jquery/3.1.0/jquery.min.js"></script>
-       
+
       <!-- Local libraries -->
       <script src="{% static 'website/js/jquery-3.6.0.min.js'%}"></script>   
       <script src="{% static 'website/js/cytoscape-3.19.0.min.js'%}"></script>     
@@ -135,8 +135,7 @@ __license__ = 'MIT'
    </head>
    <!-- body -->
    <body class="main-layout">
-   
-               {% include "./header.html" %}
+   {% include "./header.html" %}
 
    {% block content %}
 

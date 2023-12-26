@@ -769,7 +769,7 @@ function count_intermediate(){
     let nodes = cy.nodes().filter('[type = "chemical"]');
     let suplement = 0;
     let in_chassis = 0;
-let intermediate = 0;
+    let intermediate = 0;
     let heterologous = 0;
     let precursor = 0;
     for (let n = 0; n < nodes.size(); n++){
@@ -778,8 +778,8 @@ let intermediate = 0;
             suplement++;
         }else if (node.data('source_chemical') == false && node.data('target_chemical') == false && node.data('prod_path') == false){
             if (node.data('sink_chemical') && node.data('inter_ids').length ==0){
-            in_chassis++;
-        intermediate++;
+                in_chassis++;
+                intermediate++;
             }else if (node.data('inter_ids').length ==0){
                 heterologous++;
                 intermediate++;
@@ -789,8 +789,8 @@ let intermediate = 0;
         }
     }
     document.getElementById('txt_intermediate_compounds').innerHTML='Intermediate compounds: ' + String(intermediate);
-    document.getElementById('txt_chassis_compounds').innerHTML='Compounds in chassis: ' + String(in_chassis);    
-document.getElementById('txt_precursor_compounds').innerHTML='Precursor compounds: ' + String(precursor);
+    document.getElementById('txt_chassis_compounds').innerHTML='Compounds in chassis: ' + String(in_chassis);
+    document.getElementById('txt_precursor_compounds').innerHTML='Precursor compounds: ' + String(precursor);
     document.getElementById('txt_suplement_compounds').innerHTML='Suplement compounds: ' + String(suplement);    
     document.getElementById('txt_heterologous_compounds').innerHTML='Heterologous compounds: ' + String(heterologous);
 }
@@ -992,7 +992,7 @@ function run_viz(network, pathways_info){
                 panel_chemical_detectable_info(null, false)
                 panel_reaction_info(node, true);
             }
-count_intermediate();
+            count_intermediate();
         });
 
         cy.on('tap', 'edge', function(evt){
@@ -1000,8 +1000,7 @@ count_intermediate();
             console.log(edge.data());
         });
         
-cy.on('mouseover', 'node', function(evt){
-            
+        cy.on('mouseover', 'node', function(evt){            
         })
     }
     
