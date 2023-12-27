@@ -8,7 +8,7 @@
       <div id="interaction" class="interact">
         <div class="info-subtitle" style="margin-top:2%">Choose chassis organism</div>
         <input id="Chassis" type="button" class="btn button_chassis" onclick="hideShow()" value="Chassis"/> 
-        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis" value="Escherichia Coli"/>
         <button  id="Delete selection" onclick="delete_chassis()" class="left_panel_button">&times;</button>
         
         <div id="dialogo" class ="hidden" style="display: none;">
@@ -47,10 +47,10 @@
          </div>
         <div class="info-subtitle">Select detectable route</div>
         <input type="button" data-toggle="modal" href="#modal_producibles" class="btn button_producibles" id="producibles" value="Producible"/>
-        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod" value="Ethylene glycol"/>
         <button  id="Delete selection" onclick= "delete_producible()" class="left_panel_button">&times;</button>        
         <input type="button" data-toggle="modal" href="#modal_detectables" class="btn button_detectables" id="detectables" value="Detectable"/>
-        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det" value="methylmalonyl-coa"/>
         <button  id="Delete selection" onclick= "delete_detectable()" class="left_panel_button">&times;</button>
 
         <input id="load_pathway" type="button" onclick="show_pathways()" class="default_button btn btn-outline-dark" value="Generate" style="margin-top: 10px"/>
@@ -118,8 +118,8 @@
                                     $("#txtvalue_det").attr("det_id",detec.attr("id"));
                                     $('#modal_detectables').modal('hide');
                                     $('.modal-backdrop').remove();
-                                    let product_chosen= $("#txtvalue_prod").attr("prod_id");
-                                    let detect_chosen= $("#txtvalue_det").attr("det_id");
+                                    product_chosen= $("#txtvalue_prod").attr("prod_id");
+                                    detect_chosen= $("#txtvalue_det").attr("det_id");
                                     if(product_chosen!="" && detect_chosen!=""){
                                        $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
                                     }
