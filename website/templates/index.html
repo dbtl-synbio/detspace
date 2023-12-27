@@ -46,10 +46,10 @@
             </script>
          </div>
         <div class="info-subtitle">Select detectable route</div>
-        <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producible"/>
+        <input type="button" data-toggle="modal" href="#modal_producibles" class="button_producibles" id="producibles" value="Producible"/>
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
         <button  id="Delete selection" onclick= "delete_producible()" class="left_panel_button">&times;</button>        
-        <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectable"/>
+        <input type="button" data-toggle="modal" href="#modal_detectables" class="button_detectables" id="detectables" value="Detectable"/>
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
         <button  id="Delete selection" onclick= "delete_detectable()" class="left_panel_button">&times;</button>
 
@@ -71,25 +71,22 @@
          <input id="view_all_pathways_button" type="button" value="Show all pathways"/>
          <input id="hide_all_pathways_button" type="button" value="Hide all pathways"/>
          <input id="redraw_pathways_button" type="button" value="Refresh layout"/>
-     </div>
-</div>
-        <div class="modal fade" id="myModal">
-         <div class="modal-dialog modal-lg modal-dialog-centered">
-           <div class="modal-content">
-             <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-             </div>
-             <div class="modal-body" id="producibles_modal_table">
-             </div>
-             <!-- <div class="modal-footer">
-               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             </div> -->
-           </div><!-- /.modal-content -->
-         </div><!-- /.modal-dialog -->
-         </div><!-- /.modal -->
+        </div>
+      </div>
+        
+      <div class="modal fade" id="modal_producibles">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body" id="producibles_modal_table"></div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
 
 
-        <div class="modal fade" id="mynewModal">
+        <div class="modal fade" id="modal_detectables">
          <div class="modal-dialog modal-lg">
            <div class="modal-content">
              <div class="modal-header">
@@ -118,7 +115,7 @@
                                     console.log(detec.text());
                                     document.getElementById("txtvalue_det").value=detec.text();
                                     $("#txtvalue_det").attr("det_id",detec.attr("id"));
-                                    $('#mynewModal').modal('hide');
+                                    $('#modal_detectables').modal('hide');
                                     $('.modal-backdrop').remove();
                                     let product_chosen= $("#txtvalue_prod").attr("prod_id");
                                     let detect_chosen= $("#txtvalue_det").attr("det_id");
@@ -133,23 +130,15 @@
 
                                  </script>
    
- 
-
     <div class="visualizer" id="base">
-   
-
       <script>
-         $( function() {
-             $( "#base" ).load( "{% static 'website/files/body_viz.html' %}" );
-         });
-       </script>  
+        $( function() {
+          $( "#base" ).load( "{% static 'website/files/body_viz.html' %}" );
+        });
+      </script>  
     </div>
 
-    <div style="clear:both">
-    
-    </div>
-
-   
+    <div style="clear:both"></div>
 </div>
 
 

@@ -90,7 +90,7 @@ $(document).ready(function(){
                var produc = $(this);
                document.getElementById("txtvalue_prod").value=produc.text();
                $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
-               $('#myModal').modal('hide');
+               $('#modal_producibles').modal('hide');
                $('.modal-backdrop').remove();
                let product_chosen= $("#txtvalue_prod").attr("prod_id");
                let detect_chosen= $("#txtvalue_det").attr("det_id");

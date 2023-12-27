@@ -59,6 +59,7 @@ body {
     max-height: 40em;
     overflow-x: hidden;
     overflow-y: auto;
+    width: 98%;
 }
 
 #info_pair{
@@ -230,7 +231,7 @@ body {
     background-color: #fff;
     padding: 8px 12px;
     margin-right: -1%;
-    border-left: 4px solid #4CAF50;
+    border-left: 4px solid #00E6D7;
     font-family: sans-serif;
     font-size: 1em;
 }
@@ -310,17 +311,19 @@ body {
     /* font: normal 13px Arial, sans-serif; */
 }
 #table_choice table thead th {
-    background-color: #DDEFEF;
-    border: solid 1px #DDEEEE;
-    color: #336B6B;
+    background-color: #BFE3FF;
+    border: solid 1px #000000;
+    color: #00345D;
     text-align: center;
     text-shadow: 1px 1px 1px #fff;
 }
 #table_choice table tbody td {
-    border: solid 1px #DDEEEE;
+    border: solid 1px #919191;
     color: #333;
     padding: 0 10px 0 10px;
     text-shadow: 1px 1px 1px #fff;
+    text-align: center;
+    vertical-align: middle;
 }
 #table_choice table tbody td.checkbox {
     text-align: center;
