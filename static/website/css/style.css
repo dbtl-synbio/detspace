@@ -1535,32 +1535,44 @@ ul li {
     margin-top: 10px;
     margin-bottom: 10px;
     background-color:rgb(131, 211, 52);
-    font-weight: 600;
-    margin-right:5px;
-    cursor:pointer;
-    height:4%;
-    width:30%;
+    font-size: 1em !important;
+    font-weight: 600 !important;
+    text-align: center;
+    margin-right:5px !important;
+    height:4% !important;
+    width:30% !important;
+    border-width: 2px !important;
+    border-style: solid !important;
+    border-color:#000;
 }
 
 .button_producibles{
     margin-left: 0px;
     margin-bottom: 10px;
     background-color:rgb(65, 190, 219);
-    font-weight: 600;
-    margin-right:5px;
-    cursor:pointer;
-    height:4%;
-    width:30%;
+    font-size: 1em !important;
+    font-weight: 600 !important;
+    text-align: center;
+    margin-right:5px !important;
+    height:4% !important;
+    width:30% !important;
+    border-width: 2px !important;
+    border-style: solid !important;
+    border-color:#000;
 }
 
 .button_detectables{
     margin-left: 0px;
     background-color:#cc3333;
-    font-weight: 600;
-    margin-right:5px;
-    cursor:pointer;
-    height:4%;
-    width:30%;
+    font-size: 1em !important;
+    font-weight: 600 !important;
+    text-align: center;
+    margin-right:5px !important;
+    height:4% !important;
+    width:30% !important;
+    border-width: 2px !important;
+    border-style: solid !important;
+    border-color:#000;
 }
  
 .modal {

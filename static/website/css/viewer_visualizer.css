@@ -25,9 +25,7 @@ body {
     border-bottom-right-radius: 10px;
     width: 20%;
     height: 90vh;
-    border-left-style:solid;
     border-right-style:solid;
-    border-top-style:solid;
     border-bottom-style:solid;
     z-index:2;
 }
@@ -84,6 +82,13 @@ body {
     font-size: 0,8em;
     border-style: none;
     border-bottom-style: solid;
+}
+
+.default_button { 
+    margin-top:1%;
+    font-size: 1em !important;
+    font-weight: 600 !important;
+    border-width: 2px !important; 
 }
 
 .left_panel_button {
