@@ -704,7 +704,7 @@ position: absolute;
 /** about section **/
 
 .about {
-    padding-top: 20px;
+    padding-top: 0px;
 }
 
 .about .titlepage {
@@ -730,10 +730,10 @@ position: absolute;
 }
 .about .titlepage p {
     font-weight: normal;
-    font-size: 17px;
-    line-height: 30px;
+    font-size: 14px;
+    line-height: 22px;
     color: #111111;
-    padding: 35px 0px 50px 0px;
+    padding: 10px 4px 10px 4px;
 }
 
 
