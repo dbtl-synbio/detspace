@@ -9,7 +9,7 @@
         <div class="info-subtitle" style="margin-top:2%">Choose chassis organism</div>
         <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> 
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
-        <button  id="Delete selection" onclick="delete_chassis()" class="btn"><i class="fa fa-close"></i></button>
+        <button  id="Delete selection" onclick="delete_chassis()" class="left_panel_button">&times;</button>
         
         <div id="dialogo" class ="hidden" style="display: none;">
             <select id="list-container" autocomplete="off" onchange="ddlselect();">
@@ -48,21 +48,12 @@
         <div class="info-subtitle">Select detectable route</div>
         <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producible"/>
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
-        <button  id="Delete selection" onclick= "delete_producible()" class="btn"></button>        
+        <button  id="Delete selection" onclick= "delete_producible()" class="left_panel_button">&times;</button>        
         <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectable"/>
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
-        <button  id="Delete selection" onclick= "delete_detectable()" class="btn"></button>
+        <button  id="Delete selection" onclick= "delete_detectable()" class="left_panel_button">&times;</button>
 
         <input id="load_pathway" type="button" onclick="show_pathways()" value="Generate" style="margin-top: 10px"/>
-
-        <!-- <div class="info-subtitle" style="margin-top:2%">Choose chassis organism</div>
-        <p style="float: left">Chassis:</p>
-        <input type="text" onfocus="blur()" class="txtvalue_selection" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
-        <div class="info-subtitle">Select detectable route</div>
-        <p style="float: left">Producible:</p>
-        <input type="text" onfocus="blur()" class="txtvalue_selection" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
-        <p style="float: left">Detectable:</p>
-        <input type="text" onfocus="blur()" class="txtvalue_selection" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/> -->
 
         <div id="info_pair">
           <p id="txt_intermediate_compounds" class="info_txt">Intermediate compounds:</p>
