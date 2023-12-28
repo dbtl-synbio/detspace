@@ -12,13 +12,11 @@ import json
 import distutils.dir_util
 import zipfile
 from io import StringIO
+import tarfile, tempfile
 from .utils import annotate_chemical_svg, get_detectables, get_producibles, get_prod_detec, get_detec_prod, get_chassis
-
-# from bs4 import BeautifulSoup
 
 def home(request):
     return render(request, 'home.html', {})
-
 
 def about(request):
     return render(request, 'about.html', {})
@@ -76,14 +74,24 @@ def detect_prod(request, prod='1', format=None):
     return Response(pl)
 
 @api_view(['GET'])
-def path_prod_det(request, prod='1', det='1'):
-    data_path = os.getenv('DETSPACE_DATA')
-    zf=zipfile.ZipFile(os.path.join(data_path,'data','json_pair_files.zip'))
-    if os.path.exists(data_path):
-        with open(data_path, 'rb') as fh:
-            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
-            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(data_path)
-            return response
+def path_prod_det(request, prod='27', det='0'):
+    data_path = os.getenv('DETSPACE_PATHDATA')
+    name = 'D'+str(det)+'P'+str(prod)
+    source_dir = os.path.join(data_path,name)
+    tmp = tempfile.NamedTemporaryFile(delete=False)
+    if os.path.exists(source_dir) and os.path.isdir(source_dir):
+        with tarfile.open(tmp.name, "w:gz") as tar:
+            tar.add(source_dir, arcname=os.path.basename(source_dir))
+        if os.path.exists(tmp.name):
+            with open(tmp.name, 'rb') as fh:
+                response = HttpResponse(fh.read(), content_type="application/gzip")
+                response['Content-Disposition'] = 'inline; filename=' + name+'.tar.gz'
+#                response.headers["Content-Security-Policy"] = "default-src 'self' https://polyfill.io"
+                return response
+    try:
+        os.unlink(tmp.name)
+    except:
+        pass
     raise Http404
 
 @api_view(['GET'])
@@ -92,7 +100,7 @@ def chassis(request, format=None):
     return Response(orgs)
 
 @api_view(['GET'])
-def net_prod_det(request, prod='1', det='1'):
+def net_prod_det(request, prod='27', det='0'):
     data_path = os.getenv('DETSPACE_DATA')
     zf=zipfile.ZipFile(os.path.join(data_path,'data','json_pair_files.zip'))
     basename = 'D'+str(det)+'P'+str(prod)
