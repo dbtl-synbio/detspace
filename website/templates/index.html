@@ -7,9 +7,9 @@
    <div class="main_body">
       <div id="interaction" class="interact">
         <div class="info-subtitle" style="margin-top:2%">Choose chassis organism</div>
-        <input id="Chassis" type="button" class="button_chassis" onclick="hideShow()" value="Chassis"/> 
-        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis"/>
-        <button  id="Delete selection" onclick="delete_chassis()" class="btn"><i class="fa fa-close"></i></button>
+        <input id="Chassis" type="button" class="btn button_chassis" onclick="hideShow()" value="Chassis"/> 
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis" value="Escherichia Coli"/>
+        <button  id="Delete selection" onclick="delete_chassis()" class="left_panel_button">&times;</button>
         
         <div id="dialogo" class ="hidden" style="display: none;">
             <select id="list-container" autocomplete="off" onchange="ddlselect();">
@@ -46,20 +46,20 @@
            </script>
          </div>
         <div class="info-subtitle">Select detectable route</div>
-        <input type="button" data-toggle="modal" href="#myModal" class="button_producibles" id="producibles" value="Producible"/>
-        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod"/>
-        <button  id="Delete selection" onclick= "delete_producible()" class="btn"><i class="fa fa-close"></i></button>
-        
-        <input type="button" data-toggle="modal" href="#mynewModal" class="button_detectables" id="detectables" value="Detectable"/>
-        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det"/>
-        <button  id="Delete selection" onclick= "delete_detectable()" class="btn"><i class="fa fa-close"></i></button>
+        <input type="button" data-toggle="modal" href="#modal_producibles" class="btn button_producibles" id="producibles" value="Producible"/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod" value="Ethylene glycol"/>
+        <button  id="Delete selection" onclick= "delete_producible()" class="left_panel_button">&times;</button>
+        <input type="button" data-toggle="modal" href="#modal_detectables" class="btn button_detectables" id="detectables" value="Detectable"/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det" value="methylmalonyl-coa"/>
+        <button  id="Delete selection" onclick= "delete_detectable()" class="left_panel_button">&times;</button>
 
-        <input id="load_pathway" type="button" onclick="show_pathways()" value="Generate" style="margin-top: 10px"/>
+        <input id="load_pathway" type="button" onclick="show_pathways()" class="default_button btn btn-outline-dark" value="Generate" style="margin-top: 10px"/>
+
         <div id="info_pair">
           <p id="txt_intermediate_compounds" class="info_txt">Intermediate compounds:</p>
           <p id="txt_chassis_compounds" class="info_txt">Compounds in chassis:</p>
 <p id="txt_heterologous_compounds" class="info_txt">Heterologous compounds:</p>
-          <p id="txt_suplement_compounds" class="info_txt">Suplement compounds:</p>
+          <p id="txt_suplement_compounds" class="info_txt">Supplement compounds:</p>
           <p id="txt_precursor_compounds" class="info_txt">Precursor compounds:</p>
         </div>
         <div id="pathway_selection">
@@ -68,27 +68,31 @@
          <div id="table_choice">
              <!-- Will be filled by viewer.js -->
          </div>
-         <input id="view_all_pathways_button" type="button" value="Show all pathways"/>
-         <input id="hide_all_pathways_button" type="button" value="Hide all pathways"/>
-         <input id="redraw_pathways_button" type="button" value="Refresh layout"/>
+         <input id="view_all_pathways_button" type="button" class="default_button btn btn-outline-dark" value="Show all pathways"/>
+         <input id="hide_all_pathways_button" type="button" class="default_button btn btn-outline-dark" value="Hide all pathways"/>
+         <input id="redraw_pathways_button" type="button" class="default_button btn btn-outline-dark" value="Refresh layout" style="margin-top:2%"/>
+         <input id="download_sbml_button" type="button" class="default_button btn btn-outline-dark" value="Download paths" style="margin-top:2%">
+         <script>
+            document.getElementById("download_sbml_button").onclick = function(){
+              location.href = "api/paths/"+String(product_chosen)+"/"+String(detect_chosen);
+            };
+         </script>
      </div>
 </div>
-                <div class="modal fade" id="myModal">
+                
+      <div class="modal fade" id="modal_producibles">
          <div class="modal-dialog modal-lg modal-dialog-centered">
            <div class="modal-content">
              <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
              </div>
-             <div class="modal-body" id="producibles_modal_table">
-             </div>
-             <!-- <div class="modal-footer">
-               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             </div> -->
-           </div><!-- /.modal-content -->
+             <div class="modal-body" id="producibles_modal_table"></div>
+                        </div><!-- /.modal-content -->
          </div><!-- /.modal-dialog -->
          </div><!-- /.modal -->
 
-                                         <div class="modal fade" id="mynewModal">
+                                         
+        <div class="modal fade" id="modal_detectables">
          <div class="modal-dialog modal-lg">
            <div class="modal-content">
              <div class="modal-header">
@@ -117,10 +121,10 @@
                                     console.log(detec.text());
                                     document.getElementById("txtvalue_det").value=detec.text();
                                     $("#txtvalue_det").attr("det_id",detec.attr("id"));
-                                    $('#mynewModal').modal('hide');
+                                    $('#modal_detectables').modal('hide');
                                     $('.modal-backdrop').remove();
-                                    let product_chosen= $("#txtvalue_prod").attr("prod_id");
-                                    let detect_chosen= $("#txtvalue_det").attr("det_id");
+                                    product_chosen= $("#txtvalue_prod").attr("prod_id");
+                                    detect_chosen= $("#txtvalue_det").attr("det_id");
                                     if(product_chosen!="" && detect_chosen!=""){
                                        $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
                                     }
@@ -132,23 +136,15 @@
 
                                  </script>
    
- 
-
-    <div class="visualizer" id="base">
-   
-
-      <script>
+     <div class="visualizer" id="base">
+         <script>
          $( function() {
              $( "#base" ).load( "{% static 'website/files/body_viz.html' %}" );
          });
        </script>  
     </div>
 
-    <div style="clear:both">
-    
-    </div>
-
-   
+    <div style="clear:both"></div>
 </div>
 
 

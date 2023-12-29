@@ -22,15 +22,10 @@ body {
     z-index: 11;
     background-color: white;
     padding: 0 1% 0 1%;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     width: 20%;
     height: 90vh;
-    border-left-style:solid;
     border-right-style:solid;
-    border-top-style:solid;
     border-bottom-style:solid;
     z-index:2;
 }
@@ -62,6 +57,7 @@ body {
     max-height: 40em;
     overflow-x: hidden;
     overflow-y: auto;
+    width: 98%;
 }
 
 #info_pair{
@@ -86,8 +82,20 @@ body {
     font-size: 0,8em;
     border-style: none;
     border-bottom-style: solid;
-
 }
+
+.default_button { 
+    margin-top:1%;
+    font-size: 1em !important;
+    font-weight: 600 !important;
+    border-width: 2px !important; 
+}
+
+.left_panel_button {
+    background-color: white;
+    font-size:1.5em;
+}
+
 /* Central panel: the graph ***************************************************/
 #cy {
     float: left;
@@ -228,7 +236,7 @@ background-color: white;
     background-color: #fff;
     padding: 8px 12px;
     margin-right: -1%;
-    border-left: 4px solid #4CAF50;
+    border-left: 4px solid #00E6D7;
     font-family: sans-serif;
     font-size: 1em;
 }
@@ -243,10 +251,10 @@ background-color: white;
     overflow: hidden;
 }
 
-#table_detectable_info {
+/* #table_detectable_info {
     overflow-x: scroll;
     width: auto;
-}
+} */
 
 #table_detectable_info table {
     border: solid 1px #DDEEEE;
@@ -308,17 +316,19 @@ background-color: white;
     /* font: normal 13px Arial, sans-serif; */
 }
 #table_choice table thead th {
-    background-color: #DDEFEF;
-    border: solid 1px #DDEEEE;
-    color: #336B6B;
+    background-color: #BFE3FF;
+    border: solid 1px #000000;
+    color: #00345D;
     text-align: center;
     text-shadow: 1px 1px 1px #fff;
 }
 #table_choice table tbody td {
-    border: solid 1px #DDEEEE;
+    border: solid 1px #919191;
     color: #333;
     padding: 0 10px 0 10px;
     text-shadow: 1px 1px 1px #fff;
+text-align: center;
+    vertical-align: middle;
 }
 #table_choice table tbody td.checkbox {
     text-align: center;

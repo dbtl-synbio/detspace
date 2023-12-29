@@ -1,7 +1,9 @@
 var network = {};
 var pathways_info = {};
 var orgid="ECOLI";
-
+var product_chosen = 27;
+var detect_chosen = 0;
+$.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
     var div =document.getElementById('dialogo');
     var display =0;
     
@@ -90,10 +92,10 @@ $(document).ready(function(){
                var produc = $(this);
                document.getElementById("txtvalue_prod").value=produc.text();
                $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
-               $('#myModal').modal('hide');
+               $('#modal_producibles').modal('hide');
                $('.modal-backdrop').remove();
-               let product_chosen= $("#txtvalue_prod").attr("prod_id");
-               let detect_chosen= $("#txtvalue_det").attr("det_id");
+               product_chosen = $("#txtvalue_prod").attr("prod_id");
+               detect_chosen = $("#txtvalue_det").attr("det_id");
                if(product_chosen!="" && detect_chosen!=""){
                   $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
                }
