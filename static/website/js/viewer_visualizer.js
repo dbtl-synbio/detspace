@@ -603,6 +603,7 @@ function panel_reaction_info(node, show=true){
         let label = node.data('label')
         let rsmiles = node.data('rsmiles');
         let rule_ids = node.data('rule_ids');
+        let score = node.data('rule_score');
         let rxn_template_ids = node.data('rxn_template_ids');
         let path_ids = node.data('path_ids');
         let ec_numbers = node.data('ec_numbers');
@@ -611,13 +612,9 @@ function panel_reaction_info(node, show=true){
         // Reaction name
         $("span.reaction_info_name").html(label);
         // Rule IDs
-        $("div.reaction_info_ruleids").html('');  // Reset div content
-        for (let i = 0; i < rule_ids.length; i++){
-            $("div.reaction_info_ruleids").append(rule_ids[i]);
-            if (i != rule_ids.length -1){
-                $("div.reaction_info_ruleids").append(', ');
-            }
-        }
+        $("div.reaction_info_ruleids").html(rule_ids);  // Reset div content
+        // Rule scores
+        $("span.reaction_info_rule_score").html(score);
         // Reaction template IDs
         $("div.reaction_info_reaction_template_ids").html('');  // Reset div content
         for (let i = 0; i < rxn_template_ids.length; i++){
@@ -642,7 +639,7 @@ function panel_reaction_info(node, show=true){
             $("div.reaction_info_pathids").append('None<br/>');
         }
         // Selenzyme crosslink
-        $("span.reaction_info_selenzyme_crosslink").html('<a target="_blank" href="http://selenzyme.synbiochem.co.uk/results?smarts=' + encodeURIComponent( rsmiles ) + '">Crosslink to Selenzyme</a>');
+        $("span.reaction_info_selenzyme_crosslink").html('<a target="_blank" href="http://selenzyme.synbiochem.co.uk/results?smarts=' + encodeURIComponent( rsmiles ) + '">Go to Selenzyme</a>');
         // Show
         $("#panel_reaction_info").show();
         document.getElementById("info").style.borderLeftStyle="solid";
@@ -769,7 +766,7 @@ function count_intermediate(){
     let nodes = cy.nodes().filter('[type = "chemical"]');
     let suplement = 0;
     let in_chassis = 0;
-let intermediate = 0;
+    let intermediate = 0;
     let heterologous = 0;
     let precursor = 0;
     for (let n = 0; n < nodes.size(); n++){
@@ -778,8 +775,8 @@ let intermediate = 0;
             suplement++;
         }else if (node.data('source_chemical') == false && node.data('target_chemical') == false && node.data('prod_path') == false){
             if (node.data('sink_chemical') && node.data('inter_ids').length ==0){
-            in_chassis++;
-        intermediate++;
+                in_chassis++;
+                intermediate++;
             }else if (node.data('inter_ids').length ==0){
                 heterologous++;
                 intermediate++;
@@ -789,9 +786,9 @@ let intermediate = 0;
         }
     }
     document.getElementById('txt_intermediate_compounds').innerHTML='Intermediate compounds: ' + String(intermediate);
-    document.getElementById('txt_chassis_compounds').innerHTML='Compounds in chassis: ' + String(in_chassis);    
-document.getElementById('txt_precursor_compounds').innerHTML='Precursor compounds: ' + String(precursor);
-    document.getElementById('txt_suplement_compounds').innerHTML='Suplement compounds: ' + String(suplement);    
+    document.getElementById('txt_chassis_compounds').innerHTML='Compounds in chassis: ' + String(in_chassis);
+    document.getElementById('txt_precursor_compounds').innerHTML='Precursor compounds: ' + String(precursor);
+    document.getElementById('txt_suplement_compounds').innerHTML='Supplement compounds: ' + String(suplement);    
     document.getElementById('txt_heterologous_compounds').innerHTML='Heterologous compounds: ' + String(heterologous);
 }
 
@@ -992,7 +989,7 @@ function run_viz(network, pathways_info){
                 panel_chemical_detectable_info(null, false)
                 panel_reaction_info(node, true);
             }
-count_intermediate();
+            count_intermediate();
         });
 
         cy.on('tap', 'edge', function(evt){
@@ -1000,8 +997,7 @@ count_intermediate();
             console.log(edge.data());
         });
         
-cy.on('mouseover', 'node', function(evt){
-            
+        cy.on('mouseover', 'node', function(evt){            
         })
     }
     
