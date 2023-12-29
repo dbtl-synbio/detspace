@@ -39,8 +39,8 @@ def contact(request):
 def chassis(request):
     return render(request, 'chassis.html', {})
 
-def about(request):
-    return render(request, 'about.html', {})
+def info(request):
+    return render(request, 'info.html', {})
 
 def index(request):
     return render(request, 'index.html', {})
@@ -62,17 +62,17 @@ def plasmid(request):
 def specifications(request):
     return render(request, 'specifications.html', {})
 
-def info(request, target_id):
-    targets = Target.objects.get(pk=target_id)
-    #targets = Target.objects.all()
-    return render(request, 'info.html', {'target': target})
+# def info(request, target_id):
+#     targets = Target.objects.get(pk=target_id)
+#     #targets = Target.objects.all()
+#     return render(request, 'info.html', {'target': target})
 
 
-def hola(request):
-    #results = request.GET.get('chassis',None)+' y ya estaría'
-    r = open('website/templates/index.html').read()
-    results = {'url_data':r}
-    return HttpResponse(results)
+# def hola(request):
+#     #results = request.GET.get('chassis',None)+' y ya estaría'
+#     r = open('website/templates/index.html').read()
+#     results = {'url_data':r}
+#     return HttpResponse(results)
 
 def vis_template(request):
     return render(request, 'vis_template.html', {})

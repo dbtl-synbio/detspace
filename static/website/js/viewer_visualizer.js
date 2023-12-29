@@ -786,7 +786,7 @@ function count_intermediate(){
         }
     }
     document.getElementById('txt_intermediate_compounds').innerHTML='Intermediate compounds: ' + String(intermediate);
-    document.getElementById('txt_chassis_compounds').innerHTML='Compounds in chassis: ' + String(in_chassis);
+    document.getElementById('txt_chassis_compounds').innerHTML='Compounds in chassis: ' + String(in_chassis);    
     document.getElementById('txt_precursor_compounds').innerHTML='Precursor compounds: ' + String(precursor);
     document.getElementById('txt_suplement_compounds').innerHTML='Supplement compounds: ' + String(suplement);    
     document.getElementById('txt_heterologous_compounds').innerHTML='Heterologous compounds: ' + String(heterologous);

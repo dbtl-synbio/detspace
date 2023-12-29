@@ -48,7 +48,7 @@
         <div class="info-subtitle">Select detectable route</div>
         <input type="button" data-toggle="modal" href="#modal_producibles" class="btn button_producibles" id="producibles" value="Producible"/>
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_prod" value="Ethylene glycol"/>
-        <button  id="Delete selection" onclick= "delete_producible()" class="left_panel_button">&times;</button>        
+        <button  id="Delete selection" onclick= "delete_producible()" class="left_panel_button">&times;</button>
         <input type="button" data-toggle="modal" href="#modal_detectables" class="btn button_detectables" id="detectables" value="Detectable"/>
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="" autocomplete="off" onkeydown="return false;" id="txtvalue_det" value="methylmalonyl-coa"/>
         <button  id="Delete selection" onclick= "delete_detectable()" class="left_panel_button">&times;</button>
@@ -77,21 +77,21 @@
               location.href = "api/paths/"+String(product_chosen)+"/"+String(detect_chosen);
             };
          </script>
-        </div>
-      </div>
-        
+     </div>
+</div>
+                
       <div class="modal fade" id="modal_producibles">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            </div>
-            <div class="modal-body" id="producibles_modal_table"></div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
+         <div class="modal-dialog modal-lg modal-dialog-centered">
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+             </div>
+             <div class="modal-body" id="producibles_modal_table"></div>
+                        </div><!-- /.modal-content -->
+         </div><!-- /.modal-dialog -->
+         </div><!-- /.modal -->
 
-
+                                         
         <div class="modal fade" id="modal_detectables">
          <div class="modal-dialog modal-lg">
            <div class="modal-content">
@@ -136,12 +136,12 @@
 
                                  </script>
    
-    <div class="visualizer" id="base">
-      <script>
-        $( function() {
-          $( "#base" ).load( "{% static 'website/files/body_viz.html' %}" );
-        });
-      </script>  
+     <div class="visualizer" id="base">
+         <script>
+         $( function() {
+             $( "#base" ).load( "{% static 'website/files/body_viz.html' %}" );
+         });
+       </script>  
     </div>
 
     <div style="clear:both"></div>
