@@ -30,7 +30,7 @@
          
 
             <script>
-               function ddlselect(){
+                function ddlselect(){
                    var d=document.getElementById("list-container");
                    var displaytext=d.options[d.selectedIndex].text;
                    $("#list-container").change(function() {
@@ -42,8 +42,8 @@
                    console.log(displaytext)
                    $("#dialogo").dialog("close");
                    var display =1;
-                                             }
-           </script>
+                }
+            </script>
          </div>
         <div class="info-subtitle">Select detectable route</div>
         <input type="button" data-toggle="modal" href="#modal_producibles" class="btn button_producibles" id="producibles" value="Producible"/>
@@ -58,7 +58,7 @@
         <div id="info_pair">
           <p id="txt_intermediate_compounds" class="info_txt">Intermediate compounds:</p>
           <p id="txt_chassis_compounds" class="info_txt">Compounds in chassis:</p>
-<p id="txt_heterologous_compounds" class="info_txt">Heterologous compounds:</p>
+          <p id="txt_heterologous_compounds" class="info_txt">Heterologous compounds:</p>
           <p id="txt_suplement_compounds" class="info_txt">Supplement compounds:</p>
           <p id="txt_precursor_compounds" class="info_txt">Precursor compounds:</p>
         </div>

@@ -61,7 +61,7 @@ body {
 }
 
 #info_pair{
-        visibility:hidden;
+    visibility:hidden;
 }
 
 .info_txt{
@@ -133,7 +133,7 @@ body {
     position:absolute;
     top:0;
     left:0;
-background-color: white;
+    background-color: white;
     font-size:1.5em;
 }
 
@@ -327,7 +327,7 @@ background-color: white;
     color: #333;
     padding: 0 10px 0 10px;
     text-shadow: 1px 1px 1px #fff;
-text-align: center;
+    text-align: center;
     vertical-align: middle;
 }
 #table_choice table tbody td.checkbox {

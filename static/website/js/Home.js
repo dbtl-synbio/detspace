@@ -4,28 +4,28 @@ var orgid="ECOLI";
 var product_chosen = 27;
 var detect_chosen = 0;
 $.getScript("api/net/"+String(product_chosen)+"/"+String(detect_chosen));
-    var div =document.getElementById('dialogo');
-    var display =0;
+var div =document.getElementById('dialogo');
+var display =0;
     
-    function hideShow() {
-      $("#dialogo").dialog({
-         modal: true,
-         title: "Chassis",
-         width: 250,
-         minWidth: 200,
-         maxWidth: 400, 
-         //show: "fold", 
-         hide: "scale",
-         autoOpen: false
-     });
-        if(display == 1){
-            $("#dialogo").dialog("close");
-            display = 1;
-        } else {
-            $("#dialogo").dialog("open");
-            display = 0;
-        }
-            }
+function hideShow() {
+   $("#dialogo").dialog({
+      modal: true,
+      title: "Chassis",
+      width: 250,
+      minWidth: 200,
+      maxWidth: 400, 
+      //show: "fold", 
+      hide: "scale",
+      autoOpen: false
+   });
+   if(display == 1){
+      $("#dialogo").dialog("close");
+      display = 1;
+   } else {
+      $("#dialogo").dialog("open");
+      display = 0;
+   }
+}
 
 //Conversion of the chassis table from json to html//
 $(document).ready(function(){
@@ -116,7 +116,7 @@ function show_pathways() {
    document.getElementById("info").style.borderBottomStyle="hidden";
    document.getElementById("info").style.borderTopStyle="hidden";
    document.getElementById("info").style.borderRightStyle="hidden";
-      document.getElementById("info").style.width="0%";
+   document.getElementById("info").style.width="0%";
    count_intermediate();
 }
 

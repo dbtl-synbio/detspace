@@ -509,7 +509,88 @@ margin-left: 15%;
      background:#5d24edf1;
      align-items: left;
      justify-content: left;
+}
 
+
+.logo_sm {display: none;}
+
+
+
+.logo_midle {color: #fef6fc; font-weight: bold; color: #fff !important;}
+.logo_midle::before {
+    position: absolute;
+    content: "";
+    bottom: -93px;
+    width: 158px;
+    height: 96px;
+    background: url(../website/images/bacteria.png);
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 26px;
+}
+.site-navbar {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    display : inline;
+
+}
+
+.site-navbar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: left;
+}
+
+.site-navbar ul li a {
+    color: #fef6fc;
+    font-size: 17px;
+    display: block;
+    text-decoration: none;
+    margin-left:70%;
+    align-items: center;
+    justify-content: center;
+    padding-left:14%;
+    padding-right: 10%;
+    margin-right:20%;
+}
+
+.site-navbar ul li {
+    margin-left:-20%;
+    color: #fef6fc;
+    font-size: 16px;
+    cursor:auto;
+    padding-right:30%;
+    display : inline;
+}
+
+.site-navbar ul li:last-child {
+    padding-right: 0;
+}
+
+.site-navbar ul li a:hover {
+    color: #00132b;
+}
+.site-navbar ul li a.active {
+    color: #00132b;
+}
+
+/* navbar regular css end */
+
+
+/* nav-toggler css start */
+
+.nav-toggler {
+    border: 3px solid #fff;
+    padding: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    height: 39px;
+    display: none;
+    z-index: 99999;
 }
 
 .left {
@@ -649,6 +730,8 @@ position: absolute;
     padding-left: 50px;
     padding-right: 50px;
     }
+    /**padding-t: 20px;**/
+
 .about .titlepage h2 {
     position: relative;
     padding-bottom: 18px;
@@ -1093,6 +1176,6 @@ ul li {
 }
 
 .close_button{
-  display: inline-block;
+    display: inline-block;
   content: "\00d7"; /* This will render the 'X' */
 }
