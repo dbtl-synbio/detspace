@@ -24,10 +24,11 @@ except KeyError as e:
     raise RuntimeError("Could not find a SECRET_KEY in environment") from e
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if LOGNAME == 'detspace':
+xsif LOGNAME == 'detspace':
     DEBUG = False
 else:
     DEBUG = True
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -130,6 +131,10 @@ STATIC_URL = 'static/'
 #STATICFILES_DIRS = [
  #   os.path.join(BASE_DIR, 'static'),
 #]
+if os.getenv('LOGNAME') == 'detspace':
+    STATIC_ROOT = "/var/www/detspace.i2sysbio.uv.es/static"
+#else:
+#    STATIC_ROOT = os.path.join(BASE_DIR,"static")
 
 if LOGNAME == 'detspace':
     STATIC_ROOT = os.path.join("/var/www/",HOSTNAME,"static")
