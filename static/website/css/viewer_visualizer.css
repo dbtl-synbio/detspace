@@ -59,6 +59,7 @@ body {
 
 #info_pair{
     visibility:hidden;
+    list-style-type: disc !important;
 }
 
 .info_txt{
