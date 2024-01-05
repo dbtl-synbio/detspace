@@ -472,7 +472,7 @@ function panel_chemical_producible_info(node, show=true){
     if (show){
         // Collect
         let node_id = node.data('id');
-        let label = node.data('label');
+        let label = document.getElementById("txtvalue_prod").value;
         let svg = node.data('svg');
         let smiles = node.data('smiles');
         let inchi = node.data('inchi');
@@ -545,7 +545,7 @@ function panel_chemical_detectable_info(node, show=true){
     if (show){
         // Collect
         let node_id = node.data('id');
-        let label = node.data('label');
+        let label = document.getElementById("txtvalue_det").value;
         let svg = node.data('svg');
         let smiles = node.data('smiles');
         let inchi = node.data('inchi');
@@ -902,13 +902,15 @@ function run_viz(network, pathways_info){
                         'background-color': '#83d334',
                         'border-color': '#83d334',
                     })
-                .selector("node[type='chemical'][?target_chemical]")
+                .selector("node[type='chemical'][?target_chemical]") // detectables
                     .css({
+                        'label': document.getElementById("txtvalue_det").value,
                         'background-color': '#CC3333',
                         'border-color': '#CC3333',
                     })
-                .selector("node[type='chemical'][?source_chemical]")
+                .selector("node[type='chemical'][?source_chemical]") // producibles
                     .css({
+                        'label': document.getElementById("txtvalue_prod").value,
                         'background-color': '#41bedb',
                         'border-color': '#41bedb',
                     })

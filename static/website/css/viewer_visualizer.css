@@ -23,11 +23,12 @@ body {
     background-color: white;
     padding: 0 1% 0 1%;
     border-bottom-right-radius: 10px;
-    width: 20%;
+    width: 20.5%;
     height: 90vh;
     border-right-style:solid;
     border-bottom-style:solid;
     z-index:2;
+    overflow-y: auto;
 }
 
 #interaction div.info-title {
@@ -44,10 +45,6 @@ body {
     font-family: sans-serif;
     text-align: left;
     padding-right: 5%;
-}
-
-#interaction {
-    overflow-y: auto;
 }
 
 #pathway_selection {
