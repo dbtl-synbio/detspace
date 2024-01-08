@@ -147,9 +147,7 @@ h6 a {
 button:focus {
     outline: none;
 }
-ul {
-   list-style: none; /* Remove default bullets */
- }
+ul,
  
 ol {
     margin: 0px;
