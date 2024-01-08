@@ -147,11 +147,11 @@ $(document).ready(function(){
              let table_body = $('<tbody ></tbody>');
              $.each( data, function( index,val ) {
                 let table_row = $('<tr></tr>');
-                table_row.append($("<td id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_det()">'+ val["Name"] + '</a>'+"</td>"));
-                table_row.append($("<td>" + val["SMILES"] + "</td>"));
-                table_row.append($("<td>" + val["Products"] + "</td>"));
-                table_row.append($("<td>" + val["Pathways"] + "</td>"));
-                table_row.append($("<td>" + val["Selected"] + "</td>"));
+                table_row.append($("<td class='click_det' id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_det()">'+ val["Name"] + '</a>'+"</td>"));
+                table_row.append($("<td class='smiles'>" + val["SMILES"] + "</td>"));
+                table_row.append($("<td class='products'>" + val["Products"] + "</td>"));
+                table_row.append($("<td class='pathways'>" + val["Pathways"] + "</td>"));
+                table_row.append($("<td class='selected'>" + val["Selected"] + "</td>"));
                 table_body.append(table_row);
              });
              table_base.append(table_body);

@@ -1034,7 +1034,6 @@ ul.top_infomation li i:hover {
 }
 
 .table{
-    display: block !important;
     overflow-x: auto !important;
     width: 100% !important;
     text-align:center;
@@ -1139,6 +1138,12 @@ ul li {
     height: 2%;
 }
 
+.modal-body{
+    overflow-x: auto !important;
+    width:98.5%;
+    margin-right:-1.5%;
+}
+
 .modal-lg {
     max-width: 60% !important;
 }
@@ -1176,4 +1181,44 @@ ul li {
 .close_button{
     display: inline-block;
   content: "\00d7"; /* This will render the 'X' */
+}
+
+th.name_head{
+    overflow-x: auto;
+    table-layout: fixed;
+    vertical-align: middle;
+    word-wrap: normal;
+    max-width: 160px;
+}
+
+.click_prod {
+    overflow-x: auto;
+    table-layout: fixed;
+    vertical-align: middle;
+    word-wrap: normal;
+    max-width: 160px;
+}
+.click_det {
+    overflow-x: auto;
+    table-layout: fixed;
+    vertical-align: middle;
+    word-wrap: normal;
+    max-width: 160px;
+}
+
+th.smiles {
+    overflow-x: auto;
+    table-layout: fixed;
+    vertical-align: middle;
+    word-wrap: normal;
+    max-width: 160px;
+}
+
+td.smiles {
+    overflow-x: auto;
+    table-layout: fixed;
+    vertical-align: middle;
+    word-wrap: normal;
+    max-width: 160px;
+    white-space: nowrap;
 }
