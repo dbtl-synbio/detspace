@@ -866,7 +866,7 @@ function run_viz(network, pathways_info){
                         'border-width': 2,
                         'border-color': 'gray',
                         'border-style': 'solid',
-                        'content': 'data(short_label)',
+                        'content': 'data(ec_numbers)',
                         'text-valign': 'center',
                         'text-halign': 'center',
                         'text-opacity': 1,
