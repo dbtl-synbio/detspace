@@ -65,13 +65,13 @@ $(document).ready(function(){
          dataType:"json",
          success:function(data){
             //var detectable_data = data.split(/\r?\n|\r/);
-            let table_base = $('<table class="table table-striped table-hover" id="producibles_table"></table>');
+            var table_base = $('<table class="table table-striped table-hover tablesorter" id="producibles_table"></table>');
             let field_names = ['Name', 'SMILES', 'Effectors', 'Pathways', 'Selected'];
             let field_classes = ['name_head', 'smiles_head', 'effectors_head', 'pathways_head', 'selected_head'];
-            let table_row = $('<tr></tr>');
+            let table_row = $('<tr class="customBackground"></tr>');
             for (let i=0; i<field_names.length;i++){
                let value = field_names[i];
-               table_row.append($('<th class="'+field_classes[i]+'"></th>').html(value));
+               table_row.append($('<th class="align-middle"'+field_classes[i]+'"></th>').html(value));
             }
             table_base.append($('<thead class= "thead-dark"></thead>').append(table_row));
             
@@ -87,7 +87,10 @@ $(document).ready(function(){
             });
             table_base.append(table_body);
             $('#producibles_modal_table').html(table_base);
-
+            //Incluye el ordenamiento alfabético
+            $("#producibles_table").tablesorter( {sortList: [[0,0], [1,0]]} );
+            //Incluye el stripe
+            $('#producibles_table').stripe();
             $("td.click_prod").click(function(){
                var produc = $(this);
                document.getElementById("txtvalue_prod").value=produc.text();
@@ -104,6 +107,10 @@ $(document).ready(function(){
       });
    });
 });
+
+jQuery.fn.stripe = function() {
+   $(this).find('tr').removeClass('even odd').filter(':odd').addClass('odd').end().find('tr:even').addClass('even');
+}
 
 // Button action that shows the network.json//
 function show_pathways() {
@@ -135,12 +142,12 @@ $(document).ready(function(){
           {
              //var detectable_data = data.split(/\r?\n|\r/);
 
-             let table_base = $('<table class="table table-striped table-hover" id="detectables_table"></table>');
+             let table_base = $('<table class="table table-striped table-hover tablesorter" id="detectables_table"></table>');
              let field_names = ['Name', 'SMILES', 'Products', 'Pathways', 'Selected'];
              let table_row = $('<tr></tr>');
              for (let i=0; i<field_names.length;i++){
                 let value = field_names[i];
-                table_row.append($('<th></th>').html(value));
+                table_row.append($('<th class="align-middle"></th>').html(value));
              }
              table_base.append($('<thead class= "thead-dark"></thead>').append(table_row));
              
@@ -156,10 +163,13 @@ $(document).ready(function(){
              });
              table_base.append(table_body);
              $('#detectables_modal_table').html(table_base);
+             //Incluye el ordenamiento alfabético
+            $("#detectables_table").tablesorter( {sortList: [[0,0], [1,0]]} );
+            //Incluye el stripe
+            $('#detectables_table').stripe();
             ;}//success
        });
     });
-
  });
   
 //Conversion of the pairs table from csv to html//
@@ -197,6 +207,11 @@ $(document).ready(function(){
 
  });
 
+ $(document).ready(function() 
+    {   
+         $("#detectables_table").tablesorter( {sortList: [[0,0], [1,0]]} ); 
+    } 
+); 
 
  // Code for the insertion of a search window //
 

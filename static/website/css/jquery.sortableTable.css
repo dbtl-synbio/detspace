@@ -1,0 +1,9 @@
+.ui-sortable-table .ui-sortable-th{
+	cursor:pointer;
+}
+.ui-sortable-table .ui-sortable-th.asc:after{
+	content:" \25B2";
+}
+.ui-sortable-table .ui-sortable-th.desc:after{
+	content:" \25BC";
+}

@@ -1043,6 +1043,8 @@ ul.top_infomation li i:hover {
 }
 
 #producibles_table thead {
+    height:50px;
+    text-align:center;
     font-size: 1.5em;
 }
 
@@ -1052,6 +1054,8 @@ ul.top_infomation li i:hover {
 
 #detectables_table thead {
     font-size: 1.5em;
+    height:50px;
+    text-align:center;
 }
 
 .html.is-animating .transition-fade{
@@ -1299,4 +1303,8 @@ td.smiles {
     word-wrap: normal;
     max-width: 130px;
     white-space: nowrap;
+}
+
+.customBackground > td {
+    background-color:#ddd !important; 
 }
