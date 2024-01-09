@@ -1214,7 +1214,10 @@ ul li {
   }
 
 .modal_title {
-    height: 2%;
+    text-align: center;
+    padding-top: 15px;
+    vertical-align: middle;
+    font-size: 30px;
 }
 
 .modal-body{
@@ -1305,6 +1308,13 @@ td.smiles {
     white-space: nowrap;
 }
 
-.customBackground > td {
-    background-color:#ddd !important; 
+.table .thead-light th {
+    color: #495057;
+    background-color: #6ba3d1 !important;
+    border-color: #5574c9 !important;
+}
+
+.Search_box{
+    border-width: 2px;
+    border-color:  #5574c9 !important;
 }

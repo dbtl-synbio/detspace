@@ -73,7 +73,7 @@ $(document).ready(function(){
                let value = field_names[i];
                table_row.append($('<th class="align-middle"'+field_classes[i]+'"></th>').html(value));
             }
-            table_base.append($('<thead class= "thead-dark"></thead>').append(table_row));
+            table_base.append($('<thead class= "thead-light"></thead>').append(table_row));
             
             let table_body = $('<tbody ></tbody>');
             $.each( data, function( index,val ) {
@@ -88,7 +88,13 @@ $(document).ready(function(){
             table_base.append(table_body);
             $('#producibles_modal_table').html(table_base);
             //Incluye el ordenamiento alfabético
-            $("#producibles_table").tablesorter( {sortList: [[0,0], [1,0]]} );
+            $("#producibles_table").tablesorter( 
+               {sortList: [[0,0], [1,0]]}, 
+               {arrows: { 
+                  up:  '&uArr;', 
+                  down: '&dArr;' }
+              }
+               );
             //Incluye el stripe
             $('#producibles_table').stripe();
             $("td.click_prod").click(function(){
@@ -149,7 +155,7 @@ $(document).ready(function(){
                 let value = field_names[i];
                 table_row.append($('<th class="align-middle"></th>').html(value));
              }
-             table_base.append($('<thead class= "thead-dark"></thead>').append(table_row));
+             table_base.append($('<thead class= "thead-light"></thead>').append(table_row));
              
              let table_body = $('<tbody ></tbody>');
              $.each( data, function( index,val ) {
