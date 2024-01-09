@@ -641,77 +641,9 @@ position: absolute;
     position: relative;
 }
 
-.full_bg .carousel-indicators {
-    bottom: -43px;
-    margin-left: 0;
-    left: 20px;
-    right: inherit;
-    display: none;
-}
-
-.full_bg .carousel-indicators li.active {
-     display: inline;
-}
-
-.full_bg .carousel-indicators li {
-     text-indent: unset;
-     opacity: 1;
-     color: #fff;
-     font-size: 18px;
-     text-align: center;
-     line-height: 59px;
-     margin-right: 0px;
-     background: transparent; 
-     border: none;
-     text-indent: unset;
-     display: none;
-}
-
 .slider_main {
      padding-top: 11%;
 }
-
-.cuplle {
-     position: inherit;
-     bottom: 0;
-     padding: 0;
-     z-index: 9999;
-     left: 0;
-     right: 0;
-}
-
-
-#banner1 .carousel-control-prev,
-#banner1 .carousel-control-next {
-     width:80px;
-     height: 80px;
-     background-color: #ed1c24;
-     color: #fff;
-     font-size: 35px;
-     opacity: 1;
-     top: 50%;
-     border-radius: 50%;
-    
-}
-
-#banner1 .carousel-control-prev {
-   
-      left: 0%;
-}
-
-#banner1 .carousel-control-next {
-     
-     right: 0%;
-}
-
-#banner1 .carousel-control-next:focus,
-#banner1 .carousel-control-next:hover,
-#banner1 .carousel-control-prev:focus,
-#banner1 .carousel-control-prev:hover {
-     background-color: #fff;
-     color: #ed1c24;
-}
-
 
 /** end banner section **/
 
