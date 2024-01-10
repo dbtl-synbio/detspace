@@ -109,7 +109,7 @@ $(document).ready(function(){
                   $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
                }
             });
-           ;}
+           }
       });
    });
 });

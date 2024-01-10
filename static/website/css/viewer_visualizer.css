@@ -301,6 +301,12 @@ body {
     color: #575757;
 }
 
+#show_producible_pathway_btn {
+    position: absolute;
+    margin-top: 2%;
+    right: 0;
+}
+
 /* Nodes and edges CSS ********************************************************/
 /* Should be set directly at the cytoscape.js level  **************************/
 
