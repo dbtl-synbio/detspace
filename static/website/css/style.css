@@ -239,7 +239,7 @@ button {
 
 .nav_detspace{
     background: #0082e6;
-    height: 80px;
+    height: 50px;
     width: 100%;
     padding-right: 0;
     min-width: fit-content;
@@ -259,14 +259,14 @@ button {
     float: center;
     margin-right: 40px;
     align-items: center;
-    margin-left: 20%;
+    margin-left: 25%;
 }
 
 .nav_detspace ul li{
     display: inline-block;
-    line-height:55px;
     margin: 0 5px;
-    font-weight: bold;
+    font-weight: 600;
+    font-size:11px;
     
 }
 
