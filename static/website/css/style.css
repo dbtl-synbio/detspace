@@ -251,7 +251,7 @@ button {
     color:white;
     font-size: 1.5em;
     line-height: 80px;
-    padding: 0 20px;
+    padding: 0 15px;
     font-weight: bolder;
 }
 
@@ -259,12 +259,12 @@ button {
     float: center;
     margin-right: 40px;
     align-items: center;
-    margin-left: 25%;
+    margin-left: 20%;
 }
 
 .nav_detspace ul li{
     display: inline-block;
-    margin: 0 5px;
+    margin: 0 30px;
     font-weight: 600;
     font-size:11px;
     
