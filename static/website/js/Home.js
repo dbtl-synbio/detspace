@@ -213,12 +213,6 @@ $(document).ready(function(){
 
  });
 
- $(document).ready(function() 
-    {   
-         $("#detectables_table").tablesorter( {sortList: [[0,0], [1,0]]} ); 
-    } 
-); 
-
  // Code for the insertion of a search window //
 
 // Reading of the .json file//
