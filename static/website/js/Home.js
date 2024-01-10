@@ -95,8 +95,49 @@ $(document).ready(function(){
                   down: '&dArr;' }
               }
                );
+
             //Incluye el stripe
             $('#producibles_table').stripe();
+
+            // Fetch the table data and store it in an array
+            var tableData = [];
+            $('#producibles_table tbody tr').each(function() {
+            var rowData = $(this).find('td').map(function() {
+               return $(this).text();
+            })
+            .get().join(' ');
+            tableData.push(rowData);
+            });
+
+            // Initialize the Autocomplete widget with search functionality
+            $('#searchInput').autocomplete({
+            appendTo: "#suggesstion-box",
+            source: tableData,
+            minLength: 1, // Minimum characters required to trigger autocomplete
+            select: function(event, ui) {
+
+            // Get the selected value from the table and show the corresponding rows
+               var selectedValue = ui.item.value;
+               var matchingRows = [];
+               $.each(tableData, function(index, rowData) {
+                  if (rowData.includes(selectedValue)) {
+                  matchingRows.push(index);
+                  }
+               });
+               $('#producibles_table tbody tr').hide();
+               $.each(matchingRows, function(index, rowIdx) {
+                  $('#producibles_table tbody tr:eq(' + rowIdx + ')').show();
+               });
+            },
+            response: function(event, ui) {
+               if (ui.content.length === 0) {
+                  // No match found, display a message or perform additional actions
+                  $('#noResultMessage').text('No matching results found.');
+               } else {
+                  $('#noResultMessage').empty();
+               }
+            }
+            });
             $("td.click_prod").click(function(){
                var produc = $(this);
                document.getElementById("txtvalue_prod").value=produc.text();
@@ -117,6 +158,19 @@ $(document).ready(function(){
 jQuery.fn.stripe = function() {
    $(this).find('tr').removeClass('even odd').filter(':odd').addClass('odd').end().find('tr:even').addClass('even');
 }
+
+
+   
+ 
+   // Clear the search input and show all rows when the input field is empty
+   $('#searchInput').on('input', function() {
+     var searchValue = $(this).val().trim();
+     if (searchValue === '') {
+       $('#producibles_table tbody tr').show();
+       $('#noResultMessage').empty();
+     }
+   });
+
 
 // Button action that shows the network.json//
 function show_pathways() {
