@@ -249,6 +249,82 @@ body {
     overflow: hidden;
 }
 
+/* Hover panels */
+#hover_chemical {
+    visibility: hidden;
+    z-index: 9;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 2%;
+    margin-right: 5%;
+    width: 10%;
+    height: 10%;
+}
+
+#hover_reaction {
+    visibility: hidden;
+    z-index: 9;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 2%;
+    margin-right: 5%;
+    width: 10%;
+    height: 10%;
+}
+
+#hover_chemical div.img-box {
+    /* v1 */
+    box-shadow: 0 0 10px 0px black;
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+
+    /* v2
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: White;
+    border-left: 4px solid #4CAF50;
+    */
+}
+
+#hover_chemical div.img-box::before {
+    /* v1 */
+    content: "";
+    display: block;
+    padding-top: 100%;
+
+    /* v2
+    content: "";
+    display: block;
+    padding-top: 50%;
+    */
+}
+
+#hover_chemical div.img-box div.chem_info_svg {
+    /* v1 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+
+    /* v2
+    position: absolute;
+    top: 0;
+    left: 25%;
+    bottom: 0;
+    right: 25%;
+    background-size: contain;
+    */
+}
 /* #table_detectable_info {
     overflow-x: scroll;
     width: auto;

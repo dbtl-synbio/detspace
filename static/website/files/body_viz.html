@@ -1,173 +1,195 @@
 <div id="cy"></div>
-    <div id="info">
-        <div id="molecule"></div>
-        <div class="info" id="information">
-                        <!-- Information on a selected chemical -->
-            <div id="panel_chemical_info">
-                <div class="info-title">Chemical</div>
-                <div class="info-name"><span class="chem_info_label"></span></div>
-                <div class="spacer"></div>
-                <!-- SVG depiction -->
-                <div>
-                    <div class="img-box">
-                        <div class="chem_info_svg"></div>
-                    </div>
-                </div>
-                <!-- SMILES -->
-                <div>
-                    <div class="info-subtitle">SMILES</div>
-                    <div class="raw-text"><span class="chem_info_smiles"></span></div>
-                    <div class="link raw-text"><span class="chem_info_smiles_search"></span></div>
-                </div>
-                <!-- Inchi -->
-                <div>
-                    <div class="info-subtitle">InChI</div>
-                    <div class="raw-text"><span class="chem_info_inchi"></span></div>
-                </div>
-                <!-- Inchikey -->
-                <div>
-                    <div class="info-subtitle">InChIKey</div>
-                    <div class="raw-text"><span class="chem_info_inchikey"></span></div>
-                </div>
-                <!-- Pathways involved in -->
-                <div>
-                    <div class="info-subtitle">Pathways involved in</div>
-                    <div class="raw-text chem_info_pathids"></div>
-                </div>
-                <div>
-                    <button type="button" class="panel_button" onclick="hide_all_panel()">&times;</button>
+<div id="info" is_clicked="False">
+    <div id="molecule"></div>
+    <div class="info" id="information">
+        <!-- Information on a selected chemical -->
+        <div id="panel_chemical_info">
+            <div class="info-title">Chemical</div>
+            <div class="info-name"><span class="chem_info_label"></span></div>
+            <div class="spacer"></div>
+            <!-- SVG depiction -->
+            <div>
+                <div class="img-box">
+                    <div class="chem_info_svg"></div>
                 </div>
             </div>
-            <!-- Information on a producible chemical -->
-            <div id="panel_chemical_producible_info">
-                <div class="info-title">Producible chemical</div>
-                <div class="info-name"><span class="chem_producible_info_label"></span></div>
-                <div class="spacer"></div>
-                <!-- SVG depiction -->
-                <div>
-                    <div class="img-box">
-                        <div class="chem_info_svg"></div>
-                    </div>
-                </div>
-                <!-- SMILES -->
-                <div>
-                    <div class="info-subtitle">SMILES</div>
-                    <div class="raw-text"><span class="chem_info_smiles"></span></div>
-                    <div class="link raw-text"><span class="chem_info_smiles_search"></span></div>
-                </div>
-                <!-- Inchi -->
-                <div>
-                    <div class="info-subtitle">InChI</div>
-                    <div class="raw-text"><span class="chem_info_inchi"></span></div>
-                </div>
-                <!-- Inchikey -->
-                <div>
-                    <div class="info-subtitle">InChIKey</div>
-                    <div class="raw-text"><span class="chem_info_inchikey"></span></div>
-                </div>
-                <!-- PMID -->
-                <div>
-                    <div class="info-subtitle">PMID</div>
-                    <div class="raw-text"><span class="chem_info_pmid"></span></div>
-                </div>
-                <!-- KEGG ID -->
-                <div>
-                    <div class="info-subtitle">KEGG ID</div>
-                    <div class="raw-text"><span class="chem_info_keggid"></span></div>
-                </div>
-                <!-- MNX ID -->
-                <div>
-                    <div class="info-subtitle">MNX ID</div>
-                    <div class="raw-text"><span class="chem_info_mnxid"></span></div>
-                </div>
-                <!-- Link to Systemsbiotech -->
-                <div>
-                    <div class="info-subtitle">Reference</div>
-                    <div class="raw-text"><span class="chem_info_sbtreference"></span></div>
-                </div>
-                <div>
-                    <button type="button" class="panel_button" onclick="hide_all_panel()">&times;</button>
+            <!-- SMILES -->
+            <div>
+                <div class="info-subtitle">SMILES</div>
+                <div class="raw-text"><span class="chem_info_smiles"></span></div>
+                <div class="link raw-text"><span class="chem_info_smiles_search"></span></div>
+            </div>
+            <!-- Inchi -->
+            <div>
+                <div class="info-subtitle">InChI</div>
+                <div class="raw-text"><span class="chem_info_inchi"></span></div>
+            </div>
+            <!-- Inchikey -->
+            <div>
+                <div class="info-subtitle">InChIKey</div>
+                <div class="raw-text"><span class="chem_info_inchikey"></span></div>
+            </div>
+            <!-- Pathways involved in -->
+            <div>
+                <div class="info-subtitle">Pathways involved in</div>
+                <div class="raw-text chem_info_pathids"></div>
+            </div>
+            <div>
+                <button type="button" class="panel_button" onclick="hide_all_panel()">&times;</button>
+            </div>
+        </div>
+        <!-- Information on a producible chemical -->
+        <div id="panel_chemical_producible_info">
+            <div class="info-title">Producible chemical</div>
+            <div class="info-name"><span class="chem_producible_info_label"></span></div>
+            <div class="spacer"></div>
+            <!-- SVG depiction -->
+            <div>
+                <div class="img-box">
+                    <div class="chem_info_svg"></div>
                 </div>
             </div>
-            <!-- Information on a detectable chemical -->
-            <div id="panel_chemical_detectable_info">
-                <div class="info-title">Detectable chemical</div>
-                <div class="info-name"><span class="chem_detectable_info_label"></span></div>
-                <div class="spacer"></div>
-                <!-- SVG depiction -->
-                <div>
-                    <div class="img-box">
-                        <div class="chem_info_svg"></div>
-                    </div>
-                </div>
-                <!-- SMILES -->
-                <div>
-                    <div class="info-subtitle">SMILES</div>
-                    <div class="raw-text"><span class="chem_info_smiles"></span></div>
-                    <div class="link raw-text"><span class="chem_info_smiles_search"></span></div>
-                </div>
-                <!-- Inchi -->
-                <div>
-                    <div class="info-subtitle">InChI</div>
-                    <div class="raw-text"><span class="chem_info_inchi"></span></div>
-                </div>
-                <!-- Inchikey -->
-                <div>
-                    <div class="info-subtitle">InChIKey</div>
-                    <div class="raw-text"><span class="chem_info_inchikey"></span></div>
-                </div>
-                <!-- <div class="info-subtitle">Sensbio Information</div> -->
-                <div id="table_detectable_info"></div>
-                <div>
-                    <button type="button" class="panel_button" onclick="hide_all_panel()">&times;</button>
+            <!-- SMILES -->
+            <div>
+                <div class="info-subtitle">SMILES</div>
+                <div class="raw-text"><span class="chem_info_smiles"></span></div>
+                <div class="link raw-text"><span class="chem_info_smiles_search"></span></div>
+            </div>
+            <!-- Inchi -->
+            <div>
+                <div class="info-subtitle">InChI</div>
+                <div class="raw-text"><span class="chem_info_inchi"></span></div>
+            </div>
+            <!-- Inchikey -->
+            <div>
+                <div class="info-subtitle">InChIKey</div>
+                <div class="raw-text"><span class="chem_info_inchikey"></span></div>
+            </div>
+            <!-- PMID -->
+            <div>
+                <div class="info-subtitle">PMID</div>
+                <div class="raw-text"><span class="chem_info_pmid"></span></div>
+            </div>
+            <!-- KEGG ID -->
+            <div>
+                <div class="info-subtitle">KEGG ID</div>
+                <div class="raw-text"><span class="chem_info_keggid"></span></div>
+            </div>
+            <!-- MNX ID -->
+            <div>
+                <div class="info-subtitle">MNX ID</div>
+                <div class="raw-text"><span class="chem_info_mnxid"></span></div>
+            </div>
+            <!-- Link to Systemsbiotech -->
+            <div>
+                <div class="info-subtitle">Reference</div>
+                <div class="raw-text"><span class="chem_info_sbtreference"></span></div>
+            </div>
+            <div>
+                <button type="button" class="panel_button" onclick="hide_all_panel()">&times;</button>
+            </div>
+        </div>
+        <!-- Information on a detectable chemical -->
+        <div id="panel_chemical_detectable_info">
+            <div class="info-title">Detectable chemical</div>
+            <div class="info-name"><span class="chem_detectable_info_label"></span></div>
+            <div class="spacer"></div>
+            <!-- SVG depiction -->
+            <div>
+                <div class="img-box">
+                    <div class="chem_info_svg"></div>
                 </div>
             </div>
-            <!-- Information on a selected reaction -->
-            <div id="panel_reaction_info">
-                <div class="info-title">Reaction</div>
-                <div class="info-name"><span class="reaction_info_name"></span></div>
-                <div class="spacer"></div>
-                <!-- EC numbers -->
-                <div>
-                    <div class="info-subtitle">EC number(s)</div>
-                    <div class="raw-text reaction_info_ecnumbers"></div>
-                </div>
-                <!-- Rule score -->
-                <div>
-                    <div class="info-subtitle">Rule score</div>
-                    <div class="raw-text"><span class="reaction_info_rule_score"></span></div>
-                </div>
-                <!-- Reaction SMILES -->
-                <div>
-                    <div class="info-subtitle">Reaction SMILES</div>
-                    <div class="raw-text"><span class="reaction_info_rsmiles"></span></div>
-                </div>
-                <!-- Reaction rule IDs -->
-                <div>
-                    <div class="info-subtitle">Rule ID(s)</div>
-                    <div class="raw-text reaction_info_ruleids"></div>
-                </div>
-                <!-- Reaction template IDs -->
-                <div>
-                    <div class="info-subtitle">Reaction template ID(s)</div>
-                    <div class="raw-text reaction_info_reaction_template_ids"></div>
-                </div>
-                <!-- Pathways involved in -->
-                <div>
-                    <div class="info-subtitle">Pathways involved in</div>
-                    <div class="raw-text reaction_info_pathids"></div>
-                </div>
-                <!-- Crosslink to Selenzyme -->
-                <div>
-                    <div class="info-subtitle">Enzyme selection</div>
-                    <div class="raw-text"><span class="reaction_info_selenzyme_crosslink"></span></div>
-                </div>
-                <div>
-                    <button type="button" class="panel_button" onclick="hide_all_panel()">&times;</button>
-                </div>
+            <!-- SMILES -->
+            <div>
+                <div class="info-subtitle">SMILES</div>
+                <div class="raw-text"><span class="chem_info_smiles"></span></div>
+                <div class="link raw-text"><span class="chem_info_smiles_search"></span></div>
+            </div>
+            <!-- Inchi -->
+            <div>
+                <div class="info-subtitle">InChI</div>
+                <div class="raw-text"><span class="chem_info_inchi"></span></div>
+            </div>
+            <!-- Inchikey -->
+            <div>
+                <div class="info-subtitle">InChIKey</div>
+                <div class="raw-text"><span class="chem_info_inchikey"></span></div>
+            </div>
+            <!-- <div class="info-subtitle">Sensbio Information</div> -->
+            <div id="table_detectable_info"></div>
+            <div>
+                <button type="button" class="panel_button" onclick="hide_all_panel()">&times;</button>
+            </div>
+        </div>
+        <!-- Information on a selected reaction -->
+        <div id="panel_reaction_info">
+            <div class="info-title">Reaction</div>
+            <div class="info-name"><span class="reaction_info_name"></span></div>
+            <div class="spacer"></div>
+            <!-- EC numbers -->
+            <div>
+                <div class="info-subtitle">EC number(s)</div>
+                <div class="raw-text reaction_info_ecnumbers"></div>
+            </div>
+            <!-- Rule score -->
+            <div>
+                <div class="info-subtitle">Rule score</div>
+                <div class="raw-text"><span class="reaction_info_rule_score"></span></div>
+            </div>
+            <!-- Reaction SMILES -->
+            <div>
+                <div class="info-subtitle">Reaction SMILES</div>
+                <div class="raw-text"><span class="reaction_info_rsmiles"></span></div>
+            </div>
+            <!-- Reaction rule IDs -->
+            <div>
+                <div class="info-subtitle">Rule ID(s)</div>
+                <div class="raw-text reaction_info_ruleids"></div>
+            </div>
+            <!-- Reaction template IDs -->
+            <div>
+                <div class="info-subtitle">Reaction template ID(s)</div>
+                <div class="raw-text reaction_info_reaction_template_ids"></div>
+            </div>
+            <!-- Pathways involved in -->
+            <div>
+                <div class="info-subtitle">Pathways involved in</div>
+                <div class="raw-text reaction_info_pathids"></div>
+            </div>
+            <!-- Crosslink to Selenzyme -->
+            <div>
+                <div class="info-subtitle">Enzyme selection</div>
+                <div class="raw-text"><span class="reaction_info_selenzyme_crosslink"></span></div>
+            </div>
+            <div>
+                <button type="button" class="panel_button" onclick="hide_all_panel()">&times;</button>
             </div>
         </div>
     </div>
+</div>
+<div id="hover_chemical">
+    <div id="info-name">
+        <span class="hover_chemical_label"></span>
+    </div>
+    <div>
+        <div class="img-box">
+            <div class="chem_info_svg"></div>
+        </div>
+    </div>
+</div>
+<div id="hover_reaction">
+    <div>
+        <div>
+            <div class="info-subtitle">Reaction ID(s)</div>
+            <div class="raw-text reaction_info_reaction_template_ids"></div>
+        </div>
+        <div>
+            <div class="info-subtitle">EC number(s)</div>
+            <div class="raw-text reaction_info_ecnumbers"></div>
+        </div>
+    </div>
+</div>
 <script>
     $(function(){
         $("#info").draggable();
