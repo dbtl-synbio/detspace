@@ -957,13 +957,6 @@ ul.top_infomation li i:hover {
     background-color: rgb(164, 164, 255);
 }
 
-.transition-fade {
-    opacity: 1;
-    transition: 500ms;
-    transform: translateX(0);
-    transform-origin: left;
-}
-
 .table{
     overflow-x: auto !important;
     width: 100% !important;
@@ -1232,13 +1225,15 @@ th.smiles {
 }
 
 td.smiles {
-    overflow-x: auto;
+    overflow-x: hidden;
     table-layout: fixed;
     vertical-align: middle;
-    word-wrap: normal;
+    word-wrap: break-word;
     max-width: 130px;
     white-space: nowrap;
+    text-overflow: ellipsis;
 }
+
 
 .table .thead-light th {
     color: #495057;
@@ -1249,4 +1244,9 @@ td.smiles {
 .Search_box{
     border-width: 2px;
     border-color:  #5574c9 !important;
+}
+
+.modal-backdrop
+{
+    opacity:0.1 !important;
 }
