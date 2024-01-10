@@ -660,9 +660,7 @@ position: absolute;
     padding-left: 50px;
     padding-right: 50px;
     }
-    /**padding-t: 20px;**/
-
-.about .titlepage h2 {
+    .about .titlepage h2 {
     position: relative;
     padding-bottom: 18px;
 }

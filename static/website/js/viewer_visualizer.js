@@ -472,7 +472,7 @@ function panel_chemical_producible_info(node, show=true){
     if (show){
         // Collect
         let node_id = node.data('id');
-        let label = node.data('label');
+        let label = document.getElementById("txtvalue_prod").value;
         let svg = node.data('svg');
         let smiles = node.data('smiles');
         let inchi = node.data('inchi');
@@ -545,7 +545,7 @@ function panel_chemical_detectable_info(node, show=true){
     if (show){
         // Collect
         let node_id = node.data('id');
-        let label = node.data('label');
+        let label = document.getElementById("txtvalue_det").value;
         let svg = node.data('svg');
         let smiles = node.data('smiles');
         let inchi = node.data('inchi');
@@ -650,17 +650,6 @@ function panel_reaction_info(node, show=true){
         $("#panel_reaction_info").hide();
     }
 }
-/**
- * Write some default text message on the info panel
- */
-function panel_startup_info(show=true){  // node
-    if (show){
-        $("#panel_startup_legend").show();
-    } else {
-        $("#panel_startup_legend").hide();
-    }
-    
-}
 
 /**
  * Return true if the array have at least one common items
@@ -738,6 +727,7 @@ function hide_all_panel(){
     document.getElementById("info").style.borderTopStyle="hidden";
     document.getElementById("info").style.borderRightStyle="hidden";    
     document.getElementById("info").style.width="0%";  
+    $("#info").attr("is_clicked", "False");
     $("#panel_chemical_info").hide();
     $("#panel_chemical_producible").hide();
     $("#panel_reaction_info").hide();
@@ -804,7 +794,6 @@ function run_viz(network, pathways_info){
 
     // Basic stuff to do only once
     build_pathway_table();
-    panel_startup_info(true);
     panel_chemical_info(null, false);
     panel_chemical_detectable_info(null, false);
     panel_chemical_producible_info(null, false);
@@ -866,7 +855,7 @@ function run_viz(network, pathways_info){
                         'border-width': 2,
                         'border-color': 'gray',
                         'border-style': 'solid',
-                        'content': 'data(short_label)',
+                        'content': 'data(ec_numbers)',
                         'text-valign': 'center',
                         'text-halign': 'center',
                         'text-opacity': 1,
@@ -902,13 +891,15 @@ function run_viz(network, pathways_info){
                         'background-color': '#83d334',
                         'border-color': '#83d334',
                     })
-                .selector("node[type='chemical'][?target_chemical]")
+                .selector("node[type='chemical'][?target_chemical]") // detectables
                     .css({
+'label': document.getElementById("txtvalue_det").value,
                         'background-color': '#CC3333',
                         'border-color': '#CC3333',
                     })
-                .selector("node[type='chemical'][?source_chemical]")
+                .selector("node[type='chemical'][?source_chemical]") // producibles
                     .css({
+'label': document.getElementById("txtvalue_prod").value,
                         'background-color': '#41bedb',
                         'border-color': '#41bedb',
                     })
@@ -957,8 +948,8 @@ function run_viz(network, pathways_info){
             console.log(node.data());
             // Print info
             document.getElementById("info").style.width="18%";
+            $("#info").attr("is_clicked", "True");
             if (node.is('[type = "chemical"]')){
-                panel_startup_info(false);
                 panel_reaction_info(null, false);
                 if (node.data().source_chemical) {
                     if (node.data().target_chemical){
@@ -983,7 +974,6 @@ function run_viz(network, pathways_info){
                     show_intermedia_pathways(node.data().inter_ids) 
                 }
             } else if (node.is('[type = "reaction"]')){
-                panel_startup_info(false);
                 panel_chemical_info(null, false);
                 panel_chemical_producible_info(null, false);
                 panel_chemical_detectable_info(null, false)
@@ -994,13 +984,44 @@ function run_viz(network, pathways_info){
 
         cy.on('tap', 'edge', function(evt){
             let edge = evt.target;
-            console.log(edge.data());
-        });
+                    });
         
         cy.on('mouseover', 'node', function(evt){            
+        let node = evt.target;
+            let is_clicked = $("#info").attr("is_clicked");
+            if (is_clicked == "False"){
+                document.getElementById("info").style.width="18%";
+                if (node.is('[type = "chemical"]')){
+                    panel_reaction_info(null, false);
+                    if (node.data().source_chemical) {
+                        panel_chemical_info(null, false);
+                        panel_chemical_producible_info(node, true);    
+                        panel_chemical_detectable_info(null, false);
+                    } else if (node.data().target_chemical){
+                        panel_chemical_detectable_info(node, true);
+                        panel_chemical_info(null, false);
+                        panel_chemical_producible_info(null, false);   
+                    } else {
+                        panel_chemical_info(node, true);
+                        panel_chemical_producible_info(null, false);
+                        panel_chemical_detectable_info(null, false);
+                    }
+                } else if (node.is('[type = "reaction"]')){
+                    panel_chemical_info(null, false);
+                    panel_chemical_producible_info(null, false);
+                    panel_chemical_detectable_info(null, false)
+                    panel_reaction_info(node, true);
+                }
+            }
+        });
+
+        cy.on('mouseout', 'node', function(evt){
+            let is_clicked = $("#info").attr("is_clicked");
+            if (is_clicked == "False"){
+                hide_all_panel();
+            }
         })
     }
-    
     /**
      * Trigger a layout rendering
      * 

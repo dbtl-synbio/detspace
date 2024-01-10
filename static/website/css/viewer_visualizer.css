@@ -23,11 +23,12 @@ body {
     background-color: white;
     padding: 0 1% 0 1%;
     border-bottom-right-radius: 10px;
-    width: 20%;
+    width: 20.5%;
     height: 90vh;
     border-right-style:solid;
     border-bottom-style:solid;
     z-index:2;
+    overflow-y: auto;
 }
 
 #interaction div.info-title {
@@ -46,10 +47,6 @@ body {
     padding-right: 5%;
 }
 
-#interaction {
-    overflow-y: auto;
-}
-
 #pathway_selection {
     visibility: hidden;
 }
@@ -62,6 +59,7 @@ body {
 
 #info_pair{
     visibility:hidden;
+    list-style-type: disc !important;
 }
 
 .info_txt{
@@ -364,10 +362,4 @@ body {
 }
 #table_choice table tbody td.path_info:hover {
     cursor: pointer;
-}
-
-@media only screen and (max-width= 620px){
-    .interaction, .cy, .info{
-        width:100%
-    }
 }
