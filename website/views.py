@@ -80,9 +80,15 @@ def vis_template(request):
 def body_viz(request):
     return render(request, 'body_viz.html', {})
 
+def detect(request, prod='27', det='0'):
+    return render(request, 'index.html', {
+        'prod': prod,
+        'det': det
+    }
+    )
+
 @api_view(['GET'])
 def api(request, format=None):
-    print(request)
     return Response({
         'version': reverse('version', request=request, format=format),
         'prod': reverse('producibles', request=request, format=format),
