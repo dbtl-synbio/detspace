@@ -100,18 +100,14 @@ $(document).ready(function(){
             $('#producibles_table').stripe();
 
             // Fetch the table data and store it in an array
-            var tableData = [];
-            $('#producibles_table tbody tr').each(function() {
-            var rowData = $(this).find('td').map(function() {
+            var tableData = $('#producibles_table td:nth-child(1)').map(function() {
+               console.log($(this).text())
                return $(this).text();
-            })
-            .get().join(' ');
-            tableData.push(rowData);
-            });
+               }).get();
 
             // Initialize the Autocomplete widget with search functionality
-            $('#searchInput').autocomplete({
-            appendTo: "#suggesstion-box",
+            $('#searchInput_prod').autocomplete({
+            appendTo: "#suggesstion-box_producibles",
             source: tableData,
             minLength: 1, // Minimum characters required to trigger autocomplete
             select: function(event, ui) {
@@ -227,6 +223,43 @@ $(document).ready(function(){
             $("#detectables_table").tablesorter( {sortList: [[0,0], [1,0]]} );
             //Incluye el stripe
             $('#detectables_table').stripe();
+
+            // Fetch the table data and store it in an array
+            var tableData = $('#detectables_table td:nth-child(1)').map(function() {
+               console.log($(this).text())
+               return $(this).text();
+               }).get();
+
+            // Initialize the Autocomplete widget with search functionality
+            $('#searchInput_det').autocomplete({
+            appendTo: "#suggesstion-box_detectables",
+            source: tableData,
+            minLength: 1, // Minimum characters required to trigger autocomplete
+            select: function(event, ui) {
+
+            // Get the selected value from the table and show the corresponding rows
+               var selectedValue = ui.item.value;
+               var matchingRows = [];
+               $.each(tableData, function(index, rowData) {
+                  if (rowData.includes(selectedValue)) {
+                  matchingRows.push(index);
+                  }
+               });
+               $('#detectables_table tbody tr').hide();
+               $.each(matchingRows, function(index, rowIdx) {
+                  $('#detectables_table tbody tr:eq(' + rowIdx + ')').show();
+               });
+            },
+            response: function(event, ui) {
+               if (ui.content.length === 0) {
+                  // No match found, display a message or perform additional actions
+                  $('#noResultMessage').text('No matching results found.');
+               } else {
+                  $('#noResultMessage').empty();
+               }
+            }
+            });
+
             ;}//success
        });
     });
