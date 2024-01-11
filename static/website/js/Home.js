@@ -1,12 +1,21 @@
 var network = {};
 var pathways_info = {};
 var orgid="ECOLI";
-var product_chosen = 27;
-var detect_chosen =0;
-$.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
 var div =document.getElementById('dialogo');
 var display =0;
-    
+
+$(document).ready(function(){
+   if ($("#txtvalue_prod").attr("prod_id") != '') { //In case the url is in format .../detect/prod/det
+      product_chosen = $("#txtvalue_prod").attr("prod_id");
+      detect_chosen = $("#txtvalue_det").attr("det_id");
+      $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+   } else { //This values are the default example
+      product_chosen = 27;
+      detect_chosen =0;
+      $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+   }
+});
+
 function hideShow() {
    $("#dialogo").dialog({
       modal: true,
