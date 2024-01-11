@@ -602,9 +602,8 @@ function panel_reaction_info(node, show=true){
         let node_id = node.data('id');
         let label = node.data('label')
         let rsmiles = node.data('rsmiles');
-        let rule_ids = node.data('rule_ids');
+        let rule_ids = node.data('rxn_template_ids');
         let score = node.data('rule_score');
-        let rxn_template_ids = node.data('rxn_template_ids');
         let path_ids = node.data('path_ids');
         let ec_numbers = node.data('ec_numbers');
         // Inject 
@@ -612,14 +611,14 @@ function panel_reaction_info(node, show=true){
         // Reaction name
         $("span.reaction_info_name").html(label);
         // Rule IDs
-        $("div.reaction_info_ruleids").html(rule_ids);  // Reset div content
+        rule_ids = rule_ids.split(';');
+        let rule_ids_txt = '';
+        for (let i = 0; i < rule_ids.length; i++){
+            rule_ids_txt += '<a target="_blank" href="https://retrorules.org/RID_query/MetaNetX/' + encodeURIComponent(rule_ids[i])+ '/16">' + rule_ids[i] +'</a>; ';
+        }
+        $("div.reaction_info_ruleids").html(rule_ids_txt.slice(0,-2));
         // Rule scores
         $("span.reaction_info_rule_score").html(score);
-        // Reaction template IDs
-        $("div.reaction_info_reaction_template_ids").html('');  // Reset div content
-        for (let i = 0; i < rxn_template_ids.length; i++){
-            $("div.reaction_info_reaction_template_ids").append(rxn_template_ids[i]);
-        }
         // EC numbers
         $("div.reaction_info_ecnumbers").html('');  // Reset div content
         if (ec_numbers == null || ec_numbers.length == 0){

@@ -249,6 +249,11 @@ body {
     overflow: hidden;
 }
 
+#info .reaction_info_ruleids{
+    white-space: normal;
+    word-wrap: normal;
+}
+
 /* #table_detectable_info {
     overflow-x: scroll;
     width: auto;
