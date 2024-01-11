@@ -356,9 +356,18 @@ function delete_producible() {
    document.getElementById("txtvalue_prod").value="";
    $("#txtvalue_prod").attr("prod_id","");
    }
-   
+
+function delete_auto_producible() {
+   document.getElementById("searchInput_prod").value="";
+   $('#noResultMessage_prod').empty();
+   }
 
 function delete_detectable() {
    document.getElementById("txtvalue_det").value="";
    $("#txtvalue_det").attr("det_id","");
+   }
+
+function delete_auto_detectable() {
+   document.getElementById("searchInput_det").value="";
+   $('#noResultMessage_det').empty();
    }
