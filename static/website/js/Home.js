@@ -121,6 +121,7 @@ jQuery.fn.stripe = function() {
 // Button action that shows the network.json//
 function show_pathways() {
    run_viz(network, pathways_info);
+   refresh_layout();
    let orgid=$("#list-container").children(":selected").attr("id");
    in_chassis(orgid);
    document.getElementById("pathway_selection").style.visibility="visible";

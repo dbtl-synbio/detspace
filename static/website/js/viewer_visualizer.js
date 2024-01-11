@@ -1234,7 +1234,7 @@ function run_viz(network, pathways_info){
             });
         }
     }
-        
+
     /**
      * Add intermediate pathways to the network
      */
