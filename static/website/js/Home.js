@@ -128,9 +128,9 @@ $(document).ready(function(){
             response: function(event, ui) {
                if (ui.content.length === 0) {
                   // No match found, display a message or perform additional actions
-                  $('#noResultMessage').text('No matching results found.');
+                  $('#noResultMessage_prod').text('No matching results found.');
                } else {
-                  $('#noResultMessage').empty();
+                  $('#noResultMessage_prod').empty();
                }
             }
             });
@@ -159,7 +159,7 @@ jQuery.fn.stripe = function() {
    
  
    // Clear the search input and show all rows when the input field is empty
-   $('#searchInput').on('input', function() {
+   $('#searchInput_prod').on('input', function() {
      var searchValue = $(this).val().trim();
      if (searchValue === '') {
        $('#producibles_table tbody tr').show();
@@ -253,9 +253,9 @@ $(document).ready(function(){
             response: function(event, ui) {
                if (ui.content.length === 0) {
                   // No match found, display a message or perform additional actions
-                  $('#noResultMessage').text('No matching results found.');
+                  $('#noResultMessage_det').text('No matching results found.');
                } else {
-                  $('#noResultMessage').empty();
+                  $('#noResultMessage_det').empty();
                }
             }
             });
@@ -264,7 +264,17 @@ $(document).ready(function(){
        });
     });
  });
-  
+
+
+    // Clear the search input and show all rows when the input field is empty
+    $('#searchInput_det').on('input', function() {
+      var searchValue = $(this).val().trim();
+      if (searchValue === '') {
+        $('#detectables_table tbody tr').show();
+        $('#noResultMessage').empty();
+      }
+    });
+ 
 //Conversion of the pairs table from csv to html//
 $(document).ready(function(){
     $('#pairs').click(function(){
