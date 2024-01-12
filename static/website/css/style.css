@@ -1282,3 +1282,8 @@ table.tablesorter tbody tr.normal-row td {
     background: #555;
     color: #fff;
   }
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+tr.found{
+    background-color:#dee2e6!important;
+}

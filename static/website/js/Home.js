@@ -65,7 +65,7 @@ $(document).ready(function(){
          dataType:"json",
          success:function(data){
             //var detectable_data = data.split(/\r?\n|\r/);
-            var table_base = $('<table class="table table-hover tablesorter" id="producibles_table"></table>');
+            var table_base = $('<table class="table table-striped  table-hover tablesorter" id="producibles_table"></table>');
             let field_names = ['Name', 'SMILES', 'Effectors', 'Pathways', 'Selected'];
             let field_classes = ['name_head', 'smiles_head', 'effectors_head', 'pathways_head', 'selected_head'];
             let table_row = $('<tr class="customBackground"></tr>');
@@ -89,15 +89,15 @@ $(document).ready(function(){
             $('#producibles_modal_table').html(table_base);
             //Incluye el ordenamiento alfabético
             $("#producibles_table").tablesorter(
-               {sortList: [[0,0], [1,0]]}, 
+               {sortList: [[0,0], [1,0],[2,0], [3,0],[4,0]]}, 
                {arrows: { 
                   up:  '&uArr;', 
                   down: '&dArr;' }
               },
-            //   {widgets: ['zebra']},
-            //   {widgetOptions : {
-            //    zebra : [ "normal-row", "alt-row" ]
-            //  }}
+              {widgets: ['zebra']},
+               {widgetOptions : {
+                  zebra : ["even", "odd"],
+              }}
                );
 
             //Incluye el stripe
@@ -201,7 +201,7 @@ $(document).ready(function(){
           {
              //var detectable_data = data.split(/\r?\n|\r/);
 
-             let table_base = $('<table class="table table-hover tablesorter" id="detectables_table"></table>');
+             let table_base = $('<table class="table table-striped table-hover tablesorter" id="detectables_table"></table>');
              let field_names = ['Name', 'SMILES', 'Products', 'Pathways', 'Selected'];
              let table_row = $('<tr></tr>');
              for (let i=0; i<field_names.length;i++){
