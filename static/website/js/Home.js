@@ -374,3 +374,7 @@ function delete_auto_detectable() {
    document.getElementById("searchInput_det").value="";
    $('#noResultMessage_det').empty();
    }
+
+//    function show_svgs(){
+//       $("#svg").show();
+//   }
