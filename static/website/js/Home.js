@@ -88,12 +88,16 @@ $(document).ready(function(){
             table_base.append(table_body);
             $('#producibles_modal_table').html(table_base);
             //Incluye el ordenamiento alfabético
-            $("#producibles_table").tablesorter( 
+            $("#producibles_table").tablesorter(
                {sortList: [[0,0], [1,0]]}, 
                {arrows: { 
                   up:  '&uArr;', 
                   down: '&dArr;' }
-              }
+              },
+            //   {widgets: ['zebra']},
+            //   {widgetOptions : {
+            //    zebra : [ "normal-row", "alt-row" ]
+            //  }}
                );
 
             //Incluye el stripe
@@ -154,7 +158,6 @@ $(document).ready(function(){
 jQuery.fn.stripe = function() {
    $(this).find('tr').removeClass('even odd').filter(':odd').addClass('odd').end().find('tr:even').addClass('even');
 }
-
 
    
  
