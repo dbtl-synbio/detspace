@@ -104,8 +104,45 @@ $(document).ready(function(){
                   down: '&dArr;' }
               }
                );
+
             //Incluye el stripe
             $('#producibles_table').stripe();
+
+            // Fetch the table data and store it in an array
+            var tableData = $('#producibles_table td:nth-child(1)').map(function() {
+               console.log($(this).text())
+               return $(this).text();
+               }).get();
+
+            // Initialize the Autocomplete widget with search functionality
+            $('#searchInput_prod').autocomplete({
+            appendTo: "#suggesstion-box_producibles",
+            source: tableData,
+            minLength: 1, // Minimum characters required to trigger autocomplete
+            select: function(event, ui) {
+
+            // Get the selected value from the table and show the corresponding rows
+               var selectedValue = ui.item.value;
+               var matchingRows = [];
+               $.each(tableData, function(index, rowData) {
+                  if (rowData.includes(selectedValue)) {
+                  matchingRows.push(index);
+                  }
+               });
+               $('#producibles_table tbody tr').hide();
+               $.each(matchingRows, function(index, rowIdx) {
+                  $('#producibles_table tbody tr:eq(' + rowIdx + ')').show();
+               });
+            },
+            response: function(event, ui) {
+               if (ui.content.length === 0) {
+                  // No match found, display a message or perform additional actions
+                  $('#noResultMessage_prod').text('No matching results found.');
+               } else {
+                  $('#noResultMessage_prod').empty();
+               }
+            }
+            });
             $("td.click_prod").click(function(){
                var produc = $(this);
                document.getElementById("txtvalue_prod").value=produc.text();
@@ -126,6 +163,19 @@ $(document).ready(function(){
 jQuery.fn.stripe = function() {
    $(this).find('tr').removeClass('even odd').filter(':odd').addClass('odd').end().find('tr:even').addClass('even');
 }
+
+
+   
+ 
+   // Clear the search input and show all rows when the input field is empty
+   $('#searchInput_prod').on('input', function() {
+     var searchValue = $(this).val().trim();
+     if (searchValue === '') {
+       $('#producibles_table tbody tr').show();
+       $('#noResultMessage').empty();
+     }
+   });
+
 
 // Button action that shows the network.json//
 function show_pathways() {
@@ -183,11 +233,58 @@ $(document).ready(function(){
             $("#detectables_table").tablesorter( {sortList: [[0,0], [1,0]]} );
             //Incluye el stripe
             $('#detectables_table').stripe();
+
+            // Fetch the table data and store it in an array
+            var tableData = $('#detectables_table td:nth-child(1)').map(function() {
+               console.log($(this).text())
+               return $(this).text();
+               }).get();
+
+            // Initialize the Autocomplete widget with search functionality
+            $('#searchInput_det').autocomplete({
+            appendTo: "#suggesstion-box_detectables",
+            source: tableData,
+            minLength: 1, // Minimum characters required to trigger autocomplete
+            select: function(event, ui) {
+
+            // Get the selected value from the table and show the corresponding rows
+               var selectedValue = ui.item.value;
+               var matchingRows = [];
+               $.each(tableData, function(index, rowData) {
+                  if (rowData.includes(selectedValue)) {
+                  matchingRows.push(index);
+                  }
+               });
+               $('#detectables_table tbody tr').hide();
+               $.each(matchingRows, function(index, rowIdx) {
+                  $('#detectables_table tbody tr:eq(' + rowIdx + ')').show();
+               });
+            },
+            response: function(event, ui) {
+               if (ui.content.length === 0) {
+                  // No match found, display a message or perform additional actions
+                  $('#noResultMessage_det').text('No matching results found.');
+               } else {
+                  $('#noResultMessage_det').empty();
+               }
+            }
+            });
+
             ;}//success
        });
     });
  });
-  
+
+
+    // Clear the search input and show all rows when the input field is empty
+    $('#searchInput_det').on('input', function() {
+      var searchValue = $(this).val().trim();
+      if (searchValue === '') {
+        $('#detectables_table tbody tr').show();
+        $('#noResultMessage').empty();
+      }
+    });
+ 
 //Conversion of the pairs table from csv to html//
 $(document).ready(function(){
     $('#pairs').click(function(){
@@ -269,9 +366,18 @@ function delete_producible() {
    document.getElementById("txtvalue_prod").value="";
    $("#txtvalue_prod").attr("prod_id","");
    }
-   
+
+function delete_auto_producible() {
+   document.getElementById("searchInput_prod").value="";
+   $('#noResultMessage_prod').empty();
+   }
 
 function delete_detectable() {
    document.getElementById("txtvalue_det").value="";
    $("#txtvalue_det").attr("det_id","");
+   }
+
+function delete_auto_detectable() {
+   document.getElementById("searchInput_det").value="";
+   $('#noResultMessage_det').empty();
    }

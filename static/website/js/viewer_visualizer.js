@@ -1258,6 +1258,7 @@ function run_viz(network, pathways_info){
     // When a pathway is checked
     $("input[name=path_checkbox]").change(function(){
         selected_paths = get_checked_pathways();
+        console.log(selected_paths);
         show_pathways(selected_paths);
     });
     

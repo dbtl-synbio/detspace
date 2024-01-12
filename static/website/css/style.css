@@ -264,16 +264,17 @@ button {
 
 .nav_detspace ul li{
     display: inline-block;
-    margin: 0 30px;
+    margin: 0 60px;
     font-weight: 600;
     font-size:11px;
+
     
 }
 
 .nav_detspace ul li a{
     color:white;
     font-size: 1.4em;
-    margin: 0 5px;
+    margin: 0 30px;
     padding: 7px 13px;
     border-radius: 3px;
     
@@ -281,14 +282,15 @@ button {
 
 
 .checkbtn{
-    font-size:30px;
-    color:white;
-    float:right;
-    justify-content:right;
-    line-height:80px;
-    margin-right:40px;
-    cursor:pointer;
-    display:none;
+    font-size: 28px;
+    color: white;
+    float: right;
+    justify-content: right;
+    line-height: 50px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+    vertical-align: middle;
 }
 
 #check{
@@ -297,18 +299,24 @@ button {
 
 @media (max-width: 1381px){
     .nav_detspace{
-        height: 100px;
+        height: 45px;
+    }
+    
+    .nav_detspace ul{
+        margin-right: 20px;
+    }
+
+    .nav_detspace ul li{
+        margin: 0 20px;
     }
     
     .label_logo{
     font-size: 1.2em;
     padding-left: 10px;
-max-width: 10px;
+    max-width: 10px;
     }
     .nav_detspace ul li a{
-
-        font-size: 1.1em;
-overflow: hidden;
+        overflow: hidden;
         text-overflow: ellipsis;
         max-width: 20px;
         white-space: pre-line;
@@ -317,21 +325,28 @@ overflow: hidden;
 
 }
 
-@media (max-width: 1194px){
+
+@media (max-width: 1190px){
+    .nav_detspace ul {
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 938px){
     .checkbtn{
         display:block;
     }
 
     .nav_detspace ul{
-        position:fixed;
-        width:100%;
-        height: 100vh;
-        background: #2c3e50;
-        top:100px;
-        left:-160%;
-        text-align: center;
-        transition: all .5s;
-z-index: 1;
+    position: fixed;
+    width: 100%;
+    height: 46vh;
+    background: #2c3e50;
+    top: 45px;
+    left: -160%;
+    text-align: center;
+    transition: all .5s;
+    z-index: 1;
     }
     .nav_detspace ul li{
         display:block;
@@ -339,7 +354,7 @@ z-index: 1;
         line-height: 30px;
     }
     .nav_detspace ul li a{
-margin-left: 15%;
+        margin-left: 15%;
         font-size: 1.2em;
         
     } 
@@ -348,7 +363,7 @@ margin-left: 15%;
         color:#0082e6;
     }
     #check:checked ~ ul{
-        left: -20%;
+        left: -5%;
     } 
     /* .nav_detspace{
         height: 160px;
@@ -1007,7 +1022,7 @@ ul.top_infomation li i:hover {
 ul li {
     list-style: none;
     font-size: 13px;
-    padding: 12px 8px 12px 50px;
+    padding: 12px 8px 12px 90px;
     user-select: none;
     cursor:pointer;
 }
