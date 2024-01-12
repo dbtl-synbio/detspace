@@ -65,7 +65,7 @@ $(document).ready(function(){
          dataType:"json",
          success:function(data){
             //var detectable_data = data.split(/\r?\n|\r/);
-            var table_base = $('<table class="table table-striped table-hover tablesorter" id="producibles_table"></table>');
+            var table_base = $('<table class="table table-hover tablesorter" id="producibles_table"></table>');
             let field_names = ['Name', 'SMILES', 'Effectors', 'Pathways', 'Selected'];
             let field_classes = ['name_head', 'smiles_head', 'effectors_head', 'pathways_head', 'selected_head'];
             let table_row = $('<tr class="customBackground"></tr>');
@@ -101,7 +101,7 @@ $(document).ready(function(){
                );
 
             //Incluye el stripe
-            $('#producibles_table').stripe();
+            // $('#producibles_table').stripe();
 
             // Fetch the table data and store it in an array
             var tableData = $('#producibles_table td:nth-child(1)').map(function() {
@@ -155,9 +155,9 @@ $(document).ready(function(){
    });
 });
 
-jQuery.fn.stripe = function() {
-   $(this).find('tr').removeClass('even odd').filter(':odd').addClass('odd').end().find('tr:even').addClass('even');
-}
+// jQuery.fn.stripe = function() {
+//    $(this).find('tr').removeClass('even odd').filter(':odd').addClass('odd').end().find('tr:even').addClass('even');
+// }
 
    
  
@@ -201,7 +201,7 @@ $(document).ready(function(){
           {
              //var detectable_data = data.split(/\r?\n|\r/);
 
-             let table_base = $('<table class="table table-striped table-hover tablesorter" id="detectables_table"></table>');
+             let table_base = $('<table class="table table-hover tablesorter" id="detectables_table"></table>');
              let field_names = ['Name', 'SMILES', 'Products', 'Pathways', 'Selected'];
              let table_row = $('<tr></tr>');
              for (let i=0; i<field_names.length;i++){
@@ -225,7 +225,7 @@ $(document).ready(function(){
              //Incluye el ordenamiento alfabético
             $("#detectables_table").tablesorter( {sortList: [[0,0], [1,0]]} );
             //Incluye el stripe
-            $('#detectables_table').stripe();
+            // $('#detectables_table').stripe();
 
             // Fetch the table data and store it in an array
             var tableData = $('#detectables_table td:nth-child(1)').map(function() {
