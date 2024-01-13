@@ -17,8 +17,74 @@
                            by its metabolic conversion into an allosteric transcription factor-based detectable molecule. In that way, <b>DetSpace</b> 
                            provides a tool for precision engineering of screening and dynamic regulation of bio-based pathways of industrial interest for the bioeconomy.
                         </p>
+                        <h3>A walk-through tutorial</h3>
+                        <h4>Start</h4>
+                        <p>In this tutorial, we assume that the user wants to produce <a href="https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:18346" target="_blank">vanillin</a>, a flavoring agent, 
+                           in the <i>E. coli</i> chassis (for engineered production routes 
+                           see for instance 
+                           <a href="https://doi.org/10.1007/s10529-005-3561-4" target="_blank">Yoon et al, <i>Biotechnol. Lett.</i>, 2005</a>.)
+                          </p>
+                           <div>
+                              <img src="{% static 'website/images/vanilla-stick.jpg'%}" alt="vanilla" style="width:150px"/>
+                              <img src="{% static 'website/images/vanillin.png'%}" alt="vanillin" style="width:150px"/>
+                           </div>
+                           <h4>Chassis selection</h4>
+                           <p>Therefore, we start by selecting the <i>E. coli</i> chassis:
+                           </p>
+                           <div>
+                              <img src="{% static 'website/images/chassis.png'%}" alt="chassis" style="width:250px"/>
+                           </div>
+                           <h4>Target compound selection</h4>
+                           <p>Then, the target product vanillin is selected from the list of producible compounds:
+                           </p>
+                           <div>
+                              <img src="{% static 'website/images/prodsel.png'%}" alt="prodsel" style="width:350px"/>
+                              <img src="{% static 'website/images/producible.png'%}" alt="producible" style="width:250px"/>
+                           </div>
+                           <h4>Detectable compound selection</h4>
+                           <p>From the list of detectable compounds that can be linked to the vanillin product, 
+                              <a href="https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:16865" target="_blank">GABA</a> 
+                              (&gamma;-amminobutyric acid), an inhibitory neurotransmitter, is selected: 
+                           </p>
+                           <div>
+                              <img src="{% static 'website/images/seldet.png'%}" alt="detsel" style="width:350px"/>
+                              <img src="{% static 'website/images/selgaba.png'%}" alt="detectable" style="width:250px"/>
+                           </div>
+                           <h4>Pathway generation</h4>
+                           <p>Next, the detectable pathway that converts vanillin into GABA is generated and graphically
+                              shown:
+                           </p>
+                           <div>
+                              <img src="{% static 'website/images/vanillinpath.png'%}" alt="pathway" style="width:100px"/>
+                           </div>
+                           <p>If multiple pathways are available, they will appear at the table on the right panel, 
+                              each one indicating the number of steps and its associated score according to the 
+                              <a href="https://retrorules.org/" target="_blank">RetroRules</a> reaction viability score.
+                              By hovering or clicking on a pathway, the selected pathway will be highlighted on the 
+                              graph.
+                           </p> 
+                           <div>
+                              <img src="{% static 'website/images/pathway.png'%}" alt="pathway" style="width:250px"/>
+                           </div>
+                           <p>Detailed information about each compound in the pathway can be obtained by clickin on the node 
+                              in the pathway, including chemical structure and link to databases. In the case of the producible 
+                              compound, i.e., vanillin, it is possible to display the production pathway associated with the compounds. In the case 
+                              of the detectable compound, i.e., GABA, information about the transcription factor that can be
+                              allosterically regulated by this effector is provided. 
+                           </p>
+                           <p>Similarly, for each enzyme in the pathway, information about the chemical transformation can be 
+                              obtained by clicking on the node. In addition, a link to the <a href="http://selenzyme.synbiochem.co.uk/" 
+                              target="_blank">Selenzyme</a> service is provide to search for putative enzyme sequences catalyzing 
+                              the desired reaction.
+                           </p>
+                           <h4>Exporting the results</h4>
+                           <p>The results can be exported into <a href="https://cytoscape.org/" target="_blank">Cytoscape</a> exchange JSON format
+                           and in <a href="https://doi.org/10.1038/s41467-022-32661-x" target="_blank">Galaxy SynBioCAD</a> rpSBML format, allowing
+                        in that way its further processing to obtain the plasmid sequences of the design of the associated 
+                        genetic circuit.</p>
+   
 
-                        <h3>The design process consists of the following steps:</h3>
+                        <h3>Steps in the design process:</h3>
                         
                            <ol>
                               <li>Select the <b>chassis organism</b> where the pathway will be engineered. The list contains a selection of main industrial and prototyping chassis 
@@ -54,10 +120,7 @@
                               </li>
                            </ol> 
                         </p>
-                        <h3>A walk-through tutorial</h3>
                         
-                        <p>In this tutorial, we assume that the user wants to produce <a href="https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:18346" target="_blank">vanillin</a> in the <i>E. coli</i> chassis (see for instance <a href="https://doi.org/10.1007/s10529-005-3561-4" target="_blank">Yoon et al, <i>Biotechnol. Lett.</i>, 2005</a>)  </p>
-
                         <h3>API usage</h3> 
                         <p><b>DetSpace</b> provides an API for easy access to the main functionalities of the tool. 
                            The code is freely available at the <a href="https://github.com/dbtl-synbio/detspace" target="_blank">GitHub repository</a>.</p>
