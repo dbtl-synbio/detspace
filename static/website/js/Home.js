@@ -14,6 +14,30 @@ $(document).ready(function(){
       detect_chosen =0;
       $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
    }
+   $.ajax ({
+      url:"/api/prod/"+detect_chosen,
+      dataType:"json",
+      success:function(data){
+         $.each(data, function(index, val){
+            if (val["ID"] == product_chosen){
+               product_name = val["Name"];
+               document.getElementById("txtvalue_prod").value=product_name;
+            }
+         });
+      }
+   });
+   $.ajax ({
+      url:"/api/det/"+product_chosen,
+      dataType:"json",
+      success:function(data){
+         $.each(data, function(index, val){
+            if (val["ID"] == detect_chosen){
+               detect_name = val["Name"];
+               document.getElementById("txtvalue_det").value=detect_name;
+            }
+         });
+      }
+   });
 });
 
 function hideShow() {
@@ -114,7 +138,6 @@ $(document).ready(function(){
 
             // Fetch the table data and store it in an array
             var tableData = $('#producibles_table td:nth-child(1)').map(function() {
-               console.log($(this).text())
                return $(this).text();
                }).get();
 
@@ -239,7 +262,6 @@ $(document).ready(function(){
 
             // Fetch the table data and store it in an array
             var tableData = $('#detectables_table td:nth-child(1)').map(function() {
-               console.log($(this).text())
                return $(this).text();
                }).get();
 
@@ -323,27 +345,6 @@ $(document).ready(function(){
 
  });
 
-
- // Code for the insertion of a search window //
-
-// Reading of the .json file//
-
-
-//const data = function Func() => {
-   //fetch("static/website/files/prod_det.json")
-   //.then(response => response.json())
-   //.then(data => console.log(data))
-   //.then(json => return JSON.stringify(json))
-   //import dataJson from "static/website/files/prod_det.json" 
-       //.then((res) => {
-        //d_data=res.json();
-        //console.log(d_data)
-       //return res.json();
-   //}
-   //.then((data) => console.log(data));
-   //return d_data
-
-
 function get_det(){
    $.getJSON( "/api/det/", function( data ) {
       var items = [];
@@ -384,7 +385,3 @@ function delete_auto_detectable() {
    document.getElementById("searchInput_det").value="";
    $('#noResultMessage_det').empty();
    }
-
-//    function show_svgs(){
-//       $("#svg").show();
-//   }
