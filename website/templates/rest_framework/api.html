@@ -1,6 +1,5 @@
 {% extends "rest_framework/base.html" %}
 
-
 {% block title %}
 DetSpace API
 {% endblock %}
@@ -11,6 +10,64 @@ DetSpace API
 </a>
 {% endblock %}
 
+{% block body %}
+
+{{ block.super }}
+
+<div class="container">
+
+<h3>API usage</h3> 
+                        <p><b>DetSpace</b> provides an API for easy access to the main functionalities of the tool. 
+                           The code is freely available at the <a href="https://github.com/dbtl-synbio/detspace" target="_blank">GitHub repository</a>.</p>
+                           <link rel="stylesheet"
+                                 href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+                           <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+                           <script>hljs.initHighlightingOnLoad();</script>
+                           <pre><code class="python" style="max-width:60%;">
+   import requests
+   import urllib.parse
+
+   url = "https://detspace.i2sysbio.uv.es"
+
+   def version():
+      """ Returns API version"""
+      api_url = urllib.parse.urljoin(url,"api/version")
+      response = requests.get(api_url)
+      return response.json()
+
+   def prod():
+      """ Returns producibles"""class="navbar navbar-static-top navbar-inverse"
+      api_url = urllib.parse.urljoin(url,"api/prod")
+      response = requests.get(api_url)
+      return response.json()
+
+   def det():
+      """ Returns detectables"""
+      api_url = urllib.parse.urljoin(url,"api/det")
+      response = requests.get(api_url)
+      return response.json()
+
+   def prod_det(det):
+      """ Returns producibles connected to given detectable"""
+      api_url = urllib.parse.urljoin(url,"/".join(["api/prod",str(det)]))
+      response = requests.get(api_url)
+      return response.json()
+
+   def det_prod(prod):
+      """ Returns detectables connected to given producible"""
+      api_url = urllib.parse.urljoin(url,"/".join(["api/det",str(prod)]))
+      response = requests.get(api_url)
+      return response.json()
+      </code></pre>
+    </div>
+      {% endblock %}
+
 {% block bootstrap_theme %}
+<!-- style css
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@3.4.1/flatly/bootstrap.min.css" type="text/css">
+         -->
+    <link rel="stylesheet" href="https://bootswatch.com/3/cerulean/bootstrap.min.css  " type="text/css">
+
+    
 {% endblock %}
+
