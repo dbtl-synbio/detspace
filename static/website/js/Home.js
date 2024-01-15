@@ -74,7 +74,7 @@ $(document).ready(function(){
          dataType:"json",
          success:function(data){
             //var detectable_data = data.split(/\r?\n|\r/);
-            var table_base = $('<table class="table table-striped table-hover tablesorter" id="producibles_table"></table>');
+            var table_base = $('<table class="table table-striped  table-hover tablesorter" id="producibles_table"></table>');
             let field_names = ['Name', 'SMILES', 'Effectors', 'Pathways', 'Selected'];
             let field_classes = ['name_head', 'smiles_head', 'effectors_head', 'pathways_head', 'selected_head'];
             let table_row = $('<tr class="customBackground"></tr>');
@@ -97,16 +97,20 @@ $(document).ready(function(){
             table_base.append(table_body);
             $('#producibles_modal_table').html(table_base);
             //Incluye el ordenamiento alfabético
-            $("#producibles_table").tablesorter( 
-               {sortList: [[0,0], [1,0]]}, 
+            $("#producibles_table").tablesorter(
+               {sortList: [[0,0], [1,0],[2,0], [3,0],[4,0]]}, 
                {arrows: { 
                   up:  '&uArr;', 
                   down: '&dArr;' }
-              }
+              },
+              {widgets: ['zebra']},
+               {widgetOptions : {
+                  zebra : ["even", "odd"],
+              }}
                );
 
             //Incluye el stripe
-            $('#producibles_table').stripe();
+            // $('#producibles_table').stripe();
 
             // Fetch the table data and store it in an array
             var tableData = $('#producibles_table td:nth-child(1)').map(function() {
@@ -160,10 +164,9 @@ $(document).ready(function(){
    });
 });
 
-jQuery.fn.stripe = function() {
-   $(this).find('tr').removeClass('even odd').filter(':odd').addClass('odd').end().find('tr:even').addClass('even');
-}
-
+// jQuery.fn.stripe = function() {
+//    $(this).find('tr').removeClass('even odd').filter(':odd').addClass('odd').end().find('tr:even').addClass('even');
+// }
 
    
  
@@ -232,7 +235,7 @@ $(document).ready(function(){
              //Incluye el ordenamiento alfabético
             $("#detectables_table").tablesorter( {sortList: [[0,0], [1,0]]} );
             //Incluye el stripe
-            $('#detectables_table').stripe();
+            // $('#detectables_table').stripe();
 
             // Fetch the table data and store it in an array
             var tableData = $('#detectables_table td:nth-child(1)').map(function() {
@@ -381,3 +384,7 @@ function delete_auto_detectable() {
    document.getElementById("searchInput_det").value="";
    $('#noResultMessage_det').empty();
    }
+
+//    function show_svgs(){
+//       $("#svg").show();
+//   }

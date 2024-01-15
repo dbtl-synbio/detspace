@@ -986,6 +986,15 @@ ul.top_infomation li i:hover {
     font-size: 1.5em;
 }
 
+#producibles_table table tbody td.path_id:hover {
+    border: solid 1px #DDEEEE;
+    background-color: #FF7E4F44;
+    padding: 0 10px 0 10px;
+    text-shadow: 1px 1px 1px #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 #detectables_table {
     font-size: 1em;
 }
@@ -1262,4 +1271,19 @@ td.smiles {
 .modal-backdrop
 {
     opacity:0.1 !important;
+}
+
+/* Extra selectors needed to override the default styling */
+table.tablesorter tbody tr.normal-row td {
+    background: #888;
+    color: #686565;
+  }
+  table.tablesorter tbody tr.alt-row td {
+    background: #555;
+    color: #fff;
+  }
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+tr.found{
+    background-color:#dee2e6!important;
 }
