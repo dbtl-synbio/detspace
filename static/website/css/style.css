@@ -1294,3 +1294,7 @@ table.tablesorter tbody tr.normal-row td {
 tr.found{
     background-color:#dee2e6!important;
 }
+
+.ui-menu .ui-menu-item {
+    margin-left: -80px !important;
+}

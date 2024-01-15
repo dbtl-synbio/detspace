@@ -114,7 +114,6 @@ $(document).ready(function(){
 
             // Fetch the table data and store it in an array
             var tableData = $('#producibles_table td:nth-child(1)').map(function() {
-               console.log($(this).text())
                return $(this).text();
                }).get();
 
