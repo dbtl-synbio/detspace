@@ -1273,6 +1273,12 @@ td.smiles {
     opacity:0.1 !important;
 }
 
+.centerImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+
 /* Extra selectors needed to override the default styling */
 table.tablesorter tbody tr.normal-row td {
     background: #888;
