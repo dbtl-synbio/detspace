@@ -81,7 +81,7 @@ body:not(.modal-open){
 }
 
 a.active,a:hover{
-   background: #1b9bff;
+   color:#2c3e50 !important;
    transition: .3s;
 }
 
@@ -238,7 +238,7 @@ button {
 /* nav_detspace css start */
 
 .nav_detspace{
-    background: #0082e6;
+    background: #007ba7;
     height: 50px;
     width: 100%;
     padding-right: 0;
@@ -360,7 +360,7 @@ button {
     } 
      a.active,a:hover{
         background: none;
-        color:#0082e6;
+        color:#2c3e50!important;
     }
     #check:checked ~ ul{
         left: -5%;
