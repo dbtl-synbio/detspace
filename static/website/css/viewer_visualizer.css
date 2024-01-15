@@ -249,6 +249,11 @@ body {
     overflow: hidden;
 }
 
+#info .reaction_info_ruleids{
+    white-space: normal;
+    word-wrap: normal;
+}
+
 /* #table_detectable_info {
     overflow-x: scroll;
     width: auto;
@@ -299,6 +304,12 @@ body {
 #info .raw-text a:visited
 {
     color: #575757;
+}
+
+#show_producible_pathway_btn {
+    position: absolute;
+    margin-top: 2%;
+    right: 0;
 }
 
 /* Nodes and edges CSS ********************************************************/

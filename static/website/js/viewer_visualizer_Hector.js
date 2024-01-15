@@ -420,14 +420,14 @@ function panel_chemical_info(node, show=false){
             $("span.chem_info_inchi_search").html("");
         } else {
             $("span.chem_info_inchi").html(inchi);
-            $("span.chem_info_inchi_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(inchi) + '">Look for identical structure using PubChem</a>');
+            //$("span.chem_info_inchi_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(inchi) + '">Look for identical structure using PubChem</a>');
         }
         if (smiles == ""|| smiles == null){
             $("span.chem_info_smiles").html("NA");
             $("span.chem_info_smiles_search").html("");
         } else {
             $("span.chem_info_smiles").html(smiles);
-            //$("span.chem_info_smiles_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(smiles) + '">Look for identical structure using PubChem</a>');
+            $("span.chem_info_smiles_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(smiles) + '">Look for identical structure using PubChem</a>');
         }        
         // Inject SVG depiction as a background image (if any)
         if (svg !== null && svg !== ""){
@@ -494,14 +494,14 @@ function panel_chemical_producible_info(node, show=true){
             $("span.chem_info_inchi_search").html("");
         } else {
             $("span.chem_info_inchi").html(inchi);
-            $("span.chem_info_inchi_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(inchi) + '">Look for identical structure using PubChem</a>');
+            //$("span.chem_info_inchi_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(inchi) + '">Look for identical structure using PubChem</a>');
         }
         if (smiles == ""|| smiles == null){
             $("span.chem_info_smiles").html("NA");
             $("span.chem_info_smiles_search").html("");
         } else {
             $("span.chem_info_smiles").html(smiles);
-            //$("span.chem_info_smiles_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(smiles) + '">Look for identical structure using PubChem</a>');
+            $("span.chem_info_smiles_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(smiles) + '">Look for identical structure using PubChem</a>');
         }
         if (pmid == "" || pmid == null){
             $("span.chem_info_pmid").html("NA");
@@ -557,7 +557,7 @@ function panel_chemical_detectable_info(node, show=true){
             $("span.chem_info_smiles_search").html("");
         } else {
             $("span.chem_info_smiles").html(smiles);
-            //$("span.chem_info_smiles_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(smiles) + '">Look for identical structure using PubChem</a>');
+            $("span.chem_info_smiles_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(smiles) + '">Look for identical structure using PubChem</a>');
         }
         if (inchikey == "" || inchikey == null){
             $("span.chem_info_inchikey").html("NA");
@@ -571,7 +571,7 @@ function panel_chemical_detectable_info(node, show=true){
             $("span.chem_info_inchi_search").html("");
         } else {
             $("span.chem_info_inchi").html(inchi);
-            $("span.chem_info_inchi_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(inchi) + '">Look for identical structure using PubChem</a>');
+            //$("span.chem_info_inchi_search").html('<a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/search/#collection=compounds&query_type=structure&query_subtype=identity&query=' + encodeURI(inchi) + '">Look for identical structure using PubChem</a>');
         }
         // Inject SVG depiction as a background image (if any)
         if (svg !== null && svg !== ""){
@@ -602,8 +602,9 @@ function panel_reaction_info(node, show=true){
         let node_id = node.data('id');
         let label = node.data('label')
         let rsmiles = node.data('rsmiles');
-        let rule_ids = node.data('rxn_template_ids');
+        let rule_ids = node.data('rule_ids');
         let score = node.data('rule_score');
+        let rxn_template_ids = node.data('rxn_template_ids');
         let path_ids = node.data('path_ids');
         let ec_numbers = node.data('ec_numbers');
         // Inject 
@@ -611,14 +612,14 @@ function panel_reaction_info(node, show=true){
         // Reaction name
         $("span.reaction_info_name").html(label);
         // Rule IDs
-        rule_ids = rule_ids.split(';');
-        let rule_ids_txt = '';
-        for (let i = 0; i < rule_ids.length; i++){
-            rule_ids_txt += '<a target="_blank" href="https://retrorules.org/RID_query/MetaNetX/' + encodeURIComponent(rule_ids[i])+ '/16">' + rule_ids[i] +'</a>; ';
-        }
-        $("div.reaction_info_ruleids").html(rule_ids_txt.slice(0,-2));
+        $("div.reaction_info_ruleids").html(rule_ids);  // Reset div content
         // Rule scores
         $("span.reaction_info_rule_score").html(score);
+        // Reaction template IDs
+        $("div.reaction_info_reaction_template_ids").html('');  // Reset div content
+        for (let i = 0; i < rxn_template_ids.length; i++){
+            $("div.reaction_info_reaction_template_ids").append(rxn_template_ids[i]);
+        }
         // EC numbers
         $("div.reaction_info_ecnumbers").html('');  // Reset div content
         if (ec_numbers == null || ec_numbers.length == 0){
@@ -669,21 +670,46 @@ function share_at_least_one(array1, array2){
 }
 
 /**
+ * Make labels for chemicals
+ *
+ * @param {Integer} max_length: string size cutoff before label truncation
+function make_chemical_labels(max_length=6){
+    let nodes = cy.nodes().filter('[type = "chemical"]');
+    for (let i = 0; i < nodes.size(); i++){
+        let node = nodes[i];
+        let label = node.data('label');
+        if ((typeof label != 'undefined') && (label != 'None') && (label != '')){
+            if (label.length > max_length){
+                short_label = label.substr(0, max_length-2)+'..';
+            } else {
+                short_label = label;
+            }
+        } else {
+            short_label = '';
+        }
+        node.data('short_label', short_label);
+    }
+}
+ */
+
+/**
  * Make labels for reactions
  *
  * @param {Integer} max_length: string size cutoff before label truncation
  */
-function make_reaction_labels(){
+function make_reaction_labels(max_length=10){
     let nodes = cy.nodes().filter('[type = "reaction"]');
     for (let i = 0; i < nodes.size(); i++){
         let node = nodes[i];
-        let label = node.data('ec_numbers');
+        let label = node.data('label');
         if ((typeof label != 'undefined') && (label != 'None') && (label != '')){
-            short_label = label.split(';');
-            short_label = short_label[0].replace('[','');
-            short_label = short_label.replace(']','');
+            if (label.length > max_length){
+                short_label = label.substr(0, max_length-2)+'..';
+            } else {
+                short_label = label;
+            }
         } else {
-            short_label = node.data('label');
+            short_label = '';
         }
         node.data('short_label', short_label);
     }
@@ -756,191 +782,6 @@ function count_intermediate(){
     document.getElementById('txt_heterologous_compounds').innerHTML='Heterologous compounds: ' + String(heterologous);
 }
 
-function render_layout(element_collection){
-    // Playing with zoom to get the best fit
-    cy.minZoom(1e-50);
-    cy.on('layoutstop', function(e){
-        cy.minZoom(cy.zoom()*0.5);  // 0.9 to enable the user dezoom a little
-    });
-    // Layout
-    let layout = element_collection.layout({
-        name: 'breadthfirst',
-        roots: cy.elements("node[?target_chemical]")
-    });
-    layout.run();
-}
-
-/* Refresh layout according to visible nodes */
-function refresh_layout(){
-    render_layout(cy.elements().not(':hidden'));
-}
-
-/* Hide all intermedia pathways */
-function hide_all_intermedia_pathways(){
-    cy.nodes().forEach(function(node, index){
-        let length_paths = node.data('inter_ids').length;
-        if (length_paths != 0 && node.data('main_path') != true){
-            node.css({visibility:'hidden'});
-        }
-    });
-    cy.edges().forEach(function(edge,index){
-        let length_paths = edge.data('inter_ids').length;
-        if (length_paths != 0){
-            edge.css({visibility:'hidden'});
-        }
-    });
-}
-
-function hide_all_prod_pathways(){
-    cy.nodes().forEach(function(node, index){
-        if (node.data('prod_path') && node.data('source_chemical') != true){
-            node.css({visibility:'hidden'});
-        }
-    });
-    cy.edges().forEach(function(edge,index){
-        if (edge.data('prod_path')){
-            edge.css({visibility:'hidden'});
-        }
-    });
-}
-    
-function put_pathway_values(score_label='global_score'){
-    for (let path_id in pathways_info){
-        // Collect the value
-        let score = pathways_info[path_id]['scores'][score_label];
-        if (! isNaN(score)){
-            score = parseFloat(score).toFixed(3);
-        } else {
-            score = 'NaN';
-        }
-        // Push it into the pathway table
-        let path_td = $('td.path_value[data-path_id=' + path_id + ']');
-        path_td.html(score);    
-    }
-}
-
-/* Make the pathway table sortable */
-function make_pathway_table_sortable(){
-    $("#table_choice > table").tablesorter({
-        theme : 'default',
-        sortList: [[4,1],[0,0]],  // Sort on the fourth column (descending) and then on the first column (ascending order)
-        headers : {  // Disable sorting for these columns
-            '.path_checkbox_head, .path_colour_head': {
-                sorter: false
-            }
-        }
-    });
-}
-
-function show_prod_pathway(){
-    cy.nodes().forEach(function(node, index){
-        let length_paths = node.data('inter_ids').length;
-        if (node.data('source_chemical') != true && (length_paths == 0 || node.data('main_path'))){
-            reverse_visibility(node);
-        }
-        if (length_paths != 0 && node.data('main_path') != true){
-            node.css({visibility:'hidden'});
-        }
-    });
-    cy.edges().forEach(function(edge, index){
-        let length_paths = edge.data('inter_ids').length;
-        if (length_paths == 0){
-            reverse_visibility(edge)
-        } else {
-            edge.css({visibility:'hidden'});
-        }
-    });
-    refresh_layout();
-}
-
-function show_producible_pathway() {
-    cy.nodes().forEach(function(node, index){
-        if (node.data('source_chemical')){
-            if (node.data('target_chemical')){
-                node.data().target_chemical = false;
-            }else {
-                node.data().target_chemical = true;
-            }
-        }
-    });
-    show_prod_pathway();
-}
-
-$(document).ready(function(){
-    function show_pathways(selected_paths='__ALL__'){
-        if (selected_paths == '__ALL__'){
-            cy.nodes().forEach(function(node, index){
-                if (node.data('source_chemical')){
-                    node.data().target_chemical = false;
-                }
-                if (node.data('prod_path')){
-                    node.css({visibility:'hidden'});
-                }
-                if (node.data('main_path')){
-                    node.css({visibility:'visible'});
-                }
-                let length_paths = node.data('inter_ids').length;
-                if (length_paths != 0 && node.data('inter_chemical') != true && node.style().visibility == 'visible'){
-                    node.css({visibility:'visible'});
-                } else if (length_paths != 0 && node.data('inter_chemical') != true && node.style().visibility == 'hidden'){
-                    node.css({visibility:'hidden'});
-                } else if ((length_paths == 0 || node.data('inter_chemical') == true) && node.data('prod_path') == false){
-                node.css({visibility:'visible'});
-                }
-            });
-            cy.edges().forEach(function(edge,index){
-                if (edge.data('prod_path')){
-                    edge.css({visibility:'hidden'});
-                }
-                let length_paths = edge.data('inter_ids').length;
-                if (length_paths != 0 && edge.style().visibility == 'visible'){
-                    edge.css({visibility:'visible'});
-                } else if (length_paths != 0 && edge.style().visibility == 'hidden'){
-                    edge.css({visibility:'hidden'});
-                } else if (length_paths == 0 && edge.data('prod_path') == false){
-                    edge.css({visibility:'visible'});
-                }
-            });
-            refresh_layout()          
-        } else if (selected_paths == '__NONE__'){
-            cy.nodes().css({visibility: 'hidden'});
-            cy.edges().css({visibility: 'hidden'});
-        } else {
-            // Nodes
-            cy.nodes().forEach(function(node, index){
-                let node_paths = node.data('path_ids');
-                if (share_at_least_one(node_paths, selected_paths)){
-                    node.css({visibility:'visible'});
-                } else {
-                    node.css({visibility:'hidden'});
-                }
-            });
-            // Edges
-            cy.edges().forEach(function(edge, index){
-                let edge_paths = edge.data('path_ids');
-                if (share_at_least_one(edge_paths, selected_paths)){
-                    edge.css({visibility:'visible'});
-                } else {
-                    edge.css({visibility:'hidden'});
-                }
-            });
-        }
-    }
-
-    // Pathways selection
-    $('#hide_all_pathways_button').on('click', function(event){
-        show_pathways(selected_paths='__NONE__');  // Hide all
-        $('input[name=path_checkbox]').prop('checked', false);  // Uncheck all
-    });
-    $('#view_all_pathways_button').on('click', function(event){
-        show_pathways(selected_paths='__ALL__');  // Show all
-        $('input[name=path_checkbox]').prop('checked', true);  // Check all
-    });
-    $('#redraw_pathways_button').on('click', function(event){
-        refresh_layout();
-    });
-});
-        
 // Live ///////////////////////////
 function run_viz(network, pathways_info){
 
@@ -958,9 +799,11 @@ function run_viz(network, pathways_info){
     panel_chemical_producible_info(null, false);
     panel_reaction_info(null, false);
     init_network(true);
+    annotate_hiddable_cofactors();  // Need to be done after init_network so the network is already loaded
     refresh_layout();
     hide_all_intermedia_pathways();
     hide_all_prod_pathways();
+    show_cofactors(false);
     put_pathway_values('global_score');
     make_pathway_table_sortable();  // Should be called only after the table has been populated with values
 
@@ -983,7 +826,7 @@ function run_viz(network, pathways_info){
         
         // Create node labels
         //make_chemical_labels(6);
-        make_reaction_labels();
+        make_reaction_labels(9);
         
         // Hide them 'by default'
         if (! show_graph){
@@ -1012,7 +855,7 @@ function run_viz(network, pathways_info){
                         'border-width': 2,
                         'border-color': 'gray',
                         'border-style': 'solid',
-                        'content': 'data(short_label)',
+                        'content': 'data(ec_numbers)',
                         'text-valign': 'center',
                         'text-halign': 'center',
                         'text-opacity': 1,
@@ -1050,13 +893,13 @@ function run_viz(network, pathways_info){
                     })
                 .selector("node[type='chemical'][?target_chemical]") // detectables
                     .css({
-                        'label': document.getElementById("txtvalue_det").value,
+'label': document.getElementById("txtvalue_det").value,
                         'background-color': '#CC3333',
                         'border-color': '#CC3333',
                     })
                 .selector("node[type='chemical'][?source_chemical]") // producibles
                     .css({
-                        'label': document.getElementById("txtvalue_prod").value,
+'label': document.getElementById("txtvalue_prod").value,
                         'background-color': '#41bedb',
                         'border-color': '#41bedb',
                     })
@@ -1109,9 +952,15 @@ function run_viz(network, pathways_info){
             if (node.is('[type = "chemical"]')){
                 panel_reaction_info(null, false);
                 if (node.data().source_chemical) {
+                    if (node.data().target_chemical){
+                        node.data().target_chemical = false
+                    } else {
+                        node.data().target_chemical = true
+                    }
                     panel_chemical_info(null, false);
                     panel_chemical_producible_info(node, true);    
                     panel_chemical_detectable_info(null, false);
+                    show_prod_pathway()
                 } else if (node.data().target_chemical){
                     panel_chemical_detectable_info(node, true);
                     panel_chemical_info(null, false);
@@ -1172,20 +1021,38 @@ function run_viz(network, pathways_info){
                 hide_all_panel();
             }
         })
-    }        
+    }
+    /**
+     * Trigger a layout rendering
+     * 
+     * @param {cytoscape collection} element_collection: a collection of elements.
+     */
+    function render_layout(element_collection){
+        // Playing with zoom to get the best fit
+        cy.minZoom(1e-50);
+        cy.on('layoutstop', function(e){
 
+            cy.minZoom(cy.zoom()*0.5);  // 0.9 to enable the user dezoom a little
+
+        });
+        // Layout
+        let layout = element_collection.layout({
+            name: 'breadthfirst',
+            roots: cy.elements("node[?target_chemical]")
+        });
+        layout.run();
+    }
+        
+    /** Load a metabolic network
+     *
+     * Only nodes and edges involved in 'selected_paths' will be displayed.
+     *
+     * @param selected_paths (array or str): path IDs or special flags
+     */
     function show_pathways(selected_paths='__ALL__'){
+      
         if (selected_paths == '__ALL__'){
             cy.nodes().forEach(function(node, index){
-                if (node.data('source_chemical')){
-                    node.data().target_chemical = false;
-                }
-                if (node.data('prod_path')){
-                    node.css({visibility:'hidden'});
-                }
-                if (node.data('main_path')){
-                    node.css({visibility:'visible'});
-                }
                 let length_paths = node.data('inter_ids').length;
                 if (length_paths != 0 && node.data('inter_chemical') != true && node.style().visibility == 'visible'){
                     node.css({visibility:'visible'});
@@ -1196,9 +1063,6 @@ function run_viz(network, pathways_info){
                 }
             });
             cy.edges().forEach(function(edge,index){
-                if (edge.data('prod_path')){
-                    edge.css({visibility:'hidden'});
-                }
                 let length_paths = edge.data('inter_ids').length;
                 if (length_paths != 0 && edge.style().visibility == 'visible'){
                     edge.css({visibility:'visible'});
@@ -1233,6 +1097,58 @@ function run_viz(network, pathways_info){
             });
         }
     }
+    
+    /**
+     * Hide all intermedia pathways
+     */
+    function hide_all_intermedia_pathways(){
+        cy.nodes().forEach(function(node, index){
+            let length_paths = node.data('inter_ids').length;
+            if (length_paths != 0 && node.data('main_path') != true){
+                node.css({visibility:'hidden'});
+            }
+        });
+        cy.edges().forEach(function(edge,index){
+            let length_paths = edge.data('inter_ids').length;
+            if (length_paths != 0){
+                edge.css({visibility:'hidden'});
+            }
+        });
+    }
+
+    function hide_all_prod_pathways(){
+        cy.nodes().forEach(function(node, index){
+            if (node.data('prod_path') && node.data('source_chemical') != true){
+                node.css({visibility:'hidden'});
+            }
+        });
+        cy.edges().forEach(function(edge,index){
+            if (edge.data('prod_path')){
+                edge.css({visibility:'hidden'});
+            }
+        });
+    }
+    
+    function show_prod_pathway(){
+        cy.nodes().forEach(function(node, index){
+            let length_paths = node.data('inter_ids').length;
+            if (node.data('source_chemical') != true && (length_paths == 0 || node.data('main_path'))){
+                reverse_visibility(node);
+            }
+            if (length_paths != 0 && node.data('main_path') != true){
+                node.css({visibility:'hidden'});
+            }
+        });
+        cy.edges().forEach(function(edge, index){
+            let length_paths = edge.data('inter_ids').length;
+            if (length_paths == 0){
+                reverse_visibility(edge)
+            } else {
+                edge.css({visibility:'hidden'});
+            }
+        });
+        refresh_layout();
+    }
 
     /**
      * Add intermediate pathways to the network
@@ -1255,10 +1171,87 @@ function run_viz(network, pathways_info){
         //refresh_layout()
     }
 
+    /**
+     * Tag cofactor weither there could be hidden or not 
+     *
+     * If hidding cofactors lead to lonely / unconnected reactions then 
+     * cofactors related to sucbh reaction are marked as not hiddable.
+     * Otherwise, cofactors are marked as hiddable.
+     */
+    function annotate_hiddable_cofactors(){
+        cy.elements('node[type = "reaction"]').forEach((rxn_node, i) => {
+            // Check
+            let in_not_cof = rxn_node.incomers().filter('node[?cofactor]');
+            let out_not_cof = rxn_node.outgoers().filter('node[?cofactor]');
+            // Decide
+            let hiddable;
+            if (in_not_cof.length == 0 || out_not_cof.length == 0){
+                hiddable = 0;
+            } else {
+                hiddable = 1;
+            }
+            // Tag
+            let in_chems = rxn_node.incomers().filter('node');
+            in_chems.forEach((chem_node, j) => {
+                if (
+                    chem_node.data('cofactor') == 1 &&
+                    chem_node.data('hiddable_cofactor') != 0
+                ){
+                    chem_node.data('hiddable_cofactor', hiddable);
+                }
+            });
+            let out_chems = rxn_node.outgoers().filter('node');
+            out_chems.forEach((chem_node, j) => {
+                if (
+                    chem_node.data('cofactor' == 1) &&
+                    chem_node.data('hiddable_cofactor') != 0
+                ){
+                    chem_node.data('hiddable_cofactor', hiddable);
+                }
+            });
+        });
+    }
+
+    /** Handle cofactor display
+     *
+     * Hide of show all nodes annotated as cofactor
+     *
+     * @param show (bool): will show cofactors if true
+     */
+    function show_cofactors(show=true){
+        if (show){
+            cy.elements().style("display", "element");
+        } else {
+            cy.elements('node[?cofactor][?hiddable_cofactor]').style("display", "none");
+        }
+        refresh_layout();
+    }
+
+    /**
+     * Make the pathway table sortable
+     */
+    function make_pathway_table_sortable(){
+        $("#table_choice > table").tablesorter({
+            theme : 'default',
+            sortList: [[4,1],[0,0]],  // Sort on the fourth column (descending) and then on the first column (ascending order)
+            headers : {  // Disable sorting for these columns
+                '.path_checkbox_head, .path_colour_head': {
+                    sorter: false
+                }
+            }
+        });
+    }
+    
+    /**
+     * Refresh layout according to visible nodes
+     */
+    function refresh_layout(){
+        render_layout(cy.elements().not(':hidden'));
+    }
+    
     // When a pathway is checked
     $("input[name=path_checkbox]").change(function(){
         selected_paths = get_checked_pathways();
-        console.log(selected_paths);
         show_pathways(selected_paths);
     });
     
@@ -1295,6 +1288,32 @@ function run_viz(network, pathways_info){
             $(this).addClass('pinned');
         }
     });
+            
+    // Pathways selection
+    $('#hide_all_pathways_button').on('click', function(event){
+        show_pathways(selected_paths='__NONE__');  // Hide all
+        $('input[name=path_checkbox]').prop('checked', false);  // Uncheck all
+    });
+    $('#view_all_pathways_button').on('click', function(event){
+        show_pathways(selected_paths='__ALL__');  // Show all
+        $('input[name=path_checkbox]').prop('checked', true);  // Check all
+    });
+    $('#redraw_pathways_button').on('click', function(event){
+        refresh_layout();
+    });
+    
+    // Cofactors handling
+    $('#show_cofactors_button').on('click', function(event){
+        show_cofactors(true);
+        // Update visible pathways to update their cofactor nodes visibility
+        selected_paths = get_checked_pathways();
+        show_pathways(selected_paths);
+        // Update hilighted pathways to update their cofactor nodes status
+        path_handler.update_pinned_elements();
+    });
+    $('#remove_cofactors_button').on('click', function(event){
+        show_cofactors(false);
+    });
     
     // Manual colour handling
     colour_pickers = document.querySelectorAll(".path_colour");
@@ -1314,5 +1333,27 @@ function run_viz(network, pathways_info){
             'line-color': event.target.value,
             'target-arrow-color': event.target.value
         });
+    }
+
+    /**
+     * 
+     * Fill table values
+     * 
+     * @param score_label (str): the score label to use within the path info
+     */
+    function put_pathway_values(score_label='global_score'){
+        for (let path_id in pathways_info){
+            // Collect the value
+            let score = pathways_info[path_id]['scores'][score_label];
+            if (! isNaN(score)){
+                score = parseFloat(score).toFixed(3);
+            } else {
+                score = 'NaN';
+            }
+            // Push it into the pathway table
+            let path_td = $('td.path_value[data-path_id=' + path_id + ']');
+            path_td.html(score);
+            
+        }
     }
 };

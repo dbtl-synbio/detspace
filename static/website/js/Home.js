@@ -1,12 +1,21 @@
 var network = {};
 var pathways_info = {};
 var orgid="ECOLI";
-var product_chosen = 27;
-var detect_chosen =0;
-$.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
 var div =document.getElementById('dialogo');
 var display =0;
-    
+
+$(document).ready(function(){
+   if ($("#txtvalue_prod").attr("prod_id") != '') { //In case the url is in format .../detect/prod/det
+      product_chosen = $("#txtvalue_prod").attr("prod_id");
+      detect_chosen = $("#txtvalue_det").attr("det_id");
+      $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+   } else { //This values are the default example
+      product_chosen = 27;
+      detect_chosen =0;
+      $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+   }
+});
+
 function hideShow() {
    $("#dialogo").dialog({
       modal: true,
@@ -65,7 +74,7 @@ $(document).ready(function(){
          dataType:"json",
          success:function(data){
             //var detectable_data = data.split(/\r?\n|\r/);
-            var table_base = $('<table class="table table-striped table-hover tablesorter" id="producibles_table"></table>');
+            var table_base = $('<table class="table table-striped  table-hover tablesorter" id="producibles_table"></table>');
             let field_names = ['Name', 'SMILES', 'Effectors', 'Pathways', 'Selected'];
             let field_classes = ['name_head', 'smiles_head', 'effectors_head', 'pathways_head', 'selected_head'];
             let table_row = $('<tr class="customBackground"></tr>');
@@ -88,15 +97,56 @@ $(document).ready(function(){
             table_base.append(table_body);
             $('#producibles_modal_table').html(table_base);
             //Incluye el ordenamiento alfabético
-            $("#producibles_table").tablesorter( 
-               {sortList: [[0,0], [1,0]]}, 
+            $("#producibles_table").tablesorter(
+               {sortList: [[0,0], [1,0],[2,0], [3,0],[4,0]]}, 
                {arrows: { 
                   up:  '&uArr;', 
                   down: '&dArr;' }
-              }
+              },
+              {widgets: ['zebra']},
+               {widgetOptions : {
+                  zebra : ["even", "odd"],
+              }}
                );
+
             //Incluye el stripe
-            $('#producibles_table').stripe();
+            // $('#producibles_table').stripe();
+
+            // Fetch the table data and store it in an array
+            var tableData = $('#producibles_table td:nth-child(1)').map(function() {
+               console.log($(this).text())
+               return $(this).text();
+               }).get();
+
+            // Initialize the Autocomplete widget with search functionality
+            $('#searchInput_prod').autocomplete({
+            appendTo: "#suggesstion-box_producibles",
+            source: tableData,
+            minLength: 1, // Minimum characters required to trigger autocomplete
+            select: function(event, ui) {
+
+            // Get the selected value from the table and show the corresponding rows
+               var selectedValue = ui.item.value;
+               var matchingRows = [];
+               $.each(tableData, function(index, rowData) {
+                  if (rowData.includes(selectedValue)) {
+                  matchingRows.push(index);
+                  }
+               });
+               $('#producibles_table tbody tr').hide();
+               $.each(matchingRows, function(index, rowIdx) {
+                  $('#producibles_table tbody tr:eq(' + rowIdx + ')').show();
+               });
+            },
+            response: function(event, ui) {
+               if (ui.content.length === 0) {
+                  // No match found, display a message or perform additional actions
+                  $('#noResultMessage_prod').text('No matching results found.');
+               } else {
+                  $('#noResultMessage_prod').empty();
+               }
+            }
+            });
             $("td.click_prod").click(function(){
                var produc = $(this);
                document.getElementById("txtvalue_prod").value=produc.text();
@@ -109,18 +159,31 @@ $(document).ready(function(){
                   $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
                }
             });
-           ;}
+           }
       });
    });
 });
 
-jQuery.fn.stripe = function() {
-   $(this).find('tr').removeClass('even odd').filter(':odd').addClass('odd').end().find('tr:even').addClass('even');
-}
+// jQuery.fn.stripe = function() {
+//    $(this).find('tr').removeClass('even odd').filter(':odd').addClass('odd').end().find('tr:even').addClass('even');
+// }
+
+   
+ 
+   // Clear the search input and show all rows when the input field is empty
+   $('#searchInput_prod').on('input', function() {
+     var searchValue = $(this).val().trim();
+     if (searchValue === '') {
+       $('#producibles_table tbody tr').show();
+       $('#noResultMessage').empty();
+     }
+   });
+
 
 // Button action that shows the network.json//
 function show_pathways() {
    run_viz(network, pathways_info);
+   refresh_layout();
    let orgid=$("#list-container").children(":selected").attr("id");
    in_chassis(orgid);
    document.getElementById("pathway_selection").style.visibility="visible";
@@ -172,12 +235,59 @@ $(document).ready(function(){
              //Incluye el ordenamiento alfabético
             $("#detectables_table").tablesorter( {sortList: [[0,0], [1,0]]} );
             //Incluye el stripe
-            $('#detectables_table').stripe();
+            // $('#detectables_table').stripe();
+
+            // Fetch the table data and store it in an array
+            var tableData = $('#detectables_table td:nth-child(1)').map(function() {
+               console.log($(this).text())
+               return $(this).text();
+               }).get();
+
+            // Initialize the Autocomplete widget with search functionality
+            $('#searchInput_det').autocomplete({
+            appendTo: "#suggesstion-box_detectables",
+            source: tableData,
+            minLength: 1, // Minimum characters required to trigger autocomplete
+            select: function(event, ui) {
+
+            // Get the selected value from the table and show the corresponding rows
+               var selectedValue = ui.item.value;
+               var matchingRows = [];
+               $.each(tableData, function(index, rowData) {
+                  if (rowData.includes(selectedValue)) {
+                  matchingRows.push(index);
+                  }
+               });
+               $('#detectables_table tbody tr').hide();
+               $.each(matchingRows, function(index, rowIdx) {
+                  $('#detectables_table tbody tr:eq(' + rowIdx + ')').show();
+               });
+            },
+            response: function(event, ui) {
+               if (ui.content.length === 0) {
+                  // No match found, display a message or perform additional actions
+                  $('#noResultMessage_det').text('No matching results found.');
+               } else {
+                  $('#noResultMessage_det').empty();
+               }
+            }
+            });
+
             ;}//success
        });
     });
  });
-  
+
+
+    // Clear the search input and show all rows when the input field is empty
+    $('#searchInput_det').on('input', function() {
+      var searchValue = $(this).val().trim();
+      if (searchValue === '') {
+        $('#detectables_table tbody tr').show();
+        $('#noResultMessage').empty();
+      }
+    });
+ 
 //Conversion of the pairs table from csv to html//
 $(document).ready(function(){
     $('#pairs').click(function(){
@@ -259,9 +369,22 @@ function delete_producible() {
    document.getElementById("txtvalue_prod").value="";
    $("#txtvalue_prod").attr("prod_id","");
    }
-   
+
+function delete_auto_producible() {
+   document.getElementById("searchInput_prod").value="";
+   $('#noResultMessage_prod').empty();
+   }
 
 function delete_detectable() {
    document.getElementById("txtvalue_det").value="";
    $("#txtvalue_det").attr("det_id","");
    }
+
+function delete_auto_detectable() {
+   document.getElementById("searchInput_det").value="";
+   $('#noResultMessage_det').empty();
+   }
+
+//    function show_svgs(){
+//       $("#svg").show();
+//   }
