@@ -238,7 +238,7 @@ button {
 /* nav_detspace css start */
 
 .nav_detspace{
-    background: #007ba7;
+    background: linear-gradient(#04519b, #044687 60%, #033769);
     height: 50px;
     width: 100%;
     padding-right: 0;
