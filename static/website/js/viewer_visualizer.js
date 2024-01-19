@@ -399,6 +399,8 @@ function panel_chemical_info(node, show=false){
         let smiles = node.data('smiles');
         let inchi = node.data('inchi');
         let inchikey = node.data('inchikey');
+        let mnx = node.data('mnx');
+        let name = node.data('com_name');
         if (node.data('cofactor') == 1){
             var cofactor = 'Yes';
         } else {
@@ -407,7 +409,13 @@ function panel_chemical_info(node, show=false){
         let xlinks = node.data('xlinks');
         let path_ids = node.data('path_ids');
         // Inject
-        $("span.chem_info_label").html(label);
+        if (name != ""){
+            $("span.chem_info_label").html(name);
+        } else if (mnx != "") {
+            $("span.chem_info_label").html(mnx);
+        } else {
+            $("span.chem_info_label").html(label);
+        }
         if (inchikey == "" || inchikey == null){
             $("span.chem_info_inchikey").html("NA");
             $("span.chem_info_inchikey_search").html("");
@@ -436,15 +444,11 @@ function panel_chemical_info(node, show=false){
         } else {
             $('div.img-box').hide();
         }
-        // Inject crosslinks
-        $("div.chem_info_xlinks").html('');  // Reset div content
-        if (xlinks.length > 0){
-            for (let i = 0; i < xlinks.length; i++){
-                $("div.chem_info_xlinks").append('<a target="_blank" href="' + xlinks[i]['url'] + '">' + xlinks[i]['db_name'] + ':' + xlinks[i]['entity_id'] + '</a>');
-                $("div.chem_info_xlinks").append('<br/>');
-            }
+        // Inject MNX ID
+        if (mnx == "" || mnx ==  null){
+            $("span.chem_info_mnxid").html("NA");
         } else {
-            $("div.chem_info_xlinks").append('None<br/>');
+            $("span.chem_info_mnxid").html('<a target="_blank" href="https://www.metanetx.org/chem_info/' + mnx+ '">'+mnx+'</a>');
         }
         // Inject path IDs
         $("div.chem_info_pathids").html('');  // Reset div content
@@ -550,6 +554,7 @@ function panel_chemical_detectable_info(node, show=true){
         let smiles = node.data('smiles');
         let inchi = node.data('inchi');
         let inchikey = node.data('inchikey');
+        let mnx = node.data('mnx');
         // Inject
         $("span.chem_detectable_info_label").html(label);
         if (smiles == ""|| smiles == null){
@@ -579,6 +584,12 @@ function panel_chemical_detectable_info(node, show=true){
             $('div.chem_info_svg').css('background-image', "url('" + svg + "')");
         } else {
             $('div.img-box').hide();
+        }
+        // Inject MNX ID
+        if (mnx == "" || mnx ==  null){
+            $("span.chem_info_mnxid").html("NA");
+        } else {
+            $("span.chem_info_mnxid").html('<a target="_blank" href="https://www.metanetx.org/chem_info/' + mnx+ '">'+mnx+'</a>');
         }
         // Inject detectable table with info
         //build_detectable_info(node);
