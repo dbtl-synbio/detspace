@@ -81,7 +81,7 @@ body:not(.modal-open){
 }
 
 a.active,a:hover{
-   background: #1b9bff;
+   color:#2c3e50 !important;
    transition: .3s;
 }
 
@@ -238,7 +238,7 @@ button {
 /* nav_detspace css start */
 
 .nav_detspace{
-    background: #0082e6;
+    background: linear-gradient(#04519b, #044687 60%, #033769);
     height: 50px;
     width: 100%;
     padding-right: 0;
@@ -360,103 +360,13 @@ button {
     } 
      a.active,a:hover{
         background: none;
-        color:#0082e6;
+        color:#2c3e50!important;
     }
     #check:checked ~ ul{
         left: -5%;
     } 
-    /* .nav_detspace{
-        height: 160px;
-    }
-    .nav_detspace ul li{
-        line-height:40px;
-        margin-left: 40px;    
-    }
-    
-    .nav_detspace ul{
-        margin-left: 10%;
-    }
-
-    .nav_detspace ul li a{
-
-        text-align: justify;
-        
-    } */
 }
 
-
-    @media (max-width: 540px){
-        /* .label_logo{
-        font-size: 0.9em;
-        padding-left: 10px;
-        line-height: 40px;
-        padding: 0 5px;
-        font-weight: bolder;
-    
-        }
-        .nav_detspace ul li a{
-    
-            font-size: 0.8em;
-            padding: 1px 3px;
-            
-        }
-
-        .nav_detspace ul li{
-            line-height:30px;
-            display: inline-block;
-            margin-left: 10px;
-        }
-        .nav_detspace{
-            height: 140px;
-        }
-
-        ul li {
-            font-size: 13px;
-            padding: 6px 2px 6px 26px;
-        } */
-        /* .nav_detspace ul{
-            
-            top:140px;
-            
-        } */
-    }
-
-    @media (max-width: 402px){
-        /* .label_logo{
-        font-size: 0.8em;
-        padding-left: 10px;
-        line-height: 20px;
-        padding: 0 3px;
-        font-weight: bolder;
-    
-        }
-        .nav_detspace ul li a{
-    
-            font-size: 0.7em;
-            padding: 1px 3px;
-            
-        }
-
-        .nav_detspace ul li{
-            line-height:18px;
-            display: inline-block;
-            margin-left: 0%;
-        } */
-    }
-
-    @media (max-width: 258px){
-        
-        /* .nav_detspace{
-            height: 210px;
-        }
-.nav_detspace ul{
-            
-            top:212px;
-            
-        } */
-
-    }
-/* nav_detspace css ends*/
 
 
 /**-- heading section --**/
@@ -1293,4 +1203,8 @@ table.tablesorter tbody tr.normal-row td {
 .table-striped>tbody>tr:nth-child(odd)>td,
 tr.found{
     background-color:#dee2e6!important;
+}
+
+.ui-menu .ui-menu-item {
+    margin-left: -80px !important;
 }
