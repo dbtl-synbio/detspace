@@ -2,16 +2,10 @@ from pathlib import Path
 import os
 import socket
 
-try: 
-    HOSTNAME = socket.gethostname()
-except:
-    HOSTNAME = 'localhost'
+HOSTNAME = 'detspace.i2sysbio.uv.es'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# If user is detspace, we assume the server in production
-LOGNAME = os.getenv("LOGNAME")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -24,10 +18,7 @@ except KeyError as e:
     raise RuntimeError("Could not find a SECRET_KEY in environment") from e
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if LOGNAME == 'detspace':
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['*']
@@ -127,19 +118,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-
-#STATICFILES_DIRS = [
- #   os.path.join(BASE_DIR, 'static'),
-#]
-if os.getenv('LOGNAME') == 'detspace':
-    STATIC_ROOT = "/var/www/detspace.i2sysbio.uv.es/static"
-#else:
-#    STATIC_ROOT = os.path.join(BASE_DIR,"static")
-
-if LOGNAME == 'detspace':
-    STATIC_ROOT = os.path.join("/var/www/",HOSTNAME,"static")
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR,"detspace/static")
+STATIC_ROOT = os.path.join("/var/www/",HOSTNAME,"static")
 
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
