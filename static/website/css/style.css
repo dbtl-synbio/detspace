@@ -1217,4 +1217,5 @@ tr.found{
     background-color: white;
     width:79%;
     margin-top: 52px;
+    display: none;
 }
