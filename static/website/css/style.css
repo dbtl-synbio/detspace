@@ -1208,3 +1208,13 @@ tr.found{
 .ui-menu .ui-menu-item {
     margin-left: -80px !important;
 }
+
+#intro{
+    position:absolute;
+    top:0;
+    right:0;
+    z-index:20;
+    background-color: white;
+    width:79%;
+    margin-top: 52px;
+}

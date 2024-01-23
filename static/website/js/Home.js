@@ -222,18 +222,7 @@ $(document).ready(function(){
 
 // Button action that shows the network.json//
 function show_pathways() {
-   // run_viz(network, pathways_info);
-   // refresh_layout();
-   // let orgid=$("#list-container").children(":selected").attr("id");
-   // in_chassis(orgid);
-   // document.getElementById("pathway_selection").style.visibility="visible";
-   // document.getElementById("info_pair").style.visibility="visible";
-   // document.getElementById("info").style.borderLeftStyle="hidden";
-   // document.getElementById("info").style.borderBottomStyle="hidden";
-   // document.getElementById("info").style.borderTopStyle="hidden";
-   // document.getElementById("info").style.borderRightStyle="hidden";
-   // document.getElementById("info").style.width="0%";
-   // count_intermediate();
+   document.getElementById("intro").style.display="none";
    url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen);
    $(location).attr('href', url);
 }
