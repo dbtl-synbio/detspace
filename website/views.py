@@ -17,25 +17,6 @@ from .utils import annotate_chemical_svg, get_detectables, get_producibles, get_
 
 # from bs4 import BeautifulSoup
 
-def home(request):
-    return render(request, 'home.html', {})
-
-def contact(request):
-    if request.method == "POST":
-        message_email = request.POST['message-email']
-        message = request.POST['message']
-
-        # send an email
-        send_mail(
-           'Suggestions and additional help' , # subject
-            message, # message
-            message_email, # from email
-            ['demo@gmail.com'], # To email
-            )
-        
-        return render(request, 'contact.html', {})
-    else:
-        return render(request, 'contact.html', {})
 def chassis(request):
     return render(request, 'chassis.html', {})
 
