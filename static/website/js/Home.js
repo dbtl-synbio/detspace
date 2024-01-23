@@ -207,6 +207,7 @@ $(document).ready(function(){
 function show_pathways() {
    run_viz(network, pathways_info);
    refresh_layout();
+
    let orgid=$("#list-container").children(":selected").attr("id");
    in_chassis(orgid);
    document.getElementById("pathway_selection").style.visibility="visible";
@@ -216,6 +217,7 @@ function show_pathways() {
    document.getElementById("info").style.borderTopStyle="hidden";
    document.getElementById("info").style.borderRightStyle="hidden";
    document.getElementById("info").style.width="0%";
+   document.getElementById("intro").style.display="none";
    count_intermediate();
 }
 
