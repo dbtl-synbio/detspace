@@ -64,7 +64,7 @@ def body_viz(request):
 def detect(request, prod='27', det='0'):
     return render(request, 'index.html', {
         'prod': prod,
-        'det': det
+        'det': det,
     }
     )
 

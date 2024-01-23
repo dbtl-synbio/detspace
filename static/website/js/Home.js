@@ -8,11 +8,29 @@ $(document).ready(function(){
    if ($("#txtvalue_prod").attr("prod_id") != '') { //In case the url is in format .../detect/prod/det
       product_chosen = $("#txtvalue_prod").attr("prod_id");
       detect_chosen = $("#txtvalue_det").attr("det_id");
-      $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+      $.ajax ({
+         url:"/api/net/"+String(product_chosen)+"/"+String(detect_chosen),
+         dataType: "script",
+         success: function() {
+            run_viz(network, pathways_info);
+            refresh_layout();
+            let orgid=$("#list-container").children(":selected").attr("id");
+            in_chassis(orgid);
+            document.getElementById("pathway_selection").style.visibility="visible";
+            document.getElementById("info_pair").style.visibility="visible";
+            document.getElementById("info").style.borderLeftStyle="hidden";
+            document.getElementById("info").style.borderBottomStyle="hidden";
+            document.getElementById("info").style.borderTopStyle="hidden";
+            document.getElementById("info").style.borderRightStyle="hidden";
+            document.getElementById("info").style.width="0%";
+            count_intermediate();      
+         }
+      });   
    } else { //This values are the default example
       product_chosen = 27;
       detect_chosen =0;
       $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+      document.getElementById("intro").style.display="block";
    }
    $.ajax ({
       url:"/api/prod/"+detect_chosen,
@@ -205,20 +223,8 @@ $(document).ready(function(){
 
 // Button action that shows the network.json//
 function show_pathways() {
-   run_viz(network, pathways_info);
-   refresh_layout();
-
-   let orgid=$("#list-container").children(":selected").attr("id");
-   in_chassis(orgid);
-   document.getElementById("pathway_selection").style.visibility="visible";
-   document.getElementById("info_pair").style.visibility="visible";
-   document.getElementById("info").style.borderLeftStyle="hidden";
-   document.getElementById("info").style.borderBottomStyle="hidden";
-   document.getElementById("info").style.borderTopStyle="hidden";
-   document.getElementById("info").style.borderRightStyle="hidden";
-   document.getElementById("info").style.width="0%";
-   document.getElementById("intro").style.display="none";
-   count_intermediate();
+   url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen);
+   $(location).attr('href', url);
 }
 
     
