@@ -30,6 +30,7 @@ $(document).ready(function(){
       product_chosen = 27;
       detect_chosen =0;
       $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+      document.getElementById("intro").style.display="block";
    }
    $.ajax ({
       url:"/api/prod/"+detect_chosen,
@@ -222,7 +223,6 @@ $(document).ready(function(){
 
 // Button action that shows the network.json//
 function show_pathways() {
-   document.getElementById("intro").style.display="none";
    url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen);
    $(location).attr('href', url);
 }
