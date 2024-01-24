@@ -78,11 +78,15 @@
          <input id="view_all_pathways_button" type="button" class="default_button btn btn-outline-dark" value="Show all pathways"/>
          <input id="hide_all_pathways_button" type="button" class="default_button btn btn-outline-dark" value="Hide all pathways"/>
          <input id="redraw_pathways_button" type="button" class="default_button btn btn-outline-dark" value="Refresh layout" style="margin-top:2%"/>
-         <input id="download_sbml_button" type="button" class="default_button btn btn-outline-dark" value="Download paths" style="margin-top:2%">
+         <input id="download_json_button" type="button" class="default_button btn btn-outline-dark" value="Download JSON" style="margin-top:2%"/>
+         <input id="download_sbml_button" type="button" class="default_button btn btn-outline-dark" value="Download SBML" style="margin-top:2%"/>
          <script>
             document.getElementById("download_sbml_button").onclick = function(){
               location.href = "/api/paths/"+String(product_chosen)+"/"+String(detect_chosen);
             };
+            document.getElementById("download_json_button").onclick = function(){
+               location.href = "/api/json_paths/"+String(product_chosen)+"/"+String(detect_chosen);
+            }
          </script>
      </div>
 </div>

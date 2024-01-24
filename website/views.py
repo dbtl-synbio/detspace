@@ -129,6 +129,41 @@ def path_prod_det(request, prod='27', det='0'):
     raise Http404
 
 @api_view(['GET'])
+def json_paths(request,prod='27', det='0'):
+    data_path = os.getenv('DETSPACE_DATA')
+    try:
+        zf = zipfile.ZipFile(os.path.join(data_path,'data','json_pair_files.zip'))
+        basename = 'D'+str(det)+'P'+str(prod)
+        netname = basename+'_network.json'
+        pathname = basename+'_pathway.json'
+        netfile = os.path.join('json_pair_files','P'+str(prod),netname)
+        pathfile = os.path.join('json_pair_files','P'+str(prod),pathname)
+        net = json.load(zf.open(netfile))
+        pathway = json.load(zf.open(pathfile))
+    except:
+        return Http404
+    tmp = tempfile.NamedTemporaryFile(delete=False)
+    tmp_net = tempfile.NamedTemporaryFile(delete=False, mode='w+')
+    tmp_path = tempfile.NamedTemporaryFile(delete=False, mode='w+')
+    json.dump(net,tmp_net)
+    json.dump(pathway,tmp_path)
+    with tarfile.open(tmp.name, "w:gz") as tar:
+        tar.add(tmp_net.name, arcname=netname)
+        tar.add(tmp_path.name, arcname=pathname)
+    if os.path.exists(tmp.name):
+        with open(tmp.name, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="application/gzip")
+            response['Content-Disposition'] = 'inline; filename=' + basename + '.tar.gz'
+            return response
+    try:
+        os.unlink(tmp.name)
+        os.unlink(tmp_net.name)
+        os.unlink(tmp_path.name)
+    except:
+        pass
+    raise Http404
+
+@api_view(['GET'])
 def chassis(request, format=None):
     orgs = get_chassis()
     return Response(orgs)
