@@ -5,7 +5,7 @@ var div =document.getElementById('dialogo');
 var display =0;
 
 $(document).ready(function(){
-   if ($("#txtvalue_prod").attr("prod_id") != '') { //In case the url is in format .../detect/prod/det
+   if ($("#txtvalue_prod").attr("prod_id") != '' && $("#txtvalue_det").attr("det_id") != '') { //In case the url is in format .../detect/prod/det
       product_chosen = $("#txtvalue_prod").attr("prod_id");
       detect_chosen = $("#txtvalue_det").attr("det_id");
       $.ajax ({
@@ -28,7 +28,7 @@ $(document).ready(function(){
       });   
    } else { //This values are the default example
       product_chosen = 27;
-      detect_chosen =0;
+      detect_chosen = 0;
       $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
       document.getElementById("intro").style.display="block";
    }
@@ -223,8 +223,10 @@ $(document).ready(function(){
 
 // Button action that shows the network.json//
 function show_pathways() {
-   url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen);
-   $(location).attr('href', url);
+   if (String(product_chosen) != '' && String(detect_chosen) != ''){
+      url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen);
+      $(location).attr('href', url);
+   }
 }
 
     
@@ -377,6 +379,7 @@ function delete_chassis() {
 function delete_producible() {
    document.getElementById("txtvalue_prod").value="";
    $("#txtvalue_prod").attr("prod_id","");
+   product_chosen = '';
    }
 
 function delete_auto_producible() {
@@ -387,6 +390,7 @@ function delete_auto_producible() {
 function delete_detectable() {
    document.getElementById("txtvalue_det").value="";
    $("#txtvalue_det").attr("det_id","");
+   detect_chosen = '';
    }
 
 function delete_auto_detectable() {
