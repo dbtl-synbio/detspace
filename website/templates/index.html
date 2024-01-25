@@ -8,11 +8,11 @@
       <div id="interaction" class="interact">
         <div class="info-subtitle" style="margin-top:2%">Choose chassis organism</div>
         <input id="Chassis" type="button" class="btn button_chassis" onclick="hideShow()" value="Chassis"/> 
-        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis" value="Escherichia Coli"/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis" value="{{chassis}}"/>
         <button  id="Delete selection" onclick="delete_chassis()" class="left_panel_button">&times;</button>
         
         <div id="dialogo" class ="hidden" style="display: none;">
-            <select id="list-container" autocomplete="off" onchange="ddlselect();">
+            <select id="list-container" autocomplete="off">
                 <option selected="selected" disabled="disabled">-- Select your chassis--</option>
                 <option id="BSUB">Bacilus Subtilis</option>
                 <option id="GCF_000008765">Clostridium acetobutylicum</option>
@@ -27,23 +27,6 @@
                 <option id="GCF_000340785">Synechocystis spp.</option>
                 <option id="YARROWIA">Yarrowia lipolytica</option>
             </select>
-         
-
-            <script>
-                function ddlselect(){
-                   var d=document.getElementById("list-container");
-                   var displaytext=d.options[d.selectedIndex].text;
-                   $("#list-container").change(function() {
-                     console.log( $(this).children(":selected").attr("id"));
-                   orgid = $(this).children(":selected").attr("id");
-                   });
-                   //var displaytext="Chassis: "+d.options[d.selectedIndex].text+"  Taxon_ID: ";
-                   document.getElementById("txtvalue").value=displaytext;
-                   console.log(displaytext)
-                   $("#dialogo").dialog("close");
-                   var display =1;
-                }
-            </script>
          </div>
         <div class="info-subtitle">Select detectable route</div>
         <input type="button" data-toggle="modal" href="#modal_producibles" class="btn button_producibles" id="producibles" value="Producible"/>
@@ -94,7 +77,7 @@
       <div class="modal fade" id="modal_producibles">
          <div class="modal-dialog modal-lg modal-dialog-centered">
            <div class="modal-content">
-              <div class="modal-header modal_title">Select your producible
+              <div class="modal-header modal_title">Select the starting product of the detectable pathway
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
              </div>
              <div class="modal-body">
@@ -111,7 +94,7 @@
         <div class="modal fade" id="modal_detectables">
          <div class="modal-dialog modal-lg">
            <div class="modal-content">
-             <div class="modal-header modal_title">Select your detectable
+             <div class="modal-header modal_title">Select the detectable compound
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
              </div>
              <div class="modal-body">

@@ -14,7 +14,9 @@ $(document).ready(function(){
          success: function() {
             run_viz(network, pathways_info);
             refresh_layout();
-            let orgid=$("#list-container").children(":selected").attr("id");
+            orgid = document.getElementById("txtvalue").value
+            displaytext = document.getElementById(orgid).value;
+            document.getElementById("txtvalue").value=displaytext;
             in_chassis(orgid);
             document.getElementById("pathway_selection").style.visibility="visible";
             document.getElementById("info_pair").style.visibility="visible";
@@ -29,6 +31,8 @@ $(document).ready(function(){
    } else { //This values are the default example
       product_chosen = 27;
       detect_chosen = 0;
+      displaytext = document.getElementById(orgid).value;
+      document.getElementById("txtvalue").value=displaytext;
       $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
       document.getElementById("intro").style.display="block";
    }
@@ -55,6 +59,18 @@ $(document).ready(function(){
             }
          });
       }
+   });
+});
+
+// Chassis dialog selection function
+$(document).ready(function(){
+   $("#list-container").change(function() {
+   var d=document.getElementById("list-container");
+   var displaytext=d.options[d.selectedIndex].text;
+   orgid = $(this).children(":selected").attr("id");
+   document.getElementById("txtvalue").value=displaytext;
+   $("#dialogo").dialog("close");
+   var display =1;
    });
 });
 
@@ -101,7 +117,6 @@ $(document).ready(function(){
            ;}//success
       });
    });
-
 });
 
 //Conversion of the producibles table from json to html//
@@ -117,7 +132,7 @@ $(document).ready(function(){
          success:function(data){
             //var detectable_data = data.split(/\r?\n|\r/);
             var table_base = $('<table class="table table-striped  table-hover tablesorter" id="producibles_table"></table>');
-            let field_names = ['Name', 'SMILES', 'Effectors', 'Pathways', 'Selected'];
+            let field_names = ['Name', 'SMILES', 'Detectables', 'Pathways', 'Selected'];
             let field_classes = ['name_head', 'smiles_head', 'effectors_head', 'pathways_head', 'selected_head'];
             let table_row = $('<tr class="customBackground"></tr>');
             for (let i=0; i<field_names.length;i++){
@@ -224,7 +239,7 @@ $(document).ready(function(){
 // Button action that shows the network.json//
 function show_pathways() {
    if (String(product_chosen) != '' && String(detect_chosen) != ''){
-      url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen);
+      url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen)+'/'+orgid;
       $(location).attr('href', url);
    }
 }
@@ -245,7 +260,7 @@ $(document).ready(function(){
              //var detectable_data = data.split(/\r?\n|\r/);
 
              let table_base = $('<table class="table table-striped table-hover tablesorter" id="detectables_table"></table>');
-             let field_names = ['Name', 'SMILES', 'Products', 'Pathways', 'Selected'];
+             let field_names = ['Name', 'SMILES', 'Producibles', 'Pathways', 'Selected'];
              let table_row = $('<tr></tr>');
              for (let i=0; i<field_names.length;i++){
                 let value = field_names[i];
