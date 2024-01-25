@@ -97,7 +97,7 @@ body {
 /* Central panel: the graph ***************************************************/
 #cy {
     float: left;
-    width: 100%;
+    width: 80%;
     height: 90vh;  
     border-color: black;
     border-width: 2px;
