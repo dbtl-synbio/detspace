@@ -15,6 +15,11 @@ $(document).ready(function(){
             run_viz(network, pathways_info);
             refresh_layout();
             orgid = document.getElementById("txtvalue").value
+            if (document.getElementById(orgid) == null){
+               orgid = 'ECOLI';
+               url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen)+'/'+orgid;
+               $(location).attr('href', url);
+            }
             displaytext = document.getElementById(orgid).value;
             document.getElementById("txtvalue").value=displaytext;
             in_chassis(orgid);
