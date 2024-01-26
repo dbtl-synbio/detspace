@@ -61,10 +61,11 @@ def vis_template(request):
 def body_viz(request):
     return render(request, 'body_viz.html', {})
 
-def detect(request, prod='27', det='0'):
+def detect(request, prod='27', det='0', chassis='ECOLI',):
     return render(request, 'index.html', {
         'prod': prod,
         'det': det,
+        'chassis': chassis,
     }
     )
 

@@ -625,7 +625,7 @@ function panel_reaction_info(node, show=true){
         rule_ids = rule_ids.split(';');
         let rule_ids_txt = '';
         for (let i = 0; i < rule_ids.length; i++){
-            rule_ids_txt += '<a target="_blank" href="https://retrorules.org/RID_query/MetaNetX/' + encodeURIComponent(rule_ids[i])+ '/16">' + rule_ids[i] +'</a>; ';
+            rule_ids_txt += '<a target="_blank" href="https://metanetx.org/equa_info/' + encodeURIComponent(rule_ids[i])+ '">' + rule_ids[i] +'</a>; ';
         }
         $("div.reaction_info_ruleids").html(rule_ids_txt.slice(0,-2));
         // Rule scores
@@ -650,6 +650,9 @@ function panel_reaction_info(node, show=true){
         }
         // Selenzyme crosslink
         $("span.reaction_info_selenzyme_crosslink").html('<a target="_blank" href="http://selenzyme.synbiochem.co.uk/results?smarts=' + encodeURIComponent( rsmiles ) + '">Go to Selenzyme</a>');
+        // RetroRules crosslink
+        rule_ids_txt = '<a target="_blank" href="https://retrorules.org/RID_query/MetaNetX/' + encodeURIComponent(rule_ids[0])+ '/16">Go to RetroRules</a>';
+        $("span.reaction_info_retrorules_crosslink").html(rule_ids_txt);
         // Show
         $("#panel_reaction_info").show();
         document.getElementById("info").style.borderLeftStyle="solid";
@@ -1016,8 +1019,8 @@ function run_viz(network, pathways_info){
             cytoscape.stylesheet()
                 .selector("node[type='reaction']")
                     .css({
-                        'height': 60,
-                        'width': 120,
+                        'height': 70,
+                        'width': 140,
                         'shape': 'cut-rectangle',
                         'background-color': 'white',
                         'border-width': 2,
@@ -1028,15 +1031,15 @@ function run_viz(network, pathways_info){
                         'text-halign': 'center',
                         'text-opacity': 1,
                         'color': '#333333',
-                        'font-size': '20px',
+                        'font-size': '25px',
                     })
                 .selector("node[type='chemical']")
                     .css({
                         'background-color': '#52be80',
                         'background-fit':'contain',
                         'shape': 'ellipse',
-                        'width': 80,
-                        'height': 80,
+                        'width': 100,
+                        'height': 100,
                         'label': 'data(short_label)',
                         'font-size': '14px',
                         // 'font-weight': 'bold',
@@ -1062,12 +1065,16 @@ function run_viz(network, pathways_info){
                 .selector("node[type='chemical'][?target_chemical]") // detectables
                     .css({
                         'label': document.getElementById("txtvalue_det").value,
+                        'width': 150,
+                        'height': 150,
                         'background-color': '#CC3333',
                         'border-color': '#CC3333',
                     })
                 .selector("node[type='chemical'][?source_chemical]") // producibles
                     .css({
                         'label': document.getElementById("txtvalue_prod").value,
+                        'width': 150,
+                        'height': 150,
                         'background-color': '#41bedb',
                         'border-color': '#41bedb',
                     })
