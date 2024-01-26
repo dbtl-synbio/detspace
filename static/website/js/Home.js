@@ -32,13 +32,13 @@ $(document).ready(function(){
          }
       });   
    } else { //This values are the default example
-      product_chosen = 27;
-      detect_chosen = 0;
-      document.getElementById("txtvalue_prod").value = "Ethylene glycol"
-      document.getElementById("txtvalue_det").value = 'Methylmalonyl-coa'
+      product_chosen = '';
+      detect_chosen = '';
+      // document.getElementById("txtvalue_prod").value = "Ethylene glycol"
+      // document.getElementById("txtvalue_det").value = 'Methylmalonyl-coa'
       document.getElementById("txtvalue").value = 'Escherichia Coli'
       document.getElementById("txtvalue").orgid = 'ECOLI'
-      $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+      // $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
       document.getElementById("intro").style.display="block";
    }
 });
@@ -226,6 +226,8 @@ function show_pathways() {
    if (String(product_chosen) != '' && String(detect_chosen) != ''){
       url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen)+'/'+orgid;
       $(location).attr('href', url);
+   } else {
+      document.getElementById("no_choosen_error").style.visibility = "visible";
    }
 }
 
