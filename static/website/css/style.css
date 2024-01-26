@@ -48,7 +48,6 @@ basic
 .container {
      max-width: 1450px;
      align-items: left;
-     
 }
 
 html {
@@ -514,6 +513,10 @@ button {
     height: 39px;
     display: none;
     z-index: 99999;
+}
+
+.navbar-inverse{
+    line-height: 0.1 !important;
 }
 
 .left {
