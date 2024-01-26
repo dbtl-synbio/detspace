@@ -133,7 +133,7 @@ $(document).ready(function(){
                table_row.append($("<td class='smiles'>" + val["SMILES"] + "</td>"));
                table_row.append($("<td class='effectors'>" + val["Effectors"] + "</td>"));
                if (val["Selected"]==0){
-                  table_row.append($("<td class='pathways'>" + val["Pathways"] + "</td>"));
+                  table_row.append($("<td class='pathways'>" + "0"+" / "+ val["Pathways"] + "</td>"));
                 }
                 else {
                   table_row.append($("<td class='pathways'>" + val["Selected"]+" / "+val["Pathways"] + "</td>"));
