@@ -137,8 +137,8 @@ $(document).ready(function(){
          success:function(data){
             //var detectable_data = data.split(/\r?\n|\r/);
             var table_base = $('<table class="table table-striped  table-hover tablesorter" id="producibles_table"></table>');
-            let field_names = ['Name', 'SMILES', 'Detectables', 'Pathways', 'Selected'];
-            let field_classes = ['name_head', 'smiles_head', 'effectors_head', 'pathways_head', 'selected_head'];
+            let field_names = ['Name', 'SMILES', 'Effectors', 'Selected pathways'];
+            let field_classes = ['name_head', 'smiles_head', 'effectors_head', 'selected_pathways_head'];
             let table_row = $('<tr class="customBackground"></tr>');
             for (let i=0; i<field_names.length;i++){
                let value = field_names[i];
@@ -152,8 +152,12 @@ $(document).ready(function(){
                table_row.append($("<td class='click_prod' id='" + val["ID"] + "'>" + '<a href="#">'+ val["Name"] + '</a>'+"</td>"));
                table_row.append($("<td class='smiles'>" + val["SMILES"] + "</td>"));
                table_row.append($("<td class='effectors'>" + val["Effectors"] + "</td>"));
-               table_row.append($("<td class='pathways'>" + val["Pathways"] + "</td>"));
-               table_row.append($("<td class='selected'>" + val["Selected"] + "</td>"));
+               if (val["Selected"]==0){
+                  table_row.append($("<td class='pathways'>" + "0"+" / "+ val["Pathways"] + "</td>"));
+                }
+                else {
+                  table_row.append($("<td class='pathways'>" + val["Selected"]+" / "+val["Pathways"] + "</td>"));
+                }
                table_body.append(table_row);
             });
             table_base.append(table_body);
@@ -265,7 +269,7 @@ $(document).ready(function(){
              //var detectable_data = data.split(/\r?\n|\r/);
 
              let table_base = $('<table class="table table-striped table-hover tablesorter" id="detectables_table"></table>');
-             let field_names = ['Name', 'SMILES', 'Producibles', 'Pathways', 'Selected'];
+             let field_names = ['Name', 'SMILES', 'Products', 'Selected pathways'];
              let table_row = $('<tr></tr>');
              for (let i=0; i<field_names.length;i++){
                 let value = field_names[i];
@@ -279,8 +283,12 @@ $(document).ready(function(){
                 table_row.append($("<td class='click_det' id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_det()">'+ val["Name"] + '</a>'+"</td>"));
                 table_row.append($("<td class='smiles'>" + val["SMILES"] + "</td>"));
                 table_row.append($("<td class='products'>" + val["Products"] + "</td>"));
-                table_row.append($("<td class='pathways'>" + val["Pathways"] + "</td>"));
-                table_row.append($("<td class='selected'>" + val["Selected"] + "</td>"));
+                if (val["Selected"]==0){
+                  table_row.append($("<td class='pathways'>" + val["Pathways"] + "</td>"));
+                }
+                else {
+                  table_row.append($("<td class='pathways'>" + val["Selected"]+" / "+val["Pathways"] + "</td>"));
+                }
                 table_body.append(table_row);
              });
              table_base.append(table_body);
