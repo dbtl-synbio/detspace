@@ -77,12 +77,15 @@
       <div class="modal fade" id="modal_producibles">
          <div class="modal-dialog modal-lg modal-dialog-centered">
            <div class="modal-content">
-              <div class="modal-header modal_title">Select the starting product of the detectable pathway (selected detectable = None)
+              <div class="modal-header modal_title">Select the starting product of the detectable pathway
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
              </div>
              <div class="modal-body">
               <input type="text" id="searchInput_prod" class="Search_box" placeholder="Search...">
-              <button  id="Delete selection" onclick= "delete_auto_producible()" class="left_panel_button">&times;</button>
+              <button  id="Delete selection" onclick= "delete_auto_producible()" class="left_panel_button">&times;</button> 
+               <div class="modal-header modal_subtitle">Detectable compound selected:
+                  <textarea class="txtselected_det" autocomplete="off" onkeydown="return false;" readonly="readonly" id="det_selected"></textarea>
+               </div> 
               <p id="noResultMessage_prod"></p>
               <div id="suggesstion-box_producibles"></div>
               <div id="producibles_modal_table"></div></div>
@@ -100,40 +103,16 @@
              <div class="modal-body">
               <input type="text" id="searchInput_det" class="Search_box" placeholder="Search...">
               <button  id="Delete selection" onclick= "delete_auto_detectable()" class="left_panel_button">&times;</button>
+              <div class="modal-header modal_subtitle">Producible compound selected:
+               <textarea class="txtselected_prod" autocomplete="off" onkeydown="return false;" readonly="readonly" id="prod_selected"></textarea>
+            </div> 
               <p id="noResultMessage_det"></p>
               <div id="suggesstion-box_detectables"></div>
               <div id="detectables_modal_table"></div></div>
            </div><!-- /.modal-content -->
          </div><!-- /.modal-dialog -->
          </div><!-- /.modal -->
-                                 <script>
-                                    function ddlselect_det()
-                                    {
-                                       var d=document.getElementById("detectables_table");
-                                       for(var i = 0; i < d.rows.length; i++)
-                        {
-                           d.rows[i].onclick = function()
-                           {
-                                 rIndex = this.rowIndex;
-                                 var detec=$(this.cells[0]);
-                                    console.log(detec.text());
-                                    document.getElementById("txtvalue_det").value=detec.text();
-                                    $("#txtvalue_det").attr("det_id",detec.attr("id"));
-                                    $('#modal_detectables').modal('hide');
-                                    $('.modal-backdrop').remove();
-                                    product_chosen= $("#txtvalue_prod").attr("prod_id");
-                                    detect_chosen= $("#txtvalue_det").attr("det_id");
-                                    if(product_chosen!="" && detect_chosen!=""){
-                                       $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
-                                    }
-                              
-
-                           }
-                        }
-                                    }
-
-                                 </script>
-   
+                                 
      <div class="visualizer" id="base">
          <script>
          $( function() {
