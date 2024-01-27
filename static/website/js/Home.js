@@ -5,6 +5,10 @@ var div =document.getElementById('dialogo');
 var display =0;
 
 $(document).ready(function(){
+   var det_name= document.getElementById("txtvalue_det").value;
+   var prod_name= document.getElementById("txtvalue_prod").value;
+         document.getElementById("det_selected").value=det_name;
+         document.getElementById("prod_selected").value=prod_name;
    if ($("#txtvalue_prod").attr("prod_id") != '' && $("#txtvalue_det").attr("det_id") != '') { //In case the url is in format .../detect/prod/det
       product_chosen = $("#txtvalue_prod").attr("prod_id");
       detect_chosen = $("#txtvalue_det").attr("det_id");
@@ -28,6 +32,8 @@ $(document).ready(function(){
             document.getElementById("info").style.borderTopStyle="hidden";
             document.getElementById("info").style.borderRightStyle="hidden";
             document.getElementById("info").style.width="0%";
+            document.getElementById("det_selected").value=displaytext;
+            document.getElementById("prod_selected").value=displaytext;
             count_intermediate();      
          }
       });   
@@ -41,6 +47,32 @@ $(document).ready(function(){
       // $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
       document.getElementById("intro").style.display="block";
    }
+   $.ajax ({
+      url:"/api/prod/"+detect_chosen,
+      dataType:"json",
+      success:function(data){
+         $.each(data, function(index, val){
+            if (val["ID"] == product_chosen){
+               product_name = val["Name"];
+               document.getElementById("txtvalue_prod").value=product_name;
+               document.getElementById("prod_selected").value=product_name;
+            }
+         });
+      }
+   });
+   $.ajax ({
+      url:"/api/det/"+product_chosen,
+      dataType:"json",
+      success:function(data){
+         $.each(data, function(index, val){
+            if (val["ID"] == detect_chosen){
+               detect_name = val["Name"];
+               document.getElementById("txtvalue_det").value=detect_name;
+               document.getElementById("det_selected").value=detect_name;
+            }
+         });
+      }
+   });
 });
 
 // Chassis dialog selection function
@@ -104,6 +136,7 @@ $(document).ready(function(){
 $(document).ready(function(){
    $('#producibles').click(function(){
      var det_id=$("#txtvalue_det").attr("det_id");
+     var det_name=$("#txtvalue_det").attr("det_id");
      if(det_id==undefined){
         det_id=""
      }
@@ -113,7 +146,7 @@ $(document).ready(function(){
          success:function(data){
             //var detectable_data = data.split(/\r?\n|\r/);
             var table_base = $('<table class="table table-striped  table-hover tablesorter" id="producibles_table"></table>');
-            let field_names = ['Name', 'SMILES', 'Effectors', 'Selected pathways'];
+            let field_names = ['Compound name', 'SMILES', 'Effectors', 'Selected pathways'];
             let field_classes = ['name_head', 'smiles_head', 'effectors_head', 'selected_pathways_head'];
             let table_row = $('<tr class="customBackground"></tr>');
             for (let i=0; i<field_names.length;i++){
@@ -190,6 +223,7 @@ $(document).ready(function(){
             });
             $("td.click_prod").click(function(){
                var produc = $(this);
+              // var det_chosen = ;
                document.getElementById("txtvalue_prod").value=produc.text();
                $("#txtvalue_prod").attr("prod_id",produc.attr("id"));
                $('#modal_producibles').modal('hide');
@@ -201,6 +235,18 @@ $(document).ready(function(){
                }
             });
            }
+      });
+      $.ajax ({
+         url:"/api/det/"+product_chosen,
+         dataType:"json",
+         success:function(data){
+            $.each(data, function(index, val){
+               if (val["ID"] == detect_chosen){
+                  detect_name = val["Name"];
+                  document.getElementById("det_selected").value=detect_name;
+               }
+            });
+         }
       });
    });
 });
@@ -247,7 +293,7 @@ $(document).ready(function(){
              //var detectable_data = data.split(/\r?\n|\r/);
 
              let table_base = $('<table class="table table-striped table-hover tablesorter" id="detectables_table"></table>');
-             let field_names = ['Name', 'SMILES', 'Products', 'Selected pathways'];
+             let field_names = ['Compound name', 'SMILES', 'Products', 'Selected pathways'];
              let table_row = $('<tr></tr>');
              for (let i=0; i<field_names.length;i++){
                 let value = field_names[i];
@@ -258,7 +304,7 @@ $(document).ready(function(){
              let table_body = $('<tbody ></tbody>');
              $.each( data, function( index,val ) {
                 let table_row = $('<tr></tr>');
-                table_row.append($("<td class='click_det' id='" + val["ID"] + "'>" + '<a href="#" onclick="ddlselect_det()">'+ val["Name"] + '</a>'+"</td>"));
+                table_row.append($("<td class='click_det' id='" + val["ID"] + "'>" + '<a href="#">'+ val["Name"] + '</a>'+"</td>"));
                 table_row.append($("<td class='smiles'>" + val["SMILES"] + "</td>"));
                 table_row.append($("<td class='products'>" + val["Products"] + "</td>"));
                 if (val["Selected"]==0){
@@ -310,9 +356,33 @@ $(document).ready(function(){
                }
             }
             });
-
+            $("td.click_det").click(function(){
+               var detec = $(this);
+              // var det_chosen = ;
+              document.getElementById("txtvalue_det").value=detec.text();
+              $("#txtvalue_det").attr("det_id",detec.attr("id"));
+              $('#modal_detectables').modal('hide');
+              $('.modal-backdrop').remove();
+              product_chosen= $("#txtvalue_prod").attr("prod_id");
+              detect_chosen= $("#txtvalue_det").attr("det_id");
+              if(product_chosen!="" && detect_chosen!=""){
+                 $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+               }
+            });
             ;}//success
        });
+       $.ajax ({
+         url:"/api/prod/"+detect_chosen,
+         dataType:"json",
+         success:function(data){
+            $.each(data, function(index, val){
+               if (val["ID"] == product_chosen){
+                  product_name = val["Name"];
+                  document.getElementById("prod_selected").value=product_name;
+               }
+            });
+         }
+      });
     });
  });
 
@@ -348,7 +418,7 @@ $(document).ready(function(){
                    }
                    else
                    {
-                         table_data += '<td>'+'<a href="#" onclick="ddlselect_det()">'+cell_data[cell_count]+'<a/>'+'</td>';
+                         table_data += '<td>'+'<a href="#">'+cell_data[cell_count]+'<a/>'+'</td>';
                    }
                 }
                 table_data += '</tr>';
@@ -385,6 +455,7 @@ function delete_chassis() {
 function delete_producible() {
    document.getElementById("txtvalue_prod").value="";
    $("#txtvalue_prod").attr("prod_id","");
+   document.getElementById("prod_selected").value="";
    product_chosen = '';
    }
 
@@ -396,6 +467,7 @@ function delete_auto_producible() {
 function delete_detectable() {
    document.getElementById("txtvalue_det").value="";
    $("#txtvalue_det").attr("det_id","");
+   document.getElementById("det_selected").value="";
    detect_chosen = '';
    }
 
