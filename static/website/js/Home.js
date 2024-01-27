@@ -453,6 +453,7 @@ function delete_chassis() {
 function delete_producible() {
    document.getElementById("txtvalue_prod").value="";
    $("#txtvalue_prod").attr("prod_id","");
+   document.getElementById("prod_selected").value="";
    product_chosen = '';
    }
 
@@ -464,6 +465,7 @@ function delete_auto_producible() {
 function delete_detectable() {
    document.getElementById("txtvalue_det").value="";
    $("#txtvalue_det").attr("det_id","");
+   document.getElementById("det_selected").value="";
    detect_chosen = '';
    }
 
