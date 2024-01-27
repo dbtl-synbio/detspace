@@ -146,7 +146,7 @@ $(document).ready(function(){
          success:function(data){
             //var detectable_data = data.split(/\r?\n|\r/);
             var table_base = $('<table class="table table-striped  table-hover tablesorter" id="producibles_table"></table>');
-            let field_names = ['Name', 'SMILES', 'Effectors', 'Selected pathways'];
+            let field_names = ['Compound name', 'SMILES', 'Effectors', 'Selected pathways'];
             let field_classes = ['name_head', 'smiles_head', 'effectors_head', 'selected_pathways_head'];
             let table_row = $('<tr class="customBackground"></tr>');
             for (let i=0; i<field_names.length;i++){
@@ -291,7 +291,7 @@ $(document).ready(function(){
              //var detectable_data = data.split(/\r?\n|\r/);
 
              let table_base = $('<table class="table table-striped table-hover tablesorter" id="detectables_table"></table>');
-             let field_names = ['Name', 'SMILES', 'Products', 'Selected pathways'];
+             let field_names = ['Compound name', 'SMILES', 'Products', 'Selected pathways'];
              let table_row = $('<tr></tr>');
              for (let i=0; i<field_names.length;i++){
                 let value = field_names[i];

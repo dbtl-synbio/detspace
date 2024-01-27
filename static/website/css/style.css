@@ -1178,33 +1178,29 @@ ul li {
 
 th.name_head{
     overflow-x: auto;
-    table-layout: fixed;
     vertical-align: middle;
     word-wrap: normal;
-    max-width: 170px;
+    max-width: 200px;
 }
 
 .click_prod {
     overflow-x: auto;
-    table-layout: fixed;
     vertical-align: middle;
     word-wrap: normal;
-    max-width: 170px;
+    max-width: 180px;
 }
 .click_det {
     overflow-x: auto;
-    table-layout: fixed;
     vertical-align: middle;
     word-wrap: normal;
-    max-width: 170px;
+    max-width: 180px;
 }
 
 th.smiles {
     overflow-x: auto;
-    table-layout: fixed;
     vertical-align: middle;
     word-wrap: normal;
-    max-width: 130px;
+    max-width: 170px;
 }
 
 td.smiles {
@@ -1212,12 +1208,32 @@ td.smiles {
     table-layout: fixed;
     vertical-align: middle;
     word-wrap: break-word;
-    max-width: 130px;
+    max-width: 170px;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
+td.pathways {
+    overflow-x: auto;
+    vertical-align: middle;
+    word-wrap: normal;
+    width: 170px;
+}
 
+td.effectors {
+    overflow-x: auto;
+    table-layout: fixed;
+    vertical-align: middle;
+    word-wrap: normal;
+    width: 130px;
+}
+
+td.products {
+    overflow-x: auto;
+    vertical-align: middle;
+    word-wrap: normal;
+    width: 130px;
+}
 .table .thead-light th {
     color: #495057;
     background-color: #6ba3d1 !important;
