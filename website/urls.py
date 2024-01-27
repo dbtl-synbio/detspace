@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name="index"),
-    path('info.html', views.info, name="info"),
+    path('info', views.info, name="info"),
     path('index', views.index, name="index"),
     path('<int:target_id>', views.info, name="info"),
     path('vis_template.html', views.vis_template, name="vis_template"),

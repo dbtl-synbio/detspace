@@ -8,7 +8,7 @@
       <div id="interaction" class="interact">
         <div class="info-subtitle" style="margin-top:2%">Choose chassis organism</div>
         <input id="Chassis" type="button" class="btn button_chassis" onclick="hideShow()" value="Chassis"/> 
-        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis" value="{{chassis}}"/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis" value="{{chassis_name}}" orgid="{{chassis}}"/>
         <button  id="Delete selection" onclick="delete_chassis()" class="left_panel_button">&times;</button>
         
         <div id="dialogo" class ="hidden" style="display: none;">
@@ -30,14 +30,14 @@
          </div>
         <div class="info-subtitle">Select detectable route</div>
         <input type="button" data-toggle="modal" href="#modal_producibles" class="btn button_producibles" id="producibles" value="Producible"/>
-        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="{{prod}}" autocomplete="off" onkeydown="return false;" id="txtvalue_prod" value=""/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="{{prod}}" autocomplete="off" onkeydown="return false;" id="txtvalue_prod" value="{{prod_name}}"/>
         <button  id="Delete selection" onclick= "delete_producible()" class="left_panel_button">&times;</button>
         <input type="button" data-toggle="modal" href="#modal_detectables" class="btn button_detectables" id="detectables" value="Detectable"/>
-        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="{{det}}" autocomplete="off" onkeydown="return false;" id="txtvalue_det" value=""/>
+        <input type="text" onfocus="blur()" style="border:none" class="txtvalue_det" det_id="{{det}}" autocomplete="off" onkeydown="return false;" id="txtvalue_det" value="{{det_name}}"/>
         <button  id="Delete selection" onclick= "delete_detectable()" class="left_panel_button">&times;</button>
 
         <input id="load_pathway" type="button" onclick="show_pathways()" class="default_button btn btn-outline-dark" value="Generate" style="margin-top: 10px"/>
-
+         <p id="no_choosen_error" style="visibility: hidden; margin-top:2%">You must select producible and detectable compounds</p>
 <!-- <ul id="info_pair">
             <li id="txt_intermediate_compounds" class="info_txt">Intermediate compounds:</li>
             <li id="txt_chassis_compounds" class="info_txt">Compounds in chassis:</li>

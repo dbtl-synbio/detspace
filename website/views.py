@@ -15,8 +15,6 @@ from io import StringIO
 import tarfile, tempfile
 from .utils import annotate_chemical_svg, get_detectables, get_producibles, get_prod_detec, get_detec_prod, get_chassis
 
-# from bs4 import BeautifulSoup
-
 def chassis(request):
     return render(request, 'chassis.html', {})
 
@@ -31,7 +29,6 @@ def api_home(request):
 
 def target(request):
     targets = Target.objects.order_by('name')
-    #targets = Target.objects.all()
     return render(request, 'target.html', {'targets': targets})
 
 def effector(request):
@@ -43,18 +40,6 @@ def plasmid(request):
 def specifications(request):
     return render(request, 'specifications.html', {})
 
-# def info(request, target_id):
-#     targets = Target.objects.get(pk=target_id)
-#     #targets = Target.objects.all()
-#     return render(request, 'info.html', {'target': target})
-
-
-# def hola(request):
-#     #results = request.GET.get('chassis',None)+' y ya estaría'
-#     r = open('website/templates/index.html').read()
-#     results = {'url_data':r}
-#     return HttpResponse(results)
-
 def vis_template(request):
     return render(request, 'vis_template.html', {})
 
@@ -62,10 +47,25 @@ def body_viz(request):
     return render(request, 'body_viz.html', {})
 
 def detect(request, prod='27', det='0', chassis='ECOLI',):
+    #Find chassis name
+    list_chassis = get_chassis()
+    chassis_name = 'Escherichia Coli'
+    for i in list_chassis:
+        if i['Orgid'] == chassis:
+            chassis_name = i['Organism']
+    #Find detectable and producible name
+    data_path = os.getenv('DETSPACE_DATA')
+    detectables = pd.read_csv(os.path.join(data_path, 'data','Detectable.csv'))
+    det_name = detectables['Name'][det]
+    producibles = pd.read_csv(os.path.join(data_path, 'data','Producible.csv'))
+    prod_name = producibles['Name'][prod]
     return render(request, 'index.html', {
         'prod': prod,
+        'prod_name': prod_name,
         'det': det,
+        'det_name': det_name,
         'chassis': chassis,
+        'chassis_name': chassis_name,
     }
     )
 

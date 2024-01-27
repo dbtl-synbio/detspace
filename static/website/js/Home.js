@@ -18,14 +18,12 @@ $(document).ready(function(){
          success: function() {
             run_viz(network, pathways_info);
             refresh_layout();
-            orgid = document.getElementById("txtvalue").value
-            if (document.getElementById(orgid) == null){
-               orgid = 'ECOLI';
-               url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen)+'/'+orgid;
-               $(location).attr('href', url);
-            }
-            displaytext = document.getElementById(orgid).value;
-            document.getElementById("txtvalue").value=displaytext;
+            // orgid = document.getElementById("txtvalue").orgid
+            // if (document.getElementById(orgid) == null){
+            //    orgid = 'ECOLI';
+            //    url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen)+'/'+orgid;
+            //    $(location).attr('href', url);
+            // }
             in_chassis(orgid);
             document.getElementById("pathway_selection").style.visibility="visible";
             document.getElementById("info_pair").style.visibility="visible";
@@ -40,11 +38,13 @@ $(document).ready(function(){
          }
       });   
    } else { //This values are the default example
-      product_chosen = 27;
-      detect_chosen = 0;
-      displaytext = document.getElementById(orgid).value;
-      document.getElementById("txtvalue").value=displaytext;
-      $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
+      product_chosen = '';
+      detect_chosen = '';
+      // document.getElementById("txtvalue_prod").value = "Ethylene glycol"
+      // document.getElementById("txtvalue_det").value = 'Methylmalonyl-coa'
+      document.getElementById("txtvalue").value = 'Escherichia Coli'
+      document.getElementById("txtvalue").orgid = 'ECOLI'
+      // $.getScript("/api/net/"+String(product_chosen)+"/"+String(detect_chosen));
       document.getElementById("intro").style.display="block";
    }
    $.ajax ({
@@ -272,6 +272,8 @@ function show_pathways() {
    if (String(product_chosen) != '' && String(detect_chosen) != ''){
       url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen)+'/'+orgid;
       $(location).attr('href', url);
+   } else {
+      document.getElementById("no_choosen_error").style.visibility = "visible";
    }
 }
 
@@ -444,8 +446,8 @@ function get_det(){
    }
  
 function delete_chassis() {
+   document.getElementById("txtvalue").orgid="";
    document.getElementById("txtvalue").value="";
-   $("#txtvalue").attr("chassis_id","");
    document.getElementById("list-container").value="";
    $("#list-container").children(":selected").attr("id","");
    }
