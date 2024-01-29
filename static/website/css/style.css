@@ -322,6 +322,10 @@ button {
         
     }
 
+    .modal_subtitle {
+        margin-right: 20% !important;
+    }
+
 }
 
 
@@ -329,6 +333,13 @@ button {
     .nav_detspace ul {
         margin-left: 5%;
     }
+
+    .modal_subtitle {
+        text-align: left;
+        justify-content:left;
+        float:left;
+    }
+
 }
 
 @media (max-width: 938px){
@@ -1044,6 +1055,27 @@ ul li {
             font-size: 0.7em;
         }
     }
+
+    .txtselected_det{
+        font-size: 0.9em;
+        border: none;
+        margin-left: 10px;
+        padding-top: 2.6px;
+        width: fit-content;
+        margin-bottom: 3px;
+    }
+
+    .txtselected_prod{
+        font-size: 0.9em;
+        border: none;
+        margin-left: 10px;
+        padding-top: 2.6px;
+        width: fit-content;
+        margin-bottom: 3px;
+    }
+
+
+
     @media (max-width: 1339px){
         .button_chassis{
             font-size: 0.7em !important;
@@ -1073,11 +1105,27 @@ ul li {
     overflow-y:auto;
   }
 
+  .modal-header{
+    display: flex;
+    justify-content: flex-start !important; /* Disable justify-content: center */ 
+}
+
 .modal_title {
     text-align: center;
     padding-top: 15px;
     vertical-align: middle;
-    font-size: 24px;
+    font-size: 22px;
+    padding-bottom: 0.2rem!important;
+}
+
+.modal_subtitle {
+    text-align: right;
+    padding-top: 7px;
+    font-size: 15px;
+    text-decoration:#000;
+    font-weight: bold;
+    padding-bottom: 0.3rem!important;
+    float: right;
 }
 
 .modal-body{
@@ -1130,33 +1178,29 @@ ul li {
 
 th.name_head{
     overflow-x: auto;
-    table-layout: fixed;
     vertical-align: middle;
     word-wrap: normal;
-    max-width: 170px;
+    max-width: 200px;
 }
 
 .click_prod {
     overflow-x: auto;
-    table-layout: fixed;
     vertical-align: middle;
     word-wrap: normal;
-    max-width: 170px;
+    max-width: 180px;
 }
 .click_det {
     overflow-x: auto;
-    table-layout: fixed;
     vertical-align: middle;
     word-wrap: normal;
-    max-width: 170px;
+    max-width: 180px;
 }
 
 th.smiles {
     overflow-x: auto;
-    table-layout: fixed;
     vertical-align: middle;
     word-wrap: normal;
-    max-width: 130px;
+    max-width: 170px;
 }
 
 td.smiles {
@@ -1164,12 +1208,32 @@ td.smiles {
     table-layout: fixed;
     vertical-align: middle;
     word-wrap: break-word;
-    max-width: 130px;
+    max-width: 170px;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
+td.pathways {
+    overflow-x: auto;
+    vertical-align: middle;
+    word-wrap: normal;
+    width: 170px;
+}
 
+td.effectors {
+    overflow-x: auto;
+    table-layout: fixed;
+    vertical-align: middle;
+    word-wrap: normal;
+    width: 130px;
+}
+
+td.products {
+    overflow-x: auto;
+    vertical-align: middle;
+    word-wrap: normal;
+    width: 130px;
+}
 .table .thead-light th {
     color: #495057;
     background-color: #6ba3d1 !important;

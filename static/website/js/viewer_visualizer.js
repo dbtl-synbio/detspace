@@ -1120,7 +1120,6 @@ function run_viz(network, pathways_info){
         cy.on('tap', 'node', function(evt){
             let node = evt.target;
             // Dump into console
-            console.log(node.data());
             // Print info
             document.getElementById("info").style.width="18%";
             $("#info").attr("is_clicked", "True");
@@ -1276,7 +1275,6 @@ function run_viz(network, pathways_info){
     // When a pathway is checked
     $("input[name=path_checkbox]").change(function(){
         selected_paths = get_checked_pathways();
-        console.log(selected_paths);
         show_pathways(selected_paths);
     });
     
