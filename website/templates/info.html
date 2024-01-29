@@ -13,50 +13,63 @@
    <!--                   <div class="col-md-7"> -->
                      <div class="titlepage text_align_left">
                         <h2>DetSpace: Engineering detectable pathways for bio-based production</h2>
+                        <p>In the following, we provide a step-by-step tutorial of the <b>DetSpace</b> web server.</p>
+                        <!--
                         <p><b>DetSpace</b> allows the selection and design of biological circuits for sensing of bio-based chemicals  
                            by its metabolic conversion into an allosteric transcription factor-based detectable molecule. In that way, <b>DetSpace</b> 
                            provides a tool for precision engineering of screening and dynamic regulation of bio-based pathways of industrial interest for the bioeconomy.
                         </p>
+                        -->
                         <h3>A walk-through tutorial</h3>
                         <h4>Start</h4>
-                        <p>In this tutorial, we assume that the user wants to produce <a href="https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:18346" target="_blank">vanillin</a>, a flavoring agent, 
-                           in the <i>E. coli</i> chassis (for engineered production routes 
+                        <p>In this tutorial, we assume that the user wants to produce <a href="https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:28623" target="_blank">campesterol</a>, a phytosterol structural similar to cholesterol with lipid-lowering effects, 
+                           in the <i>Yarrowia lipolytica</i> yeast chassis (for engineered production routes 
                            see for instance 
-                           <a href="https://doi.org/10.1007/s10529-005-3561-4" target="_blank">Yoon et al, <i>Biotechnol. Lett.</i>, 2005</a>.)
+                           <a href="
+                           https://doi.org/10.1007/s10295-020-02291-7" target="_blank">Xu et al, <i>J Ind Microbiol Biotechnol</i>, 2020</a>.)
                           </p>
                            <div>
-                              <img src="{% static 'website/images/vanilla-stick.jpg'%}" alt="vanilla" style="width:150px"/>
-                              <img src="{% static 'website/images/vanillin.png'%}" alt="vanillin" style="width:150px"/>
+                              <img src="{% static 'website/images/campesterol.png'%}" alt="campesterol" style="height:150px"/>
+                              <img src="{% static 'website/images/organic.png'%}" alt="healthy" style="height:150px"/>
                            </div>
                            <h4>Chassis selection</h4>
-                           <p>Therefore, we start by selecting the <i>E. coli</i> chassis:
+                           <p>Therefore, we start by selecting the <i>Y. lipolytica</i> chassis:
                            </p>
                            <div>
-                              <img src="{% static 'website/images/chassis.png'%}" alt="chassis" style="width:250px"/>
+                              <img src="{% static 'website/images/yarrowia.png'%}" alt="chassis" style="width:250px"/>
                            </div>
                            <h4>Target compound selection</h4>
-                           <p>Then, the target product vanillin is selected from the list of producible compounds:
+                           <p>Then, the target product campesterol is selected from the list of producible compounds: 
                            </p>
                            <div>
-                              <img src="{% static 'website/images/prodsel.png'%}" alt="prodsel" style="width:350px"/>
-                              <img src="{% static 'website/images/producible.png'%}" alt="producible" style="width:250px"/>
+                              <img src="{% static 'website/images/campes_sel.png'%}" alt="prodsel" style="height:150px"/>
+                              <img src="{% static 'website/images/campes_prod.png'%}" alt="producible" style="height:65px"/>
                            </div>
+                           <p>The column <em>Selected pathways</em> indicates that there are in total 1388 detectable pathways available for campesterol, and none have been yet selected.</p>
                            <h4>Detectable compound selection</h4>
-                           <p>From the list of detectable compounds that can be linked to the vanillin product, 
-                              <a href="https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:16865" target="_blank">GABA</a> 
-                              (&gamma;-amminobutyric acid), an inhibitory neurotransmitter, is selected: 
+                           <p>From the list of detectable compounds that can be linked to the campesterol product, 
+                              <a href="https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:3296" target="_blank">caffeoyl-CoA</a> , 
+                              an acyl-CoA thioester, is selected: 
                            </p>
                            <div>
-                              <img src="{% static 'website/images/seldet.png'%}" alt="detsel" style="width:350px"/>
-                              <img src="{% static 'website/images/selgaba.png'%}" alt="detectable" style="width:250px"/>
+                              <img src="{% static 'website/images/caffe_sel.png'%}" alt="detsel" style="height:150px"/>
+                              <img src="{% static 'website/images/caffe_det.png'%}" alt="detectable" style="height:65px"/>
                            </div>
+                           <p>The column <em>Selected pathways</em> indicates that there are in total 433 detectable pathways available involving caffeoyl-CoA, and that 12 correspond to the ones linked the selected product, i.e., campesterol.</p>
                            <h4>Pathway generation</h4>
-                           <p>Next, the detectable pathway that converts vanillin into GABA is generated and graphically
+                           <p>Next, the detectable pathway that converts campesterol into caffeoyl-CoA is generated and graphically
                               shown:
                            </p>
                            <div>
-                              <img src="{% static 'website/images/vanillinpath.png'%}" alt="pathway" style="width:100px"/>
+                              <img src="{% static 'website/images/campes_scope.png'%}" alt="pathway" style="width:300px"/>
                            </div>
+                           <h4>Scope information</h4>
+                           <p>The information about the scope of the detectable space between campesterol and caffeoyl-CoA is then shown on a table. In this case, there are in total 9 intermediate compounds, i.e., compounds that appear in at least one of the detectable pathways; 5 compounds in chassis, i.e., metabolites involved in the pathway that are endogenous to the cahssis; 4 heterologous compounds, i.e., compounds in pathways that are not naturally produced by the chassis; 1 supplement compounds, i.e., a compound that is needed for at least one detectable pathway that needs to be added as supplement to the growth medium; and 5 precursor compounds, i.e., compounds that are heterologous to the chassis but can be produced through engineered routes, whose details can be accessed by clicking on the compound.</p>
+                              <div>
+                                 <img src="{% static 'website/images/scope_info.png'%}" alt="scope" style="width:200px"/>
+                              </div>
+                              
+                           <h4>Pathway information</h4>
                            <p>If multiple pathways are available, they will appear at the table on the right panel, 
                               each one indicating the number of steps and its associated score according to the 
                               <a href="https://retrorules.org/" target="_blank">RetroRules</a> reaction viability score.
@@ -64,17 +77,17 @@
                               graph.
                            </p> 
                            <div>
-                              <img src="{% static 'website/images/pathway.png'%}" alt="pathway" style="width:250px"/>
+                              <img src="{% static 'website/images/path_info.png'%}" alt="pathway" style="height:200px"/>
                            </div>
-                           <p>Detailed information about each compound in the pathway can be obtained by clickin on the node 
+                           <p>Detailed information about each compound in the pathway can be obtained by clicking on the node 
                               in the pathway, including chemical structure and link to databases. In the case of the producible 
-                              compound, i.e., vanillin, it is possible to display the production pathway associated with the compounds. In the case 
-                              of the detectable compound, i.e., GABA, information about the transcription factor that can be
-                              allosterically regulated by this effector is provided. 
+                              compound, i.e., campesterol, it is possible to display the production pathway associated with the compounds. In the case 
+                              of the detectable compound, i.e., caffeoyl-CoA, information about the transcription factor that can be
+                              allosterically regulated by this effector is provided through the <a href="https://doi.org/10.1186/s12859-023-05201-7" target="_blank">SensBio</a> database. 
                            </p>
                            <p>Similarly, for each enzyme in the pathway, information about the chemical transformation can be 
                               obtained by clicking on the node. In addition, a link to the <a href="http://selenzyme.synbiochem.co.uk/" 
-                              target="_blank">Selenzyme</a> service is provide to search for putative enzyme sequences catalyzing 
+                              target="_blank">Selenzyme</a> service is provided to search for putative enzyme sequences catalyzing 
                               the desired reaction.
                            </p>
                            <h4>Exporting the results</h4>
