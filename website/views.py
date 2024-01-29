@@ -78,7 +78,9 @@ def api(request, format=None):
         'det': reverse('detectables', request=request, format=format),
  #       'det/prod_id': reverse('prod_detectable', request=request, format=format),
         'paths/prod_id/det_id': reverse('paths', request=request, format=format),
+        'json_paths/prod_id/det_id': reverse('json_paths', request=request, format=format),
         'chassis': reverse('chassis', request=request, format=format),
+        'det_info': reverse('det_info', request=request, format=format),
     })
 
 @api_view(['GET'])
@@ -183,10 +185,10 @@ def get_detectable_info(request, det='0'):
             response = HttpResponse(var, content_type="text/csv")
             response['Content-Disposition'] = 'inline; filename=Sensbio_info.csv'
             return response
-    #try:
-    #    os.unlink(tmp.name)
-    #except:
-    #    pass
+    try:
+        os.unlink(tmp.name)
+    except:
+        pass
     raise Http404
 
 @api_view(['GET'])
