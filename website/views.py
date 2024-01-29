@@ -15,9 +15,6 @@ from io import StringIO
 import tarfile, tempfile
 from .utils import annotate_chemical_svg, get_detectables, get_producibles, get_prod_detec, get_detec_prod, get_chassis
 
-def chassis(request):
-    return render(request, 'chassis.html', {})
-
 def info(request):
     return render(request, 'info.html', {})
 
@@ -26,22 +23,6 @@ def index(request):
 
 def api_home(request):
     return render(request, 'api.html', {})
-
-def target(request):
-    targets = Target.objects.order_by('name')
-    return render(request, 'target.html', {'targets': targets})
-
-def effector(request):
-    return render(request, 'effector.html', {})
-
-def plasmid(request):
-    return render(request, 'plasmid.html', {})
-
-def specifications(request):
-    return render(request, 'specifications.html', {})
-
-def vis_template(request):
-    return render(request, 'vis_template.html', {})
 
 def body_viz(request):
     return render(request, 'body_viz.html', {})
@@ -74,13 +55,11 @@ def api(request, format=None):
     return Response({
         'version': reverse('version', request=request, format=format),
         'prod': reverse('producibles', request=request, format=format),
- #       'prod/det_id': reverse('detect_prod', request=request, format=format),
         'det': reverse('detectables', request=request, format=format),
- #       'det/prod_id': reverse('prod_detectable', request=request, format=format),
+        'chassis': reverse('chassis', request=request, format=format),
         'paths/prod_id/det_id': reverse('paths', request=request, format=format),
         'json_paths/prod_id/det_id': reverse('json_paths', request=request, format=format),
-        'chassis': reverse('chassis', request=request, format=format),
-        'det_info': reverse('det_info', request=request, format=format),
+        'det_info/det_id': reverse('det_info', request=request, format=format),
     })
 
 @api_view(['GET'])
@@ -111,7 +90,9 @@ def detect_prod(request, prod='1', format=None):
     return Response(pl)
 
 @api_view(['GET'])
-def path_prod_det(request, prod='27', det='0'):
+def path_prod_det(request, prod=None, det=None):
+    if prod is None or det is None:
+        return Response({'Error': "Missing prod and/or det arguments"})
     data_path = os.getenv('DETSPACE_PATHDATA')
     name = 'D'+str(det)+'P'+str(prod)
     source_dir = os.path.join(data_path,name)
@@ -132,7 +113,9 @@ def path_prod_det(request, prod='27', det='0'):
     raise Http404
 
 @api_view(['GET'])
-def json_paths(request,prod='27', det='0'):
+def json_paths(request,prod=None, det=None):
+    if prod is None or det is None:
+        return Response({'Error': "Missing prod and/or det arguments"})
     data_path = os.getenv('DETSPACE_DATA')
     try:
         zf = zipfile.ZipFile(os.path.join(data_path,'data','json_pair_files.zip'))
@@ -167,7 +150,9 @@ def json_paths(request,prod='27', det='0'):
     raise Http404
 
 @api_view(['GET'])
-def get_detectable_info(request, det='0'):
+def get_detectable_info(request, det=None):
+    if det is None:
+        return Response({'Error': "Missing det argument"})
     data_path = os.getenv('DETSPACE_DATA')
     all_data = pd.read_csv(os.path.join(data_path,'data','sensbio_info.csv'))
     detectables = pd.read_csv(os.path.join(data_path,'data','Detectable.csv'))
@@ -195,10 +180,6 @@ def get_detectable_info(request, det='0'):
 def chassis(request, format=None):
     orgs = get_chassis()
     return Response(orgs)
-
-@api_view(['GET'])
-def hello_world(request):
-    return Response({"message": "Hello, world!"})
 
 @api_view(['GET'])
 def net_prod_det(request, prod='27', det='0'):

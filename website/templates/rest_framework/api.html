@@ -37,34 +37,58 @@ DetSpace API
    url = "https://detspace.i2sysbio.uv.es"
 
    def version():
-      """ Returns API version"""
-      api_url = urllib.parse.urljoin(url,"api/version")
-      response = requests.get(api_url)
-      return response.json()
+   """ Returns API version"""
+   api_url = urllib.parse.urljoin(url,"api/version")
+   response = requests.get(api_url)
+   return response.json()
 
-   def prod():
-      """ Returns producibles"""class="navbar navbar-static-top navbar-inverse"
-      api_url = urllib.parse.urljoin(url,"api/prod")
-      response = requests.get(api_url)
-      return response.json()
+def prod():
+   """ Returns producibles"""
+   api_url = urllib.parse.urljoin(url,"api/prod")
+   response = requests.get(api_url)
+   return response.json()
 
-   def det():
-      """ Returns detectables"""
-      api_url = urllib.parse.urljoin(url,"api/det")
-      response = requests.get(api_url)
-      return response.json()
+def det():
+   """ Returns detectables"""
+   api_url = urllib.parse.urljoin(url,"api/det")
+   response = requests.get(api_url)
+   return response.json()
 
-   def prod_det(det):
-      """ Returns producibles connected to given detectable"""
-      api_url = urllib.parse.urljoin(url,"/".join(["api/prod",str(det)]))
-      response = requests.get(api_url)
-      return response.json()
+def chassis():
+   """ Returns chassis"""
+   api_url = urllib.parse.urljoin(url,"api/chassis")
+   response = requests.get(api_url)
+   return response.json()
 
-   def det_prod(prod):
-      """ Returns detectables connected to given producible"""
-      api_url = urllib.parse.urljoin(url,"/".join(["api/det",str(prod)]))
-      response = requests.get(api_url)
-      return response.json()
+def prod_det(det):
+   """ Returns producibles connected to given detectable"""
+   api_url = urllib.parse.urljoin(url,"/".join(["api/prod",str(det)]))
+   response = requests.get(api_url)
+   return response.json()
+
+def det_prod(prod):
+   """ Returns detectables connected to given producible"""
+   api_url = urllib.parse.urljoin(url,"/".join(["api/det",str(prod)]))
+   response = requests.get(api_url)
+   return response.json()
+
+def paths_prod_det(prod,det):
+   """ Returns pathways from producible to detectable in SBML format"""
+   api_url = urllib.parse.urljoin(url,"/".join(["api/paths",str(prod),str(det)]))
+   response = requests.get(api_url)
+   return response
+
+def paths_json_prod_det(prod,det):
+   """ Returns pathways from producible to detectable in JSON format"""
+   api_url = urllib.parse.urljoin(url,"/".join(["api/json_paths",str(prod),str(det)]))
+   response = requests.get(api_url)
+   return response
+
+def det_info(det):
+   """ Returns Sensbio information about the detectable compound"""
+   api_url = urllib.parse.urljoin(url,"/".join(["api/det_info",str(det)]))
+   response = requests.get(api_url)
+   return response
       </code></pre>
     </div>
       {% endblock %}
