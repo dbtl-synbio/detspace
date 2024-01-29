@@ -5,7 +5,8 @@ var div =document.getElementById('dialogo');
 var display =0;
 
 $(document).ready(function(){
-   if ($("#txtvalue_prod").attr("prod_id") != '' && $("#txtvalue_det").attr("det_id") != '') { //In case the url is in format .../detect/prod/det
+   if ( ($("#txtvalue_prod").attr("prod_id") != undefined && $("#txtvalue_det").attr("det_id") != undefined) &&
+      ($("#txtvalue_prod").attr("prod_id") != '' && $("#txtvalue_det").attr("det_id") != '') ) { //In case the url is in format .../detect/prod/det
       product_chosen = $("#txtvalue_prod").attr("prod_id");
       detect_chosen = $("#txtvalue_det").attr("det_id");
       $.ajax ({

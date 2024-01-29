@@ -78,7 +78,9 @@ def api(request, format=None):
         'det': reverse('detectables', request=request, format=format),
  #       'det/prod_id': reverse('prod_detectable', request=request, format=format),
         'paths/prod_id/det_id': reverse('paths', request=request, format=format),
+        'json_paths/prod_id/det_id': reverse('json_paths', request=request, format=format),
         'chassis': reverse('chassis', request=request, format=format),
+        'det_info': reverse('det_info', request=request, format=format),
     })
 
 @api_view(['GET'])
@@ -160,6 +162,31 @@ def json_paths(request,prod='27', det='0'):
         os.unlink(tmp.name)
         os.unlink(tmp_net.name)
         os.unlink(tmp_path.name)
+    except:
+        pass
+    raise Http404
+
+@api_view(['GET'])
+def get_detectable_info(request, det='0'):
+    data_path = os.getenv('DETSPACE_DATA')
+    all_data = pd.read_csv(os.path.join(data_path,'data','sensbio_info.csv'))
+    detectables = pd.read_csv(os.path.join(data_path,'data','Detectable.csv'))
+    det_name = detectables[detectables['ID'] == int(det)]['Name'].tolist()
+    det_name = det_name[0]
+    data = all_data[all_data['Molecule'] == det_name]
+    data.reset_index(inplace=True, drop=True)
+    tmp = tempfile.NamedTemporaryFile(delete=False, mode='w+')
+    print(data)
+    data.to_csv(tmp.name,index=False)
+    if os.path.exists(tmp.name):
+        with open(tmp.name, 'rb') as fh:
+            var = fh.read()
+            print(var)
+            response = HttpResponse(var, content_type="text/csv")
+            response['Content-Disposition'] = 'inline; filename=Sensbio_info.csv'
+            return response
+    try:
+        os.unlink(tmp.name)
     except:
         pass
     raise Http404
