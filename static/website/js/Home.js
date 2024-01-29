@@ -32,8 +32,6 @@ $(document).ready(function(){
             document.getElementById("info").style.borderTopStyle="hidden";
             document.getElementById("info").style.borderRightStyle="hidden";
             document.getElementById("info").style.width="0%";
-            document.getElementById("det_selected").value=displaytext;
-            document.getElementById("prod_selected").value=displaytext;
             count_intermediate();      
          }
       });   
