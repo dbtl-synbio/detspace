@@ -1054,7 +1054,7 @@ ul li {
             width: 30%;
             font-size: 0.7em;
         }
-    }
+    } */
 
     .txtselected_det{
         font-size: 0.9em;
@@ -1063,6 +1063,7 @@ ul li {
         padding-top: 2.6px;
         width: fit-content;
         margin-bottom: 3px;
+        resize:none;
     }
 
     .txtselected_prod{
@@ -1072,11 +1073,12 @@ ul li {
         padding-top: 2.6px;
         width: fit-content;
         margin-bottom: 3px;
+        resize:none;
     }
 
 
 
-    @media (max-width: 1339px){
+    /* @media (max-width: 1339px){
         .button_chassis{
             font-size: 0.7em !important;
             text-align: center;
