@@ -132,6 +132,15 @@
                 <!-- <div class="info-subtitle">Sensbio Information</div> -->
                 <div id="table_detectable_info"></div>
                 <div>
+                    <button id="detectable_info_bttn" type="button" class="default_button btn btn-outline-dark">Download Sensbio info</button>
+                    <script>
+                        document.getElementById("detectable_info_bttn").onclick = function(){
+                            location.href = "/api/det_info/"+String(detect_chosen);
+                        }
+                    </script>
+                </div>
+                
+                <div>
                 <button type="button" class="panel_button" onclick="hide_all_panel()">&times;</button>
                 </div>
             </div>

@@ -165,6 +165,31 @@ def json_paths(request,prod='27', det='0'):
     raise Http404
 
 @api_view(['GET'])
+def get_detectable_info(request, det='0'):
+    data_path = os.getenv('DETSPACE_DATA')
+    all_data = pd.read_csv(os.path.join(data_path,'data','sensbio_info.csv'))
+    detectables = pd.read_csv(os.path.join(data_path,'data','Detectable.csv'))
+    det_name = detectables[detectables['ID'] == int(det)]['Name'].tolist()
+    det_name = det_name[0]
+    data = all_data[all_data['Molecule'] == det_name]
+    data.reset_index(inplace=True, drop=True)
+    tmp = tempfile.NamedTemporaryFile(delete=False, mode='w+')
+    print(data)
+    data.to_csv(tmp.name,index=False)
+    if os.path.exists(tmp.name):
+        with open(tmp.name, 'rb') as fh:
+            var = fh.read()
+            print(var)
+            response = HttpResponse(var, content_type="text/csv")
+            response['Content-Disposition'] = 'inline; filename=Sensbio_info.csv'
+            return response
+    #try:
+    #    os.unlink(tmp.name)
+    #except:
+    #    pass
+    raise Http404
+
+@api_view(['GET'])
 def chassis(request, format=None):
     orgs = get_chassis()
     return Response(orgs)
