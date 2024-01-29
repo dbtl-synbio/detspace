@@ -18,7 +18,7 @@ def init_db1():
         p.save()
 
 
-def get_all_producibles():
+def get_all_producibles_old():
     data_path = os.getenv('DETSPACE_DATA')
     plist = pd.read_csv(os.path.join(data_path,"data","Producible.csv"))
     prods = []
@@ -32,15 +32,47 @@ def get_all_producibles():
         prods.append( item )
     return(prods)
 
+def get_all_producibles():
+    data_path = os.getenv('DETSPACE_DATA')
+    plist = pd.read_csv(os.path.join(data_path,"data","Producible.csv"))
+    prodl, detl = get_prod_det_pair()
+    prods = []
+    revlist = {}
+    pdict = {}
+    for row in plist.index:
+        item = {}
+        for col in plist.columns:
+            val = str( plist.loc[row,col] )
+            if val == 'nan':
+                val = ''
+            item[col] = str( val )
+        iid = item["ID"]
+        iin = item["Name"]
+        pdict[iid] = item
+        if iid not in prodl:
+            continue
+        npaths = sum( [ prodl[iid][x] for x in prodl[iid] ] ) 
+        if iin not in revlist:
+            revlist[iin] = (iid,npaths)
+        else:
+            if revlist[iin][1] < npaths:
+                revlist[iin] == (iid,npaths)
+    for row in plist.index:
+        iin = plist.loc[row,"Name"]
+        iid = str(plist.loc[row,"ID"])
+        if iin in revlist:
+            if revlist[iin][0] == iid:
+                prods.append( pdict[iid] )
+    return(prods, prodl, detl)
+
 
 def get_producibles():
-    prodl, detl = get_prod_det_pair()
-    prods = get_all_producibles()
+    prods, prodl, detl = get_all_producibles()
     dprods = []
     for item in prods:
         iid = item["ID"]
         if iid in prodl:
-            item['Effectors'] = len( prodl[iid] );
+            item['Effectors'] = len( prodl[iid] )
             item['Pathways'] = sum( [ prodl[iid][x] for x in prodl[iid] ]) 
             item['Selected'] = 0
             item['Compounds'] = sorted( prodl[iid].keys() )         
@@ -61,7 +93,7 @@ def get_chassis():
         orgs.append( item )
     return(orgs)
 
-def get_all_detectables():
+def get_all_detectables_old():
     data_path = os.getenv('DETSPACE_DATA')
     plist = pd.read_csv(os.path.join(data_path,"data","Detectable.csv"))
     dets = []
@@ -75,10 +107,42 @@ def get_all_detectables():
         dets.append( item )
     return(dets)
 
+def get_all_detectables():
+    data_path = os.getenv('DETSPACE_DATA')
+    plist = pd.read_csv(os.path.join(data_path,"data","Detectable.csv"))
+    prodl, detl = get_prod_det_pair()
+    dets = []
+    revlist = {}
+    ddict = {}
+    for row in plist.index:
+        item = {}
+        for col in plist.columns:
+            val = str( plist.loc[row,col] )
+            if val == 'nan':
+                val = ''
+            item[col] = str( val )
+        iid = item["ID"]
+        iin = item["Name"]
+        ddict[iid] = item
+        if iid not in detl:
+            continue
+        npaths = sum( [ detl[iid][x] for x in detl[iid] ] ) 
+        if iin not in revlist:
+            revlist[iin] = (iid,npaths)
+        else:
+            if revlist[iin][1] < npaths:
+                revlist[iin] == (iid,npaths)
+    for row in plist.index:
+        iin = plist.loc[row,"Name"]
+        iid = str(plist.loc[row,"ID"])
+        if iin in revlist:
+            if revlist[iin][0] == iid:
+                dets.append( ddict[iid] )
+    return(dets, prodl, detl)
+
 
 def get_detectables():
-    prodl, detl = get_prod_det_pair()
-    detec = get_all_detectables()
+    detec, prodl, detl = get_all_detectables()
     pdetect = []
     for item in detec:
         iid = item["ID"]

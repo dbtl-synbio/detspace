@@ -2,8 +2,6 @@ import requests
 import urllib.parse
 
 url = "https://detspace.i2sysbio.uv.es"
-url = "http://127.0.0.1:8000"
-
 
 def version():
     """ Returns API version"""
@@ -53,9 +51,11 @@ def paths_json_prod_det(prod,det):
     response = requests.get(api_url)
     return response
 
-#   "paths/prod_id/det_id": "http://detspace.i2sysbio.uv.es/api/paths/",
-#    "chassis": "http://detspace.i2sysbio.uv.es/api/chassis/"
-
+def det_info(det):
+    """ Returns Sensbio information about the detectable compound"""
+    api_url = urllib.parse.urljoin(url,"/".join(["api/det_info",str(det)]))
+    response = requests.get(api_url)
+    return response
 
 print("DetSpace API usage by DBDL https://carbonelllab.org")
 print(version())
@@ -80,3 +80,5 @@ p0 = prod_det(de["ID"])
 ps00 = paths_prod_det(pr["ID"],de["ID"])
 # Get all paths in JSON format for a given pair product, effector
 pj00 = paths_json_prod_det(pr["ID"],de["ID"])
+# Get info about the caffeoyl-CoA transcription factor-based biosensor
+bs = det_info(de["ID"])
