@@ -6,7 +6,9 @@
 {% block content %}
    <div class="main_body">
       <div id="interaction" class="interact">
-        <div class="info-subtitle" style="margin-top:2%">Choose chassis organism</div>
+        <div class="info-subtitle" style="margin-top:2%">Choose chassis organism
+         <input id="close_interaction_bttn" type="button" class="default_button btn btn-outline-dark" value="Hide" onclick="close_interaction()"/>
+        </div>
         <input id="Chassis" type="button" class="btn button_chassis" onclick="hideShow()" value="Chassis"/> 
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_chassis" autocomplete="off" onkeydown="return false;" id="txtvalue" class="input_box_chassis" value="{{chassis_name}}" orgid="{{chassis}}"/>
         <button  id="Delete selection" onclick="delete_chassis()" class="left_panel_button">&times;</button>
@@ -112,7 +114,9 @@
            </div><!-- /.modal-content -->
          </div><!-- /.modal-dialog -->
          </div><!-- /.modal -->
-                                 
+      
+      <input id="open_interaction_bttn" type="button" class="default_button btn btn-outline-dark" value="Show" onclick="open_interaction()"/>
+
      <div class="visualizer" id="base">
          <script>
          $( function() {

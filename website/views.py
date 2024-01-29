@@ -183,10 +183,10 @@ def get_detectable_info(request, det='0'):
             response = HttpResponse(var, content_type="text/csv")
             response['Content-Disposition'] = 'inline; filename=Sensbio_info.csv'
             return response
-    #try:
-    #    os.unlink(tmp.name)
-    #except:
-    #    pass
+    try:
+        os.unlink(tmp.name)
+    except:
+        pass
     raise Http404
 
 @api_view(['GET'])

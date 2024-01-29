@@ -1121,7 +1121,7 @@ function run_viz(network, pathways_info){
             let node = evt.target;
             // Dump into console
             // Print info
-            document.getElementById("info").style.width="18%";
+            document.getElementById("info").style.width="345px";
             $("#info").attr("is_clicked", "True");
             if (node.is('[type = "chemical"]')){
                 panel_reaction_info(null, false);
@@ -1158,7 +1158,7 @@ function run_viz(network, pathways_info){
         let node = evt.target;
             let is_clicked = $("#info").attr("is_clicked");
             if (is_clicked == "False"){
-                document.getElementById("info").style.width="18%";
+                document.getElementById("info").style.width="345px";
                 if (node.is('[type = "chemical"]')){
                     panel_reaction_info(null, false);
                     if (node.data().source_chemical) {

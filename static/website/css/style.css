@@ -1010,7 +1010,7 @@ ul li {
     padding-left: revert-layer;
 }
 
-@media (max-width: 1481px){
+/* @media (max-width: 1481px){
     .button_chassis{
         margin-top: 10px;
         margin-bottom: 10px;
@@ -1100,7 +1100,7 @@ ul li {
         .button_detectables{
             font-size: 0.5em !important;
         }
-    }
+    } */
 .modal {
     overflow-y:auto;
   }
@@ -1282,7 +1282,7 @@ tr.found{
     right:0;
     z-index:20;
     background-color: white;
-    width:79%;
+    width:1400px;
     margin-top: 52px;
     display: none;
 }

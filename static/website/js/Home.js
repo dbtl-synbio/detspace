@@ -32,7 +32,7 @@ $(document).ready(function(){
             document.getElementById("info").style.borderTopStyle="hidden";
             document.getElementById("info").style.borderRightStyle="hidden";
             document.getElementById("info").style.width="0%";
-            count_intermediate();      
+            count_intermediate();
          }
       });   
    } else { //This values are the default example
@@ -275,6 +275,22 @@ function show_pathways() {
    }
 }
 
+function close_interaction(){
+   document.getElementById('interaction').style.display="none";
+   document.getElementById('open_interaction_bttn').style.display='block';
+   screen_size = screen.width;
+   document.getElementById('cy').style.width = String(screen_size)+'px';
+   document.getElementById('cy').style.float = 'left';
+   refresh_layout();
+}
+
+function open_interaction(){
+   document.getElementById('interaction').style.display="block";
+   document.getElementById('open_interaction_bttn').style.display='none';
+   document.getElementById('cy').style.width = "1500px";
+   document.getElementById('cy').style.float = 'right';
+   refresh_layout();
+}
     
 //Conversion of the detectables table from json to html//
 $(document).ready(function(){
