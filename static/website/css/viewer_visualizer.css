@@ -95,16 +95,17 @@ body {
 }
 
 #close_interaction_bttn {
-    background-color: white;
     margin-top:1.5%;
     margin-right:1.5%;
     position:absolute;
     top:0;
     right:0;
-    font-size:0.8em;
+    font-size:0.95em;
     text-align: center;
     width: 60px;
     height: 40px;
+    padding-left: 1px;
+    padding-right: 1px;
 }
 
 #open_interaction_bttn {
