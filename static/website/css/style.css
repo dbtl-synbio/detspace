@@ -1282,7 +1282,6 @@ tr.found{
     position:absolute;
     top:0;
     right:0;
-    z-index:20;
     background-color: white;
     width:1400px;
     margin-top: 52px;
