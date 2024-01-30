@@ -282,7 +282,6 @@ function close_interaction(){
    screen_size = screen.width;
    document.getElementById('cy').style.width = String(screen_size)+'px';
    document.getElementById('cy').style.float = 'left';
-   refresh_layout();
 }
 
 function open_interaction(){
@@ -290,7 +289,6 @@ function open_interaction(){
    document.getElementById('open_interaction_bttn').style.display='none';
    document.getElementById('cy').style.width = "1500px";
    document.getElementById('cy').style.float = 'right';
-   refresh_layout();
 }
     
 //Conversion of the detectables table from json to html//
