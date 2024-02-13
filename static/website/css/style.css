@@ -339,6 +339,12 @@ button {
         justify-content:left;
         float:left;
     }
+    #intro{
+        width: fit-content !important;
+        height:85vh !important;;
+        margin-top: 98px !important;
+        text-align: justify;
+    }
 
 }
 
@@ -356,7 +362,7 @@ button {
     left: -160%;
     text-align: center;
     transition: all .5s;
-    z-index: 1;
+    z-index: 99;
     }
     .nav_detspace ul li{
         display:block;
@@ -364,7 +370,7 @@ button {
         line-height: 30px;
     }
     .nav_detspace ul li a{
-        margin-left: 15%;
+        margin-left: 2%;
         font-size: 1.2em;
         
     } 
@@ -375,6 +381,11 @@ button {
     #check:checked ~ ul{
         left: -5%;
     } 
+    #intro{
+        width: fit-content !important;
+        height:85vh !important;;
+        margin-top: 90px !important;;
+    }
 }
 
 
@@ -719,9 +730,7 @@ padding: 80px 0;
 /** footer **/
 
 .footer {
-    padding-top: 80px;
-    background: #111111;
-    text-align: center;
+    padding-top: 0px;
 }
 
 .hedingh3 {padding-bottom: 25px;}
@@ -799,8 +808,12 @@ ul.top_infomation li i:hover {
 
 
 .copyright {
-    margin-top: 60px;
-    padding-bottom: 20px;
+    /* margin-top: 60px;
+    padding-bottom: 20px; */
+    position: absolute;
+    width: 100%;
+    height: 2.5rem;  
+    margin-top: 40px
 }
 
 .copyright p {
@@ -1283,7 +1296,10 @@ tr.found{
     top:0;
     right:0;
     background-color: white;
-    width:75%;
+    width:78%;
     margin-top: 52px;
     display: none;
+    overflow-y: auto;
+    z-index: 2;
+    height:90vh;
 }

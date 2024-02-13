@@ -27,7 +27,6 @@ body {
     height: 90vh;
     border-right-style:solid;
     border-bottom-style:solid;
-    z-index:2;
     overflow-y: auto;
 }
 
