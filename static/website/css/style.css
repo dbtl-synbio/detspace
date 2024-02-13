@@ -384,7 +384,7 @@ button {
     #intro{
         width: fit-content !important;
         height:85vh !important;;
-        margin-top: 88px !important;;
+        margin-top: 90px !important;;
     }
 }
 
@@ -1296,7 +1296,7 @@ tr.found{
     top:0;
     right:0;
     background-color: white;
-    width:75%;
+    width:77%;
     margin-top: 52px;
     display: none;
     overflow-y: auto;
