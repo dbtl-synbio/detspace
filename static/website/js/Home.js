@@ -282,6 +282,7 @@ function close_interaction(){
    screen_size = screen.width;
    document.getElementById('cy').style.width = String(screen_size)+'px';
    document.getElementById('cy').style.float = 'left';
+   document.getElementById('intro').style.width = '90%'
 }
 
 function open_interaction(){
@@ -289,6 +290,7 @@ function open_interaction(){
    document.getElementById('open_interaction_bttn').style.display='none';
    document.getElementById('cy').style.width = "1500px";
    document.getElementById('cy').style.float = 'right';
+   document.getElementById('intro').style.width = '75%'
 }
     
 //Conversion of the detectables table from json to html//
