@@ -339,6 +339,12 @@ button {
         justify-content:left;
         float:left;
     }
+    #intro{
+        width: fit-content !important;
+        height:85vh !important;;
+        margin-top: 98px !important;
+        text-align: justify;
+    }
 
 }
 
