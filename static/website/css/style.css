@@ -224,7 +224,7 @@ button {
      border: 0;
      margin: 0;
      padding: 0;
-     cursor: pointer;
+     cursor:pointer;
 }
 
 .full {
@@ -1333,4 +1333,10 @@ tr.found{
 
     align-items: center;
     text-align: center;
+}
+
+.selectable_option{
+
+    cursor:pointer;
+    font-weight: bold;
 }
