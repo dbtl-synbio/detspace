@@ -14,71 +14,251 @@
         <button  id="Delete selection" onclick="delete_chassis()" class="left_panel_button">&times;</button>
         
         <div id="dialogo" class ="hidden" style="display: none;">
-            <select id="list-container" autocomplete="off">
-              <option selected="selected" disabled="disabled">-- Select your chassis --</option>
-              <optgroup label="Prokaryotes">
-                <optgroup label="&nbsp;Bacteriae">
-                  <optgroup label="&nbsp;&nbsp;Aerobic">
-                    <optgroup label="&nbsp;&nbsp;&nbsp;Gram Positive">
-                      <option id="GCF_007641235">Corynebacterium sp.</option>
-                      <option id="GCF_001638825">Deinococcus radiodurans</option>
-                      <option id="SCO">Streptomyces spp.</option>
-                    </optgroup>
-                    <optgroup label="&nbsp;&nbsp;&nbsp;Gram Negative">
-                      <option id="PPUT160488">Pseudomonas putida</option>
-                      <option id="GCF_000091545">Thermus thermophilus</option>
-                    </optgroup>
-                  </optgroup>
-                  <optgroup label="&nbsp;&nbsp;Anaerobic/Facultative">
-                    <optgroup label="&nbsp;&nbsp;&nbsp;Gram Positive">
-                      <option id="BSUB">Bacilus Subtilis</option>
-                      <option id="iHN637">Clostridium ljungdahlii</option> 
-                      <option id="iNF517">Lactococcus lactis</option>   
-                      <option id="GCF_900475095">Streptococcus mutans</option>
-                      <option id="GCF_010120595">Streptococcus thermophilus</option>  
-                    </optgroup>
-                    <optgroup label="&nbsp;&nbsp;&nbsp;Gram Negative">
-                      <option id="ECOLI">Escherichia Coli</option>
-                      <option id="iAF987">Geobacter metallireducens</option>
-                      <option id="GCF_000007985">Geobacter sulfurreducens</option>
-                      <option id="GCF_000238715">Klebsiella sp.</option>
-                      <option id="GCF_004522175">Paracoccus sp.</option>
-                      <option id="GCF_00014615">Shewanella oneidensis</option>
-                      <option id="GCF_000340785">Synechocystis spp.</option>
-                      <option id="iLJ478">Thermotoga maritima </option>
-                    </optgroup>
-                  </optgroup>
-                  <optgroup label="&nbsp;&nbsp;Special cases">
-                    <option id="GCF_000008765">Clostridium acetobutylicum</option>
-                  </optgroup>
-                </optgroup>
+          <div class = select_organism>
+            <h3>Select by organism</h3>
+            <select id="list-container" autocomplete="off" >
+              <option selected="selected" disabled="disabled">-- Select your chassis organism --</option>
+              <optgroup label="Prokaryotes" class="collapsible"></optgroup>
+                <optgroup label="&nbsp;Bacteriae"></optgroup>
+                  <optgroup label="&nbsp;&nbsp;Aerobic"></optgroup>
+                    <optgroup label="&nbsp;&nbsp;&nbsp;Gram Positive"></optgroup>
+                      <option id="GCF_007641235">&nbsp;&nbsp;&nbsp;&nbsp;Corynebacterium sp.&nbsp;(BioCyc)</option>
+                      <option id="GCF_001638825">&nbsp;&nbsp;&nbsp;&nbsp;Deinococcus radiodurans&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                      <option id="SCO">&nbsp;&nbsp;&nbsp;&nbsp;Streptomyces spp.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                    <optgroup label="&nbsp;&nbsp;&nbsp;Gram Negative"></optgroup>
+                      <option id="PPUT160488">&nbsp;&nbsp;&nbsp;&nbsp;Pseudomonas putida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                      <option id="GCF_000091545">&nbsp;&nbsp;&nbsp;&nbsp;Thermus thermophilus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                  <optgroup label="&nbsp;&nbsp;Anaerobic/Facultative"></optgroup>
+                    <optgroup label="&nbsp;&nbsp;&nbsp;Gram Positive"></optgroup>
+                      <option id="BSUB">&nbsp;&nbsp;&nbsp;&nbsp;Bacilus Subtilis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                      <option id="iHN637">&nbsp;&nbsp;&nbsp;&nbsp;Clostridium ljungdahlii&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BiGG</option> 
+                      <option id="iNF517">&nbsp;&nbsp;&nbsp;&nbsp;Lactococcus lactis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BiGG</option>   
+                      <option id="GCF_900475095">&nbsp;&nbsp;&nbsp;&nbsp;Streptococcus mutans&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                      <option id="GCF_010120595">&nbsp;&nbsp;&nbsp;&nbsp;Streptococcus thermophilus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>  
+                    <optgroup label="&nbsp;&nbsp;&nbsp;Gram Negative"></optgroup>
+                      <option id="ECOLI">&nbsp;&nbsp;&nbsp;&nbsp;Escherichia Coli&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                      <option id="iAF987">&nbsp;&nbsp;&nbsp;&nbsp;Geobacter metallireducens&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BiGG</option>
+                      <option id="GCF_000007985">&nbsp;&nbsp;&nbsp;&nbsp;Geobacter sulfurreducens&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                      <option id="GCF_000238715">&nbsp;&nbsp;&nbsp;&nbsp;Klebsiella sp.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                      <option id="GCF_004522175">&nbsp;&nbsp;&nbsp;&nbsp;Paracoccus sp.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                      <option id="GCF_00014615">&nbsp;&nbsp;&nbsp;&nbsp;Shewanella oneidensis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                      <option id="GCF_000340785">&nbsp;&nbsp;&nbsp;&nbsp;Synechocystis spp.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                      <option id="iLJ478">&nbsp;&nbsp;&nbsp;&nbsp;Thermotoga maritima&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BiGG</option>
+                  <optgroup label="&nbsp;&nbsp;Special cases"></optgroup>
+                    <option id="GCF_000008765">&nbsp;&nbsp;&nbsp;Clostridium acetobutylicum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
                 <optgroup label="&nbsp;Archeae"></optgroup>
-                  <option id="iAF692">Methanosarcina barkeri </option>
-                  <option id="GCF_000012285">Sulfolobus acidocaldarius</option>
-                </optgroup>
-              </optgroup>
-              <optgroup label="Eukaryotes">
-                <optgroup label="&nbsp;Fungi">
-                  <optgroup label="&nbsp;&nbsp;Yeast">
-                    <optgroup label="&nbsp;&nbsp;&nbsp;Aerobic">
-                      <option id="YARROWIA">Yarrowia lipolytica</option>
-                    </optgroup>
-                    <optgroup label="&nbsp;&nbsp;&nbsp;Anaerobic/Facultative">
-                      <option id="YEAST">Saccharomyces cerevisiae</option>
-                      <option id="GCF_000733215">Candida albicans</option>
-                    </optgroup>
-                  </optgroup>
-                  <optgroup label="&nbsp;Algae">
-                    <option id="iRC1080">Chlamydomonas reinhardtii</option>
-                    <option id="GCF_000733215">Chlorella</option>
-                    <option id="APLAT">Spirulina platensis</option>
-                  </optgroup>
+                  <option id="iAF692">&nbsp;&nbsp;Methanosarcina barkeri&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BiGG</option>
+                  <option id="GCF_000012285">&nbsp;&nbsp;Sulfolobus acidocaldarius&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+              <optgroup label="Eukaryotes"></optgroup>
+                <optgroup label="&nbsp;Fungi"></optgroup>
+                  <optgroup label="&nbsp;&nbsp;Yeast"></optgroup>
+                    <optgroup label="&nbsp;&nbsp;&nbsp;Aerobic"></optgroup>
+                      <option id="YARROWIA">&nbsp;&nbsp;&nbsp;&nbsp;Yarrowia lipolytica&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                    <optgroup label="&nbsp;&nbsp;&nbsp;Anaerobic/Facultative"></optgroup>
+                      <option id="YEAST">&nbsp;&nbsp;&nbsp;&nbsp;Saccharomyces cerevisiae&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                      <option id="CALB">&nbsp;&nbsp;&nbsp;&nbsp;Candida albicans&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                  <optgroup label="&nbsp;Algae"></optgroup>
+                    <option id="iRC1080">&nbsp;&nbsp;Chlamydomonas reinhardtii&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BiGG</option>
+                    <option id="GCF_000733215">&nbsp;&nbsp;Chlorella&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
+                    <option id="APLAT">&nbsp;&nbsp;Spirulina platensis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
                 <optgroup label="&nbsp;Plants">
-                  <option id="ARA">Arabidopsis thaliana</option>
-                </optgroup>
-              </optgroup>
+                  <option id="ARA">&nbsp;Arabidopsis thaliana&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BioCyc</option>
             </select>
+          </div>
+          <div class = select_application>
+            <h3>Select by application</h3>
+            <select id="list-container_apps" autocomplete="off">
+              <option selected="selected" disabled="disabled">-- Select your chassis application --</option>
+              <optgroup label="Laboratory"></optgroup>
+                <option id="ARA">&nbsp;&nbsp;Arabidopsis thaliana</option>
+                <option id="ECOLI">&nbsp;&nbsp;Escherichia Coli</option>
+                <option id="YEAST">&nbsp;&nbsp;Saccharomyces cerevisiae</option>
+                <option id="SCO">&nbsp;&nbsp;Streptomyces spp.</option>
+                <option id="GCF_000091545">&nbsp;&nbsp;Thermus thermophilus</option>
+              <option id="BIOFUEL" style="font-weight: bold">Biofuels</option>
+                <option id="iRC1080">&nbsp;&nbsp;Chlamydomonas reinhardtii</option>
+                <option id="GCF_000008765">&nbsp;&nbsp;Clostridium acetobutylicum</option>
+                <option id="iHN637">&nbsp;&nbsp;Clostridium ljungdahlii</option> 
+                <option id="iAF692">&nbsp;&nbsp;Methanosarcina barkeri </option>
+                <option id="GCF_000340785">&nbsp;&nbsp;Synechocystis spp.</option>
+                <option id="iLJ478">&nbsp;&nbsp;Thermotoga maritima </option>
+                <option id="YARROWIA">&nbsp;&nbsp;Yarrowia lipolytica</option>
+                <option id="GCF_000733215">&nbsp;&nbsp;Chlorella</option>
+              <option id="ELECT" style="font-weight: bold">Electricity generation</option>
+                <option id="iAF987">&nbsp;&nbsp;Geobacter metallireducens</option>
+                <option id="GCF_000007985">&nbsp;&nbsp;Geobacter sulfurreducens</option>
+                <option id="GCF_00014615">&nbsp;&nbsp;Shewanella oneidensis</option>
+              <option id="PHARMA" style="font-weight: bold">Pharmaceutical</option>
+                <option id="BSUB">&nbsp;&nbsp;Bacilus Subtilis</option>
+                <option id="ECOLI">&nbsp;&nbsp;Escherichia Coli</option>
+                <option id="iNF517">&nbsp;&nbsp;Lactococcus lactis</option> 
+                <option id="SCO">&nbsp;&nbsp;Streptomyces spp.</option>
+                <option id="CALB">&nbsp;&nbsp;Candida albicans</option>
+              <option id="FOOD" style="font-weight: bold">Food industry</option>
+                <option id="BSUB">&nbsp;&nbsp;Bacilus Subtilis</option>
+                <option id="GCF_000008765">&nbsp;&nbsp;Clostridium acetobutylicum</option>
+                <option id="iNF517">&nbsp;&nbsp;Lactococcus lactis</option> 
+                <option id="YEAST">&nbsp;&nbsp;Saccharomyces cerevisiae</option>
+                <option id="GCF_010120595">&nbsp;&nbsp;Streptococcus thermophilus</option>  
+              <option id="COSMETICS" style="font-weight: bold">Cosmetics</option>
+                <option id="BSUB">&nbsp;&nbsp;Bacilus Subtilis</option>
+                <option id="GCF_000733215">&nbsp;&nbsp;Chlorella</option>
+                <option id="GCF_000008765">&nbsp;&nbsp;Clostridium acetobutylicum</option>
+                <option id="GCF_007641235">&nbsp;&nbsp;Corynebacterium sp.</option>
+                <option id="GCF_004522175">&nbsp;&nbsp;Paracoccus sp.</option>
+                <option id="GCF_900475095">&nbsp;&nbsp;Streptococcus mutans</option>
+                <option id="GCF_010120595">&nbsp;&nbsp;Streptococcus thermophilus</option>  
+                <option id="GCF_000012285">&nbsp;&nbsp;Sulfolobus acidocaldarius</option>
+                <option id="GCF_000340785">&nbsp;&nbsp;Synechocystis spp.</option>
+                <option id="GCF_000091545">&nbsp;&nbsp;Thermus thermophilus</option>
+                <option id="CALB">&nbsp;&nbsp;Candida albicans</option>
+                <option id="APLAT">&nbsp;&nbsp;Spirulina platensis</option>
+              <option id="ENVIRO" style="font-weight: bold">Environmental applications</option>
+                <option id="GCF_001638825">&nbsp;&nbsp;Deinococcus radiodurans</option>
+                <option id="ECOLI">&nbsp;&nbsp;Escherichia Coli</option>
+                <option id="GCF_000238715">&nbsp;&nbsp;Klebsiella sp.</option>
+                <option id="iAF692">&nbsp;&nbsp;Methanosarcina barkeri </option>
+                <option id="GCF_004522175">&nbsp;&nbsp;Paracoccus sp.</option>
+                <option id="PPUT160488">&nbsp;&nbsp;Pseudomonas putida</option>
+                <option id="GCF_000340785">&nbsp;&nbsp;Synechocystis spp.</option>
+                <option id="YARROWIA">&nbsp;&nbsp;Yarrowia lipolytica</option>
+              <option id="AGRI" style="font-weight: bold">Agriculture</option>
+                <option id="BSUB">&nbsp;&nbsp;Bacilus Subtilis</option>
+                <option id="ECOLI">&nbsp;&nbsp;Escherichia Coli</option>
+              <option id="MATERIALS" style="font-weight: bold">Materials manufacturing</option>
+                <option id="GCF_000008765">&nbsp;&nbsp;Clostridium acetobutylicum</option>
+                <option id="PPUT160488">&nbsp;&nbsp;Pseudomonas putida</option>
+                <option id="GCF_000091545">&nbsp;&nbsp;Thermus thermophilus</option>
+                <option id="CALB">&nbsp;&nbsp;Candida albicans</option>
+            </select>
+            <!-- <h3>Select by organism</h3>
+            <select id="list-container" autocomplete="off" >
+              <option selected="selected" disabled="disabled">-- Select your chassis organism --</option>
+              <optgroup label="Prokaryotes" class="collapsible"></optgroup>
+                <optgroup label="&nbsp;Bacteriae"></optgroup>
+                  <optgroup label="&nbsp;&nbsp;Aerobic"></optgroup>
+                    <optgroup label="&nbsp;&nbsp;&nbsp;Gram Positive"></optgroup>
+                      <option id="GCF_007641235">&nbsp;&nbsp;&nbsp;&nbsp;Corynebacterium sp.</option>
+                      <option id="GCF_001638825">&nbsp;&nbsp;&nbsp;&nbsp;Deinococcus radiodurans</option>
+                      <option id="SCO">&nbsp;&nbsp;&nbsp;&nbsp;Streptomyces spp.</option>
+                    <optgroup label="&nbsp;&nbsp;&nbsp;Gram Negative"></optgroup>
+                      <option id="PPUT160488">&nbsp;&nbsp;&nbsp;&nbsp;Pseudomonas putida</option>
+                      <option id="GCF_000091545">&nbsp;&nbsp;&nbsp;&nbsp;Thermus thermophilus</option>
+                  <optgroup label="&nbsp;&nbsp;Anaerobic/Facultative"></optgroup>
+                    <optgroup label="&nbsp;&nbsp;&nbsp;Gram Positive"></optgroup>
+                      <option id="BSUB">&nbsp;&nbsp;&nbsp;&nbsp;Bacilus Subtilis</option>
+                      <option id="iHN637">&nbsp;&nbsp;&nbsp;&nbsp;Clostridium ljungdahlii</option> 
+                      <option id="iNF517">&nbsp;&nbsp;&nbsp;&nbsp;Lactococcus lactis</option>   
+                      <option id="GCF_900475095">&nbsp;&nbsp;&nbsp;&nbsp;Streptococcus mutans</option>
+                      <option id="GCF_010120595">&nbsp;&nbsp;&nbsp;&nbsp;Streptococcus thermophilus</option>  
+                    <optgroup label="&nbsp;&nbsp;&nbsp;Gram Negative"></optgroup>
+                      <option id="ECOLI">&nbsp;&nbsp;&nbsp;&nbsp;Escherichia Coli</option>
+                      <option id="iAF987">&nbsp;&nbsp;&nbsp;&nbsp;Geobacter metallireducens</option>
+                      <option id="GCF_000007985">&nbsp;&nbsp;&nbsp;&nbsp;Geobacter sulfurreducens</option>
+                      <option id="GCF_000238715">&nbsp;&nbsp;&nbsp;&nbsp;Klebsiella sp.</option>
+                      <option id="GCF_004522175">&nbsp;&nbsp;&nbsp;&nbsp;Paracoccus sp.</option>
+                      <option id="GCF_00014615">&nbsp;&nbsp;&nbsp;&nbsp;Shewanella oneidensis</option>
+                      <option id="GCF_000340785">&nbsp;&nbsp;&nbsp;&nbsp;Synechocystis spp.</option>
+                      <option id="iLJ478">&nbsp;&nbsp;&nbsp;&nbsp;Thermotoga maritima </option>
+                  <optgroup label="&nbsp;&nbsp;Special cases"></optgroup>
+                    <option id="GCF_000008765">&nbsp;&nbsp;&nbsp;Clostridium acetobutylicum</option>
+                <optgroup label="&nbsp;Archeae"></optgroup>
+                  <option id="iAF692">&nbsp;&nbsp;Methanosarcina barkeri </option>
+                  <option id="GCF_000012285">&nbsp;&nbsp;Sulfolobus acidocaldarius</option>
+              <optgroup label="Eukaryotes"></optgroup>
+                <optgroup label="&nbsp;Fungi"></optgroup>
+                  <optgroup label="&nbsp;&nbsp;Yeast"></optgroup>
+                    <optgroup label="&nbsp;&nbsp;&nbsp;Aerobic"></optgroup>
+                      <option id="YARROWIA">&nbsp;&nbsp;&nbsp;&nbsp;Yarrowia lipolytica</option>
+                    <optgroup label="&nbsp;&nbsp;&nbsp;Anaerobic/Facultative"></optgroup>
+                      <option id="YEAST">&nbsp;&nbsp;&nbsp;&nbsp;Saccharomyces cerevisiae</option>
+                      <option id="CALB">&nbsp;&nbsp;&nbsp;&nbsp;Candida albicans</option>
+                  <optgroup label="&nbsp;Algae"></optgroup>
+                    <option id="iRC1080">&nbsp;&nbsp;Chlamydomonas reinhardtii</option>
+                    <option id="GCF_000733215">&nbsp;&nbsp;Chlorella</option>
+                    <option id="APLAT">&nbsp;&nbsp;Spirulina platensis</option>
+                <optgroup label="&nbsp;Plants">
+                  <option id="ARA">&nbsp;Arabidopsis thaliana</option>
+            </select>
+          </div>
+          <div class = select_application>
+            <h3>Select by application</h3>
+            <select id="list-container_apps" autocomplete="off">
+              <option selected="selected" disabled="disabled">-- Select your chassis application --</option>
+              <optgroup label="Laboratory"></optgroup>
+                <option id="ARA">&nbsp;&nbsp;Arabidopsis thaliana</option>
+                <option id="ECOLI">&nbsp;&nbsp;Escherichia Coli</option>
+                <option id="YEAST">&nbsp;&nbsp;Saccharomyces cerevisiae</option>
+                <option id="SCO">&nbsp;&nbsp;Streptomyces spp.</option>
+                <option id="GCF_000091545">&nbsp;&nbsp;Thermus thermophilus</option>
+              <option id="BIOFUEL" style="font-weight: bold">Biofuels</option>
+                <option id="iRC1080">&nbsp;&nbsp;Chlamydomonas reinhardtii</option>
+                <option id="GCF_000008765">&nbsp;&nbsp;Clostridium acetobutylicum</option>
+                <option id="iHN637">&nbsp;&nbsp;Clostridium ljungdahlii</option> 
+                <option id="iAF692">&nbsp;&nbsp;Methanosarcina barkeri </option>
+                <option id="GCF_000340785">&nbsp;&nbsp;Synechocystis spp.</option>
+                <option id="iLJ478">&nbsp;&nbsp;Thermotoga maritima </option>
+                <option id="YARROWIA">&nbsp;&nbsp;Yarrowia lipolytica</option>
+                <option id="GCF_000733215">&nbsp;&nbsp;Chlorella</option>
+              <option id="ELECT" style="font-weight: bold">Electricity generation</option>
+                <option id="iAF987">&nbsp;&nbsp;Geobacter metallireducens</option>
+                <option id="GCF_000007985">&nbsp;&nbsp;Geobacter sulfurreducens</option>
+                <option id="GCF_00014615">&nbsp;&nbsp;Shewanella oneidensis</option>
+              <option id="PHARMA" style="font-weight: bold">Pharmaceutical</option>
+                <option id="BSUB">&nbsp;&nbsp;Bacilus Subtilis</option>
+                <option id="ECOLI">&nbsp;&nbsp;Escherichia Coli</option>
+                <option id="iNF517">&nbsp;&nbsp;Lactococcus lactis</option> 
+                <option id="SCO">&nbsp;&nbsp;Streptomyces spp.</option>
+                <option id="CALB">&nbsp;&nbsp;Candida albicans</option>
+              <option id="FOOD" style="font-weight: bold">Food industry</option>
+                <option id="BSUB">&nbsp;&nbsp;Bacilus Subtilis</option>
+                <option id="GCF_000008765">&nbsp;&nbsp;Clostridium acetobutylicum</option>
+                <option id="iNF517">&nbsp;&nbsp;Lactococcus lactis</option> 
+                <option id="YEAST">&nbsp;&nbsp;Saccharomyces cerevisiae</option>
+                <option id="GCF_010120595">&nbsp;&nbsp;Streptococcus thermophilus</option>  
+              <option id="COSMETICS" style="font-weight: bold">Cosmetics</option>
+                <option id="BSUB">&nbsp;&nbsp;Bacilus Subtilis</option>
+                <option id="GCF_000733215">&nbsp;&nbsp;Chlorella</option>
+                <option id="GCF_000008765">&nbsp;&nbsp;Clostridium acetobutylicum</option>
+                <option id="GCF_007641235">&nbsp;&nbsp;Corynebacterium sp.</option>
+                <option id="GCF_004522175">&nbsp;&nbsp;Paracoccus sp.</option>
+                <option id="GCF_900475095">&nbsp;&nbsp;Streptococcus mutans</option>
+                <option id="GCF_010120595">&nbsp;&nbsp;Streptococcus thermophilus</option>  
+                <option id="GCF_000012285">&nbsp;&nbsp;Sulfolobus acidocaldarius</option>
+                <option id="GCF_000340785">&nbsp;&nbsp;Synechocystis spp.</option>
+                <option id="GCF_000091545">&nbsp;&nbsp;Thermus thermophilus</option>
+                <option id="CALB">&nbsp;&nbsp;Candida albicans</option>
+                <option id="APLAT">&nbsp;&nbsp;Spirulina platensis</option>
+              <option id="ENVIRO" style="font-weight: bold">Environmental applications</option>
+                <option id="GCF_001638825">&nbsp;&nbsp;Deinococcus radiodurans</option>
+                <option id="ECOLI">&nbsp;&nbsp;Escherichia Coli</option>
+                <option id="GCF_000238715">&nbsp;&nbsp;Klebsiella sp.</option>
+                <option id="iAF692">&nbsp;&nbsp;Methanosarcina barkeri </option>
+                <option id="GCF_004522175">&nbsp;&nbsp;Paracoccus sp.</option>
+                <option id="PPUT160488">&nbsp;&nbsp;Pseudomonas putida</option>
+                <option id="GCF_000340785">&nbsp;&nbsp;Synechocystis spp.</option>
+                <option id="YARROWIA">&nbsp;&nbsp;Yarrowia lipolytica</option>
+              <option id="AGRI" style="font-weight: bold">Agriculture</option>
+                <option id="BSUB">&nbsp;&nbsp;Bacilus Subtilis</option>
+                <option id="ECOLI">&nbsp;&nbsp;Escherichia Coli</option>
+              <option id="MATERIALS" style="font-weight: bold">Materials manufacturing</option>
+                <option id="GCF_000008765">&nbsp;&nbsp;Clostridium acetobutylicum</option>
+                <option id="PPUT160488">&nbsp;&nbsp;Pseudomonas putida</option>
+                <option id="GCF_000091545">&nbsp;&nbsp;Thermus thermophilus</option>
+                <option id="CALB">&nbsp;&nbsp;Candida albicans</option>
+            </select> -->
+          </div>
          </div>
+
+        <script>
+          
+          $("#list-container").select2();
+          $("body").on('click', '.select2-results__group', function() {
+            $(this).siblings().toggle();
+          })
+
+        </script>
+
         <div class="info-subtitle">Select detectable route</div>
         <input type="button" data-toggle="modal" href="#modal_producibles" class="btn button_producibles" id="producibles" value="Producible"/>
         <input type="text" onfocus="blur()" style="border:none" class="txtvalue_prod" prod_id="{{prod}}" autocomplete="off" onkeydown="return false;" id="txtvalue_prod" value="{{prod_name}}"/>

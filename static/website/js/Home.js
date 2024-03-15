@@ -82,17 +82,31 @@ $(document).ready(function(){
    orgid = $(this).children(":selected").attr("id");
    document.getElementById("txtvalue").value=displaytext;
    $("#dialogo").dialog("close");
+   $("#dialogo_apps").dialog("close");
+   var display =1;
+   });
+});
+
+$(document).ready(function(){
+   $("#list-container_apps").change(function() {
+   var d=document.getElementById("list-container_apps");
+   var displaytext=d.options[d.selectedIndex].text;
+   orgid = $(this).children(":selected").attr("id");
+   document.getElementById("txtvalue").value=displaytext;
+   $("#dialogo_apps").dialog("close");
+   $("#dialogo").dialog("close");
    var display =1;
    });
 });
 
 function hideShow() {
    $("#dialogo").dialog({
-      modal: true,
+      modal: false,
       title: "Chassis",
-      width: 250,
+      width: 400,
       minWidth: 200,
-      maxWidth: 400, 
+      maxWidth: 500, 
+      height:180,
       //show: "fold", 
       hide: "scale",
       autoOpen: false
@@ -102,6 +116,25 @@ function hideShow() {
       display = 1;
    } else {
       $("#dialogo").dialog("open");
+      display = 0;
+   }
+
+   $("#dialogo_apps").dialog({
+      modal: false,
+      title: "Chassis applications",
+      width: 250,
+      minWidth: 200,
+      maxWidth: 500, 
+      //show: "fold", 
+      hide: "scale",
+      autoOpen: false,
+      position: { at: "center bottom" },
+   });
+   if(display == 1){
+      $("#dialogo_apps").dialog("close");
+      display = 1;
+   } else {
+      $("#dialogo_apps").dialog("open");
       display = 0;
    }
 }
@@ -462,7 +495,9 @@ function delete_chassis() {
    document.getElementById("txtvalue").orgid="";
    document.getElementById("txtvalue").value="";
    document.getElementById("list-container").value="";
+   document.getElementById("list-container_apps").value="";
    $("#list-container").children(":selected").attr("id","");
+   $("#list-container_apps").children(":selected").attr("id","");
    }
  
 function delete_producible() {

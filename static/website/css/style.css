@@ -1291,6 +1291,24 @@ tr.found{
     margin-left: -80px !important;
 }
 
+.ui-dialog .ui-dialog-content {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    align-content: center;
+    height: auto;
+    width:auto;
+}
+
+/* .dialogo_apps .hidden{
+    top: 529.5px;
+    left: 616.5px;
+    z-index: 103;
+} */
+
+
+
 #intro{
     position:absolute;
     top:0;
@@ -1302,4 +1320,17 @@ tr.found{
     overflow-y: auto;
     z-index: 2;
     height:90vh;
+}
+
+.select_organism{
+    align-items: center;
+    text-align: center;
+    margin-top: 11px;
+    margin-bottom: 15px;
+}
+
+.select_application{
+
+    align-items: center;
+    text-align: center;
 }
