@@ -19,7 +19,7 @@ $(document).ready(function(){
          success: function() {
             run_viz(network, pathways_info);
             refresh_layout();
-            // orgid = document.getElementById("txtvalue").orgid
+            orgid = document.getElementById("txtvalue").orgid
             // if (document.getElementById(orgid) == null){
             //    orgid = 'ECOLI';
             //    url = '/detect/'+String(product_chosen)+'/'+String(detect_chosen)+'/'+orgid;
