@@ -266,8 +266,8 @@ function build_pathway_table(){
     let table_base = $('<table></table>');
     
     // Build the header
-    let field_names = ['Pathway', 'Show', 'Colour', 'Steps', 'Score'];
-    let field_classes = ['path_id_head', 'path_checkbox_head', 'path_colour_head', 'path_steps_head', 'path_value_head'];  // This is needed for tablesort
+    let field_names = ['Pathway', 'Show', 'Colour', 'Steps', 'Score', 'Flux'];
+    let field_classes = ['path_id_head', 'path_checkbox_head', 'path_colour_head', 'path_steps_head', 'path_value_head','flux_value_head'];  // This is needed for tablesort
     let table_row = $('<tr></tr>');
     for (let i = 0; i < field_names.length; i++){
         let value = field_names[i];
@@ -286,6 +286,7 @@ function build_pathway_table(){
         table_row.append($('<td class="path_colour" data-path_id="' + path_id + '"><input type="color" name="head" value="#A9A9A9"></td>'));
         table_row.append($('<td class="path_steps" data-path_id="' + path_id + '">'+String(info.nb_steps)+'</td>'));
         table_row.append($('<td class="path_value" data-path_id="' + path_id + '"></td>'));
+        table_row.append($('<td class="path_flux_value" data-path_id="' +path_id + '"></td>'));
         table_body.append(table_row);
     }
     table_base.append(table_body);
@@ -822,14 +823,22 @@ function put_pathway_values(score_label='global_score'){
     for (let path_id in pathways_info){
         // Collect the value
         let score = pathways_info[path_id]['scores'][score_label];
+        let flux = pathways_info[path_id]['scores']['flux_score']
         if (! isNaN(score)){
             score = parseFloat(score).toFixed(3);
         } else {
             score = 'NaN';
         }
+        if (! isNaN(flux)){
+            flux = parseFloat(flux).toFixed(3);
+        } else {
+            flux = 'NaN';
+        }
         // Push it into the pathway table
         let path_td = $('td.path_value[data-path_id=' + path_id + ']');
-        path_td.html(score);    
+        let flux_td = $('td.path_flux_value[data-path_id=' + path_id + ']');
+        path_td.html(score);
+        flux_td.html(flux);
     }
 }
 

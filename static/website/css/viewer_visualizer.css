@@ -23,7 +23,7 @@ body {
     background-color: white;
     padding: 0 1% 0 1%;
     border-bottom-right-radius: 10px;
-    width: 390px;
+    width: 400px;
     height: 90vh;
     border-right-style:solid;
     border-bottom-style:solid;
@@ -368,9 +368,10 @@ body {
 }
 #table_choice table tbody td.path_colour input {
     border: 0px;
-    width: 5em;
+    width: 2em;
     /* height: 5px; */
 }
+
 #table_choice table tbody td.pinned {
     border: solid 1px #DDEEEE;
     background-color: #FF7E4F44 ;
