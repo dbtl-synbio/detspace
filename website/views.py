@@ -19,7 +19,16 @@ def info(request):
     return render(request, 'info.html', {})
 
 def index(request):
+    nameOfSession = "Session"
+    # Creating sessions in Django
+    request.session[nameOfSession] = "session_1" #A dictionary where nameOfSession is the key, and session_1 is the value
+    # Reading sessions in Django
+    Session = "new_session"
+    if nameOfSession in request.session:
+        Session = request.session.get(nameOfSession)   
+    context = {"Session":Session}
     return render(request, 'index.html', {})
+    # return render(request, 'index.html', context)
 
 def api_home(request):
     return render(request, 'api.html', {})

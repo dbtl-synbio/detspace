@@ -57,6 +57,18 @@ def det_info(det):
     response = requests.get(api_url)
     return response
 
+def pathways():
+    """ Returns detectable pathways connected to producibles"""
+    pathways = {}
+    targets = prod()
+    for compound in targets:
+        detectables = det_prod(compound)
+        pathways[compound] = {}
+        for effector in detectables:
+            pathways[compound][effector] = paths_json_prod_det(compound,effector)
+    return pathways
+
+
 print("DetSpace API usage by DBDL https://carbonelllab.org")
 print(version())
 p = prod()
