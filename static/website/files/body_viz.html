@@ -1,9 +1,11 @@
 <div id="cy"></div>
-    <div id="info" is_clicked="False">
+    <div id="info" is_clicked="False" class="interact" style="position:absolute"  >
         <div id="molecule"></div>
-        <div class="info" id="information">
+        <div class="info" id="information" style = "user-select:text" >
             <!-- Information on a selected chemical -->
             <div id="panel_chemical_info">
+                <div id="handle1">
+                </div>
                 <div class="info-title">Chemical</div>
                 <div class="info-name"><span class="chem_info_label"></span></div>
                 <div class="spacer"></div>
@@ -41,6 +43,8 @@
         </div>
             <!-- Information on a producible chemical -->
             <div id="panel_chemical_producible_info">
+                <div id="handle2">
+                </div>
                 <div class="info-title">Producible chemical</div>
                 <div class="info-name"><span class="chem_producible_info_label"></span></div>
                 <div class="spacer"></div>
@@ -97,6 +101,8 @@
             </div>
             <!-- Information on a detectable chemical -->
             <div id="panel_chemical_detectable_info">
+                <div id="handle3">
+                </div>
                 <div class="info-title">Detectable chemical</div>
                 <div class="info-name"><span class="chem_detectable_info_label"></span></div>
                 <div class="spacer"></div>
@@ -146,6 +152,8 @@
             </div>
             <!-- Information on a selected reaction -->
             <div id="panel_reaction_info">
+                <div id="handle4">
+                </div>
                 <div class="info-title">Reaction</div>
                 <div class="info-name"><span class="reaction_info_name"></span></div>
                 <div class="spacer"></div>
@@ -185,8 +193,208 @@
             </div>
         </div>
     </div>
+    </div>
 <script>
-    $(function(){
-        $("#info").draggable();
-    })
+    // $(function(){
+    //     $("#info").draggable("option", "handle");
+    // })
+    // var draggable = document.getElementById('panel_reaction_info');
+    // var handle = document.getElementById('handle');
+    // var target = false;
+    // handle.onmousedown = function(e) {
+    // e.target.parentNode.setAttribute('draggable', 'true')
+    // };
+
+    // handle.onmouseup = function(e) {
+    //     e.target.parentNode.setAttribute('draggable', 'false')
+    // };
+
+    // draggable.ondragstart = function(e) {
+    //     e.dataTransfer.setData('text/plain', 'handle');
+    // };
+
+    // draggable.ondragend = function(e) {
+    //     e.target.setAttribute('draggable', 'false')
+    // };
+
+    // Make the DIV element draggable:
+dragElement(document.getElementById("info"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById("handle4")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById("handle4").onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
 </script>
+
+<script>
+    dragElement(document.getElementById("info"));
+
+function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById("handle1")) {
+      // if present, the header is where you move the DIV from:
+      document.getElementById("handle1").onmousedown = dragMouseDown;
+    } else {
+      // otherwise, move the DIV from anywhere inside the DIV:
+      elmnt.onmousedown = dragMouseDown;
+    }
+  
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+  
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      // set the element's new position:
+      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+  
+    function closeDragElement() {
+      // stop moving when mouse button is released:
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  }
+  </script>
+
+  <script>
+    dragElement(document.getElementById("info"));
+
+   function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById("handle2")) {
+      // if present, the header is where you move the DIV from:
+      document.getElementById("handle2").onmousedown = dragMouseDown;
+    } else {
+      // otherwise, move the DIV from anywhere inside the DIV:
+      elmnt.onmousedown = dragMouseDown;
+    }
+  
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+  
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      // set the element's new position:
+      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+  
+    function closeDragElement() {
+      // stop moving when mouse button is released:
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  }
+  
+</script>
+
+<script>
+      dragElement(document.getElementById("info"));
+
+  function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById("handle3")) {
+      // if present, the header is where you move the DIV from:
+      document.getElementById("handle3").onmousedown = dragMouseDown;
+    } else {
+      // otherwise, move the DIV from anywhere inside the DIV:
+      elmnt.onmousedown = dragMouseDown;
+    }
+  
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+  
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      // set the element's new position:
+      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+  
+    function closeDragElement() {
+      // stop moving when mouse button is released:
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  } 
+  </script>

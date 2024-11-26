@@ -969,7 +969,7 @@ ul li {
     list-style: none;
     font-size: 13px;
     padding: 12px 8px 12px 90px;
-    user-select: none;
+    /* user-select: none; */
     cursor:pointer;
 }
 
@@ -1339,4 +1339,43 @@ tr.found{
 
     cursor:pointer;
     font-weight: bold;
+}
+
+#draggable {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+#handle1 {
+    width: 10px;
+    height: 10px;
+    border-right: 40px solid transparent;
+    border-top: 40px solid black;
+    cursor: move;
+}
+
+#handle2 {
+    width: 10px;
+    height:10px;
+    border-right: 40px solid transparent;
+    border-top: 40px solid black;
+    cursor: move;
+}
+
+#handle3 {
+    width: 10px;
+    height: 10px;
+    border-right: 40px solid transparent;
+    border-top: 40px solid black;
+    cursor: move;
+}
+
+#handle4 {
+    width: 10px;
+    height: 10px;
+    border-right: 40px solid transparent;
+    border-top: 40px solid black;
+    cursor: move;
 }
