@@ -113,7 +113,7 @@ body {
 /* Central panel: the graph ***************************************************/
 #cy {
     float: right;
-    width: 1530px;
+    width: 82%;
     height: 90vh;  
     border-color: black;
     border-width: 2px;
